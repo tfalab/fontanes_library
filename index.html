@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Reading Traces</title>
+    <title>Fontanes Handbibliothek</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="js/d3.v4.min.js"></script>
     <script src="js/jquery.min.js"></script>
@@ -469,10 +469,6 @@
 
 
 
-        #scrollSizer {
-            height: 50000px;
-            width: 100%;
-        }
 
 
         .navigationLabels {
@@ -2804,18 +2800,21 @@ console.log(window.innerWidth)
                     }
                 })
                 .on("mousemove", function(d) {
+
                     if (scrollTop > -800) {
                         if (scrollTop > -800 && scrollTop < 1200) {
                             thisVerfasserSelected = d3.select(this).datum().values[0].Verfasser
                             //	console.log(thisVerfasser)
 
                         }
+                        var currentScrollTop = Math.max(window.pageYOffset, document.documentElement.scrollTop, document.body.scrollTop)
 
-                        var mouseY = ((d3.event.layerY || d3.event.offsety) - 240);
+                        var mouseY = ((d3.event.layerY || d3.event.offsety) - currentScrollTop-120);
+                      //  console.log(mouseY)
                         //console.log(mouseY/0.45)
                         //console.log(d.values)
                         var thisPage = Math.round(round45(mouseY) / 0.45) + 1
-
+                        console.log(thisPage)
                         function round45(x) {
                             return Math.ceil(x / 0.45) * 0.45
                         }
@@ -4757,11 +4756,15 @@ detailview = false
                     ///Hover-Thumb
 
                     bookG.on("mousemove", function(d) {
+                    //  console.log(scrollTop)
                         if (scrollTop > 0) {
-                            var mouseY = ((d3.event.layerY || d3.event.offsety) - 240);
+                          var currentScrollTop = Math.max(window.pageYOffset, document.documentElement.scrollTop, document.body.scrollTop)
+
+                          var mouseY = ((d3.event.layerY || d3.event.offsety) - currentScrollTop-120);
                             //console.log(mouseY/0.45)
                             //console.log(d.values)
-                            console.log(mouseY)
+
+                      //      console.log(mouseY)
                             var thisPage = Math.round(round45(mouseY) / explicateScale2(scrollTop))
 
 
