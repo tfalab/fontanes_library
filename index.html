@@ -1370,7 +1370,7 @@ console.log(window.innerWidth)
             var chartArea = width - marginleft - marginright
 
             ///Buch-Ebene Größen und Abstände
-            var buchBreite = 10
+            var buchBreite = 8
             var buchBgBreite = 2 + buchBreite
             var totalBuchWidth = buchBgBreite * BuchAnzahl
             var authorAbstand = ((chartArea - totalBuchWidth) + (buchBgBreite * authorAnzahl)) / authorAnzahl
@@ -2808,9 +2808,14 @@ console.log(window.innerWidth)
 
                         }
                         var currentScrollTop = Math.max(window.pageYOffset, document.documentElement.scrollTop, document.body.scrollTop)
-
-                        var mouseY = ((d3.event.layerY || d3.event.offsety) - currentScrollTop-120);
-                      //  console.log(mouseY)
+                    //    console.log(currentScrollTop)
+                    //    console.log(d3.event.layerY || d3.event.offsety)
+                    //    console.log(d3.event.offsety)
+                        console.log(d3.event.layerY )
+                        console.log(d3.event.pageY)
+                    //    var mouseY = ((d3.event.layerY || d3.event.offsety) - currentScrollTop-120);
+                        var mouseY = ((d3.event.pageY) - currentScrollTop-240);
+                    //    console.log(mouseY)
                         //console.log(mouseY/0.45)
                         //console.log(d.values)
                         var thisPage = Math.round(round45(mouseY) / 0.45) + 1
@@ -4756,11 +4761,13 @@ detailview = false
                     ///Hover-Thumb
 
                     bookG.on("mousemove", function(d) {
-                    //  console.log(scrollTop)
+
                         if (scrollTop > 0) {
                           var currentScrollTop = Math.max(window.pageYOffset, document.documentElement.scrollTop, document.body.scrollTop)
 
-                          var mouseY = ((d3.event.layerY || d3.event.offsety) - currentScrollTop-120);
+                      //    var mouseY = ((d3.event.layerY || d3.event.offsety) - currentScrollTop-120);
+                      var mouseY = ((d3.event.pageY) - currentScrollTop-240);
+
                             //console.log(mouseY/0.45)
                             //console.log(d.values)
 
