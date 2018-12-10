@@ -19,7 +19,7 @@
             overflow-y: scroll;
             overflow-x: scroll;
             width: 100%;
-            height: 20000px;
+            height: 28000px;
         }
 
         h1 {
@@ -189,7 +189,7 @@
             position: fixed;
             margin-left: 105px;
             left: 0;
-            margin-top: 120px;
+            margin-top: 240px;
             width: 100%;
             height: 6500px;
             pointer-events: none;
@@ -593,8 +593,10 @@ var scrollTop2 = Math.max(window.pageYOffset, document.documentElement.scrollTop
 
         // === Set up canvas === //
 
-        var width = window.innerWidth - 100,//1300,
-            height = window.innerHeight - 120//680;
+        var width = window.innerWidth - 100//1300,
+        var height = window.innerHeight - 120//680;
+        console.log(width)
+        console.log(height)
 
         //Retina function
         function getRetinaRatio() {
@@ -617,7 +619,7 @@ var scrollTop2 = Math.max(window.pageYOffset, document.documentElement.scrollTop
         var ratio = getRetinaRatio()
         var scaledWidth = width * ratio
         var scaledHeight = height * ratio
-console.log(window.innerWidth)
+
         //Retina function ende
 
         var data = [];
@@ -838,13 +840,13 @@ console.log(window.innerWidth)
             .append("svg")
             .attr("id", "svgFront")
             .style('width', width + 'px')
-            .style('height', "650px")
+            .style('height', height + "px")
 
             var svgFrontTitles = d3.select('body')
                 .append("svg")
                 .attr("id", "svgFrontTitles")
                 .style('width', width + 'px')
-                .style('height', "650px")
+                .style('height', height + "px")
 
 
 
@@ -1359,6 +1361,7 @@ console.log(window.innerWidth)
             var xOffset = 2
 
             var posY = 120
+            var posYCanvas = 0
 
             var BuchAnzahl = datenByTitle.length
             var authorAnzahl = datenByAuthor.filter(function(d, i) {
@@ -1368,8 +1371,10 @@ console.log(window.innerWidth)
             //console.log(authorAnzahl)
 
             var chartArea = width - marginleft - marginright
-
+            var areaheight = (window.innerHeight - 280)
             ///Buch-Ebene Größen und Abstände
+
+            var pageheight = areaheight/1111
             var buchBreite = 8
             var buchBgBreite = 2 + buchBreite
             var totalBuchWidth = buchBgBreite * BuchAnzahl
@@ -1386,8 +1391,8 @@ console.log(window.innerWidth)
             var sLBuchBreiteSelected = 30
             var sLSeitenAbstandSelected = 0 //sLBuchBreiteSelected+0.5
 
-            var sLBuchAbstandUnselected = 6
-            var sLBuchBreiteUnselected = 5
+            var sLBuchAbstandUnselected = 4
+            var sLBuchBreiteUnselected = 3
             var thisVerfasserSelectedBookCount = datenByAuthor.filter(function(d, i) {
                 return d.key == "Fontane, Theodor"
             })[0].values.length
@@ -2500,13 +2505,13 @@ console.log(window.innerWidth)
                 .attr("transform", function(d, i) {
                     if (i == 0) {
                         posx = 0
-                        return "translate(" + (marginleft + (posx)) + "," + (posY) + ")"
+                        return "translate(" + (marginleft + (posx)) + "," + (posYCanvas) + ")"
                     } else if (i != 0 && datenByTitle[i - 1].values[0].Verfasser != d.values[0].Verfasser && d.values[0].AuthorCount > 1) {
                         posx = posx + authorAbstand
-                        return "translate(" + (marginleft + (posx)) + "," + (posY) + ")"
+                        return "translate(" + (marginleft + (posx)) + "," + (posYCanvas) + ")"
                     } else {
                         posx = posx + buchBgBreite
-                        return "translate(" + (marginleft + (posx)) + "," + (posY) + ")"
+                        return "translate(" + (marginleft + (posx)) + "," + (posYCanvas) + ")"
                     }
                 })
 
@@ -2610,7 +2615,7 @@ console.log(window.innerWidth)
                 }).filter(function(d, i) {
                     return d.values[0].AuthorCount != 1 || d.values[0].Verfasser == "[Black, Adam u. Charles]"
                 })
-                .append("g").attr("transform", "translate(0,0)rotate(-45)")
+                .append("g").attr("transform", "translate(0,0)rotate(0)")
 
             //console.log(authorGroup)
             //console.log(datenByTitle)
@@ -2644,8 +2649,9 @@ console.log(window.innerWidth)
             authorLevelAbstand = (chartArea - totalAreaChartsWidth)/authorAnzahl
 
 
+
             var yArea = d3.scaleLinear()
-                .range([0, (500 / 21)]);
+                .range([0, (areaheight / 21)]);
 
             var xArea = d3.scaleLinear()
                 .range([0, xAreaMax]);
@@ -2658,14 +2664,19 @@ console.log(window.innerWidth)
                     return yArea(d.data.part)
                 })
                 .x0(function(d) {
+                  var areaChartXPos = 50//Number(dataContainer.selectAll(".bookFingerprint").filter(function(D){return D.values[0].Verfasser == d.data.Verfasser || D.values[0].Verfasser == "[Black, Adam u. Charles]"}).attr("transform").replace("translate(", "").split(',')[0])
                     return xArea(d[0]);
                 })
                 .x1(function(d) {
+                  var areaChartXPos = 50//Number(dataContainer.selectAll(".bookFingerprint").filter(function(D){return D.values[0].Verfasser == d.data.Verfasser || D.values[0].Verfasser == "[Black, Adam u. Charles]"}).attr("transform").replace("translate(", "").split(',')[0])
+
                     return xArea(d[1]);
                 })
-                .curve(d3.curveBasis);
+                .curve(d3.curveBasis)
+              //  .context(context);
 
-            var areachartGroup = layerGroups.append("g").attr("class", "areachartGroup")
+           var areachartGroup = layerGroups.append("g").attr("class", "areachartGroup")
+          //var areachartGroup = dataContainer.append("g").attr("class", "areachartGroup")
 
             var areachart = areachartGroup.selectAll(".areachartlayer")
                 .data(function(D, I) {
@@ -2685,18 +2696,20 @@ console.log(window.innerWidth)
 	// 	,(datenByAuthor[1].Abschnitte[15].TotalTracesNorm),(datenByAuthor[1].Abschnitte[16].TotalTracesNorm),(datenByAuthor[1].Abschnitte[17].TotalTracesNorm),(datenByAuthor[1].Abschnitte[18].TotalTracesNorm)
 	// ,(datenByAuthor[1].Abschnitte[19].TotalTracesNorm),(datenByAuthor[1].Abschnitte[20].TotalTracesNorm)]))
 
-            areachart.append("line")
+            areachartGroup.append("line")
                 .attr("x1", 0)
                 .attr("x2", 0)
                 .attr("y1", 0)
-                .attr("y2", 500)
+                .attr("y2", areaheight)
                 .attr("stroke-width", 0.5)
                 .attr("stroke", "black")
-                .style("opacity", 0.1)
+                .style("opacity", 1)
                 .attr("stroke-dasharray", 2, 0.5)
+                .attr("display", "none")
 
 
             areachart.append("path")
+              //  .attr("id", console.log(area))
                 .attr("d", area)
                 .attr("class", function(d, i) {
                     if (d.key == "AnstreichungNorm") {
@@ -2727,23 +2740,6 @@ console.log(window.innerWidth)
                         return "variante eingefaltet"
                     }
                 })
-            // .attr("fill", function (d, i) {
-            // 	if (d.key == "AnstreichungNorm"){return "#FF5D62"}
-            // 	else if (d.key == "UnterstreichungNorm"){return "#ff7d5d"}
-            // 	else if (d.key == "ProvenienzNorm"){return "#575757"}
-            // 	else if (d.key == "StempelNorm"){return "#828282"}
-            // 	else if (d.key == "DurchstreichungNorm"){return "#8D084E"}
-            // 	else if (d.key == "ZusatzMaterialNorm"){return "#e5b404"}
-            // 	else if (d.key == "SonstigeMarkierungNorm"){ return "#FD9698"}
-            // 	else if (d.key == "AnderesNorm"){return "#ff206a"}
-            // 	else if (d.key == "BewertungNorm"){return "#95B739"}
-            // 	else if (d.key == "KommentarNorm"){return "#075011"}
-            // 	else if (d.key == "TextkorrekturNorm"){ return "#00D18D"}
-            // 	else if (d.key == "UebersetzungNorm"){ return "#017554"}
-            // 	else if (d.key == "VarianteNorm"){ return "#519E15"}
-            // 	else{return "black"}})
-
-
 
 
 
@@ -2816,12 +2812,12 @@ console.log(window.innerWidth)
                     //    var mouseY = ((d3.event.layerY || d3.event.offsety) - currentScrollTop-120);
                         var mouseY = ((d3.event.pageY) - currentScrollTop-240);
                     //    console.log(mouseY)
-                        //console.log(mouseY/0.45)
+                        //console.log(mouseY/pageheight)
                         //console.log(d.values)
-                        var thisPage = Math.round(round45(mouseY) / 0.45) + 1
+                        var thisPage = Math.round(round45(mouseY) / pageheight) + 1
                         console.log(thisPage)
                         function round45(x) {
-                            return Math.ceil(x / 0.45) * 0.45
+                            return Math.ceil(x / pageheight) * pageheight
                         }
                         //console.log(d.values.filter(function(D,I){return D.Part == 3}))
                         thisVerfasser = d3.select(this).datum().values[0].Verfasser
@@ -2934,11 +2930,11 @@ console.log(window.innerWidth)
                 .attr("class", "nodesbg")
                 .attr("width", buchBreite)
                 .attr("height", function(d) {
-                    return (d.values[0].maxPart) * 0.45
+                    return (d.values[0].maxPart) * pageheight
                 })
                 .attr("fill", "white")
                 .attr("x", 0)
-                .attr("y", posY)
+                .attr("y", posYCanvas)
                 .attr("opacity", 1)
 
 
@@ -2952,10 +2948,10 @@ console.log(window.innerWidth)
                 .enter()
                 .append("rect")
                 .attr("width", buchBreite)
-                .attr("height", 0.45)
+                .attr("height", pageheight)
                 .attr("x", 0)
                 .attr("y", function(d, i) {
-                    return posY + 0.45 * d.Part
+                    return posYCanvas + pageheight * d.Part
                 })
                 .attr("opacity", 1)
                 //	.attr("fill", function(d){return color(d.Benutzungsspur)})
@@ -3270,16 +3266,16 @@ var detailview = false
                     .attr("transform", function(d, i) {
                         if (i == 0) {
                             posx = 0
-                            return "translate(" + (marginleft + (posx)) + "," + (posY) + ")"
+                            return "translate(" + (marginleft + (posx)) + "," + (posYCanvas) + ")"
                         } else if (i != 0 && datenByTitle[i - 1].values[0].BookID == clickedBook) {
                             posx = posx + 350
-                            return "translate(" + (marginleft + (posx)) + "," + (posY) + ")"
+                            return "translate(" + (marginleft + (posx)) + "," + (posYCanvas) + ")"
                         } else if (i != 0 && datenByTitle[i - 1].values[0].Verfasser != d.values[0].Verfasser) {
                             posx = posx + 12
-                            return "translate(" + (marginleft + (posx)) + "," + (posY) + ")"
+                            return "translate(" + (marginleft + (posx)) + "," + (posYCanvas) + ")"
                         } else {
                             posx = posx + 8
-                            return "translate(" + (marginleft + (posx)) + "," + (posY) + ")"
+                            return "translate(" + (marginleft + (posx)) + "," + (posYCanvas) + ")"
                         }
                     })
 
@@ -4093,13 +4089,13 @@ detailview = false
                             if (d.maxPart >= 1111) {
                                 var implicateScaleB = d3.scaleLinear()
                                     .domain([-20, -4000])
-                                    .range([(500 / d.maxPart), 0])
+                                    .range([(areaheight / d.maxPart), 0])
                                     .clamp(true)
                                 return implicateScaleB(scrollTop)
                             } else {
                                 var implicateScale = d3.scaleLinear()
                                     .domain([-20, -4000])
-                                    .range([0.45, (500 / d.maxPart)])
+                                    .range([pageheight, (areaheight / d.maxPart)])
                                     .clamp(true)
                                 return implicateScale(scrollTop)
                             }
@@ -4108,17 +4104,17 @@ detailview = false
                             if (d.maxPart >= 1111) {
                                 var implicateScaleB = d3.scaleLinear()
                                     .domain([-20, -4000])
-                                    .range([(500 / d.maxPart), 0.45])
+                                    .range([(areaheight / d.maxPart), pageheight])
                                     .clamp(true)
 
-                                return posY + implicateScaleB(scrollTop) * (d.Part - 1)
+                                return posYCanvas + implicateScaleB(scrollTop) * (d.Part - 1)
                             } else {
                                 var implicateScale = d3.scaleLinear()
                                     .domain([-20, -4000])
-                                    .range([0.45, (500 / d.maxPart)])
+                                    .range([pageheight, (areaheight / d.maxPart)])
                                     .clamp(true)
 
-                                return posY + implicateScale(scrollTop) * (d.Part - 1)
+                                return posYCanvas + implicateScale(scrollTop) * (d.Part - 1)
                             }
                         })
 
@@ -4129,13 +4125,13 @@ detailview = false
                             if (d.maxPart >= 1111) {
                                 var implicateScaleB = d3.scaleLinear()
                                     .domain([-20, -4000])
-                                    .range([500, (d.values[0].maxPart) * 0.45])
+                                    .range([areaheight, (d.values[0].maxPart) * pageheight])
                                     .clamp(true)
                                 return implicateScaleB(scrollTop)
                             } else {
                                 var implicateScale = d3.scaleLinear()
                                     .domain([-20, -4000])
-                                    .range([(d.values[0].maxPart) * 0.45, 500])
+                                    .range([(d.values[0].maxPart) * pageheight, areaheight])
                                     .clamp(true)
                                 return implicateScale(scrollTop)
                             }
@@ -4259,7 +4255,7 @@ detailview = false
                             if (i == 0) {
                                 posx2 = 0
                                 posx = 0
-                                return "translate(" + (marginleft - 1 + (posx2)) + "," + (posY) + ")"
+                                return "translate(" + (marginleft - 1 + (posx2)) + "," + (posYCanvas) + ")"
                             } else if (i != 0 && d.values[0].AuthorCount == 1 && d.values[0].Verfasser != "[Black, Adam u. Charles]") {
                                 posx2 = posx2
                                 posx = posx + buchBgBreite
@@ -4269,7 +4265,7 @@ detailview = false
                                     .range([posx, posx2])
                                     .clamp(true)
 
-                                return "translate(" + (marginleft + (implicateScaleX1(scrollTop))) + "," + (posY) + ")"
+                                return "translate(" + (marginleft + (implicateScaleX1(scrollTop))) + "," + (posYCanvas) + ")"
                             } else if (i != 0 && datenByTitle[i - 1].values[0].Verfasser != d.values[0].Verfasser) {
 
 
@@ -4281,7 +4277,7 @@ detailview = false
                                     .range([posx, posx2])
                                     .clamp(true)
 
-                                return "translate(" + (marginleft + (implicateScaleX1(scrollTop))) + "," + (posY) + ")"
+                                return "translate(" + (marginleft + (implicateScaleX1(scrollTop))) + "," + (posYCanvas) + ")"
                             } else {
                                 posx2 = posx2
                                 posx = posx + buchBgBreite
@@ -4291,7 +4287,7 @@ detailview = false
                                     .range([posx, posx2])
                                     .clamp(true)
 
-                                return "translate(" + (marginleft + (implicateScaleX1(scrollTop))) + "," + (posY) + ")"
+                                return "translate(" + (marginleft + (implicateScaleX1(scrollTop))) + "," + (posYCanvas) + ")"
                             }
                         })
 
@@ -4301,7 +4297,7 @@ detailview = false
                         .selectAll(".nodesbg")
                         .attr("opacity", function(d) {
                             var implicateScaleOpacity = d3.scaleLinear()
-                                .domain([-200, -5000])
+                                .domain([-4000, -4900])
                                 .range([1, 0])
                                 .clamp(true)
 
@@ -4315,7 +4311,7 @@ detailview = false
 
 
                     layerGroups.attr("transform", "translate(0,0)scale(" + implicateScaleAreaChart(scrollTop) + ",1)")
-
+                    areachartGroup.selectAll("line").attr("display", "auto")  
                     areachart.attr("display", function() {
                         if (scrollTop > 0) {
                             return "auto"
@@ -4377,7 +4373,7 @@ detailview = false
                             if (i == 0) {
                                 posx2 = 0
                                 posx = 0
-                                return "translate(" + (marginleft - 1 + (posx2)) + "," + (posY) + ")"
+                                return "translate(" + (marginleft - 1 + (posx2)) + "," + (posYCanvas) + ")"
                             } else if (i != 0 && datenByTitle[i - 1].values[0].Verfasser != d.values[0].Verfasser) {
                                 posx2 = posx2 + sLAuthorAbstand
                                 posx = posx + authorAbstand
@@ -4387,7 +4383,7 @@ detailview = false
                                     .range([posx, posx2])
                                     .clamp(true)
 
-                                return "translate(" + (marginleft + (implicateScaleX1(scrollTop))) + "," + (posY) + ")"
+                                return "translate(" + (marginleft + (implicateScaleX1(scrollTop))) + "," + (posYCanvas) + ")"
                             } else {
                                 posx2 = posx2
                                 posx = posx + buchBgBreite
@@ -4397,7 +4393,7 @@ detailview = false
                                     .range([posx, posx2])
                                     .clamp(true)
 
-                                return "translate(" + (marginleft + (implicateScaleX1(scrollTop))) + "," + (posY) + ")"
+                                return "translate(" + (marginleft + (implicateScaleX1(scrollTop))) + "," + (posYCanvas) + ")"
                             }
                         })
 
@@ -4417,17 +4413,17 @@ detailview = false
 
 
 
-
+                    areachartGroup.selectAll("line").attr("display", "none")
                     areachart.attr("display", "none")
 
                     var explicateScale = d3.scaleLinear()
                         .domain([0, 2500])
-                        .range([0.45, 30])
+                        .range([pageheight, 30])
                         .clamp(true)
 
                     var explicateScale2 = d3.scaleLinear()
                         .domain([0, 2500])
-                        .range([0.45, 31])
+                        .range([pageheight, 31])
                         .clamp(true)
 
 
@@ -4463,7 +4459,7 @@ detailview = false
                             }
                         })
                         .attr("y", function(d, i) {
-                            return posY + (explicateScale2(scrollTop)) * (d.Part - 1)
+                            return posYCanvas + (explicateScale2(scrollTop)) * (d.Part - 1)
                         })
                         //.filter(function(d,i){return d.Verfasser == thisVerfasserSelected})
                         .attr("x", function(d, i) {
@@ -4573,16 +4569,44 @@ detailview = false
                             }
                         })
 
+                        d3.select("#svg").selectAll(".bookBG").selectAll("rect")
+                        .attr("width", function(d, i) {
+                            if (d.values[0].Verfasser == thisVerfasserSelected) {
+                                var implicateScaleWidth = d3.scaleLinear()
+                                    .domain([500, 2000])
+                                    .range([buchBreite, sLBuchBreiteSelected])
+                                    .clamp(true)
+
+                                return implicateScaleWidth(scrollTop)
+
+
+                            } else {
+                                var implicateScaleWidth = d3.scaleLinear()
+                                    .domain([500, 2000])
+                                    .range([buchBreite, sLBuchBreiteUnselected])
+                                    .clamp(true)
+
+                                return implicateScaleWidth(scrollTop)
+                            }
+                        })
+
 
 
 
                     bookFingerprint
                         .attr("transform", function(d, i) {
+                                              console.log(scrollTop)
+                          if (scrollTop < 3000){
+                            posYCanvas = 0
+                          }
+                          else {
+                            posYCanvas = 0-((scrollTop-3000)*2)
+                          }console.log(posYCanvas)
                           //falls erstes Element
                             if (i == 0) {
                                 posx3 = 0
                                 posx = 0
-                                return "translate(" + (marginleft - 1 + (posx3)) + "," + (posY) + ")"
+                                return "translate(" + (marginleft - 1 + (posx3)) + "," + (posYCanvas) + ")"
 
                             //falls vorheriges Element Selected und anderer Verfasser
                             } else if (i != 0 && datenByTitle[i - 1].values[0].Verfasser != d.values[0].Verfasser && datenByTitle[i - 1].values[0].Verfasser == thisVerfasserSelected) {
@@ -4594,7 +4618,7 @@ detailview = false
                                     .range([posx, posx3])
                                     .clamp(true)
 
-                                return "translate(" + (marginleft + (implicateScaleX1(scrollTop))) + "," + (posY) + ")"
+                                return "translate(" + (marginleft + (implicateScaleX1(scrollTop))) + "," + (posYCanvas) + ")"
 
                             //falls vorheriges Element Selected und gleicher Verfasser
                           } else if (i != 0 && datenByTitle[i - 1].values[0].Verfasser == thisVerfasserSelected && datenByTitle[i - 1].values[0].Verfasser == d.values[0].Verfasser) {
@@ -4606,7 +4630,7 @@ detailview = false
                                     .range([posx, posx3])
                                     .clamp(true)
 
-                                return "translate(" + (marginleft + (implicateScaleX1(scrollTop))) + "," + (posY) + ")"
+                                return "translate(" + (marginleft + (implicateScaleX1(scrollTop))) + "," + (posYCanvas) + ")"
 
                             //falls vorheriges Element NICHT Selected und anderer Verfasser
                           } else if (i != 0 && datenByTitle[i - 1].values[0].Verfasser != d.values[0].Verfasser && datenByTitle[i - 1].values[0].Verfasser != thisVerfasserSelected && datenByTitle[i - 1].values[0].AuthorCount != 1) {
@@ -4618,7 +4642,7 @@ detailview = false
                                     .range([posx, posx3])
                                     .clamp(true)
 
-                                return "translate(" + (marginleft + (implicateScaleX1(scrollTop))) + "," + (posY) + ")"
+                                return "translate(" + (marginleft + (implicateScaleX1(scrollTop))) + "," + (posYCanvas) + ")"
 
                             //falls vorheriges Element NICHT Selected und gleicher Verfasser
                             } else {
@@ -4630,10 +4654,22 @@ detailview = false
                                     .range([posx, posx3])
                                     .clamp(true)
 
-                                return "translate(" + (marginleft + (implicateScaleX1(scrollTop))) + "," + (posY) + ")"
+                                return "translate(" + (marginleft + (implicateScaleX1(scrollTop))) + "," + (posYCanvas) + ")"
                             }
                         })
 
+bookFingerprint.selectAll(".nodesbg")
+.attr("y", function(d, i) {
+                          if (scrollTop < 3000){
+
+                            posYCanvas = 0
+                          }
+                          else {
+
+                            posYCanvas = 0-((scrollTop-3000)*2)
+
+                          } console.log(posYCanvas)
+                                return posYCanvas})
 
 
 
@@ -4768,7 +4804,7 @@ detailview = false
                       //    var mouseY = ((d3.event.layerY || d3.event.offsety) - currentScrollTop-120);
                       var mouseY = ((d3.event.pageY) - currentScrollTop-240);
 
-                            //console.log(mouseY/0.45)
+                            //console.log(mouseY/pageheight)
                             //console.log(d.values)
 
                       //      console.log(mouseY)
@@ -4830,6 +4866,19 @@ detailview = false
                 var bookGroups = dataContainer.selectAll(".bookFingerprint")
 
 
+// areachart.each(function(d){
+//
+//
+//   context.beginPath();
+//   area(d);
+//   if (d.key == "SonstigeMarkierungNorm"){
+//     context.fillStyle = 'blue';
+//     context.strokeStyle = 'blue';
+//   }else{
+//   context.fillStyle = 'red';
+//   context.strokeStyle = 'red';}
+//   context.fill();
+// })
 
                 bookGroups.each(function(d) {
                     //console.log(Number(d3.select(this).attr("transform").replace("translate(", "").split(',')[0]))
