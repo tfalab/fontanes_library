@@ -721,7 +721,7 @@ var scrollTop2 = Math.max(window.pageYOffset, document.documentElement.scrollTop
             .on("click", function() {
                 $("html,body").animate({
                     scrollTop: 0
-                }, '2000')
+                }, '3000')
             })
 
         // scrollLabels.append("text").text("Buch")
@@ -743,7 +743,7 @@ var scrollTop2 = Math.max(window.pageYOffset, document.documentElement.scrollTop
             .on("click", function() {
                 $("html,body").animate({
                     scrollTop: 6000
-                }, '2000')
+                }, '3000')
             })
 
 
@@ -767,7 +767,7 @@ var scrollTop2 = Math.max(window.pageYOffset, document.documentElement.scrollTop
             .on("click", function() {
               $("html,body").animate({
                     scrollTop: 9000
-                }, '2000')
+                }, '3000')
             })
 
         scrollCircles.append("circle")
@@ -780,7 +780,7 @@ var scrollTop2 = Math.max(window.pageYOffset, document.documentElement.scrollTop
             .on("click", function() {
                 $("html,body").animate({
                     scrollTop: 0
-                }, '2000')
+                }, '3000')
             })
 
         scrollCircles.append("circle")
@@ -793,7 +793,7 @@ var scrollTop2 = Math.max(window.pageYOffset, document.documentElement.scrollTop
             .on("click", function() {
               $("html,body").animate({
                     scrollTop: 6000
-                }, '2000')
+                }, '3000')
             })
 
         scrollCircles.append("circle")
@@ -806,7 +806,7 @@ var scrollTop2 = Math.max(window.pageYOffset, document.documentElement.scrollTop
             .on("click", function() {
               $("html,body").animate({
                     scrollTop: 9000
-                }, '2000')
+                }, '3000')
             })
 
         var scrollCircleFollower = scrollCircles.append("circle")
@@ -2574,9 +2574,9 @@ var scrollTop2 = Math.max(window.pageYOffset, document.documentElement.scrollTop
 
 
                 bookTitleFront.append("rect")
-                .attr("height", 1200)
+                .attr("height", 1500)
                 .attr("width", 20)
-                .attr("fill", "black")
+                .attr("fill", "#474747")
                 .attr("class", "BuchTitelRect")
 
                 bookTitleFront.append("text").attr("x", -2).attr("y", 10).style("text-anchor", "end")
@@ -3191,8 +3191,8 @@ var detailview = false
                 transitions = true
                 setTimeout(function() {
                     transitions = false
-                }, 2000);
-                authorGroup.selectAll("rect").transition().duration(200).attr("display", "none")
+                }, 3000);
+                authorGroup.selectAll("rect").attr("display", "none")
 
                 d3.select(this).transition().attr("opacity", 0)
                 var posX = 0
@@ -3262,7 +3262,7 @@ var detailview = false
 
                 bookFingerprint
                     .transition()
-                    .duration(800)
+                    .duration(700)
                     .attr("transform", function(d, i) {
                         if (i == 0) {
                             posx = 0
@@ -3282,7 +3282,7 @@ var detailview = false
 
                 bookG
                     .transition()
-                    .delay(300)
+                    .delay(50)
                     .duration(800)
                     .attr("transform", function(d, i) {
                         if (i == 0) {
@@ -3312,7 +3312,7 @@ var detailview = false
 
                 bookG.selectAll(".bookBG")
                     .transition()
-                    .delay(300)
+                    .delay(50)
                     .duration(800)
                     //.attr("fill", function(d){console.log(d.values[0].BookID)})
                     .attr("width", function(d) {
@@ -3336,22 +3336,22 @@ var detailview = false
 
 
 
-                detailInfo.append("text")
-                    .attr("class", "detail_titel")
-                    .text(function(d) {
-                        return d.values[0].BuchTitel
-                    })
-                    .attr("y", 10)
-                    .attr("dy", 0)
-                    .attr("x", 5 + 20 * maxX)
-                    .call(wrap, 200)
-                    .selectAll("tspan")
-                    .attr("x", 5 + 20 * maxX)
 
 
                 setTimeout(function() {
 
 
+                  detailInfo.append("text")
+                      .attr("class", "detail_titel")
+                      .text(function(d) {
+                          return d.values[0].BuchTitel
+                      })
+                      .attr("y", 10)
+                      .attr("dy", 0)
+                      .attr("x", 5 + 20 * maxX)
+                      .call(wrap, 200)
+                      .selectAll("tspan")
+                      .attr("x", 5 + 20 * maxX)
 
 
                     detailInfo.append("image")
@@ -3462,7 +3462,7 @@ var detailview = false
                     //     .attr("width", 20)
                     //     .attr("fill", "#e3c460")
 
-                }, 100);
+                }, 200);
 
                 //
                 // var titleLineCount =
@@ -4039,6 +4039,10 @@ areachart.selectAll("path").classed("filtered", true).filter(".sonstigeMarkierun
 
 
             function scrollFunction() {
+              d3.select('.tooltip')
+                  .style("display", "none"
+
+                )
               if (scrollTop != 0) {
 
 detailview = false
@@ -4088,13 +4092,13 @@ detailview = false
                         .attr("height", function(d) {
                             if (d.maxPart >= 1111) {
                                 var implicateScaleB = d3.scaleLinear()
-                                    .domain([-20, -4000])
+                                    .domain([-100, -4000])
                                     .range([(areaheight / d.maxPart), 0])
                                     .clamp(true)
                                 return implicateScaleB(scrollTop)
                             } else {
                                 var implicateScale = d3.scaleLinear()
-                                    .domain([-20, -4000])
+                                    .domain([-100, -4000])
                                     .range([pageheight, (areaheight / d.maxPart)])
                                     .clamp(true)
                                 return implicateScale(scrollTop)
@@ -4103,14 +4107,14 @@ detailview = false
                         .attr("y", function(d, i) {
                             if (d.maxPart >= 1111) {
                                 var implicateScaleB = d3.scaleLinear()
-                                    .domain([-20, -4000])
+                                    .domain([-100, -4000])
                                     .range([(areaheight / d.maxPart), pageheight])
                                     .clamp(true)
 
                                 return posYCanvas + implicateScaleB(scrollTop) * (d.Part - 1)
                             } else {
                                 var implicateScale = d3.scaleLinear()
-                                    .domain([-20, -4000])
+                                    .domain([-100, -4000])
                                     .range([pageheight, (areaheight / d.maxPart)])
                                     .clamp(true)
 
@@ -4124,13 +4128,13 @@ detailview = false
                         .attr("height", function(d) {
                             if (d.maxPart >= 1111) {
                                 var implicateScaleB = d3.scaleLinear()
-                                    .domain([-20, -4000])
+                                    .domain([-100, -4000])
                                     .range([areaheight, (d.values[0].maxPart) * pageheight])
                                     .clamp(true)
                                 return implicateScaleB(scrollTop)
                             } else {
                                 var implicateScale = d3.scaleLinear()
-                                    .domain([-20, -4000])
+                                    .domain([-100, -4000])
                                     .range([(d.values[0].maxPart) * pageheight, areaheight])
                                     .clamp(true)
                                 return implicateScale(scrollTop)
@@ -4311,7 +4315,7 @@ detailview = false
 
 
                     layerGroups.attr("transform", "translate(0,0)scale(" + implicateScaleAreaChart(scrollTop) + ",1)")
-                    areachartGroup.selectAll("line").attr("display", "auto")  
+                    areachartGroup.selectAll("line").attr("display", "auto")
                     areachart.attr("display", function() {
                         if (scrollTop > 0) {
                             return "auto"
@@ -4417,12 +4421,12 @@ detailview = false
                     areachart.attr("display", "none")
 
                     var explicateScale = d3.scaleLinear()
-                        .domain([0, 2500])
+                        .domain([500, 2500])
                         .range([pageheight, 30])
                         .clamp(true)
 
                     var explicateScale2 = d3.scaleLinear()
-                        .domain([0, 2500])
+                        .domain([500, 2500])
                         .range([pageheight, 31])
                         .clamp(true)
 
@@ -4797,19 +4801,19 @@ bookFingerprint.selectAll(".nodesbg")
                     ///Hover-Thumb
 
                     bookG.on("mousemove", function(d) {
-
+console.log(posYCanvas)
                         if (scrollTop > 0) {
                           var currentScrollTop = Math.max(window.pageYOffset, document.documentElement.scrollTop, document.body.scrollTop)
 
                       //    var mouseY = ((d3.event.layerY || d3.event.offsety) - currentScrollTop-120);
-                      var mouseY = ((d3.event.pageY) - currentScrollTop-240);
+                      var mouseY = ((d3.event.pageY) - currentScrollTop-240-posYCanvas);
 
                             //console.log(mouseY/pageheight)
                             //console.log(d.values)
 
                       //      console.log(mouseY)
                             var thisPage = Math.round(round45(mouseY) / explicateScale2(scrollTop))
-
+console.log(thisPage)
 
                             function round45(x) {
                                 return Math.ceil(x / explicateScale2(scrollTop)) * explicateScale2(scrollTop)
