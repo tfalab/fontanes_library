@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="de">
 
 <head>
     <meta charset="utf-8">
@@ -8,6 +8,8 @@
     <script src="js/d3.v4.min.js"></script>
     <script src="js/jquery.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Reenie+Beanie|Stardos+Stencil" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Homemade+Apple" rel="stylesheet">
 
 
     <style type="text/css">
@@ -19,7 +21,7 @@
             overflow-y: scroll;
             overflow-x: scroll;
             width: 100%;
-            height: 28000px;
+            height: 45000px;
         }
 
         h1 {
@@ -35,23 +37,87 @@
         #legend {
             text-transform: uppercase;
             margin-left: 0px;
-            margin-top: 5px;
-            font-weight: 500;
+            margin-top: 0px;
+            font-weight: 400;
             font-size: 12px;
-            width: 800px;
+            width: 1000px;
             height: 60px;
+            /*  letter-spacing: 0.5px */
+            /* display: none; */
+        }
+        /* #legendNeu {
+            text-transform: uppercase;
+            left: 0px;
+            top: 0px;
+            font-weight: 400;
+            font-size: 12px;
+            width: 1200px;
+            height: 80px;
+            z-index: 600;
+        } */
+
+        /* .AuswahlFilter{
+          display: block;
+          margin-top: 5px;
         }
 
+        .Benutzungsspur{
+          display: inline;
+          margin-right: 10px;
+        }
+        .Benutzungsspurb{
+          display: inline;
+          margin-right: 10px;
+        }
+
+        .Benutzungsspurausgefahren{
+          display: block;
+          margin-right: 10px;
+          transform: scale(0.5, 1);
+          transform-origin: left;
+        }
+
+        .Schreibhand{
+          display: inline;
+          margin-right: 10px;
+        }
+
+        .Schreibmedium{
+          display: none;
+          margin-right: 10px;
+        } */
+
+        .plusminus{
+          font-size: 15px;
+          margin-right: 0px;
+        }
+
+        .stempel{
+          font-family: 'Stardos Stencil';
+          font-size: 12px;
+        }
+
+        .handschrift{
+          font-family: 'Roboto';
+          font-size: 12px;
+          font-weight: 300;
+          /* font-style: italic; */
+        }
+
+
         .eigentumsangaben {
-            fill: #1c1c1c;
+            fill: #333333;
+            color: #333333;
         }
 
         .markierungen {
             fill: #f91b49;
+            color:  #f91b49;
         }
 
         .marginalien {
             fill: #4D8DFF;
+            color:  #4D8DFF;
         }
 
 
@@ -163,7 +229,7 @@
           position: fixed;
             margin-left: 105px;
             left: 0;
-            margin-top: 120px;
+            margin-top: 150px;
         }
 
         #svgFront {
@@ -171,7 +237,7 @@
             position: fixed;
             margin-left: 105px;
             left: 0;
-            margin-top: 120px;
+            margin-top: 150px;
             pointer-events: none;
         }
 
@@ -180,7 +246,7 @@
             position: fixed;
             margin-left: 105px;
             left: 0;
-            margin-top: 120px;
+            margin-top: 150px;
             pointer-events: none;
             display:  inline;
         }
@@ -189,7 +255,7 @@
             position: fixed;
             margin-left: 105px;
             left: 0;
-            margin-top: 240px;
+            margin-top: 270px;
             width: 100%;
             height: 6500px;
             pointer-events: none;
@@ -292,8 +358,8 @@
         }
 
         .zusatzMaterial {
-            color: #e5b404;
-            fill: #e5b404;
+            color: #ec9a0b;
+            fill: #ec9a0b;
             cursor: pointer;
 
         }
@@ -310,7 +376,7 @@
         }
 
         .provenienz.eingefaltet{
-            fill: #1c1c1c;
+            fill: #333333;
             -webkit-transition: fill 0.5s linear;
             -moz-transition: fill 0.5s linear;
             -o-transition: fill 0.5s linear;
@@ -328,7 +394,7 @@
         }
 
         .provenienzstempel.eingefaltet{
-            fill: #1c1c1c;
+            fill: #333333;
             -webkit-transition: fill 0.5s linear;
             -moz-transition: fill 0.5s linear;
             -o-transition: fill 0.5s linear;
@@ -452,7 +518,8 @@
         }
 
         .detailinfo {
-            font-size: 11px;
+            font-size: 12px;
+            font-weight: bold;
         }
 
         .detail_titel {
@@ -499,6 +566,15 @@
 
       <h1>Fontanes Handbibliothek</h1>
       <svg id="legend"></svg>
+      <!-- <div id="legendNeu">
+       <div class="AuswahlFilter"><p class="Benutzungsspur">Benutzungsspur-Typ:</p>
+         <p class="eigentumsangaben Benutzungsspur">Eigentumsangaben<span class="plusminus">⊕</span></p> <div class="Benutzungsspurb"><p class="Benutzungsspurausgefahren"><span class="provenienz">Provenienz</span><span class="provenienzstempel">Provenienz-Stempel</span></p></div>
+         <p class="markierungen Benutzungsspur">Markierungen<span class="plusminus">⊕</span></p><p class="Benutzungsspur"><span class="anstreichung">Anstreichung</span><span class="unterstreichung">Unterstreichung</span><span class="durchstreichung">Durchstreichung</span><span class="sonstigeMarkierung">Sonstige Markierung</span></p>
+         <p class="marginalien Benutzungsspur">Marginalien<span class="plusminus">⊕</span></p><p class="Benutzungsspur"><span class="bewertung">Bewertung</span><span class="kommentar">Kommentar</span><span class="textkorrektur">Textkorrektur</span><span class="variante">Variante</span><span class="uebersetzung">Übersetzung</span></p>
+         <p class="zusatzMaterial Benutzungsspur">Zusätzliches Material</p><p class="anderes Benutzungsspur">Anderes</p></div>
+       <div class="AuswahlFilter"><p class="Schreibhand">Schreibhand:</p><p class="SchreibhandFontane Schreibhand">Theodor Fontane</p><p class="SchreibhandFamilie Schreibhand">Fontanes Familie</p><p class="SchreibhandAndere Schreibhand">Andere / Unbekannt</p></div>
+       <div class="AuswahlFilter"><p class="Schreibmedium">Schreibmedium:</p></div>
+      </div> -->
   </div>
   <svg id="svg"></svg>
 
@@ -506,6 +582,9 @@
     <div id="scrollnavi">
         <svg id="scrollSvg"></svg>
     </div>
+
+
+
 
 
     <!-- <div id="scrollnavi"></div> -->
@@ -524,6 +603,10 @@
 
 
 
+
+
+
+
          setTimeout(function() {
 
            window.scrollTo(0, 6000)
@@ -532,7 +615,7 @@
 
         var scroller = d3.select('body')
 
-        window.onscroll = function(){console.log(Math.max(window.pageYOffset, document.documentElement.scrollTop, document.body.scrollTop))
+        window.onscroll = function(){//console.log(Math.max(window.pageYOffset, document.documentElement.scrollTop, document.body.scrollTop))
       //    console.log(scroller.node().scrollTop)
       //    console.log($(window).scrollTop())
           var scrollTop2 = Math.max(window.pageYOffset, document.documentElement.scrollTop, document.body.scrollTop)
@@ -563,6 +646,13 @@
 
         scroller
             .on("scroll", function() {
+
+
+              // d3.select('.tooltip')
+              //     .style("display", "none")
+
+
+
 var scrollTop2 = Math.max(window.pageYOffset, document.documentElement.scrollTop, document.body.scrollTop)
 
 
@@ -595,8 +685,8 @@ var scrollTop2 = Math.max(window.pageYOffset, document.documentElement.scrollTop
 
         var width = window.innerWidth - 100//1300,
         var height = window.innerHeight - 120//680;
-        console.log(width)
-        console.log(height)
+      //  console.log(width)
+      //  console.log(height)
 
         //Retina function
         function getRetinaRatio() {
@@ -639,7 +729,7 @@ var scrollTop2 = Math.max(window.pageYOffset, document.documentElement.scrollTop
             .attr("width", 200)
             .attr("class", "tooltip")
 
-        tooltip.append("img").attr("width", 400).attr("height", "auto")
+        tooltip.append("img").attr("width", 200).attr("height", "auto")
 
         // var tooltipTitle = d3.select("body")
         //     .append("div")
@@ -917,33 +1007,101 @@ var scrollTop2 = Math.max(window.pageYOffset, document.documentElement.scrollTop
 
             var legend = d3.select("#legend")
 
+            legend.append("text")
+            .text("Schriftspur-Typ:")
+            .style("font-weight", "bold")
+            .attr("y", 32)
+            .attr("x", 0)
+
             var eigentumsangaben = legend.append("g")
                 .attr("class", "eigentumsangaben")
                 .style("cursor", "pointer")
+                .attr("transform", "translate(120,0)")
 
                 eigentumsangaben.append("text")
-                .attr("y", 14)
+                .attr("y", 32)
 
             var zusatzMaterial = legend.append("g")
                 .attr("class", "zusatzMaterial")
                 .style("cursor", "pointer")
+                .attr("transform", "translate(540,0)")
+
+            // var anderes = legend.append("g")
+            //         .attr("class", "anderes")
+            //         .style("cursor", "pointer")
+            //         .attr("transform", "translate(710,0)")
 
             var markierungen = legend.append("g")
                 .attr("class", "markierungen")
                 .style("cursor", "pointer")
+                .attr("transform", "translate(280,0)")
 
                 markierungen.append("text")
-                .attr("y", 28)
+                .attr("y", 32)
 
             var marginalien = legend.append("g")
                 .attr("class", "marginalien")
                 .style("cursor", "pointer")
+                .attr("transform", "translate(420,0)")
 
                 marginalien.append("text")
-                .attr("y", 42)
+                .attr("y", 32)
 
-            var leereSeite = legend.append("g")
-                .attr("class", "leereSeite")
+
+            var marginalienVerfasser = legend.append("g")
+                .attr("class", "marginalienVerfasser")
+                .style("cursor", "pointer")
+
+                marginalienVerfasser.append("text")
+                .text("Marginialien Schreibhand:")
+                .style("font-weight", "bold")
+                .style("cursor", "auto")
+                .attr("y", 14)
+                .attr("x", 0)
+
+              //  var SchreibhandFilter = null
+
+                marginalienVerfasser.append("text")
+                .text("Theodor Fontane")
+                .attr("y", 14)
+                .attr("x", 190)
+                .on("click", function(){
+                  if(filter != "Fontane"){
+                    filter = "Fontane"
+                    filterInteraction()
+                  }else{
+                    filter = null
+                    filterInteraction()
+                  }
+                })
+
+                marginalienVerfasser.append("text")
+                .text("Fontanes Familie")
+                .attr("y", 14)
+                .attr("x", 320)
+                .on("click", function(){
+                  if(filter != "Familie"){
+                    filter = "Familie"
+                    filterInteraction()
+                  }else{
+                    filter = null
+                    filterInteraction()
+                  }
+                })
+
+                marginalienVerfasser.append("text")
+                .text("Andere / Unbekannt")
+                .attr("y", 14)
+                .attr("x", 450)
+                .on("click", function(){
+                  if(filter != "Unbekannt"){
+                    filter = "Unbekannt"
+                    filterInteraction()
+                  }else{
+                    filter = null
+                    filterInteraction()
+                  }
+                })
 
                 ////////////////Provenienz-Filter Start
                 ///////////////////////////////////////////////
@@ -963,7 +1121,11 @@ var scrollTop2 = Math.max(window.pageYOffset, document.documentElement.scrollTop
                         eigentumsangaben.selectAll(".EigentumsangabenPlus").text(" ⊖")
                         markierungen.selectAll(".MarkierungenPlus").text(" ⊕")
                         marginalien.selectAll(".MarginalienPlus").text(" ⊕")
-                        eigentumsangaben.selectAll("text").style("font-weight", "bolder")
+                        eigentumsangaben.selectAll("text").style("font-weight", "bolder").style("opacity", 1)
+                        zusatzMaterial.selectAll("text").style("font-weight", "400").style("opacity",.6)
+                        marginalien.selectAll("text").style("font-weight", "400").style("opacity", .6)
+                        markierungen.selectAll("text").style("font-weight", "400").style("opacity", .6)
+
                         eigentumsangabendetail.transition().duration(800).attr("transform", "scale(1,1)").style("opacity", 1)
                         markierungendetail.transition().duration(800).attr("transform", "scale(0,1)").style("opacity", 1)
                         marginaliendetail.transition().duration(800).attr("transform", "scale(0,1)").style("opacity", 1)
@@ -976,7 +1138,10 @@ var scrollTop2 = Math.max(window.pageYOffset, document.documentElement.scrollTop
                         farbeinfaltungProvenienz()
                         filterInteraction()
                         eigentumsangaben.selectAll(".EigentumsangabenPlus").text(" ⊕")
-                        eigentumsangaben.selectAll("text").style("font-weight", "500")
+                        zusatzMaterial.selectAll("text").style("font-weight", "400").style("opacity", 1)
+                        marginalien.selectAll("text").style("font-weight", "400").style("opacity", 1)
+                        markierungen.selectAll("text").style("font-weight", "400").style("opacity", 1)
+                        eigentumsangaben.selectAll("text").style("font-weight", "400").style("opacity", 1)
                         eigentumsangabendetail.transition().duration(800).attr("transform", "scale(0,1)").style("opacity", 0)
                         }
 
@@ -986,24 +1151,24 @@ var scrollTop2 = Math.max(window.pageYOffset, document.documentElement.scrollTop
                     .text(" ⊕")
                     .attr("class", "EigentumsangabenPlus")
                     .style("font-size", 17)
-                    .on("click", function() {
-                      if (eigentumsangabenEntfaltet == false){
-                        eigentumsangabenEntfaltet = true
-
-                        farbausfaltungProvenienz()
-                        eigentumsangaben.selectAll(".EigentumsangabenPlus").text(" ⊖")
-                        eigentumsangaben.selectAll("text").style("font-weight", "bolder")
-                        eigentumsangabendetail.transition().duration(800).attr("transform", "scale(1,1)").style("opacity", 1)
-                      }
-                      else {
-                        eigentumsangabenEntfaltet = false
-
-                        farbeinfaltungProvenienz()
-                        eigentumsangaben.selectAll(".EigentumsangabenPlus").text(" ⊕")
-                        eigentumsangaben.selectAll("text").style("font-weight", "500")
-                        eigentumsangabendetail.transition().duration(800).attr("transform", "scale(0,1)").style("opacity", 0)
-                        }
-                    })
+                    // .on("click", function() {
+                    //   if (eigentumsangabenEntfaltet == false){
+                    //     eigentumsangabenEntfaltet = true
+                    //
+                    //     farbausfaltungProvenienz()
+                    //     eigentumsangaben.selectAll(".EigentumsangabenPlus").text(" ⊖")
+                    //     eigentumsangaben.selectAll("text").style("font-weight", "bolder")
+                    //     eigentumsangabendetail.transition().duration(800).attr("transform", "scale(1,1)").style("opacity", 1)
+                    //   }
+                    //   else {
+                    //     eigentumsangabenEntfaltet = false
+                    //
+                    //     farbeinfaltungProvenienz()
+                    //     eigentumsangaben.selectAll(".EigentumsangabenPlus").text(" ⊕")
+                    //     eigentumsangaben.selectAll("text").style("font-weight", "500")
+                    //     eigentumsangabendetail.transition().duration(800).attr("transform", "scale(0,1)").style("opacity", 0)
+                    //     }
+                    // })
 
 
 
@@ -1011,8 +1176,8 @@ var scrollTop2 = Math.max(window.pageYOffset, document.documentElement.scrollTop
 
                                 eigentumsangabendetail.append("text")
                                     .text("Provenienz")
-                                    .attr("y", 14)
-                                    .attr("x", 150)
+                                    .attr("y", 48)
+                                    .attr("x", 0)
                                     .attr("class", "provenienz")
                                     .on("click", function(){
                                       if(filter != "provenienz"){
@@ -1027,8 +1192,8 @@ var scrollTop2 = Math.max(window.pageYOffset, document.documentElement.scrollTop
 
                                 eigentumsangabendetail.append("text")
                                     .text("Provenienz-Stempel")
-                                    .attr("y", 14)
-                                    .attr("x", 240)
+                                    .attr("y", 48)
+                                    .attr("x", 90)
                                     .attr("class", "provenienzstempel")
                                     .on("click", function(){
                                       if(filter != "provenienzstempel"){
@@ -1061,7 +1226,11 @@ var scrollTop2 = Math.max(window.pageYOffset, document.documentElement.scrollTop
                     eigentumsangaben.selectAll(".EigentumsangabenPlus").text(" ⊕")
                     markierungen.selectAll(".MarkierungenPlus").text(" ⊖")
                     marginalien.selectAll(".MarginalienPlus").text(" ⊕")
-                    markierungen.selectAll("text").style("font-weight", "bolder")
+                    markierungen.selectAll("text").style("font-weight", "bolder").style("opacity", 1)
+                    zusatzMaterial.selectAll("text").style("font-weight", "400").style("opacity", .6)
+                    marginalien.selectAll("text").style("font-weight", "400").style("opacity", .6)
+                    eigentumsangaben.selectAll("text").style("font-weight", "400").style("opacity", .6)
+
                     eigentumsangabendetail.transition().duration(800).attr("transform", "scale(0,1)").style("opacity", 1)
                     markierungendetail.transition().duration(800).attr("transform", "scale(1,1)").style("opacity", 1)
                     marginaliendetail.transition().duration(800).attr("transform", "scale(0,1)").style("opacity", 1)
@@ -1075,7 +1244,10 @@ var scrollTop2 = Math.max(window.pageYOffset, document.documentElement.scrollTop
                     farbeinfaltungMarkierung()
                     filterInteraction()
                     markierungen.selectAll(".MarkierungenPlus").text(" ⊕")
-                    markierungen.selectAll("text").style("font-weight", "500")
+                    zusatzMaterial.selectAll("text").style("font-weight", "400").style("opacity", 1)
+                    marginalien.selectAll("text").style("font-weight", "400").style("opacity", 1)
+                    markierungen.selectAll("text").style("font-weight", "400").style("opacity", 1)
+                    eigentumsangaben.selectAll("text").style("font-weight", "400").style("opacity", 1)
                     markierungendetail.transition().duration(800).attr("transform", "scale(0,1)").style("opacity", 0)
                     }
                 })
@@ -1087,31 +1259,31 @@ var scrollTop2 = Math.max(window.pageYOffset, document.documentElement.scrollTop
                 .text(" ⊕")
                 .attr("class", "MarkierungenPlus")
                 .style("font-size", 17)
-                .on("click", function() {
-                  if (markierungenEntfaltet == false){
-                    markierungenEntfaltet = true
-
-                    farbausfaltungMarkierung()
-                    markierungen.selectAll(".MarkierungenPlus").text(" ⊖")
-                    markierungen.selectAll("text").style("font-weight", "bolder")
-                    markierungendetail.transition().duration(800).attr("transform", "scale(1,1)").style("opacity", 1)
-                  }
-                  else {
-                  markierungenEntfaltet = false
-
-                    farbeinfaltungMarkierung()
-                    markierungen.selectAll(".MarkierungenPlus").text(" ⊕")
-                    markierungen.selectAll("text").style("font-weight", "500")
-                    markierungendetail.transition().duration(800).attr("transform", "scale(0,1)").style("opacity", 0)
-                    }
-                })
+                // .on("click", function() {
+                //   if (markierungenEntfaltet == false){
+                //     markierungenEntfaltet = true
+                //
+                //     farbausfaltungMarkierung()
+                //     markierungen.selectAll(".MarkierungenPlus").text(" ⊖")
+                //     markierungen.selectAll("text").style("font-weight", "bolder")
+                //     markierungendetail.transition().duration(800).attr("transform", "scale(1,1)").style("opacity", 1)
+                //   }
+                //   else {
+                //   markierungenEntfaltet = false
+                //
+                //     farbeinfaltungMarkierung()
+                //     markierungen.selectAll(".MarkierungenPlus").text(" ⊕")
+                //     markierungen.selectAll("text").style("font-weight", "500")
+                //     markierungendetail.transition().duration(800).attr("transform", "scale(0,1)").style("opacity", 0)
+                //     }
+                // })
 
             var markierungendetail = markierungen.append("g").attr("class", "detail").attr("transform", "scale(0,1)").style("opacity", 0)
 
             markierungendetail.append("text")
                 .text("Anstreichung")
-                .attr("y", 28)
-                .attr("x", 120)
+                .attr("y", 48)
+                .attr("x", 0)
                 .attr("class", "anstreichung")
                 .on("click", function(){
                   if(filter != "anstreichung"){
@@ -1125,8 +1297,8 @@ var scrollTop2 = Math.max(window.pageYOffset, document.documentElement.scrollTop
 
             markierungendetail.append("text")
                 .text("Unterstreichung")
-                .attr("y", 28)
-                .attr("x", 230)
+                .attr("y", 48)
+                .attr("x", 110)
                 .attr("class", "unterstreichung")
                 .on("click", function(){
                   if(filter != "unterstreichung"){
@@ -1140,8 +1312,8 @@ var scrollTop2 = Math.max(window.pageYOffset, document.documentElement.scrollTop
 
             markierungendetail.append("text")
                 .text("Durchstreichung")
-                .attr("y", 28)
-                .attr("x", 360)
+                .attr("y", 48)
+                .attr("x", 240)
                 .attr("class", "durchstreichung")
                 .on("click", function(){
                   if(filter != "durchstreichung"){
@@ -1155,8 +1327,8 @@ var scrollTop2 = Math.max(window.pageYOffset, document.documentElement.scrollTop
 
             markierungendetail.append("text")
                 .text("Sonstige Markierung")
-                .attr("y", 28)
-                .attr("x", 490)
+                .attr("y", 48)
+                .attr("x", 370)
                 .attr("class", "sonstigeMarkierung")
                 .on("click", function(){
                   if(filter != "sonstigeMarkierung"){
@@ -1170,8 +1342,8 @@ var scrollTop2 = Math.max(window.pageYOffset, document.documentElement.scrollTop
 
             markierungendetail.append("text")
                 .text("Anderes")
-                .attr("y", 28)
-                .attr("x", 640)
+                .attr("y", 48)
+                .attr("x", 530)
                 .attr("class", "anderes")
                 .on("click", function(){
                   if(filter != "anderes"){
@@ -1208,7 +1380,11 @@ var scrollTop2 = Math.max(window.pageYOffset, document.documentElement.scrollTop
                                     eigentumsangaben.selectAll(".EigentumsangabenPlus").text(" ⊕")
                                     markierungen.selectAll(".MarkierungenPlus").text(" ⊕")
                                     marginalien.selectAll(".MarginalienPlus").text(" ⊖")
-                                    marginalien.selectAll("text").style("font-weight", "bolder")
+                                    marginalien.selectAll("text").style("font-weight", "bolder").style("opacity", 1)
+                                    zusatzMaterial.selectAll("text").style("font-weight", "400").style("opacity", .6)
+                                    markierungen.selectAll("text").style("font-weight", "400").style("opacity", .6)
+                                    eigentumsangaben.selectAll("text").style("font-weight", "400").style("opacity", .6)
+
                                     eigentumsangabendetail.transition().duration(800).attr("transform", "scale(0,1)").style("opacity", 1)
                                     markierungendetail.transition().duration(800).attr("transform", "scale(0,1)").style("opacity", 1)
                                     marginaliendetail.transition().duration(800).attr("transform", "scale(1,1)").style("opacity", 1)
@@ -1222,7 +1398,10 @@ var scrollTop2 = Math.max(window.pageYOffset, document.documentElement.scrollTop
                                     farbeinfaltungMarginalien()
                                     filterInteraction()
                                     marginalien.selectAll(".MarginalienPlus").text(" ⊕")
-                                    marginalien.selectAll("text").style("font-weight", "500")
+                                    zusatzMaterial.selectAll("text").style("font-weight", "400").style("opacity", 1)
+                                    marginalien.selectAll("text").style("font-weight", "400").style("opacity", 1)
+                                    markierungen.selectAll("text").style("font-weight", "400").style("opacity", 1)
+                                    eigentumsangaben.selectAll("text").style("font-weight", "400").style("opacity", 1)
                                     marginaliendetail.transition().duration(800).attr("transform", "scale(0,1)").style("opacity", 0)
                                     }
                                 })
@@ -1232,31 +1411,31 @@ var scrollTop2 = Math.max(window.pageYOffset, document.documentElement.scrollTop
                                 .attr("class", "MarginalienPlus")
                                 .text(" ⊕")
                                 .style("font-size", 17)
-                                .on("click", function() {
-                                  if (marginalienEntfaltet == false){
-                                    marginalienEntfaltet = true
-
-                                    farbausfaltungMarginalien()
-                                    marginalien.selectAll(".MarginalienPlus").text(" ⊖")
-                                    marginalien.selectAll("text").style("font-weight", "bolder")
-                                    marginaliendetail.transition().duration(800).attr("transform", "scale(1,1)").style("opacity", 1)
-                                  }
-                                  else {
-                                    marginalienEntfaltet = false
-
-                                    farbeinfaltungMarginalien()
-                                    marginalien.selectAll(".MarginalienPlus").text(" ⊕")
-                                    marginalien.selectAll("text").style("font-weight", "500")
-                                    marginaliendetail.transition().duration(800).attr("transform", "scale(0,1)").style("opacity", 0)
-                                    }
-                                })
+                                // .on("click", function() {
+                                //   if (marginalienEntfaltet == false){
+                                //     marginalienEntfaltet = true
+                                //
+                                //     farbausfaltungMarginalien()
+                                //     marginalien.selectAll(".MarginalienPlus").text(" ⊖")
+                                //     marginalien.selectAll("text").style("font-weight", "bolder")
+                                //     marginaliendetail.transition().duration(800).attr("transform", "scale(1,1)").style("opacity", 1)
+                                //   }
+                                //   else {
+                                //     marginalienEntfaltet = false
+                                //
+                                //     farbeinfaltungMarginalien()
+                                //     marginalien.selectAll(".MarginalienPlus").text(" ⊕")
+                                //     marginalien.selectAll("text").style("font-weight", "500")
+                                //     marginaliendetail.transition().duration(800).attr("transform", "scale(0,1)").style("opacity", 0)
+                                //     }
+                                // })
 
             var marginaliendetail = marginalien.append("g").attr("class", "detail").attr("transform", "scale(0,1)").style("opacity", 0)
 
             marginaliendetail.append("text")
                 .text("Bewertung")
-                .attr("y", 42)
-                .attr("x", 110)
+                .attr("y", 48)
+                .attr("x", 0)
                 .attr("class", "bewertung")
                 .on("click", function(){
                   if(filter != "bewertung"){
@@ -1270,8 +1449,8 @@ var scrollTop2 = Math.max(window.pageYOffset, document.documentElement.scrollTop
 
             marginaliendetail.append("text")
                 .text("Kommentar")
-                .attr("y", 42)
-                .attr("x", 200)
+                .attr("y", 48)
+                .attr("x", 90)
                 .attr("class", "kommentar")
                 .on("click", function(){
                   if(filter != "kommentar"){
@@ -1285,8 +1464,8 @@ var scrollTop2 = Math.max(window.pageYOffset, document.documentElement.scrollTop
 
             marginaliendetail.append("text")
                 .text("Textkorrektur")
-                .attr("y", 42)
-                .attr("x", 300)
+                .attr("y", 48)
+                .attr("x", 190)
                 .attr("class", "textkorrektur")
                 .on("click", function(){
                   if(filter != "textkorrektur"){
@@ -1300,8 +1479,8 @@ var scrollTop2 = Math.max(window.pageYOffset, document.documentElement.scrollTop
 
             marginaliendetail.append("text")
                 .text("Variante")
-                .attr("y", 42)
-                .attr("x", 420)
+                .attr("y", 48)
+                .attr("x", 310)
                 .attr("class", "variante")
                 .on("click", function(){
                   if(filter != "variante"){
@@ -1315,8 +1494,8 @@ var scrollTop2 = Math.max(window.pageYOffset, document.documentElement.scrollTop
 
             marginaliendetail.append("text")
                 .text("Übersetzung")
-                .attr("y", 42)
-                .attr("x", 500)
+                .attr("y", 48)
+                .attr("x", 390)
                 .attr("class", "uebersetzung")
                 .on("click", function(){
                   if(filter != "uebersetzung"){
@@ -1333,16 +1512,63 @@ var scrollTop2 = Math.max(window.pageYOffset, document.documentElement.scrollTop
 
             zusatzMaterial.append("text")
                 .text("Zusätzliches Material")
-                .attr("y", 56)
+                .attr("y", 32)
+              //  .attr("x", 600)
                 .on("click", function(){
                   if(filter != "zusatzMaterial"){
                     filter = "zusatzMaterial"
                     filterInteraction()
+                    eigentumsangaben.selectAll(".EigentumsangabenPlus").text(" ⊕")
+                    markierungen.selectAll(".MarkierungenPlus").text(" ⊕")
+                    marginalien.selectAll(".MarginalienPlus").text(" ⊕")
+                    zusatzMaterial.selectAll("text").style("font-weight", "bolder").style("opacity", 1)
+                    marginalien.selectAll("text").style("font-weight", "400").style("opacity", .6)
+                    markierungen.selectAll("text").style("font-weight", "400").style("opacity", .6)
+                    eigentumsangaben.selectAll("text").style("font-weight", "400").style("opacity", .6)
+
+                    eigentumsangabendetail.transition().duration(800).attr("transform", "scale(0,1)").style("opacity", 1)
+                    markierungendetail.transition().duration(800).attr("transform", "scale(0,1)").style("opacity", 1)
+                    marginaliendetail.transition().duration(800).attr("transform", "scale(0,1)").style("opacity", 1)
                   }else{
                     filter = null
                     filterInteraction()
+                    zusatzMaterial.selectAll("text").style("font-weight", "400").style("opacity", 1)
+                    marginalien.selectAll("text").style("font-weight", "400").style("opacity", 1)
+                    markierungen.selectAll("text").style("font-weight", "400").style("opacity", 1)
+                    eigentumsangaben.selectAll("text").style("font-weight", "400").style("opacity", 1)
                   }
                 })
+
+
+
+                // anderes.append("text")
+                //     .text("Anderes")
+                //     .attr("y", 32)
+                //   //  .attr("x", 600)
+                //     .on("click", function(){
+                //       if(filter != "anderes"){
+                //         filter = "anderes"
+                //         filterInteraction()
+                //         eigentumsangaben.selectAll(".EigentumsangabenPlus").text(" ⊕")
+                //         markierungen.selectAll(".MarkierungenPlus").text(" ⊕")
+                //         marginalien.selectAll(".MarginalienPlus").text(" ⊕")
+                //         zusatzMaterial.selectAll("text").style("font-weight", "bolder").style("opacity", 1)
+                //         marginalien.selectAll("text").style("font-weight", "400").style("opacity", .6)
+                //         markierungen.selectAll("text").style("font-weight", "400").style("opacity", .6)
+                //         eigentumsangaben.selectAll("text").style("font-weight", "400").style("opacity", .6)
+                //
+                //         eigentumsangabendetail.transition().duration(800).attr("transform", "scale(0,1)").style("opacity", 1)
+                //         markierungendetail.transition().duration(800).attr("transform", "scale(0,1)").style("opacity", 1)
+                //         marginaliendetail.transition().duration(800).attr("transform", "scale(0,1)").style("opacity", 1)
+                //       }else{
+                //         filter = null
+                //         filterInteraction()
+                //         zusatzMaterial.selectAll("text").style("font-weight", "400").style("opacity", 1)
+                //         marginalien.selectAll("text").style("font-weight", "400").style("opacity", 1)
+                //         markierungen.selectAll("text").style("font-weight", "400").style("opacity", 1)
+                //         eigentumsangaben.selectAll("text").style("font-weight", "400").style("opacity", 1)
+                //       }
+                //     })
 
 
 
@@ -1351,7 +1577,7 @@ var scrollTop2 = Math.max(window.pageYOffset, document.documentElement.scrollTop
             ////////////////////////////////////////////////////////////
             //////////////////////////////////////////////////////////////
 
-
+            var clickedBook = 0
 
 
 
@@ -1368,14 +1594,13 @@ var scrollTop2 = Math.max(window.pageYOffset, document.documentElement.scrollTop
                 return d.values[0].values[0].AuthorCount > 1
             }).length + 1
 
-            //console.log(authorAnzahl)
 
             var chartArea = width - marginleft - marginright
-            var areaheight = (window.innerHeight - 280)
+            var areaheight = (window.innerHeight - 310)
             ///Buch-Ebene Größen und Abstände
 
             var pageheight = areaheight/1111
-            var buchBreite = 8
+            var buchBreite = 7
             var buchBgBreite = 2 + buchBreite
             var totalBuchWidth = buchBgBreite * BuchAnzahl
             var authorAbstand = ((chartArea - totalBuchWidth) + (buchBgBreite * authorAnzahl)) / authorAnzahl
@@ -1385,7 +1610,7 @@ var scrollTop2 = Math.max(window.pageYOffset, document.documentElement.scrollTop
 
             ///Seiten-Ebene Größen und Abstände
             var sLBuchAbstand = chartArea / authorAnzahl
-            var sLAuthorAbstand = 120 //???
+          //  var sLAuthorAbstand = 120 //???
             //var sLAuthorAbstand2 = 30
             var sLBuchAbstandSelected = 35 //55
             var sLBuchBreiteSelected = 30
@@ -1398,7 +1623,79 @@ var scrollTop2 = Math.max(window.pageYOffset, document.documentElement.scrollTop
             })[0].values.length
             var sLTotalBuchWidthSelected = thisVerfasserSelectedBookCount * sLBuchAbstandSelected
             var sLTotalBuchWidthUnselected = (BuchAnzahl - thisVerfasserSelectedBookCount) * sLBuchAbstandUnselected
-            var sLAuthorAbstand2 = (chartArea - (sLTotalBuchWidthSelected + sLTotalBuchWidthUnselected)) / authorAnzahl
+            var sLAuthorAbstand2 = (chartArea - (sLTotalBuchWidthSelected + sLTotalBuchWidthUnselected)) / (authorAnzahl -2)
+
+
+            ///Setting für Buch-buchauswahl
+
+                var selectedBookBuchlevel = 20
+                var selectedBookSeitenlevel = 30
+
+                var BuchauswahlFeld = 420
+                var BuchauswahlFeldSeitenFeld = 600
+
+                var unselectedBookSameAuthorBuchlevel = 5
+                var unselectedBookSameAuthorSeitenlevel = 5
+
+
+                                var unselectedBookBuchlevel = 5
+                                var unselectedBookSeitenlevel = 5
+
+                var onSelectionBuchAbstand = 7
+
+
+
+                var transcriptFontSize = d3.scaleLinear()
+                    .domain([500, 2500])
+                    .range([2, 12])
+                    .clamp(true)
+
+
+                    var detailInfoScale = d3.scaleLinear()
+                        .domain([450, 800])
+                        .range([1, 0])
+                        .clamp(true)
+
+                        var detailInfoTextBoxScale = d3.scaleLinear()
+                            .domain([50, 800])
+                            .range([selectedBookBuchlevel*11, selectedBookBuchlevel*15])
+                            .clamp(true)
+
+                        var detailTranscriptScale = d3.scaleLinear()
+                            .domain([-0.01,0, 380])
+                            .range([0,1, 1])
+                            .clamp(true)
+
+                            var transcriptYStart= d3.scaleLinear()
+                                .domain([900, 1250])
+                                .range([1,-20])
+                                .clamp(true)
+
+                                console.log(scrollTop)
+
+                            var detailCircleScale= d3.scaleLinear()
+                                .domain([2500, 3000])
+                                .range([0,2])
+                                .clamp(true)
+
+                                var transcriptPositionScale= d3.scaleLinear()
+                                    .domain([2500, 3000])
+                                    .range([8,10])
+                                    .clamp(true)
+
+                                    var transcriptPathScaleOpacity= d3.scaleLinear()
+                                        .domain([2500, 3000])
+                                        .range([0,1])
+                                        .clamp(true)
+
+
+
+///////
+//d3.selectAll(".transcriptions").style("pointer-event", "")
+
+
+
+
 
 
       //      console.log(datenByAuthor)
@@ -2516,6 +2813,17 @@ var scrollTop2 = Math.max(window.pageYOffset, document.documentElement.scrollTop
                 })
 
 
+            ///clip-path für transcriptions start
+
+            svg.append("defs")
+            .append("clipPath")
+            .attr("id", "transcript-clip")
+            .append("rect")
+            .attr("height", height)
+            .attr("width", width)
+
+            ///clip-path für transcriptions ende
+
 
             var bookG = svg.selectAll(".bookBG")
                 .data(datenByTitle)
@@ -2595,25 +2903,22 @@ var scrollTop2 = Math.max(window.pageYOffset, document.documentElement.scrollTop
             var authorGroup = bookG
                 .filter(function(d, i) {
                     return i == 0 || d.values[0].Verfasser != datenByTitle[i - 1].values[0].Verfasser
-                }).filter(function(d, i) {
-                    return d.values[0].AuthorCount != 1 || d.values[0].Verfasser == "[Black, Adam u. Charles]"
                 })
                 .append("g").attr("class", function(d) {
                     return d.values[0].Verfasser
                 }).attr("transform", "translate(0,0)")
+                .classed("authorBg", true)
+
+
             var authorLabel = bookG
                 .filter(function(d, i) {
                     return i == 0 || d.values[0].Verfasser != datenByTitle[i - 1].values[0].Verfasser
-                }).filter(function(d, i) {
-                    return d.values[0].AuthorCount != 1 || d.values[0].Verfasser == "[Black, Adam u. Charles]"
                 })
                 //|| d.values[0].AuthorCount == 1 && datenByTitle[i-1].authorCount != 1}
                 .append("g").attr("transform", "translate(4,-3)rotate(-45)")
             var layerGroups = bookGFront
                 .filter(function(d, i) {
                     return i == 0 || d.values[0].Verfasser != datenByTitle[i - 1].values[0].Verfasser
-                }).filter(function(d, i) {
-                    return d.values[0].AuthorCount != 1 || d.values[0].Verfasser == "[Black, Adam u. Charles]"
                 })
                 .append("g").attr("transform", "translate(0,0)rotate(0)")
 
@@ -2626,7 +2931,8 @@ var scrollTop2 = Math.max(window.pageYOffset, document.documentElement.scrollTop
                     return buchBgBreite * (datenByAuthor[i].values.length)
                 })
                 .attr("height", 6000)
-                .attr("fill", "#cec1b8")
+                .attr("fill", "#EBE3DD")//"#cec1b8")//"red")
+                .attr("class", "authorBg")
                 .attr("opacity", 0)
 
 
@@ -2635,13 +2941,13 @@ var scrollTop2 = Math.max(window.pageYOffset, document.documentElement.scrollTop
 
 
             var stack = d3.stack()
-                .keys(["AnstreichungNorm", "UnterstreichungNorm", "DurchstreichungNorm", "SonstigeMarkierungNorm", "AnderesNorm", "BewertungNorm", "KommentarNorm", "TextkorrekturNorm", "UebersetzungNorm", "VarianteNorm", "ZusatzMaterialNorm", "ProvenienzNorm", "StempelNorm"])
+                .keys(["BewertungNorm", "KommentarNorm", "TextkorrekturNorm", "UebersetzungNorm", "VarianteNorm", "AnstreichungNorm", "UnterstreichungNorm", "DurchstreichungNorm", "SonstigeMarkierungNorm", "AnderesNorm", "ZusatzMaterialNorm", "ProvenienzNorm", "StempelNorm"])
                 .order(d3.stackOrderNone)
                 .offset(d3.stackOffsetNone);
 
 
 
-            var xAreaMax = 4
+            var xAreaMax = 4.5
             var totalAreaChartsWidth = 0
             datenByAuthor.forEach(function(D, I) {
               totalAreaChartsWidth= totalAreaChartsWidth + xAreaMax*D.maxTraceNumberNorm
@@ -2757,12 +3063,12 @@ var scrollTop2 = Math.max(window.pageYOffset, document.documentElement.scrollTop
                     }
                 })
                 .style("font-size", function(d, i) {
-                    if (d.values[0].Verfasser == "[ohne Angabe]") {
-                        return 10
+                    if (d.values[0].Verfasser == "[ohne Angabe]" || d.values[0].Verfasser == "Sonstige") {
+                        return 10.5
                     } else {
                         var fontSizeScale = d3.scaleLinear()
-                            .domain([1, 28])
-                            .range([10, 15])
+                            .domain([2, 28])
+                            .range([10.5, 18])
                             .clamp(true)
 
                         return fontSizeScale(d.values[0].AuthorCount)
@@ -2787,7 +3093,9 @@ var scrollTop2 = Math.max(window.pageYOffset, document.documentElement.scrollTop
                 .attr("width", buchBgBreite)
                 .attr("height", "7500")
                 .attr("class", "bookBG")
+                .classed("singleBookBG", true)
                 .attr("fill", "#cec1b8")
+              //  .attr("fill", "red")
                 .on("mouseover", function(d) {
                     if (scrollTop > -800 && scrollTop < 1200) {
                         thisVerfasserSelected = d3.select(this).datum().values[0].Verfasser
@@ -2807,15 +3115,15 @@ var scrollTop2 = Math.max(window.pageYOffset, document.documentElement.scrollTop
                     //    console.log(currentScrollTop)
                     //    console.log(d3.event.layerY || d3.event.offsety)
                     //    console.log(d3.event.offsety)
-                        console.log(d3.event.layerY )
-                        console.log(d3.event.pageY)
+                    //    console.log(d3.event.layerY )
+                    //    console.log(d3.event.pageY)
                     //    var mouseY = ((d3.event.layerY || d3.event.offsety) - currentScrollTop-120);
-                        var mouseY = ((d3.event.pageY) - currentScrollTop-240);
+                        var mouseY = ((d3.event.pageY) - currentScrollTop-270);
                     //    console.log(mouseY)
                         //console.log(mouseY/pageheight)
                         //console.log(d.values)
                         var thisPage = Math.round(round45(mouseY) / pageheight) + 1
-                        console.log(thisPage)
+                    //    console.log(thisPage)
                         function round45(x) {
                             return Math.ceil(x / pageheight) * pageheight
                         }
@@ -2830,14 +3138,15 @@ var scrollTop2 = Math.max(window.pageYOffset, document.documentElement.scrollTop
                             d3.select('.tooltip')
                                 .style("display", "none")
                                 .style('top', d3.event.pageY)
-                        } else if (d.values[0].maxPart >= thisPage && mouseY >= 0) {
+                        } else if (d.values[0].maxPart >= thisPage && mouseY > 0) {
+
                             var thisPageID = (d.values.filter(function(d, i) {
                                 return d.Part == thisPage
                             }))[0].ID
 
-                            d3.select('.tooltip')
+                            d3.select(".tooltip")
                                 .style("display", "block")
-                                .style('top', d3.event.pageY - 200 + 'px')
+                                .style('top', d3.event.pageY - 100 + 'px')
                                 .style('left', d3.event.pageX + 25 + 'px')
 
                             tooltip.select("img").attr("src", function() {
@@ -2923,7 +3232,6 @@ var scrollTop2 = Math.max(window.pageYOffset, document.documentElement.scrollTop
 
                 })
                 .on("click", bookClick)
-            //.on("mousemove", bookClick)
 
 
             bookFingerprint.append("rect")
@@ -2969,11 +3277,11 @@ var scrollTop2 = Math.max(window.pageYOffset, document.documentElement.scrollTop
                     } else if (d.Benutzungsspur === "7" || d.Benutzungsspur === "7?") {
                         return "#f91b49"
                     } else if (d.Benutzungsspur === "6" || d.Benutzungsspur === "6?") {
-                        return "#e5b404"
+                        return "#ec9a0b"
                     } else if (d.SchriftspurTyp == "P" && d.Schreibmedium != "Stempel") {
-                        return "#1c1c1c"
+                        return "#333333"
                     } else if (d.SchriftspurTyp == "P" && d.Schreibmedium == "Stempel") {
-                        return "#1c1c1c"
+                        return "#333333"
                     } else if (d.SchriftspurTyp == "B") {
                         return "#4D8DFF"
                     } else if (d.SchriftspurTyp == "K") {
@@ -3072,9 +3380,9 @@ function farbeinfaltungProvenienz() {
     dataContainer.selectAll(".nodes").filter(".provenienz,.provenienzstempel").transition().duration(800)
         .attr("fill", function(d) {
             if (d.SchriftspurTyp == "P" && d.Schreibmedium != "Stempel") {
-                return "#1c1c1c"
+                return "#333333"
             } else if (d.SchriftspurTyp == "P" && d.Schreibmedium == "Stempel") {
-                return "#1c1c1c"
+                return "#333333"
             }
         })
 }
@@ -3184,161 +3492,218 @@ function farbeinfaltungProvenienz() {
             }
 
 var detailview = false
-
+var thisData = 0
 
             function bookClick() {
               d3.select("#svgFrontTitles").style("display", "none")
+                ///Trigger animation in Canvas
                 transitions = true
+
+                ///Stop animation in Canvas
                 setTimeout(function() {
                     transitions = false
-                }, 3000);
+                }, 20000);
+
+                ///Hide Background for Author Group
                 authorGroup.selectAll("rect").attr("display", "none")
 
-                d3.select(this).transition().attr("opacity", 0)
-                var posX = 0
 
-                var thisData = (d3.select(this).datum().values).filter(function(d) {
+                ///create array thisData that only includes pages with Benutzungsspuren
+                thisData = (d3.select(this).datum().values).filter(function(d) {
                     return d.Benutzungsspur != "null"
                 })
 
 
-                var clickedBook = d3.select(this).datum().values[0].BookID
+                ///set a selection based on ID
+                clickedBook = d3.select(this).datum().values[0].BookID
+
+                ///create Variable that counts number of "Schriftspuren" on one page
                 var maxX = 0
 
+                ///create variable that helps to position the books
+                var posX = 0
+
+
+
+                ////Create Scale for book/page width, based on scroll position
+                var selectedBookScale = d3.scaleLinear()
+                    .domain([0, 3000])
+                    .range([selectedBookBuchlevel, selectedBookSeitenlevel])
+                    .clamp(true)
+
+                var unselectedBookSameAuthorScale = d3.scaleLinear()
+                    .domain([0, 3000])
+                    .range([unselectedBookSameAuthorBuchlevel, unselectedBookSameAuthorSeitenlevel])
+                    .clamp(true)
+
+                var unselectedBookScale = d3.scaleLinear()
+                    .domain([0, 3000])
+                    .range([unselectedBookBuchlevel, unselectedBookSeitenlevel])
+                    .clamp(true)
+
+                    var BuchauswahlFeldScale = d3.scaleLinear()
+                        .domain([0, 3000])
+                        .range([BuchauswahlFeld, BuchauswahlFeldSeitenFeld])
+                        .clamp(true)
+
+                        var onSelectionAuthorAbstand = (chartArea-100-(BuchauswahlFeldScale(scrollTop)+ (BuchAnzahl-1)*unselectedBookBuchlevel)) / (authorAnzahl) //-100 muss eventuell raus? warum die benötigt werden ist un klar
+
+
                 bookFingerprint.selectAll(".nodes")
+                  .filter(function(d, i) {
+                        return d.BookID != clickedBook
+                        })
                     .transition()
-                    .duration(800)
+                    .duration(300)
                     .attr("width", function(d) {
-                        if (d.BookID == clickedBook) {
-                            return 20
-                        } else {
-                            return 5
-                        }
+                            return unselectedBookScale(scrollTop)
                     })
+
                     .attr("x", 0)
+
+
+                    bookFingerprint.selectAll(".nodes")
                     .filter(function(d, i) {
-                        return d.BookID == clickedBook
+                                            return d.BookID == clickedBook
+                                        })
+                        .transition()
+                        .duration(300)
+                    .attr("width", function(d) {
+                            return selectedBookScale(scrollTop)
                     })
-                    //.attr("x", function(d,i){console.log(d)})
-                    //.attr("fill", function(d,i){console.log(d)})
                     .attr("x", function(d, i) {
                         if (i > 5 && thisData[i - 6].ID == d.ID) {
-                            maxX = (Math.max(maxX, 7))
-                            return 120
+                          //  maxX = (Math.max(maxX, 7))
+                            return 7*selectedBookScale(scrollTop)-selectedBookScale(scrollTop)*6
                         } else if (i > 4 && thisData[i - 5].ID == d.ID) {
-                            maxX = (Math.max(maxX, 6))
-                            return 100
+                        //    maxX = (Math.max(maxX, 6))
+                            return 7*selectedBookScale(scrollTop)-selectedBookScale(scrollTop)*5
                         } else if (i > 3 && thisData[i - 4].ID == d.ID) {
-                            maxX = (Math.max(maxX, 5))
-                            return 80
+                        //    maxX = (Math.max(maxX, 5))
+                            return 7*selectedBookScale(scrollTop)-selectedBookScale(scrollTop)*4
                         } else if (i > 2 && thisData[i - 3].ID == d.ID) {
-                            maxX = (Math.max(maxX, 4))
-                            return 60
+                        //    maxX = (Math.max(maxX, 4))
+                            return 7*selectedBookScale(scrollTop)-selectedBookScale(scrollTop)*3
                         } else if (i > 1 && thisData[i - 2].ID == d.ID) {
-                            maxX = (Math.max(maxX, 3))
-                            return 40
+                          //  maxX = (Math.max(maxX, 3))
+                            return 7*selectedBookScale(scrollTop)-selectedBookScale(scrollTop)*2
                         } else if (i != 0 && thisData[i - 1].ID == d.ID) {
-                            maxX = (Math.max(maxX, 2))
-                            return 20
+                          //  maxX = (Math.max(maxX, 2))
+                            return 7*selectedBookScale(scrollTop)-selectedBookScale(scrollTop)
                         } else {
-                            maxX = (Math.max(maxX, 1))
-                            return 0
+                      //      maxX = (Math.max(maxX, 1))
+                            return 7*selectedBookScale(scrollTop)
                         }
                     })
 
                 bookFingerprint.selectAll(".nodesbg")
                     .transition()
-                    .duration(800)
+                    .duration(300)
                     .attr("width", function(d) {
                         if (d.values[0].BookID == clickedBook) {
-                            return 20
+                            return selectedBookScale(scrollTop)
                         } else {
-                            return 5
+                            return unselectedBookScale(scrollTop)
                         }
                     })
-                    .attr("x", 0)
+                    .attr("x", function(d) {
+                        if (d.values[0].BookID == clickedBook) {
+                            return 7*selectedBookScale(scrollTop)
+                        } else {
+                            return 0
+                        }
+                    })
 
 
 
                 bookFingerprint
                     .transition()
-                    .duration(700)
+                    .duration(300)
                     .attr("transform", function(d, i) {
                         if (i == 0) {
                             posx = 0
                             return "translate(" + (marginleft + (posx)) + "," + (posYCanvas) + ")"
                         } else if (i != 0 && datenByTitle[i - 1].values[0].BookID == clickedBook) {
-                            posx = posx + 350
+                            posx = posx + BuchauswahlFeldScale(scrollTop)
                             return "translate(" + (marginleft + (posx)) + "," + (posYCanvas) + ")"
                         } else if (i != 0 && datenByTitle[i - 1].values[0].Verfasser != d.values[0].Verfasser) {
-                            posx = posx + 12
+                            posx = posx + onSelectionAuthorAbstand
                             return "translate(" + (marginleft + (posx)) + "," + (posYCanvas) + ")"
                         } else {
-                            posx = posx + 8
+                            posx = posx + onSelectionBuchAbstand
                             return "translate(" + (marginleft + (posx)) + "," + (posYCanvas) + ")"
                         }
                     })
 
 
                 bookG
-                    .transition()
-                    .delay(50)
-                    .duration(800)
+                   .transition()
+                   .duration(300)
                     .attr("transform", function(d, i) {
                         if (i == 0) {
                             posx = 0
                             return "translate(" + (marginleft - 2 + (posx)) + "," + (posY) + ")"
                         } else if (i != 0 && datenByTitle[i - 1].values[0].BookID == clickedBook) {
-                            posx = posx + 350
+                            posx = posx + BuchauswahlFeldScale(scrollTop)
                             return "translate(" + (marginleft - 2 + (posx)) + "," + (posY) + ")"
                         } else if (i != 0 && datenByTitle[i - 1].values[0].Verfasser != d.values[0].Verfasser) {
-                            posx = posx + 12
+                            posx = posx + onSelectionAuthorAbstand
                             return "translate(" + (marginleft - 2 + (posx)) + "," + (posY) + ")"
                         } else {
-                            posx = posx + 8
+                            posx = posx + onSelectionBuchAbstand
                             return "translate(" + (marginleft - 2 + (posx)) + "," + (posY) + ")"
                         }
                     })
-                    .selectAll("rect")
-                    .attr("cursor", function() {
-                        if (scrollTop > -5) {
-                            return "pointer"
-                        } else {
-                            return "not-allowed"
-                        }
-                    })
+                //    .selectAll("rect")
 
+                //    d3.selectAll(".bookBG").attr("opacity", 1)
 
 
                 bookG.selectAll(".bookBG")
                     .transition()
-                    .delay(50)
-                    .duration(800)
+                    //.delay(50)
+                    .duration(300)
+                    .style("opacity", 0)
                     //.attr("fill", function(d){console.log(d.values[0].BookID)})
                     .attr("width", function(d) {
                         if (d.values[0].BookID == clickedBook) {
-                            return 350
+                            return BuchauswahlFeldScale(scrollTop)
                         } else {
                             return buchBreite
                         }
                     })
+                    .filter(function(d){return d.values[0].BookID == clickedBook})
+                    .style("fill", "#cec1b8")
+                    .style("opacity", 0.3)
 
                 d3.selectAll(".BuchTitel").remove()
 
-                d3.selectAll(".detailinfo")
-                    .transition()
-                    .style("opacity", 0)
-                    .remove()
+                // d3.selectAll(".detailinfo")
+                //     .remove()
+
+                    d3.selectAll(".detailInfoParent")
+                        .remove()
 
                 detailview = true
                 ///Detailinfo bei Klick einblenden
-                var detailInfo = d3.select(this.parentNode).append("g").attr("class", "detailinfo")
+                var detailInfoParent = d3.select(this.parentNode).append("g").attr("class", "detailInfoParent")//.attr("pointer-events", "visible")
+
+                var detailInfo = detailInfoParent.append("g")//.attr("pointer-events", "visible")
+
+                var detailInfoTextBox = detailInfo.append("g").attr("class", "detailInfoTextBox").attr("transform", function(d){return "translate(" + detailInfoTextBoxScale(scrollTop) + "," + 0 + ")"})
+
+
+                detailInfo.attr("class", "detailinfo")
+                .attr("transform", "scale(0,1)")
+                .transition()
+                .duration(600)
+                .attr("transform", "scale(1,1)")
 
 
 
 
 
-                setTimeout(function() {
+
 
 
                   detailInfo.append("text")
@@ -3346,15 +3711,27 @@ var detailview = false
                       .text(function(d) {
                           return d.values[0].BuchTitel
                       })
-                      .attr("y", 10)
+                      .attr("y", -5)
                       .attr("dy", 0)
-                      .attr("x", 5 + 20 * maxX)
-                      .call(wrap, 200)
+                      .attr("text-anchor", "middle")
+                      .attr("x", 9*selectedBookScale(scrollTop))
+                      .call(wrapUp, 300)
                       .selectAll("tspan")
-                      .attr("x", 5 + 20 * maxX)
+                      .attr("x", 9*selectedBookScale(scrollTop))
+                      .attr("text-anchor", "middle")
 
 
-                    detailInfo.append("image")
+
+    // var detailInfoScale = d3.scaleLinear()
+    //     .domain([50, 400])
+    //     .range([1, 0])
+    //     .clamp(true)
+
+
+        detailInfoTextBox.attr("opacity", function(d){return detailInfoScale(scrollTop)})
+
+
+                    detailInfoTextBox.append("image")
                         .attr("xlink:href", function(d) {
                             return "./img/m/" + (d.values.filter(function(D) {
                                 return D.Part === "1"
@@ -3363,120 +3740,278 @@ var detailview = false
                         //.attr("xlink:href", function(d){return console.log(d.values.filter(function(D){return D.Part === "1"}))})
                         .attr("class", "detail_cover")
                         .attr("y", function() {
-                            return 5 + (d3.select(".detail_titel")).node().getBBox().height
+                            return 0
                         })
-                        .attr("x", 5 + 20 * maxX)
-                        .attr("height", 140)
+                      //  .attr("x", 10 + 9*selectedBookScale(scrollTop))
+                        .attr("height", 160)
 
 
 
 
-                    detailInfo.append("text")
+
+                    detailInfoTextBox.append("text")
                         .attr("class", "detail_verfasser")
                         .text(function(d) {
                             return "Verfasser: " + d.values[0].Verfasser
                         })
                         .attr("y", function() {
-                            return 160 + (d3.select(".detail_titel")).node().getBBox().height
+                            return 180// + (d3.select(".detail_titel")).node().getBBox().height
                         })
                         .attr("dy", 0)
-                        .attr("x", 5 + 20 * maxX)
-                        .call(wrap, 200)
+                  //      .attr("x", 10 + 9*selectedBookScale(scrollTop))
+                        .call(wrap, 220)
                         .selectAll("tspan")
-                        .attr("x", 5 + 20 * maxX)
+                      //  .attr("x", 10 + 9*selectedBookScale(scrollTop))
 
-                    detailInfo.append("text")
+
+                    detailInfoTextBox.append("text")
                         .attr("class", "detail_genre")
                         .text(function(d) {
                             return "Genre: " + d.values[0].Genre
                         })
                         .attr("y", function() {
-                            return 160 + ((d3.select(".detail_titel")).node().getBBox().height) + (d3.select(".detail_verfasser")).node().getBBox().height
-                        })
+                            return 200})
                         .attr("dy", 0)
-                        .attr("x", 5 + 20 * maxX)
+                //        .attr("x", 10 + 9*selectedBookScale(scrollTop))
                         .call(wrap, 200)
                         .selectAll("tspan")
-                        .attr("x", 5 + 20 * maxX)
+              //          .attr("x", 10 + 9*selectedBookScale(scrollTop))
 
-                    detailInfo.append("text")
+
+                    detailInfoTextBox.append("text")
                         .attr("class", "detail_year")
                         .text(function(d) {
                             return "Datierung: " + "XXXX"
                         })
                         .attr("y", function() {
-                            return 160 + ((d3.select(".detail_genre")).node().getBBox().height) + ((d3.select(".detail_titel")).node().getBBox().height) + (d3.select(".detail_verfasser")).node().getBBox().height
+                            return 220// + ((d3.select(".detail_genre")).node().getBBox().height) + ((d3.select(".detail_titel")).node().getBBox().height) + (d3.select(".detail_verfasser")).node().getBBox().height
                         })
                         .attr("dy", 0)
-                        .attr("x", 5 + 20 * maxX)
+//                        .attr("x", 10 + 9*selectedBookScale(scrollTop))
 
-                    detailInfo.append("text")
+
+                    detailInfoTextBox.append("text")
                         .attr("class", "detail_seitenzahl")
                         .text(function(d) {
                             return "Seitenzahl: " + d.values[0].maxPart
                         })
                         .attr("y", function() {
-                            return 160 + ((d3.select(".detail_year")).node().getBBox().height) + ((d3.select(".detail_genre")).node().getBBox().height) + ((d3.select(".detail_titel")).node().getBBox().height) + (d3.select(".detail_verfasser")).node().getBBox().height
+                            return 240 //+ ((d3.select(".detail_year")).node().getBBox().height) + ((d3.select(".detail_genre")).node().getBBox().height) + ((d3.select(".detail_titel")).node().getBBox().height) + (d3.select(".detail_verfasser")).node().getBBox().height
                         })
                         .attr("dy", 0)
-                        .attr("x", 5 + 20 * maxX)
+                    //    .attr("x", 10 + 9*selectedBookScale(scrollTop))
 
 
-                    // detailInfo.append("rect")
-                    //     .attr("class", "detail_eigentumsangaben")
-                    //     .attr("y", function() {
-                    //         return 160 + ((d3.select(".detail_seitenzahl")).node().getBBox().height) + ((d3.select(".detail_year")).node().getBBox().height) + ((d3.select(".detail_genre")).node().getBBox().height) + ((d3.select(".detail_titel")).node().getBBox().height) + (d3.select(".detail_verfasser")).node().getBBox().height
-                    //     })
-                    //     .attr("x", 5 + 20 * maxX)
-                    //     .attr("height", 10)
-                    //     .attr("width", 100)
-                    //     .attr("fill", "blue")
-                    //
-                    // detailInfo.append("rect")
-                    //     .attr("class", "detail_marginalien")
-                    //     .attr("y", function() {
-                    //         return 175 + ((d3.select(".detail_seitenzahl")).node().getBBox().height) + ((d3.select(".detail_year")).node().getBBox().height) + ((d3.select(".detail_genre")).node().getBBox().height) + ((d3.select(".detail_titel")).node().getBBox().height) + (d3.select(".detail_verfasser")).node().getBBox().height
-                    //     })
-                    //     .attr("x", 5 + 20 * maxX)
-                    //     .attr("height", 10)
-                    //     .attr("width", 120)
-                    //     .attr("fill", "#ff7b38")
-                    //
-                    // detailInfo.append("rect")
-                    //     .attr("class", "detail_markierung")
-                    //     .attr("y", function() {
-                    //         return 190 + ((d3.select(".detail_seitenzahl")).node().getBBox().height) + ((d3.select(".detail_year")).node().getBBox().height) + ((d3.select(".detail_genre")).node().getBBox().height) + ((d3.select(".detail_titel")).node().getBBox().height) + (d3.select(".detail_verfasser")).node().getBBox().height
-                    //     })
-                    //     .attr("x", 5 + 20 * maxX)
-                    //     .attr("height", 10)
-                    //     .attr("width", 160)
-                    //     .attr("fill", "#00d18d")
-                    //
-                    // detailInfo.append("rect")
-                    //     .attr("class", "detail_markierung")
-                    //     .attr("y", function() {
-                    //         return 205 + ((d3.select(".detail_seitenzahl")).node().getBBox().height) + ((d3.select(".detail_year")).node().getBBox().height) + ((d3.select(".detail_genre")).node().getBBox().height) + ((d3.select(".detail_titel")).node().getBBox().height) + (d3.select(".detail_verfasser")).node().getBBox().height
-                    //     })
-                    //     .attr("x", 5 + 20 * maxX)
-                    //     .attr("height", 10)
-                    //     .attr("width", 20)
-                    //     .attr("fill", "#e3c460")
-
-                }, 200);
-
-                //
-                // var titleLineCount =
-                // console.log(d3.select(".detail_titel").selectAll("tspan")._groups[0].length)
-
-                detailInfo
-                    .attr("transform", "scale(0,1)")
-                    .transition()
-                    .duration(1200)
-                    .attr("transform", "scale(1,1)")
+                        detailInfoTextBox.append("text")
+                            .attr("class", "eigentumsangaben")
+                            .text(function(d) {
+                                return "Eigentumsangaben: "  +thisData.filter(function(d){return d.SchriftspurTyp == "P"}).length
+                            })
+                            .attr("y", function() {
+                                return 280 //+ ((d3.select(".detail_year")).node().getBBox().height) + ((d3.select(".detail_genre")).node().getBBox().height) + ((d3.select(".detail_titel")).node().getBBox().height) + (d3.select(".detail_verfasser")).node().getBBox().height
+                            })
+                            .attr("dy", 0)
+                //            .attr("x", 10 + 9*selectedBookScale(scrollTop))
 
 
+                            detailInfoTextBox.append("text")
+                                .attr("class", "markierungen")
+                                .text(function(d) {
+                                    return "Markierungen: "  +thisData.filter(function(d){return d.Benutzungsspur == "1" || d.Benutzungsspur == "1?" ||
+                                    d.Benutzungsspur == "2" || d.Benutzungsspur == "2?" ||
+                                    d.Benutzungsspur == "3" || d.Benutzungsspur == "3?" ||
+                                    d.Benutzungsspur == "4" || d.Benutzungsspur == "4?" ||
+                                    d.Benutzungsspur == "7" || d.Benutzungsspur == "7?"
+                                  }).length
+                                })
+                                .attr("y", function() {
+                                    return 300 //+ ((d3.select(".detail_year")).node().getBBox().height) + ((d3.select(".detail_genre")).node().getBBox().height) + ((d3.select(".detail_titel")).node().getBBox().height) + (d3.select(".detail_verfasser")).node().getBBox().height
+                                })
+                                .attr("dy", 0)
+                    //            .attr("x", 10 + 9*selectedBookScale(scrollTop))
+
+
+
+                                detailInfoTextBox.append("text")
+                                    .attr("class", "marginalien")
+                                    .text(function(d) {
+                                        return "Marginalien: "  +thisData.filter(function(d){return d.Benutzungsspur == "5" && d.SchriftspurTyp != "P"}).length
+                                    })
+                                    .attr("y", function() {
+                                        return 320 //+ ((d3.select(".detail_year")).node().getBBox().height) + ((d3.select(".detail_genre")).node().getBBox().height) + ((d3.select(".detail_titel")).node().getBBox().height) + (d3.select(".detail_verfasser")).node().getBBox().height
+                                    })
+                                    .attr("dy", 0)
+                      //              .attr("x", 10 + 9*selectedBookScale(scrollTop))
+
+
+
+                                    detailInfoTextBox.append("text")
+                                        .attr("class", "zusatzMaterial")
+                                        .text(function(d) {
+                                            return "Sonstiges Material: "  +thisData.filter(function(d){return d.Benutzungsspur == "6" || d.Benutzungsspur == "6?"}).length
+                                        })
+                                        .attr("y", function() {
+                                            return 340 //+ ((d3.select(".detail_year")).node().getBBox().height) + ((d3.select(".detail_genre")).node().getBBox().height) + ((d3.select(".detail_titel")).node().getBBox().height) + (d3.select(".detail_verfasser")).node().getBBox().height
+                                        })
+                                        .attr("dy", 0)
+                    //                    .attr("x", 10 + 9*selectedBookScale(scrollTop))
+
+                                        var detailTranscriptScale = d3.scaleLinear()
+                                            .domain([-0.01,0, 380])
+                                            .range([0,1, 1])
+                                            .clamp(true)
+
+var transcriptions = detailInfoParent.append("g").attr("clip-path","url(#transcript-clip)").append("g").classed("transcriptions", true).attr("opacity", function(d){return detailTranscriptScale(scrollTop)})
+
+var transcriptData = thisData.filter(function(d){return d.SchriftspurTranskription!= "null"})
+
+var explicateScale2 = d3.scaleLinear()
+    .domain([500, 2500])
+    .range([pageheight, 31])
+    .clamp(true)
+//var lasttranscripty = 0
+
+// var transcriptFontSize = d3.scaleLinear()
+//     .domain([500, 3000])
+//     .range([1.5, 12])
+//     .clamp(true)
+//
+
+
+transcriptions.selectAll("text")
+.data(transcriptData)
+.enter()
+.append("text")
+.text(function(d){return d.SchriftspurTranskription})
+.style("font-size", 12)
+.attr("x", transcriptPositionScale(scrollTop)*selectedBookScale(scrollTop)+10)
+.attr("y", function(d,i){
+          if (i == 0){
+            return transcriptYStart(scrollTop)+(explicateScale2(scrollTop))*d.Part}
+          else {
+            return transcriptYStart(scrollTop)+(explicateScale2(scrollTop))*d.Part}})
+.attr("dy", 0)
+.attr("dx", 0)
+.attr("class", function(d,i){if(d.Schreibmedium == "Stempel"){return "stempel"} else {return "handschrift"}})
+.classed("transcriptText", true)
+.style("fill", function(d){if(d.Schreibmedium == "Bleistift" || d.Schreibmedium == "Bleistift?"){return "grey"}else if(d.Schreibmedium == "Tinte" || d.Schreibmedium == "Tinte?"){return "black"}
+else if(d.Schreibmedium == "roter Buntstift" || d.Schreibmedium == "roter Buntstift?"){return "red"}  else if(d.Schreibmedium == "lila Buntstift"){return "DarkOrchid"}
+else if(d.Schreibmedium == "blauer Buntstift"){return "blue"}})
+.text(function(d,i){return d.SchriftspurTranskription})
+.call(wraptext, 270)
+.selectAll("tspan")
+.attr("x", transcriptPositionScale(scrollTop)*selectedBookScale(scrollTop)+10)
+
+transcriptions.selectAll("text").classed("transcriptionText", true).style("font-size", function(){return transcriptFontSize(scrollTop)})
+
+
+d3.selectAll(".transcriptionText")
+ .each(function(d,i){
+   if(i>0){
+   var thisTranscriptY = d3.select(this).node().getBBox().y
+   var lastTranscriptMaxY = d3.selectAll(".transcriptionText").filter(function(D,I){return I == i-1}).node().getBBox().y + d3.selectAll(".transcriptionText").filter(function(D,I){return I == i-1}).node().getBBox().height
+
+   if (thisTranscriptY <= lastTranscriptMaxY){
+     d3.select(this)
+     .attr("y", function(){
+       return lastTranscriptMaxY+transcriptFontSize(scrollTop)})
+       .selectAll("tspan").attr("y", function(){
+          return lastTranscriptMaxY+transcriptFontSize(scrollTop)})
+
+      transcriptions.append("circle")
+      .attr("r", detailCircleScale(scrollTop))
+      .attr("fill", "white")
+      // .attr("fill", function(d){ if (d.SchriftspurTyp == "P" && d.Schreibmedium != "Stempel") {
+      //     return "#333333"
+      // } else if (d.SchriftspurTyp == "P" && d.Schreibmedium == "Stempel") {
+      //     return "#333333"
+      // } else if (d.SchriftspurTyp == "B") {
+      //     return "#4D8DFF"
+      // } else if (d.SchriftspurTyp == "K") {
+      //     return "#4D8DFF"
+      // } else if (d.SchriftspurTyp == "T") {
+      //     return "#4D8DFF"
+      // } else if (d.SchriftspurTyp == "U") {
+      //     return "#4D8DFF"
+      // } else if (d.SchriftspurTyp == "V") {
+      //     return "#4D8DFF"
+      // }})
+      .attr("cx",  transcriptPositionScale(scrollTop)*selectedBookScale(scrollTop))
+      .attr("cy", lastTranscriptMaxY+transcriptFontSize(scrollTop)-3)
+
+
+////line between transcript and rect
+      transcriptions.append("path")
+      .style("stroke", "white")
+      .style("stroke-width", 1)
+      .style("opacity", .7)
+      .style("fill", "none")
+      //.style("stroke-dasharray", "1,2")
+      .attr("d", function(d, i){
+          var line = d3.line().curve(d3.curveBasis)
+          var data = [[transcriptPositionScale(scrollTop)*selectedBookScale(scrollTop)-3, lastTranscriptMaxY+transcriptFontSize(scrollTop)-3], [transcriptPositionScale(scrollTop)*selectedBookScale(scrollTop)-20, lastTranscriptMaxY+transcriptFontSize(scrollTop)-3],  [8*selectedBookScale(scrollTop)+20, thisTranscriptY+15], [8*selectedBookScale(scrollTop), thisTranscriptY+15]];
+
+          return line(data)
+      })
+
+
+    }else{
+        transcriptions.append("circle")
+        .attr("r", detailCircleScale(scrollTop))
+        .attr("fill", "white")
+        .attr("cx",  transcriptPositionScale(scrollTop)*selectedBookScale(scrollTop))
+        .attr("cy", thisTranscriptY+transcriptFontSize(scrollTop)-6)
+
+        ////line between transcript and rect
+              transcriptions.append("path")
+              .style("stroke", "white")
+              .style("stroke-width", 1)
+              .style("opacity", .7)
+              .style("fill", "none")
+              //.style("stroke-dasharray", "1,2")
+              .attr("d", function(d, i){
+                  var line = d3.line().curve(d3.curveBasis)
+                  var data = [[transcriptPositionScale(scrollTop)*selectedBookScale(scrollTop)-3, thisTranscriptY+transcriptFontSize(scrollTop)-6], [transcriptPositionScale(scrollTop)*selectedBookScale(scrollTop)-20, thisTranscriptY+transcriptFontSize(scrollTop)-6],  [8*selectedBookScale(scrollTop)+20, thisTranscriptY+transcriptFontSize(scrollTop)-6], [8*selectedBookScale(scrollTop), thisTranscriptY+15]];
+
+                  return line(data)
+              })
+
+
+
+    }
+
+ }
+else{
+var thisTranscriptY = d3.select(this).node().getBBox().y
+
+  transcriptions.append("circle")
+  .attr("r", detailCircleScale(scrollTop))
+  .attr("fill", "white")
+  .attr("cx",  transcriptPositionScale(scrollTop)*selectedBookScale(scrollTop))
+  .attr("cy", thisTranscriptY+transcriptFontSize(scrollTop)-6)
+
+
+  ////line between transcript and rect
+        transcriptions.append("path")
+        .style("stroke", "white")
+        .style("stroke-width", 1)
+        .style("opacity", .7)
+        .style("fill", "none")
+        //.style("stroke-dasharray", "1,2")
+        .attr("d", function(d, i){
+            var line = d3.line().curve(d3.curveBasis)
+            var data = [[transcriptPositionScale(scrollTop)*selectedBookScale(scrollTop)-3, thisTranscriptY+transcriptFontSize(scrollTop)-6], [transcriptPositionScale(scrollTop)*selectedBookScale(scrollTop)-20, thisTranscriptY+transcriptFontSize(scrollTop)-6],  [8*selectedBookScale(scrollTop)+20, thisTranscriptY+transcriptFontSize(scrollTop)-6], [8*selectedBookScale(scrollTop), thisTranscriptY+15]];
+
+            return line(data)
+        })
+
+}})
+
+d3.selectAll(".transcriptions").selectAll("path")
+.style("opacity", transcriptPathScaleOpacity(scrollTop))
 
             }
+
 
 
             ////////// Text-Wrap Function Anfang///
@@ -3515,6 +4050,66 @@ var detailview = false
             }
 
 
+            function wrapUp(text, width) {
+              text.each(function() {
+                var text = d3.select(this),
+                    words = text.text().split(/\s+/).reverse(),
+                    word,
+                    line = [],
+                    lineNumber = 0,
+                    lineHeight = 1.1, // ems
+                    y = text.attr("y"),
+                    dy = parseFloat(text.attr("dy")),
+                    tspan = text.text(null).append("tspan").attr("y", y).attr("dy", dy + "em");
+                while (word = words.pop()) {
+                  line.push(word);
+                  tspan.text(line.join(" "));
+                  if (tspan.node().getComputedTextLength() > width) {
+                    line.pop();
+                    tspan.text(line.join(" "));
+                    line = [word];
+                    lineNumber= lineNumber+1
+
+                    tspan = text.append("tspan")
+                    //  .attr("y", function(d,i){if(lineNumber >= 0 ){return y-40} else {return y}})
+                      .attr("y", y)
+                      .attr("dy", lineNumber * lineHeight + "em").text(word);
+                  }
+                }
+
+                var tspanCount= text.selectAll("tspan").size();
+                text.attr("transform", "translate(" + 0 + "," + -((tspanCount-1)*15) + ")");
+              });
+            }
+
+
+            /////Text
+            ////Text-Wrap function
+            function wraptext(text, width) {
+              text.each(function() {
+                var text = d3.select(this),
+                    words = text.text().split(/\s+/).reverse(),
+                    word,
+                    line = [],
+                    lineNumber = 0,
+                    lineHeight = 1.1, // ems
+                    y = text.attr("y"),
+                    dy = parseFloat(text.attr("dy")),
+                    tspan = text.text(null).append("tspan").attr("y", y).attr("dy", dy + "em");
+                while (word = words.pop()) {
+                  line.push(word);
+                  tspan.text(line.join(" "));
+                  if (tspan.node().getComputedTextLength() > width) {
+                    line.pop();
+                    tspan.text(line.join(" "));
+                    line = [word];
+                    tspan = text.append("tspan").attr("y", y).attr("dy", ++lineNumber * lineHeight + dy + "em").text(word);
+                  }
+                }
+              });
+            }
+
+
 
             ////////// Text-Wrap Function Ende/////
             ///////////////////////////////////////
@@ -3526,16 +4121,6 @@ var detailview = false
 
 
 
-
-            //
-            //
-            //
-            //
-            var colToCircle = {};
-
-            // 				// === Draw canvas === //
-
-            var i = 1
 
 
 
@@ -3572,7 +4157,7 @@ var detailview = false
                         })
                         .attr("opacity", 1)
                         .transition()
-                        .attr("fill", "#575757")
+                        .attr("fill", "#333333")
 
                         dataContainer.selectAll(".nodes")
                             .filter(function(d) {
@@ -3580,7 +4165,7 @@ var detailview = false
                             })
                             .attr("opacity", 1)
                             .transition()
-                            .attr("fill", "#828282")
+                            .attr("fill", "#333333")
 
 
                             dataContainer.selectAll(".nodes")
@@ -3589,7 +4174,7 @@ var detailview = false
                                 })
                                 .attr("opacity", 1)
                                 .transition()
-                                .attr("fill", "#F74141")
+                                .attr("fill", "#f91b49")
 
                                 dataContainer.selectAll(".nodes")
                                     .filter(function(d) {
@@ -3597,7 +4182,7 @@ var detailview = false
                                     })
                                     .attr("opacity", 1)
                                     .transition()
-                                    .attr("fill", "#FF8A5D")
+                                    .attr("fill", "#f91b49")
 
                                     dataContainer.selectAll(".nodes")
                                         .filter(function(d) {
@@ -3605,7 +4190,7 @@ var detailview = false
                                         })
                                         .attr("opacity", 1)
                                         .transition()
-                                        .attr("fill", "#8D084E")
+                                        .attr("fill", "#f91b49")
 
                                         dataContainer.selectAll(".nodes")
                                             .filter(function(d) {
@@ -3613,7 +4198,7 @@ var detailview = false
                                             })
                                             .attr("opacity", 1)
                                             .transition()
-                                            .attr("fill", "#FD9698")
+                                            .attr("fill", "#f91b49")
 
                                             dataContainer.selectAll(".nodes")
                                                 .filter(function(d) {
@@ -3621,7 +4206,7 @@ var detailview = false
                                                 })
                                                 .attr("opacity", 1)
                                                 .transition()
-                                                .attr("fill", "#e5b404")
+                                                .attr("fill", "#ec9a0b")
 
                                                 dataContainer.selectAll(".nodes")
                                                     .filter(function(d) {
@@ -3629,7 +4214,7 @@ var detailview = false
                                                     })
                                                     .attr("opacity", 1)
                                                     .transition()
-                                                    .attr("fill", "#afacff")
+                                                    .attr("fill", "#4D8DFF")
 
                                                     dataContainer.selectAll(".nodes")
                                                         .filter(function(d) {
@@ -3637,7 +4222,7 @@ var detailview = false
                                                         })
                                                         .attr("opacity", 1)
                                                         .transition()
-                                                        .attr("fill", "#018DC9")
+                                                        .attr("fill", "#4D8DFF")
 
                                                         dataContainer.selectAll(".nodes")
                                                             .filter(function(d) {
@@ -3645,7 +4230,7 @@ var detailview = false
                                                             })
                                                             .attr("opacity", 1)
                                                             .transition()
-                                                            .attr("fill", "#29D1E2")
+                                                            .attr("fill", "#4D8DFF")
 
                                                             dataContainer.selectAll(".nodes")
                                                                 .filter(function(d) {
@@ -3653,7 +4238,7 @@ var detailview = false
                                                                 })
                                                                 .attr("opacity", 1)
                                                                 .transition()
-                                                                .attr("fill", "#6544FE")
+                                                                .attr("fill", "#4D8DFF")
 
                                                                 dataContainer.selectAll(".nodes")
                                                                     .filter(function(d) {
@@ -3661,7 +4246,7 @@ var detailview = false
                                                                     })
                                                                     .attr("opacity", 1)
                                                                     .transition()
-                                                                    .attr("fill", "#003888")
+                                                                    .attr("fill", "#4D8DFF")
 
                                                                     dataContainer.selectAll(".nodes")
                                                                         .filter(function(d) {
@@ -3669,9 +4254,156 @@ var detailview = false
                                                                         })
                                                                         .attr("opacity", 1)
                                                                         .transition()
-                                                                        .attr("fill", "#ff206a")
+                                                                        .attr("fill", "#4D8DFF")
 
-                }
+                }else if (filter == "Fontane") {
+
+                    areachart.selectAll("path").classed("filtered", true).filter(".schreibhandFontane").classed("filtered", false)
+
+                    dataContainer.selectAll(".nodes")
+                    .attr("opacity", 0)
+                        .transition()
+                        .attr("fill", "white")
+
+                        dataContainer.selectAll(".nodes")
+                        .filter(function(d) {
+                            return d.SchriftspurSchreibhand == "Theodor Fontane" || d.SchriftspurSchreibhand == "?Theodor Fontane?"
+                        })
+                            .filter(function(d) {
+                                return d.SchriftspurTyp == "B"
+                            })
+                            .attr("opacity", 1)
+                            .transition()
+                            .attr("fill", "#afacff")
+
+                            dataContainer.selectAll(".nodes")
+                            .filter(function(d) {
+                                return d.SchriftspurSchreibhand == "Theodor Fontane" || d.SchriftspurSchreibhand == "?Theodor Fontane?"
+                            })
+                                .filter(function(d) {
+                                    return d.SchriftspurTyp == "K"
+                                })
+                                .attr("opacity", 1)
+                                .transition()
+                                .attr("fill", "#018DC9")
+
+                                dataContainer.selectAll(".nodes")
+                                .filter(function(d) {
+                                    return d.SchriftspurSchreibhand == "Theodor Fontane" || d.SchriftspurSchreibhand == "?Theodor Fontane?"
+                                })
+                                    .filter(function(d) {
+                                        return d.SchriftspurTyp == "T"
+                                    })
+                                    .attr("opacity", 1)
+                                    .transition()
+                                    .attr("fill", "#29D1E2")
+
+                                    dataContainer.selectAll(".nodes")
+                                    .filter(function(d) {
+                                        return d.SchriftspurSchreibhand == "Theodor Fontane" || d.SchriftspurSchreibhand == "?Theodor Fontane?"
+                                    })
+                                        .filter(function(d) {
+                                            return d.SchriftspurTyp == "V"
+                                        })
+                                        .attr("opacity", 1)
+                                        .transition()
+                                        .attr("fill", "#6544FE")
+
+                                        dataContainer.selectAll(".nodes")
+                                        .filter(function(d) {
+                                            return d.SchriftspurSchreibhand == "Theodor Fontane" || d.SchriftspurSchreibhand == "?Theodor Fontane?"
+                                        })
+                                            .filter(function(d) {
+                                                return d.SchriftspurTyp == "U"
+                                            })
+                                            .attr("opacity", 1)
+                                            .transition()
+                                            .attr("fill", "#003888")
+
+
+
+                }  else if (filter == "Familie") {
+
+                      areachart.selectAll("path").classed("filtered", true).filter(".schreibhandFamilie").classed("filtered", false)
+
+                      dataContainer.selectAll(".nodes")
+                      .attr("opacity", 0)
+                          .transition()
+                          .attr("fill", "white")
+
+                          dataContainer.selectAll(".nodes")
+                          .filter(function(d) {
+                              return d.SchriftspurSchreibhand == "Emilie Fontane" || d.SchriftspurSchreibhand == "?Emilie Fontane?"
+                                  || d.SchriftspurSchreibhand == "Friedrich Fontane" || d.SchriftspurSchreibhand == "?Friedrich Fontane?"
+                                  || d.SchriftspurSchreibhand == "Georg Fontane" || d.SchriftspurSchreibhand == "Georg Fontane?"
+                                  || d.SchriftspurSchreibhand == "Theodor Fontane jr."
+                          })
+                              .filter(function(d) {
+                                  return d.SchriftspurTyp == "B"
+                              })
+                              .attr("opacity", 1)
+                              .transition()
+                              .attr("fill", "#afacff")
+
+                              dataContainer.selectAll(".nodes")
+                              .filter(function(d) {
+                                  return d.SchriftspurSchreibhand == "Emilie Fontane" || d.SchriftspurSchreibhand == "?Emilie Fontane?"
+                                      || d.SchriftspurSchreibhand == "Friedrich Fontane" || d.SchriftspurSchreibhand == "?Friedrich Fontane?"
+                                      || d.SchriftspurSchreibhand == "Georg Fontane" || d.SchriftspurSchreibhand == "Georg Fontane?"
+                                      || d.SchriftspurSchreibhand == "Theodor Fontane jr."
+                              })
+                                  .filter(function(d) {
+                                      return d.SchriftspurTyp == "K"
+                                  })
+                                  .attr("opacity", 1)
+                                  .transition()
+                                  .attr("fill", "#018DC9")
+
+                                  dataContainer.selectAll(".nodes")
+                                  .filter(function(d) {
+                                      return d.SchriftspurSchreibhand == "Emilie Fontane" || d.SchriftspurSchreibhand == "?Emilie Fontane?"
+                                          || d.SchriftspurSchreibhand == "Friedrich Fontane" || d.SchriftspurSchreibhand == "?Friedrich Fontane?"
+                                          || d.SchriftspurSchreibhand == "Georg Fontane" || d.SchriftspurSchreibhand == "Georg Fontane?"
+                                          || d.SchriftspurSchreibhand == "Theodor Fontane jr."
+                                  })
+                                      .filter(function(d) {
+                                          return d.SchriftspurTyp == "T"
+                                      })
+                                      .attr("opacity", 1)
+                                      .transition()
+                                      .attr("fill", "#29D1E2")
+
+                                      dataContainer.selectAll(".nodes")
+                                      .filter(function(d) {
+                                          return d.SchriftspurSchreibhand == "Emilie Fontane" || d.SchriftspurSchreibhand == "?Emilie Fontane?"
+                                              || d.SchriftspurSchreibhand == "Friedrich Fontane" || d.SchriftspurSchreibhand == "?Friedrich Fontane?"
+                                              || d.SchriftspurSchreibhand == "Georg Fontane" || d.SchriftspurSchreibhand == "Georg Fontane?"
+                                              || d.SchriftspurSchreibhand == "Theodor Fontane jr."
+                                      })
+                                          .filter(function(d) {
+                                              return d.SchriftspurTyp == "V"
+                                          })
+                                          .attr("opacity", 1)
+                                          .transition()
+                                          .attr("fill", "#6544FE")
+
+                                          dataContainer.selectAll(".nodes")
+                                          .filter(function(d) {
+                                              return d.SchriftspurSchreibhand == "Emilie Fontane" || d.SchriftspurSchreibhand == "?Emilie Fontane?"
+                                                  || d.SchriftspurSchreibhand == "Friedrich Fontane" || d.SchriftspurSchreibhand == "?Friedrich Fontane?"
+                                                  || d.SchriftspurSchreibhand == "Georg Fontane" || d.SchriftspurSchreibhand == "Georg Fontane?"
+                                                  || d.SchriftspurSchreibhand == "Theodor Fontane jr."
+                                          })
+                                              .filter(function(d) {
+                                                  return d.SchriftspurTyp == "U"
+                                              })
+                                              .attr("opacity", 1)
+                                              .transition()
+                                              .attr("fill", "#003888")
+
+
+
+                  }
                 else if (filter == "eigentumsangaben") {
 
                     areachart.selectAll("path").classed("filtered", true).filter(".provenienz,.provenienzstempel").classed("filtered", false)
@@ -3858,7 +4590,7 @@ areachart.selectAll("path").classed("filtered", true).filter(".sonstigeMarkierun
                         })
                         .attr("opacity", 1)
                         .transition()
-                        .attr("fill", "#e5b404")
+                        .attr("fill", "#ec9a0b")
 
                       } else if (filter == "marginalien") {
                         areachart.selectAll("path").classed("filtered", true).filter(".bewertung,.kommentar,.textkorrektur,.uebersetzung,.variante").classed("filtered", false)
@@ -4039,11 +4771,7 @@ areachart.selectAll("path").classed("filtered", true).filter(".sonstigeMarkierun
 
 
             function scrollFunction() {
-              d3.select('.tooltip')
-                  .style("display", "none"
-
-                )
-              if (scrollTop != 0) {
+              if (scrollTop < 0) {
 
 detailview = false
 
@@ -4070,18 +4798,19 @@ detailview = false
                     })
 
 
-                    // if(scrollTop == 0){
-                    //   d3.select("#svgFrontTitles").style("display", "inline")
-                    // }
 
                 if (scrollTop < 0) {
                   /////remove Detailview von buchauswahl
 
-
-                                d3.selectAll(".detailinfo")
+                  clickedBook = 0
+                                d3.selectAll(".detailInfoParent")
                                     .transition()
                                     .style("opacity", 0)
                                     .remove()
+
+                                    d3.selectAll(".bookBG").selectAll("rect")
+                                        .transition()
+                                        .style("opacity", 0)
                   /////remove Detailview von buchauswahl ende
 
 
@@ -4104,6 +4833,26 @@ detailview = false
                                 return implicateScale(scrollTop)
                             }
                         })
+                        .attr("width", function(d, i) {
+                            if (d.Verfasser == thisVerfasserSelected) {
+                                var implicateScaleWidth = d3.scaleLinear()
+                                    .domain([500, 2000])
+                                    .range([buchBreite, sLBuchBreiteSelected])
+                                    .clamp(true)
+
+                                return implicateScaleWidth(scrollTop)
+
+
+                            } else {
+                                var implicateScaleWidth = d3.scaleLinear()
+                                    .domain([500, 2000])
+                                    .range([buchBreite, sLBuchBreiteUnselected])
+                                    .clamp(true)
+
+                                return implicateScaleWidth(scrollTop)
+                            }
+                        })
+                        .attr("x", function(d, i) {return 0})
                         .attr("y", function(d, i) {
                             if (d.maxPart >= 1111) {
                                 var implicateScaleB = d3.scaleLinear()
@@ -4139,7 +4888,26 @@ detailview = false
                                     .clamp(true)
                                 return implicateScale(scrollTop)
                             }
+                        }).attr("width", function(d, i) {
+                            if (d.values[0].Verfasser == thisVerfasserSelected) {
+                                var implicateScaleWidth = d3.scaleLinear()
+                                    .domain([500, 2000])
+                                    .range([buchBreite, sLBuchBreiteSelected])
+                                    .clamp(true)
+
+                                return implicateScaleWidth(scrollTop)
+
+
+                            } else {
+                                var implicateScaleWidth = d3.scaleLinear()
+                                    .domain([500, 2000])
+                                    .range([buchBreite, sLBuchBreiteUnselected])
+                                    .clamp(true)
+
+                                return implicateScaleWidth(scrollTop)
+                            }
                         })
+                        .attr("x", function(d, i) {return 0})
 
 
                     bookFingerprint.selectAll(".nodes")
@@ -4169,7 +4937,7 @@ detailview = false
                                 posx2 = 0
                                 posx = 0
                                 return "translate(" + (marginleft - 1 + (posx2)) + "," + (posY) + ")"
-                            } else if (i != 0 && d.values[0].AuthorCount == 1 && d.values[0].Verfasser != "[Black, Adam u. Charles]") {
+                            } else if (i != 0 && d.values[0].AuthorCount == 1 ) {
                                 posx2 = posx2
                                 posx = posx + buchBgBreite
 
@@ -4213,7 +4981,7 @@ detailview = false
                                 posx2 = 0
                                 posx = 0
                                 return "translate(" + (marginleft - 1 + (posx2)) + "," + (posY) + ")"
-                            } else if (i != 0 && d.values[0].AuthorCount == 1 && d.values[0].Verfasser != "[Black, Adam u. Charles]") {
+                            } else if (i != 0 && d.values[0].AuthorCount == 1 ) {
                                 posx2 = posx2
                                 posx = posx + buchBgBreite
 
@@ -4260,7 +5028,7 @@ detailview = false
                                 posx2 = 0
                                 posx = 0
                                 return "translate(" + (marginleft - 1 + (posx2)) + "," + (posYCanvas) + ")"
-                            } else if (i != 0 && d.values[0].AuthorCount == 1 && d.values[0].Verfasser != "[Black, Adam u. Charles]") {
+                            } else if (i != 0 && d.values[0].AuthorCount == 1 ) {
                                 posx2 = posx2
                                 posx = posx + buchBgBreite
 
@@ -4336,13 +5104,32 @@ detailview = false
 
                   d3.select("#svgFrontTitles").style("display", "none")
 
-                                d3.selectAll(".detailinfo")
-                                    .transition()
-                                    .style("opacity", 0)
-                                    .remove()
+                                // d3.selectAll(".detailinfo")
+                                //     .transition()
+                                //     .style("opacity", 0)
+                                //     .remove()
                   /////remove Detailview von buchauswahl ende
 
 
+                  areachartGroup.selectAll("line").attr("display", "none")
+                  areachart.attr("display", "none")
+
+                  var explicateScale = d3.scaleLinear()
+                      .domain([500, 2500])
+                      .range([pageheight, 30])
+                      .clamp(true)
+
+                  var explicateScale2 = d3.scaleLinear()
+                      .domain([500, 2500])
+                      .range([pageheight, 31])
+                      .clamp(true)
+
+////////////////////////////
+///////No book selectected
+////////////////////////////
+////////////////////////////
+
+if (clickedBook == 0){
                     bookG
                         .attr("transform", function(d, i) {
                             if (i == 0) {
@@ -4350,7 +5137,7 @@ detailview = false
                                 posx = 0
                                 return "translate(" + (marginleft - 1 + (posx2)) + "," + (posY) + ")"
                             } else if (i != 0 && datenByTitle[i - 1].values[0].Verfasser != d.values[0].Verfasser) {
-                                posx2 = posx2 + sLAuthorAbstand
+                                posx2 = posx2 + sLAuthorAbstand2
                                 posx = posx + authorAbstand
 
                                 var implicateScaleX1 = d3.scaleLinear()
@@ -4379,7 +5166,7 @@ detailview = false
                                 posx = 0
                                 return "translate(" + (marginleft - 1 + (posx2)) + "," + (posYCanvas) + ")"
                             } else if (i != 0 && datenByTitle[i - 1].values[0].Verfasser != d.values[0].Verfasser) {
-                                posx2 = posx2 + sLAuthorAbstand
+                                posx2 = posx2 + sLAuthorAbstand2
                                 posx = posx + authorAbstand
 
                                 var implicateScaleX1 = d3.scaleLinear()
@@ -4417,18 +5204,7 @@ detailview = false
 
 
 
-                    areachartGroup.selectAll("line").attr("display", "none")
-                    areachart.attr("display", "none")
 
-                    var explicateScale = d3.scaleLinear()
-                        .domain([500, 2500])
-                        .range([pageheight, 30])
-                        .clamp(true)
-
-                    var explicateScale2 = d3.scaleLinear()
-                        .domain([500, 2500])
-                        .range([pageheight, 31])
-                        .clamp(true)
 
 
                     //////////////////////////Auswahl für SelectedAuthor beim Reinzoomen und Stauchen der anderen Bücher
@@ -4437,7 +5213,7 @@ detailview = false
                     })[0].values.length
                     sLTotalBuchWidthSelected = thisVerfasserSelectedBookCount * sLBuchAbstandSelected
                     sLTotalBuchWidthUnselected = (BuchAnzahl - thisVerfasserSelectedBookCount) * sLBuchAbstandUnselected
-                    sLAuthorAbstand2 = (chartArea - (sLTotalBuchWidthSelected + sLTotalBuchWidthUnselected)) / (authorAnzahl - 1)
+                    sLAuthorAbstand2 = (chartArea - (sLTotalBuchWidthSelected + sLTotalBuchWidthUnselected)) / (authorAnzahl -2)
 
 
 
@@ -4573,13 +5349,17 @@ detailview = false
                             }
                         })
 
-                        d3.select("#svg").selectAll(".bookBG").selectAll("rect")
+                        d3.select("#svg").selectAll(".singleBookBG")//.selectAll(".bookBG").selectAll("rect")
                         .attr("width", function(d, i) {
                             if (d.values[0].Verfasser == thisVerfasserSelected) {
                                 var implicateScaleWidth = d3.scaleLinear()
                                     .domain([500, 2000])
-                                    .range([buchBreite, sLBuchBreiteSelected])
+                                    .range([buchBgBreite, sLBuchBreiteSelected])
                                     .clamp(true)
+
+                                var thisCount = datenByAuthor.filter(function(D,I){return D.key === thisVerfasserSelected})[0].values.length
+
+                                //  datenByAuthor.filter(function(D,I){return d.}).values.length
 
                                 return implicateScaleWidth(scrollTop)
 
@@ -4590,22 +5370,51 @@ detailview = false
                                     .range([buchBreite, sLBuchBreiteUnselected])
                                     .clamp(true)
 
-                                return implicateScaleWidth(scrollTop)
+                                    console.log(d3.select(this).datum().values[0].Verfasser)
+                                  //  var thisCountunselected = datenByAuthor.filter(function(D,I){return D.key === d3.select(this).datum().values[0].Verfasser})[0].values.length
+
+                                    return implicateScaleWidth(scrollTop)//thisCountunselected
+                            }
+                        })
+
+                        d3.select("#svg").selectAll(".authorBg")//.selectAll(".bookBG").selectAll("rect")
+                        .attr("width", function(d, i) {
+                            if (d.values[0].Verfasser == thisVerfasserSelected) {
+                                var implicateScaleWidth = d3.scaleLinear()
+                                    .domain([500, 2000])
+                                    .range([buchBgBreite, sLBuchBreiteSelected])
+                                    .clamp(true)
+
+                                var thisCount = datenByAuthor.filter(function(D,I){return D.key === thisVerfasserSelected})[0].values.length
+
+                                //  datenByAuthor.filter(function(D,I){return d.}).values.length
+
+                                return implicateScaleWidth(scrollTop)*thisCount
+
+
+                            } else {
+                                var implicateScaleWidth = d3.scaleLinear()
+                                    .domain([500, 2000])
+                                    .range([buchBreite, sLBuchBreiteUnselected])
+                                    .clamp(true)
+
+                                    console.log(d3.select(this).datum().values[0].Verfasser)
+                                  //  var thisCountunselected = datenByAuthor.filter(function(D,I){return D.key === d3.select(this).datum().values[0].Verfasser})[0].values.length
+
+                                    return implicateScaleWidth(scrollTop)*1//thisCountunselected
                             }
                         })
 
 
 
-
                     bookFingerprint
                         .attr("transform", function(d, i) {
-                                              console.log(scrollTop)
                           if (scrollTop < 3000){
                             posYCanvas = 0
                           }
                           else {
-                            posYCanvas = 0-((scrollTop-3000)*2)
-                          }console.log(posYCanvas)
+                            posYCanvas = 0-((scrollTop-3000)*1)
+                          }//console.log(posYCanvas)
                           //falls erstes Element
                             if (i == 0) {
                                 posx3 = 0
@@ -4670,9 +5479,9 @@ bookFingerprint.selectAll(".nodesbg")
                           }
                           else {
 
-                            posYCanvas = 0-((scrollTop-3000)*2)
+                            posYCanvas = 0-((scrollTop-3000)*1)
 
-                          } console.log(posYCanvas)
+                          } //console.log(posYCanvas)
                                 return posYCanvas})
 
 
@@ -4787,6 +5596,333 @@ bookFingerprint.selectAll(".nodesbg")
                         })
 
 
+                      }
+                      //////////////////////////////
+                      //////no selected book Ende
+                      //////////////////////////////
+                      //////////////////////////////
+
+
+                      //////////////////////////////
+                      //////if book selected
+                      //////////////////////////////
+                      //////////////////////////////
+
+if (clickedBook != 0 && scrollTop >0){
+
+
+
+  ///create Variable that counts number of "Schriftspuren" on one page
+  var maxX = 0
+
+  ///create variable that helps to position the books
+  var posX = 0
+
+
+
+  ////Create Scale for book/page width, based on scroll position
+  var selectedBookScale = d3.scaleLinear()
+      .domain([0, 3000])
+      .range([selectedBookBuchlevel, selectedBookSeitenlevel])
+      .clamp(true)
+
+  var unselectedBookSameAuthorScale = d3.scaleLinear()
+      .domain([0, 3000])
+      .range([unselectedBookSameAuthorBuchlevel, unselectedBookSameAuthorSeitenlevel])
+      .clamp(true)
+
+  var unselectedBookScale = d3.scaleLinear()
+      .domain([0, 3000])
+      .range([unselectedBookBuchlevel, unselectedBookSeitenlevel])
+      .clamp(true)
+
+      var BuchauswahlFeldScale = d3.scaleLinear()
+          .domain([0, 3000])
+          .range([BuchauswahlFeld, BuchauswahlFeldSeitenFeld])
+          .clamp(true)
+
+
+
+
+
+          var onSelectionAuthorAbstand = (chartArea-100-(BuchauswahlFeldScale(scrollTop)+ (BuchAnzahl-1)*unselectedBookBuchlevel)) / (authorAnzahl) //-100 muss eventuell raus? warum die benötigt werden ist un klar
+
+          bookFingerprint.selectAll(".nodes")
+            .filter(function(d, i) {
+                  return d.BookID != clickedBook
+                  })
+              .attr("width", function(d) {
+                      return unselectedBookScale(scrollTop)
+              })
+              .attr("height", explicateScale(scrollTop))
+              .attr("y", function(d, i) {
+                  return posYCanvas + (explicateScale2(scrollTop)) * (d.Part - 1)
+              })
+              .attr("x", 0)
+
+
+              bookFingerprint.selectAll(".nodes")
+              .filter(function(d, i) {
+                                      return d.BookID == clickedBook
+                                  })
+              .attr("width", function(d) {
+                      return selectedBookScale(scrollTop)
+              })
+              .attr("height", explicateScale(scrollTop))
+              .attr("y", function(d, i) {
+                  return posYCanvas + (explicateScale2(scrollTop)) * (d.Part - 1)
+              })
+              .attr("x", function(d, i) {
+                  if (i > 5 && thisData[i - 6].ID == d.ID) {
+                    //  maxX = (Math.max(maxX, 7))
+                      return 7*selectedBookScale(scrollTop)-selectedBookScale(scrollTop)*6
+                  } else if (i > 4 && thisData[i - 5].ID == d.ID) {
+                  //    maxX = (Math.max(maxX, 6))
+                      return 7*selectedBookScale(scrollTop)-selectedBookScale(scrollTop)*5
+                  } else if (i > 3 && thisData[i - 4].ID == d.ID) {
+                  //    maxX = (Math.max(maxX, 5))
+                      return 7*selectedBookScale(scrollTop)-selectedBookScale(scrollTop)*4
+                  } else if (i > 2 && thisData[i - 3].ID == d.ID) {
+                  //    maxX = (Math.max(maxX, 4))
+                      return 7*selectedBookScale(scrollTop)-selectedBookScale(scrollTop)*3
+                  } else if (i > 1 && thisData[i - 2].ID == d.ID) {
+                    //  maxX = (Math.max(maxX, 3))
+                      return 7*selectedBookScale(scrollTop)-selectedBookScale(scrollTop)*2
+                  } else if (i != 0 && thisData[i - 1].ID == d.ID) {
+                    //  maxX = (Math.max(maxX, 2))
+                      return 7*selectedBookScale(scrollTop)-selectedBookScale(scrollTop)
+                  } else {
+                //      maxX = (Math.max(maxX, 1))
+                      return 7*selectedBookScale(scrollTop)
+                  }
+              })
+
+          bookFingerprint.selectAll(".nodesbg")
+              .attr("width", function(d) {
+                  if (d.values[0].BookID == clickedBook) {
+                      return selectedBookScale(scrollTop)
+                  } else {
+                      return unselectedBookScale(scrollTop)
+                  }
+              })
+              .attr("height", function(d) {
+                  return (explicateScale2(scrollTop)) * (d.values[0].maxPart)
+              })
+              .attr("x", function(d) {
+                  if (d.values[0].BookID == clickedBook) {
+                      return 7*selectedBookScale(scrollTop)
+                  } else {
+                      return 0
+                  }
+              })
+              .attr("y", function(d, i) {
+                                        if (scrollTop < 3000){
+
+                                          posYCanvas = 0
+                                        }
+                                        else {
+
+                                          posYCanvas = 0-((scrollTop-3000)*1)
+
+                                        } //console.log(posYCanvas)
+                                              return posYCanvas})
+
+
+
+
+          bookFingerprint
+              .attr("transform", function(d, i) {
+                if (scrollTop < 3000){
+                  posYCanvas = 0
+                }
+                else {
+                  posYCanvas = 0-((scrollTop-3000)*1)
+                }
+
+                  if (i == 0) {
+                      posx = 0
+                      return "translate(" + (marginleft + (posx)) + "," + (posYCanvas) + ")"
+                  } else if (i != 0 && datenByTitle[i - 1].values[0].BookID == clickedBook) {
+                      posx = posx + BuchauswahlFeldScale(scrollTop)
+                      return "translate(" + (marginleft + (posx)) + "," + (posYCanvas) + ")"
+                  } else if (i != 0 && datenByTitle[i - 1].values[0].Verfasser != d.values[0].Verfasser) {
+                      posx = posx + onSelectionAuthorAbstand
+                      return "translate(" + (marginleft + (posx)) + "," + (posYCanvas) + ")"
+                  } else {
+                      posx = posx + onSelectionBuchAbstand
+                      return "translate(" + (marginleft + (posx)) + "," + (posYCanvas) + ")"
+                  }
+              })
+
+
+          bookG
+              .attr("transform", function(d, i) {
+                  if (i == 0) {
+                      posx = 0
+                      return "translate(" + (marginleft - 2 + (posx)) + "," + (posY) + ")"
+                  } else if (i != 0 && datenByTitle[i - 1].values[0].BookID == clickedBook) {
+                      posx = posx + BuchauswahlFeldScale(scrollTop)
+                      return "translate(" + (marginleft - 2 + (posx)) + "," + (posY) + ")"
+                  } else if (i != 0 && datenByTitle[i - 1].values[0].Verfasser != d.values[0].Verfasser) {
+                      posx = posx + onSelectionAuthorAbstand
+                      return "translate(" + (marginleft - 2 + (posx)) + "," + (posY) + ")"
+                  } else {
+                      posx = posx + onSelectionBuchAbstand
+                      return "translate(" + (marginleft - 2 + (posx)) + "," + (posY) + ")"
+                  }
+              })
+          //    .selectAll("rect")
+
+          //    d3.selectAll(".bookBG").attr("opacity", 1)
+
+
+          bookG.selectAll(".bookBG")
+              .style("opacity", 0)
+              //.attr("fill", function(d){console.log(d.values[0].BookID)})
+              .attr("width", function(d) {
+                  if (d.values[0].BookID == clickedBook) {
+                      return BuchauswahlFeldScale(scrollTop)
+                  } else {
+                      return buchBreite
+                  }
+              })
+              .filter(function(d){return d.values[0].BookID == clickedBook})
+              .style("fill", "#cec1b8")
+              .style("opacity", 0.3)
+
+              d3.selectAll(".transcriptText")
+              .style("font-size", function(){return transcriptFontSize(scrollTop)})
+              .attr("x", transcriptPositionScale(scrollTop)*selectedBookScale(scrollTop)+10)
+              .attr("y", function(d,i){
+                        if (i == 0){
+                          return transcriptYStart(scrollTop)+(explicateScale2(scrollTop))*d.Part}
+                        else {
+                          return transcriptYStart(scrollTop)+(explicateScale2(scrollTop))*d.Part}})
+              .selectAll("tspan")
+              .attr("x", transcriptPositionScale(scrollTop)*selectedBookScale(scrollTop)+10)
+              .attr("y", function(d,i){
+                          return transcriptYStart(scrollTop)+(explicateScale2(scrollTop))*d.Part})
+
+
+
+d3.selectAll(".detailInfoTextBox")
+.attr("opacity", function(d){return detailInfoScale(scrollTop)})
+.attr("transform", function(d){return "translate(" + detailInfoTextBoxScale(scrollTop) + "," + 0 + ")"})
+
+d3.selectAll(".transcriptions").attr("opacity", function(d){return detailTranscriptScale(scrollTop)})
+
+
+
+d3.selectAll(".transcriptions").selectAll("circle")
+.attr("r", detailCircleScale(scrollTop))
+
+d3.selectAll(".transcriptions").selectAll("path")
+.style("opacity", transcriptPathScaleOpacity(scrollTop))
+
+
+d3.selectAll(".transcriptionText")
+ .each(function(d,i){
+   if(i>0){
+   var thisTranscriptY = d3.select(this).node().getBBox().y
+   var lastTranscriptMaxY = d3.selectAll(".transcriptionText").filter(function(D,I){return I == i-1}).node().getBBox().y + d3.selectAll(".transcriptionText").filter(function(D,I){return I == i-1}).node().getBBox().height
+
+   if (thisTranscriptY <= lastTranscriptMaxY){
+     d3.select(this)
+     .attr("y", function(){
+       return lastTranscriptMaxY+transcriptFontSize(scrollTop)})
+       .selectAll("tspan").attr("y", function(){
+          return lastTranscriptMaxY+transcriptFontSize(scrollTop)})
+
+      d3.selectAll(".transcriptions").selectAll("circle").filter(function(D,I){return I == i})
+      .attr("cx",  transcriptPositionScale(scrollTop)*selectedBookScale(scrollTop))
+      .attr("cy", lastTranscriptMaxY+transcriptFontSize(scrollTop)-3)
+//
+//
+////line between transcript and rect
+      d3.selectAll(".transcriptions").selectAll("path").filter(function(D,I){return I == i})
+      .attr("d", function(d, i){
+          var line = d3.line().curve(d3.curveBasis)
+          var data = [[transcriptPositionScale(scrollTop)*selectedBookScale(scrollTop)-3, lastTranscriptMaxY+transcriptFontSize(scrollTop)-3], [transcriptPositionScale(scrollTop)*selectedBookScale(scrollTop)-20, lastTranscriptMaxY+transcriptFontSize(scrollTop)-3],  [8*selectedBookScale(scrollTop)+20, thisTranscriptY+15], [8*selectedBookScale(scrollTop), thisTranscriptY+15]];
+
+          return line(data)
+      })
+
+
+    }else{
+        d3.selectAll(".transcriptions").selectAll("circle").filter(function(D,I){return I == i})
+        .attr("cx",  transcriptPositionScale(scrollTop)*selectedBookScale(scrollTop))
+        .attr("cy", thisTranscriptY+transcriptFontSize(scrollTop)-6)
+
+        ////line between transcript and rect
+              d3.selectAll(".transcriptions").selectAll("path").filter(function(D,I){return I == i})
+              .attr("d", function(d, i){
+                  var line = d3.line().curve(d3.curveBasis)
+                  var data = [[transcriptPositionScale(scrollTop)*selectedBookScale(scrollTop)-3, thisTranscriptY+transcriptFontSize(scrollTop)-6], [transcriptPositionScale(scrollTop)*selectedBookScale(scrollTop)-20, thisTranscriptY+transcriptFontSize(scrollTop)-6],  [8*selectedBookScale(scrollTop)+20, thisTranscriptY+transcriptFontSize(scrollTop)-6], [8*selectedBookScale(scrollTop), thisTranscriptY+15]];
+
+                  return line(data)
+              })
+
+
+
+    }
+
+ }
+else{
+var thisTranscriptY = d3.select(this).node().getBBox().y
+
+  d3.selectAll(".transcriptions").selectAll("circle").filter(function(D,I){return I == i})
+  .attr("cx",  transcriptPositionScale(scrollTop)*selectedBookScale(scrollTop))
+  .attr("cy", thisTranscriptY+transcriptFontSize(scrollTop)-6)
+
+//
+  ////line between transcript and rect
+        d3.selectAll(".transcriptions").selectAll("path").filter(function(D,I){return I == i})
+        .attr("d", function(d, i){
+            var line = d3.line().curve(d3.curveBasis)
+            var data = [[transcriptPositionScale(scrollTop)*selectedBookScale(scrollTop)-3, thisTranscriptY+transcriptFontSize(scrollTop)-6], [transcriptPositionScale(scrollTop)*selectedBookScale(scrollTop)-20, thisTranscriptY+transcriptFontSize(scrollTop)-6],  [8*selectedBookScale(scrollTop)+20, thisTranscriptY+transcriptFontSize(scrollTop)-6], [8*selectedBookScale(scrollTop), thisTranscriptY+15]];
+
+            return line(data)
+        })
+
+}})
+
+
+
+
+
+
+
+
+
+
+
+              d3.selectAll(".transcriptions")
+              .attr("transform", function(d, i) {
+                if (scrollTop < 3000){
+                  posYCanvas = 0
+                }
+                else {
+                  posYCanvas = 0-((scrollTop-3000)*1)
+                }
+                return "translate(" + 0 + "," + (posYCanvas) + ")"
+              })
+
+
+
+
+
+
+
+
+
+}
+
+//////////////////////////////
+//////selected book Ende
+//////////////////////////////
+//////////////////////////////
+
+
                     if (scrollTop > 400) {
                         d3.select("#svg").selectAll(".bookBG").selectAll("rect").attr("opacity", function(d) {
                             return 0
@@ -4800,20 +5936,21 @@ bookFingerprint.selectAll(".nodesbg")
                     //////////////
                     ///Hover-Thumb
 
-                    bookG.on("mousemove", function(d) {
-console.log(posYCanvas)
-                        if (scrollTop > 0) {
+                    d3.selectAll(".singleBookBG").on("mousemove", function(d) {
+//console.log(posYCanvas)
+console.log(scrollTop)
+                        if (scrollTop >= 0) {
                           var currentScrollTop = Math.max(window.pageYOffset, document.documentElement.scrollTop, document.body.scrollTop)
 
                       //    var mouseY = ((d3.event.layerY || d3.event.offsety) - currentScrollTop-120);
-                      var mouseY = ((d3.event.pageY) - currentScrollTop-240-posYCanvas);
+                      var mouseY = ((d3.event.pageY) - currentScrollTop-270-posYCanvas);
 
                             //console.log(mouseY/pageheight)
                             //console.log(d.values)
 
                       //      console.log(mouseY)
                             var thisPage = Math.round(round45(mouseY) / explicateScale2(scrollTop))
-console.log(thisPage)
+//console.log(thisPage)
 
                             function round45(x) {
                                 return Math.ceil(x / explicateScale2(scrollTop)) * explicateScale2(scrollTop)
@@ -4845,9 +5982,48 @@ console.log(thisPage)
                             }
                         }
 
+                    })
 
+
+                    //////////////
+                    //////////////
+                    ///Hover-Transcript
+
+                    d3.selectAll(".transcriptions").attr("cursor", "pointer").selectAll("text").on("mousemove", function(d) {
+  //console.log(posYCanvas)
+  //console.log(scrollTop)
+                        if (scrollTop >= 0) {
+                          var currentScrollTop = Math.max(window.pageYOffset, document.documentElement.scrollTop, document.body.scrollTop)
+
+                      //    var mouseY = ((d3.event.layerY || d3.event.offsety) - currentScrollTop-120);
+                      var mouseY = ((d3.event.pageY) - currentScrollTop-270-posYCanvas);
+
+
+
+                            //console.log(d.values.filter(function(D,I){return D.Part == 3}))
+                    //        thisVerfasser = d3.select(this).datum().values[0].Verfasser
+            //                var thisBookID = d3.select(this).datum().values[0].BookID
+                            var thisPageID = d3.select(this).datum().ID
+
+//console.log(thisPageID)
+
+                                d3.select('.tooltip')
+                                    .style("display", "block")
+                                    .style('top', d3.event.pageY - 200 + 'px')
+                                    .style('left', d3.event.pageX + 25 + 'px')
+
+                                tooltip.select("img").attr("src", function() {
+                                    return "./img/m/" + thisPageID + ".jpg"
+                                })
+
+                        }
 
                     })
+
+
+
+
+
 
                 }
 
@@ -4916,7 +6092,7 @@ console.log(thisPage)
 
                         context.fillStyle = node.attr("fill");
                         context.globalAlpha = node.attr("opacity")
-                    //    context.globalCompositeOperation = 'multiply';
+                    //  context.globalCompositeOperation = 'multiply';
 
                         // if (filter != null && node.attr("opacity")!= 0){
                         // context.shadowColor = node.attr("fill");
