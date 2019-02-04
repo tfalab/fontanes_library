@@ -5,17 +5,22 @@
     <meta charset="utf-8">
     <title>Fontanes Handbibliothek</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script src="js/d3.v4.min.js"></script>
+    <script src="js/d3.v5.min.js"></script>
     <script src="js/jquery.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/css?family=Reenie+Beanie|Stardos+Stencil" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Homemade+Apple" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Volkhov" rel="stylesheet">
+
 
 
     <style type="text/css">
+
+
         html,
         body {
-            font-family: 'Roboto', sans-serif;
+             font-family: 'Roboto', sans-serif;
+
             background-color: #EBE3DD;
             margin: 0;
             overflow-y: scroll;
@@ -24,20 +29,26 @@
             height: 45000px;
         }
 
+        ::-webkit-scrollbar {
+            display: none;
+        }
+
+
         h1 {
             margin-left: 0px;
             margin-top: 17px;
             margin-bottom: 0;
-            font-weight: 400;
-            letter-spacing: 1px;
+            font-weight: 500;
+            letter-spacing: 2px;
             font-size: 28px;
-            text-transform: uppercase;
+             text-transform: uppercase;
+                /* font-family: 'Volkhov', serif; */
         }
 
         #legend {
             text-transform: uppercase;
             margin-left: 0px;
-            margin-top: 0px;
+            margin-top: 10px;
             font-weight: 400;
             font-size: 12px;
             width: 1000px;
@@ -106,8 +117,8 @@
 
 
         .eigentumsangaben {
-            fill: #333333;
-            color: #333333;
+            fill: #5B5B5B;
+            color: #5B5B5B;
         }
 
         .markierungen {
@@ -193,7 +204,6 @@
             float: right;
             padding: 4px 6px;
             margin-top: 20px;
-            margin-right: 20px;
             background: white;
             font-size: 12px;
             color: grey;
@@ -227,7 +237,7 @@
 
         #svg {
           position: fixed;
-            margin-left: 105px;
+            margin-left: 83px;
             left: 0;
             margin-top: 150px;
         }
@@ -235,7 +245,7 @@
         #svgFront {
             overflow-x: hidden;
             position: fixed;
-            margin-left: 105px;
+            margin-left: 83px;
             left: 0;
             margin-top: 150px;
             pointer-events: none;
@@ -244,7 +254,7 @@
         #svgFrontTitles {
             overflow-x: hidden;
             position: fixed;
-            margin-left: 105px;
+            margin-left: 83px;
             left: 0;
             margin-top: 150px;
             pointer-events: none;
@@ -253,7 +263,7 @@
 
         canvas {
             position: fixed;
-            margin-left: 105px;
+            margin-left: 83px;
             left: 0;
             margin-top: 270px;
             width: 100%;
@@ -376,7 +386,7 @@
         }
 
         .provenienz.eingefaltet{
-            fill: #333333;
+            fill: #5B5B5B;
             -webkit-transition: fill 0.5s linear;
             -moz-transition: fill 0.5s linear;
             -o-transition: fill 0.5s linear;
@@ -394,7 +404,7 @@
         }
 
         .provenienzstempel.eingefaltet{
-            fill: #333333;
+            fill: #5B5B5B;
             -webkit-transition: fill 0.5s linear;
             -moz-transition: fill 0.5s linear;
             -o-transition: fill 0.5s linear;
@@ -559,7 +569,9 @@
 
           <div class="search-container">
               <input type="text" placeholder="MARGINALIEN-SUCHE" name="search">
-              <button type="submit"><i class="fa fa-search"></i></button>
+              <button type="submit"><i class="fa fa-list-ol listbutton"></i></button>
+              <button type="submit"><i class="fa fa-search searchbutton"></i></button>
+
           </div>
 
       </div>
@@ -602,16 +614,17 @@
 
 
 
+    setTimeout(function() {
+
+      window.scrollTo(0, 6000)
+
+
+    }, 10);
 
 
 
 
 
-         setTimeout(function() {
-
-           window.scrollTo(0, 6000)
-          //   $("body").scrollTop(10000);
-         }, 10);
 
         var scroller = d3.select('body')
 
@@ -664,10 +677,12 @@ var scrollTop2 = Math.max(window.pageYOffset, document.documentElement.scrollTop
                 ////////////////////scrollnavi/
                 ////////////////////////////////////////
 
-                var scrollCircleScale = d3.scaleLinear()
-                    .domain([-4990, 0, 2600])
-                    .range([40, 380, 720])
-                    .clamp(true)
+                // var scrollCircleScale = d3.scaleLinear()
+                //     .domain([-4990, 0, 2600])
+                //     .range([40, 380, 720])
+                //     .clamp(true)
+
+
 
                 d3.selectAll(".scrollCircleFollower")
                     .attr("cy", scrollCircleScale(newScrollTop))
@@ -779,6 +794,7 @@ var scrollTop2 = Math.max(window.pageYOffset, document.documentElement.scrollTop
             .attr("y2", thirdScrollIcon)
             .attr("stroke", "white")
             .style("opacity", 0.3)
+            .attr("class", "firstScrollLine")
 
         scrollBgLines.append("line")
             .attr("x1", 22)
@@ -787,6 +803,7 @@ var scrollTop2 = Math.max(window.pageYOffset, document.documentElement.scrollTop
             .attr("y2", thirdScrollIcon)
             .attr("stroke", "white")
             .style("opacity", 0.3)
+            .attr("class", "secondScrollLine")
 
 
 
@@ -813,6 +830,7 @@ var scrollTop2 = Math.max(window.pageYOffset, document.documentElement.scrollTop
                     scrollTop: 0
                 }, '3000')
             })
+            .attr("class", "autorIcon")
 
         // scrollLabels.append("text").text("Buch")
         // .attr("y", 385)
@@ -835,6 +853,7 @@ var scrollTop2 = Math.max(window.pageYOffset, document.documentElement.scrollTop
                     scrollTop: 6000
                 }, '3000')
             })
+            .attr("class", "buchIcon")
 
 
         // scrollLabels.append("text").text("Seiten")
@@ -859,6 +878,7 @@ var scrollTop2 = Math.max(window.pageYOffset, document.documentElement.scrollTop
                     scrollTop: 9000
                 }, '3000')
             })
+            .attr("class", "seitenIcon")
 
         scrollCircles.append("circle")
             .attr("r", 11)
@@ -885,6 +905,7 @@ var scrollTop2 = Math.max(window.pageYOffset, document.documentElement.scrollTop
                     scrollTop: 6000
                 }, '3000')
             })
+            .attr("class", "secondScrollCircle")
 
         scrollCircles.append("circle")
             .attr("r", 7)
@@ -898,6 +919,7 @@ var scrollTop2 = Math.max(window.pageYOffset, document.documentElement.scrollTop
                     scrollTop: 9000
                 }, '3000')
             })
+            .attr("class", "thirdScrollCircle")
 
         var scrollCircleFollower = scrollCircles.append("circle")
             .attr("r", 5)
@@ -905,9 +927,32 @@ var scrollTop2 = Math.max(window.pageYOffset, document.documentElement.scrollTop
             .attr("cy", secondScrollIcon)
             .attr("fill", "white")
             .attr("class", "scrollCircleFollower")
+            .attr("cursor", "grab")
+            .call(d3.drag()
+             .on("start", dragstarted)
+             .on("drag", dragged)
+             .on("end", dragended));
+
+      function dragstarted(d) {
+       d3.select(this).raise().classed("active", true)
+       .attr("cursor", "grabbing")
+      }
+
+      function dragged(d) {
+       d3.select(this).attr("cy", function(){if(d3.event.y < 40){return "40px"} else if(d3.event.y > thirdScrollIcon-5){return thirdScrollIcon-5}else {return d3.event.y}});
+       window.scrollTo(0, scrollCircleScaleReverse(d3.event.y))
+      }
+
+      function dragended(d) {
+       d3.select(this).classed("active", false)
+       .attr("cursor", "grab")
+      }
 
 
-
+      var scrollCircleScaleReverse = d3.scaleLinear()
+              .domain([firstScrollIcon, secondScrollIcon, thirdScrollIcon-5])
+              .range([0, 6000, 9000])
+              .clamp(true)
 
 
 
@@ -949,8 +994,15 @@ var scrollTop2 = Math.max(window.pageYOffset, document.documentElement.scrollTop
         var transitions = false
 
         ///Load data
-        d3.csv("data/data.csv", function(error, dataset) {
-            if (error) throw error;
+      //  d3.csv("data/data.csv", function(error, dataset) {
+        d3.csv("data/data.csv").then(function(dataset) {
+
+
+
+            setTimeout(function() {
+              hashLoad()
+            }, 50);
+
 
 
 
@@ -1008,23 +1060,24 @@ var scrollTop2 = Math.max(window.pageYOffset, document.documentElement.scrollTop
             var legend = d3.select("#legend")
 
             legend.append("text")
-            .text("Schriftspur-Typ:")
+            .text("Schriftspur-Typ")
             .style("font-weight", "bold")
-            .attr("y", 32)
+            .style("letter-spacing", "1px")
+            .attr("y", 36)
             .attr("x", 0)
 
             var eigentumsangaben = legend.append("g")
                 .attr("class", "eigentumsangaben")
                 .style("cursor", "pointer")
-                .attr("transform", "translate(120,0)")
+                .attr("transform", "translate(135,0)")
 
                 eigentumsangaben.append("text")
-                .attr("y", 32)
+                .attr("y", 36)
 
             var zusatzMaterial = legend.append("g")
                 .attr("class", "zusatzMaterial")
                 .style("cursor", "pointer")
-                .attr("transform", "translate(540,0)")
+                .attr("transform", "translate(555,0)")
 
             // var anderes = legend.append("g")
             //         .attr("class", "anderes")
@@ -1034,18 +1087,18 @@ var scrollTop2 = Math.max(window.pageYOffset, document.documentElement.scrollTop
             var markierungen = legend.append("g")
                 .attr("class", "markierungen")
                 .style("cursor", "pointer")
-                .attr("transform", "translate(280,0)")
+                .attr("transform", "translate(295,0)")
 
                 markierungen.append("text")
-                .attr("y", 32)
+                .attr("y", 36)
 
             var marginalien = legend.append("g")
                 .attr("class", "marginalien")
                 .style("cursor", "pointer")
-                .attr("transform", "translate(420,0)")
+                .attr("transform", "translate(435,0)")
 
                 marginalien.append("text")
-                .attr("y", 32)
+                .attr("y", 36)
 
 
             var marginalienVerfasser = legend.append("g")
@@ -1053,9 +1106,10 @@ var scrollTop2 = Math.max(window.pageYOffset, document.documentElement.scrollTop
                 .style("cursor", "pointer")
 
                 marginalienVerfasser.append("text")
-                .text("Marginialien Schreibhand:")
+                .text("Marginalien Schreibhand")
                 .style("font-weight", "bold")
                 .style("cursor", "auto")
+                .style("letter-spacing", "1px")
                 .attr("y", 14)
                 .attr("x", 0)
 
@@ -1064,7 +1118,7 @@ var scrollTop2 = Math.max(window.pageYOffset, document.documentElement.scrollTop
                 marginalienVerfasser.append("text")
                 .text("Theodor Fontane")
                 .attr("y", 14)
-                .attr("x", 190)
+                .attr("x", 200)
                 .on("click", function(){
                   if(filter != "Fontane"){
                     filter = "Fontane"
@@ -1078,7 +1132,7 @@ var scrollTop2 = Math.max(window.pageYOffset, document.documentElement.scrollTop
                 marginalienVerfasser.append("text")
                 .text("Fontanes Familie")
                 .attr("y", 14)
-                .attr("x", 320)
+                .attr("x", 330)
                 .on("click", function(){
                   if(filter != "Familie"){
                     filter = "Familie"
@@ -1092,7 +1146,7 @@ var scrollTop2 = Math.max(window.pageYOffset, document.documentElement.scrollTop
                 marginalienVerfasser.append("text")
                 .text("Andere / Unbekannt")
                 .attr("y", 14)
-                .attr("x", 450)
+                .attr("x", 460)
                 .on("click", function(){
                   if(filter != "Unbekannt"){
                     filter = "Unbekannt"
@@ -1150,7 +1204,7 @@ var scrollTop2 = Math.max(window.pageYOffset, document.documentElement.scrollTop
                 eigentumsangaben.select("text").append("tspan")
                     .text(" ⊕")
                     .attr("class", "EigentumsangabenPlus")
-                    .style("font-size", 17)
+                    .style("font-size", 17 + "px")
                     // .on("click", function() {
                     //   if (eigentumsangabenEntfaltet == false){
                     //     eigentumsangabenEntfaltet = true
@@ -1176,7 +1230,7 @@ var scrollTop2 = Math.max(window.pageYOffset, document.documentElement.scrollTop
 
                                 eigentumsangabendetail.append("text")
                                     .text("Provenienz")
-                                    .attr("y", 48)
+                                    .attr("y", 50)
                                     .attr("x", 0)
                                     .attr("class", "provenienz")
                                     .on("click", function(){
@@ -1192,7 +1246,7 @@ var scrollTop2 = Math.max(window.pageYOffset, document.documentElement.scrollTop
 
                                 eigentumsangabendetail.append("text")
                                     .text("Provenienz-Stempel")
-                                    .attr("y", 48)
+                                    .attr("y", 50)
                                     .attr("x", 90)
                                     .attr("class", "provenienzstempel")
                                     .on("click", function(){
@@ -1258,7 +1312,7 @@ var scrollTop2 = Math.max(window.pageYOffset, document.documentElement.scrollTop
             markierungen.select("text").append("tspan")
                 .text(" ⊕")
                 .attr("class", "MarkierungenPlus")
-                .style("font-size", 17)
+                .style("font-size", 17 + "px")
                 // .on("click", function() {
                 //   if (markierungenEntfaltet == false){
                 //     markierungenEntfaltet = true
@@ -1282,7 +1336,7 @@ var scrollTop2 = Math.max(window.pageYOffset, document.documentElement.scrollTop
 
             markierungendetail.append("text")
                 .text("Anstreichung")
-                .attr("y", 48)
+                .attr("y", 50)
                 .attr("x", 0)
                 .attr("class", "anstreichung")
                 .on("click", function(){
@@ -1297,7 +1351,7 @@ var scrollTop2 = Math.max(window.pageYOffset, document.documentElement.scrollTop
 
             markierungendetail.append("text")
                 .text("Unterstreichung")
-                .attr("y", 48)
+                .attr("y", 50)
                 .attr("x", 110)
                 .attr("class", "unterstreichung")
                 .on("click", function(){
@@ -1312,7 +1366,7 @@ var scrollTop2 = Math.max(window.pageYOffset, document.documentElement.scrollTop
 
             markierungendetail.append("text")
                 .text("Durchstreichung")
-                .attr("y", 48)
+                .attr("y", 50)
                 .attr("x", 240)
                 .attr("class", "durchstreichung")
                 .on("click", function(){
@@ -1327,7 +1381,7 @@ var scrollTop2 = Math.max(window.pageYOffset, document.documentElement.scrollTop
 
             markierungendetail.append("text")
                 .text("Sonstige Markierung")
-                .attr("y", 48)
+                .attr("y", 50)
                 .attr("x", 370)
                 .attr("class", "sonstigeMarkierung")
                 .on("click", function(){
@@ -1342,7 +1396,7 @@ var scrollTop2 = Math.max(window.pageYOffset, document.documentElement.scrollTop
 
             markierungendetail.append("text")
                 .text("Anderes")
-                .attr("y", 48)
+                .attr("y", 50)
                 .attr("x", 530)
                 .attr("class", "anderes")
                 .on("click", function(){
@@ -1410,7 +1464,7 @@ var scrollTop2 = Math.max(window.pageYOffset, document.documentElement.scrollTop
                             marginalien.select("text").append("tspan")
                                 .attr("class", "MarginalienPlus")
                                 .text(" ⊕")
-                                .style("font-size", 17)
+                                .style("font-size", 17 + "px")
                                 // .on("click", function() {
                                 //   if (marginalienEntfaltet == false){
                                 //     marginalienEntfaltet = true
@@ -1434,7 +1488,7 @@ var scrollTop2 = Math.max(window.pageYOffset, document.documentElement.scrollTop
 
             marginaliendetail.append("text")
                 .text("Bewertung")
-                .attr("y", 48)
+                .attr("y", 50)
                 .attr("x", 0)
                 .attr("class", "bewertung")
                 .on("click", function(){
@@ -1449,7 +1503,7 @@ var scrollTop2 = Math.max(window.pageYOffset, document.documentElement.scrollTop
 
             marginaliendetail.append("text")
                 .text("Kommentar")
-                .attr("y", 48)
+                .attr("y", 50)
                 .attr("x", 90)
                 .attr("class", "kommentar")
                 .on("click", function(){
@@ -1464,7 +1518,7 @@ var scrollTop2 = Math.max(window.pageYOffset, document.documentElement.scrollTop
 
             marginaliendetail.append("text")
                 .text("Textkorrektur")
-                .attr("y", 48)
+                .attr("y", 50)
                 .attr("x", 190)
                 .attr("class", "textkorrektur")
                 .on("click", function(){
@@ -1512,7 +1566,7 @@ var scrollTop2 = Math.max(window.pageYOffset, document.documentElement.scrollTop
 
             zusatzMaterial.append("text")
                 .text("Zusätzliches Material")
-                .attr("y", 32)
+                .attr("y", 36)
               //  .attr("x", 600)
                 .on("click", function(){
                   if(filter != "zusatzMaterial"){
@@ -1581,7 +1635,7 @@ var scrollTop2 = Math.max(window.pageYOffset, document.documentElement.scrollTop
 
 
 
-            var marginleft = 5
+            var marginleft = 22
             var marginright = 30
 
             var xOffset = 2
@@ -1600,7 +1654,24 @@ var scrollTop2 = Math.max(window.pageYOffset, document.documentElement.scrollTop
             ///Buch-Ebene Größen und Abstände
 
             var pageheight = areaheight/1111
-            var buchBreite = 7
+
+            if(window.innerWidth >=1800){
+              var buchBreite = 8
+            }else if(window.innerWidth < 1800 && window.innerWidth >= 1600){
+              var buchBreite = 7
+            }else if(window.innerWidth < 1600 && window.innerWidth >= 1400){
+              var buchBreite = 6
+            }else if(window.innerWidth < 1400 && window.innerWidth >= 1200){
+              var buchBreite = 5
+            }else if(window.innerWidth < 1200 && window.innerWidth >= 1100){
+              var buchBreite = 3
+            }else if(window.innerWidth < 1100){
+              var buchBreite = 2
+            }
+
+
+
+
             var buchBgBreite = 2 + buchBreite
             var totalBuchWidth = buchBgBreite * BuchAnzahl
             var authorAbstand = ((chartArea - totalBuchWidth) + (buchBgBreite * authorAnzahl)) / authorAnzahl
@@ -1645,6 +1716,210 @@ var scrollTop2 = Math.max(window.pageYOffset, document.documentElement.scrollTop
 
 
 
+
+
+
+//////////////Rezize Function Start
+$(window).resize(function() {
+  width = window.innerWidth - 100//1300,
+  height = window.innerHeight - 120//680;
+
+
+  ratio = getRetinaRatio()
+   scaledWidth = width * ratio
+  caledHeight = height * ratio
+
+  chartArea = width - marginleft - marginright
+  areaheight = (window.innerHeight - 310)
+  ///Buch-Ebene Größen und Abstände
+
+  console.log(areaheight)
+
+
+  svg = d3.select("#svg")
+      .style('width', width + 'px')
+      .style('height', height + 'px')
+
+  svgFront = d3.select("#svgFront")
+      .style('width', width + 'px')
+      .style('height', height + 'px')
+
+  svgFrontTitles = d3.select("#svgFrontTitles")
+          .style('width', width + 'px')
+          .style('height', height + 'px')
+
+
+        firstScrollIcon = 40
+        secondScrollIcon = window.innerHeight/2
+        thirdScrollIcon = window.innerHeight - 40
+
+
+        d3.select(".firstScrollLine")
+            .attr("y1", firstScrollIcon)
+            .attr("y2", thirdScrollIcon)
+
+        d3.select(".secondScrollLine")
+            .attr("y1", firstScrollIcon)
+            .attr("y2", thirdScrollIcon)
+
+
+            d3.select(".autorIcon")
+            .attr("y", firstScrollIcon+5)
+
+
+            d3.select(".buchIcon")
+            .attr("y", secondScrollIcon+5)
+
+            d3.select(".secondScrollCircle")
+                .attr("cy", secondScrollIcon)
+
+        d3.select(".seitenIcon")
+          .attr("y", thirdScrollIcon)
+
+          d3.select(".thirdScrollCircle")
+              .attr("cy", thirdScrollIcon-5)
+
+
+              scrollCircleScale = d3.scaleLinear()
+                  .domain([-4990, 0, 2600])
+                  .range([firstScrollIcon, secondScrollIcon, thirdScrollIcon-5])
+                  .clamp(true)
+
+              d3.selectAll(".scrollCircleFollower")
+                  .attr("cy", scrollCircleScale(newScrollTop))
+
+  pageheight = areaheight/1111
+
+
+  if(window.innerWidth >=1800){
+    buchBreite = 8
+  }else if(window.innerWidth < 1800 && window.innerWidth >= 1600){
+    buchBreite = 7
+  }else if(window.innerWidth < 1600 && window.innerWidth >= 1400){
+    buchBreite = 6
+  }else if(window.innerWidth < 1400 && window.innerWidth >= 1200){
+    buchBreite = 5
+  }else if(window.innerWidth < 1200 && window.innerWidth >= 1100){
+    buchBreite = 3
+  }else if(window.innerWidth < 1100){
+    buchBreite = 2
+  }
+
+  buchBgBreite = 2 + buchBreite
+  totalBuchWidth = buchBgBreite * BuchAnzahl
+  authorAbstand = ((chartArea - totalBuchWidth) + (buchBgBreite * authorAnzahl)) / authorAnzahl
+
+  ///Author-Ebene Größen und Abstände
+
+
+  ///Seiten-Ebene Größen und Abstände
+  sLBuchAbstand = chartArea / authorAnzahl
+  //  var sLAuthorAbstand = 120 //???
+  //var sLAuthorAbstand2 = 30
+
+
+
+  sLTotalBuchWidthSelected = thisVerfasserSelectedBookCount * sLBuchAbstandSelected
+  sLTotalBuchWidthUnselected = (BuchAnzahl - thisVerfasserSelectedBookCount) * sLBuchAbstandUnselected
+  sLAuthorAbstand2 = (chartArea - (sLTotalBuchWidthSelected + sLTotalBuchWidthUnselected)) / (authorAnzahl -2)
+
+
+  totalAreaChartsWidth = 0
+  datenByAuthor.forEach(function(D, I) {
+    totalAreaChartsWidth= totalAreaChartsWidth + xAreaMax*D.maxTraceNumberNorm
+  })
+  authorLevelAbstand = (chartArea - totalAreaChartsWidth)/authorAnzahl
+
+
+  areachartGroup.selectAll("line")
+      .attr("y1", 0)
+      .attr("y2", areaheight)
+
+//areachart.selectAll("path").remove()
+
+
+yArea = d3.scaleLinear()
+    .range([0, (areaheight / 21)]);
+
+xArea = d3.scaleLinear()
+    .range([0, xAreaMax]);
+
+
+
+
+area = d3.area()
+    .y(function(d, i) {
+        return yArea(d.data.part)
+    })
+    .x0(function(d) {
+      var areaChartXPos = 50//Number(dataContainer.selectAll(".bookFingerprint").filter(function(D){return D.values[0].Verfasser == d.data.Verfasser || D.values[0].Verfasser == "[Black, Adam u. Charles]"}).attr("transform").replace("translate(", "").split(',')[0])
+        return xArea(d[0]);
+    })
+    .x1(function(d) {
+      var areaChartXPos = 50//Number(dataContainer.selectAll(".bookFingerprint").filter(function(D){return D.values[0].Verfasser == d.data.Verfasser || D.values[0].Verfasser == "[Black, Adam u. Charles]"}).attr("transform").replace("translate(", "").split(',')[0])
+
+        return xArea(d[1]);
+    })
+    .curve(d3.curveBasis)
+
+areachart.selectAll("path")
+  //  .attr("id", console.log(area))
+    .attr("d", area)
+    // .attr("class", function(d, i) {
+    //     if (d.key == "AnstreichungNorm") {
+    //         return "anstreichung eingefaltet"
+    //     } else if (d.key == "UnterstreichungNorm") {
+    //         return "unterstreichung eingefaltet"
+    //     } else if (d.key == "ProvenienzNorm") {
+    //         return "provenienz eingefaltet"
+    //     } else if (d.key == "StempelNorm") {
+    //         return "provenienzstempel eingefaltet"
+    //     } else if (d.key == "DurchstreichungNorm") {
+    //         return "durchstreichung eingefaltet"
+    //     } else if (d.key == "ZusatzMaterialNorm") {
+    //         return "zusatzMaterial"
+    //     } else if (d.key == "SonstigeMarkierungNorm") {
+    //         return "sonstigeMarkierung eingefaltet"
+    //     } else if (d.key == "AnderesNorm") {
+    //         return "anderes eingefaltet"
+    //     } else if (d.key == "BewertungNorm") {
+    //         return "bewertung eingefaltet"
+    //     } else if (d.key == "KommentarNorm") {
+    //         return "kommentar eingefaltet"
+    //     } else if (d.key == "TextkorrekturNorm") {
+    //         return "textkorrektur eingefaltet"
+    //     } else if (d.key == "UebersetzungNorm") {
+    //         return "uebersetzung eingefaltet"
+    //     } else if (d.key == "VarianteNorm") {
+    //         return "variante eingefaltet"
+    //     }
+    // })
+
+
+console.log("ttest")
+
+
+  canvas
+    .attr('width', scaledWidth)
+    .attr('height', scaledHeight)
+    .style('width', width + 'px')
+    .style('height', height + 'px')
+//	.style("display","none");
+
+canvas.node().getContext('2d');
+context.scale(ratio, ratio)
+
+scrollFunction()
+draw()
+
+});
+//////////////Rezize Function End
+
+
+
+
+
+
                 var transcriptFontSize = d3.scaleLinear()
                     .domain([500, 2500])
                     .range([2, 12])
@@ -1671,7 +1946,7 @@ var scrollTop2 = Math.max(window.pageYOffset, document.documentElement.scrollTop
                                 .range([1,-20])
                                 .clamp(true)
 
-                                console.log(scrollTop)
+                        //        console.log(scrollTop)
 
                             var detailCircleScale= d3.scaleLinear()
                                 .domain([2500, 3000])
@@ -2868,13 +3143,13 @@ var scrollTop2 = Math.max(window.pageYOffset, document.documentElement.scrollTop
                 .attr("transform", function(d, i) {
                     if (i == 0) {
                         posx = 0
-                        return "translate(" + (marginleft+buchBreite + (posx)) + "," + (posY) + ")"
+                        return "translate(" + (marginleft-21.5 + (posx)) + "," + (posY) + ")"
                     } else if (i != 0 && datenByTitle[i - 1].values[0].Verfasser != d.values[0].Verfasser && d.values[0].AuthorCount > 1) {
                         posx = posx + authorAbstand
-                        return "translate(" + (marginleft+buchBreite + (posx)) + "," + (posY) + ")"
+                        return "translate(" + (marginleft-21.5 + (posx)) + "," + (posY) + ")"
                     } else {
                         posx = posx + buchBgBreite
-                        return "translate(" + (marginleft+buchBreite + (posx)) + "," + (posY) + ")"
+                        return "translate(" + (marginleft-21.5 + (posx)) + "," + (posY) + ")"
                     }
                 })
                 .attr("class", "bookTitleFrontG")
@@ -3064,14 +3339,14 @@ var scrollTop2 = Math.max(window.pageYOffset, document.documentElement.scrollTop
                 })
                 .style("font-size", function(d, i) {
                     if (d.values[0].Verfasser == "[ohne Angabe]" || d.values[0].Verfasser == "Sonstige") {
-                        return 10.5
+                        return 10.5 + "px"
                     } else {
                         var fontSizeScale = d3.scaleLinear()
                             .domain([2, 28])
                             .range([10.5, 18])
                             .clamp(true)
 
-                        return fontSizeScale(d.values[0].AuthorCount)
+                        return fontSizeScale(d.values[0].AuthorCount) + "px"
                     }
                 })
 
@@ -3100,8 +3375,49 @@ var scrollTop2 = Math.max(window.pageYOffset, document.documentElement.scrollTop
                     if (scrollTop > -800 && scrollTop < 1200) {
                         thisVerfasserSelected = d3.select(this).datum().values[0].Verfasser
 
-                        //	console.log(thisVerfasserSelected)
+
                     }
+
+                                            authorGroup.selectAll("rect").filter(function(d) {
+                                                    return d.values[0].Verfasser == thisVerfasser
+                                                }).transition().duration(200)
+                                                .attr("opacity", function() {
+                                                    if (scrollTop < 400) {
+                                                        return 1
+                                                    } else {
+                                                        return 0
+                                                    }
+                                                })
+
+                                            authorGroup.selectAll("rect").filter(function(d) {
+                                                    return d.values[0].Verfasser == thisVerfasserSelected
+                                                }).transition().duration(200)
+                                                .attr("opacity", function() {
+                                                    if (scrollTop > 400) {
+                                                        return 0
+                                                    }
+                                                })
+
+                                            svg.selectAll(".authorLabel").filter(function(d) {
+                                                return d.values[0].Verfasser == thisVerfasserSelected
+                                            }).style("font-weight", "bold")
+                                            svg.selectAll(".authorLabel").filter(function(d) {
+                                                return d.values[0].Verfasser != thisVerfasserSelected
+                                            }).style("font-weight", "normal")
+
+                                            //console.log(d)
+
+                                            var thisBookID = d3.select(this).datum().values[0].BookID
+
+                                            console.log("sdgsdg")
+                                            svgFrontTitles.selectAll(".bookTitleFrontG")
+                                              .filter(function(d) {
+                                                    return d.values[0].BookID == thisBookID
+                                                })
+                                              .style("display", "inline")
+
+
+
                 })
                 .on("mousemove", function(d) {
 
@@ -3186,6 +3502,7 @@ var scrollTop2 = Math.max(window.pageYOffset, document.documentElement.scrollTop
 
                         var thisBookID = d3.select(this).datum().values[0].BookID
 
+                        console.log("sdgsdg")
                         svgFrontTitles.selectAll(".bookTitleFrontG")
                           .filter(function(d) {
                                 return d.values[0].BookID == thisBookID
@@ -3279,9 +3596,9 @@ var scrollTop2 = Math.max(window.pageYOffset, document.documentElement.scrollTop
                     } else if (d.Benutzungsspur === "6" || d.Benutzungsspur === "6?") {
                         return "#ec9a0b"
                     } else if (d.SchriftspurTyp == "P" && d.Schreibmedium != "Stempel") {
-                        return "#333333"
+                        return "#5B5B5B"
                     } else if (d.SchriftspurTyp == "P" && d.Schreibmedium == "Stempel") {
-                        return "#333333"
+                        return "#5B5B5B"
                     } else if (d.SchriftspurTyp == "B") {
                         return "#4D8DFF"
                     } else if (d.SchriftspurTyp == "K") {
@@ -3380,9 +3697,9 @@ function farbeinfaltungProvenienz() {
     dataContainer.selectAll(".nodes").filter(".provenienz,.provenienzstempel").transition().duration(800)
         .attr("fill", function(d) {
             if (d.SchriftspurTyp == "P" && d.Schreibmedium != "Stempel") {
-                return "#333333"
+                return "#5B5B5B"
             } else if (d.SchriftspurTyp == "P" && d.Schreibmedium == "Stempel") {
-                return "#333333"
+                return "#5B5B5B"
             }
         })
 }
@@ -3495,7 +3812,7 @@ var detailview = false
 var thisData = 0
 
             function bookClick() {
-              d3.select("#svgFrontTitles").style("display", "none")
+        //      d3.select("#svgFrontTitles").style("display", "none")
                 ///Trigger animation in Canvas
                 transitions = true
 
@@ -3554,7 +3871,7 @@ var thisData = 0
                         return d.BookID != clickedBook
                         })
                     .transition()
-                    .duration(300)
+                    .duration(500)
                     .attr("width", function(d) {
                             return unselectedBookScale(scrollTop)
                     })
@@ -3567,7 +3884,7 @@ var thisData = 0
                                             return d.BookID == clickedBook
                                         })
                         .transition()
-                        .duration(300)
+                        .duration(500)
                     .attr("width", function(d) {
                             return selectedBookScale(scrollTop)
                     })
@@ -3598,7 +3915,7 @@ var thisData = 0
 
                 bookFingerprint.selectAll(".nodesbg")
                     .transition()
-                    .duration(300)
+                    .duration(500)
                     .attr("width", function(d) {
                         if (d.values[0].BookID == clickedBook) {
                             return selectedBookScale(scrollTop)
@@ -3618,7 +3935,7 @@ var thisData = 0
 
                 bookFingerprint
                     .transition()
-                    .duration(300)
+                    .duration(500)
                     .attr("transform", function(d, i) {
                         if (i == 0) {
                             posx = 0
@@ -3638,7 +3955,7 @@ var thisData = 0
 
                 bookG
                    .transition()
-                   .duration(300)
+                   .duration(500)
                     .attr("transform", function(d, i) {
                         if (i == 0) {
                             posx = 0
@@ -3654,6 +3971,29 @@ var thisData = 0
                             return "translate(" + (marginleft - 2 + (posx)) + "," + (posY) + ")"
                         }
                     })
+
+
+                    d3.selectAll(".bookTitleFrontG")
+                    .attr("transform", function(d, i) {
+                        if (i == 0) {
+                            posx = 0
+                            return "translate(" + (marginleft + (posx)-21.5) + "," + (posY) + ")"
+                        } else if (i != 0 && datenByTitle[i - 1].values[0].BookID == clickedBook) {
+                            posx = posx + BuchauswahlFeldScale(scrollTop)
+                            return "translate(" + (marginleft + (posx)-21.5) + "," + (posY) + ")"
+                        } else if (i != 0 && datenByTitle[i - 1].values[0].Verfasser != d.values[0].Verfasser) {
+                            posx = posx + onSelectionAuthorAbstand
+                            return "translate(" + (marginleft + (posx)-21.5) + "," + (posY) + ")"
+                        } else {
+                            posx = posx + onSelectionBuchAbstand
+                            return "translate(" + (marginleft + (posx)-21.5) + "," + (posY) + ")"
+                        }
+                    })
+
+
+
+
+
                 //    .selectAll("rect")
 
                 //    d3.selectAll(".bookBG").attr("opacity", 1)
@@ -3662,7 +4002,7 @@ var thisData = 0
                 bookG.selectAll(".bookBG")
                     .transition()
                     //.delay(50)
-                    .duration(300)
+                    .duration(500)
                     .style("opacity", 0)
                     //.attr("fill", function(d){console.log(d.values[0].BookID)})
                     .attr("width", function(d) {
@@ -3675,6 +4015,9 @@ var thisData = 0
                     .filter(function(d){return d.values[0].BookID == clickedBook})
                     .style("fill", "#cec1b8")
                     .style("opacity", 0.3)
+
+
+
 
                 d3.selectAll(".BuchTitel").remove()
 
@@ -3743,7 +4086,8 @@ var thisData = 0
                             return 0
                         })
                       //  .attr("x", 10 + 9*selectedBookScale(scrollTop))
-                        .attr("height", 160)
+                        .attr("height", 250+"px")
+                        .attr("width", 190+"px")
 
 
 
@@ -3755,12 +4099,13 @@ var thisData = 0
                             return "Verfasser: " + d.values[0].Verfasser
                         })
                         .attr("y", function() {
-                            return 180// + (d3.select(".detail_titel")).node().getBBox().height
+                            return 270// + (d3.select(".detail_titel")).node().getBBox().height
                         })
                         .attr("dy", 0)
                   //      .attr("x", 10 + 9*selectedBookScale(scrollTop))
                         .call(wrap, 220)
                         .selectAll("tspan")
+                        .attr("x", 0)
                       //  .attr("x", 10 + 9*selectedBookScale(scrollTop))
 
 
@@ -3770,11 +4115,12 @@ var thisData = 0
                             return "Genre: " + d.values[0].Genre
                         })
                         .attr("y", function() {
-                            return 200})
+                            return 290})
                         .attr("dy", 0)
                 //        .attr("x", 10 + 9*selectedBookScale(scrollTop))
                         .call(wrap, 200)
                         .selectAll("tspan")
+                        .attr("x", 0)
               //          .attr("x", 10 + 9*selectedBookScale(scrollTop))
 
 
@@ -3784,7 +4130,7 @@ var thisData = 0
                             return "Datierung: " + "XXXX"
                         })
                         .attr("y", function() {
-                            return 220// + ((d3.select(".detail_genre")).node().getBBox().height) + ((d3.select(".detail_titel")).node().getBBox().height) + (d3.select(".detail_verfasser")).node().getBBox().height
+                            return 310// + ((d3.select(".detail_genre")).node().getBBox().height) + ((d3.select(".detail_titel")).node().getBBox().height) + (d3.select(".detail_verfasser")).node().getBBox().height
                         })
                         .attr("dy", 0)
 //                        .attr("x", 10 + 9*selectedBookScale(scrollTop))
@@ -3796,7 +4142,7 @@ var thisData = 0
                             return "Seitenzahl: " + d.values[0].maxPart
                         })
                         .attr("y", function() {
-                            return 240 //+ ((d3.select(".detail_year")).node().getBBox().height) + ((d3.select(".detail_genre")).node().getBBox().height) + ((d3.select(".detail_titel")).node().getBBox().height) + (d3.select(".detail_verfasser")).node().getBBox().height
+                            return 330 //+ ((d3.select(".detail_year")).node().getBBox().height) + ((d3.select(".detail_genre")).node().getBBox().height) + ((d3.select(".detail_titel")).node().getBBox().height) + (d3.select(".detail_verfasser")).node().getBBox().height
                         })
                         .attr("dy", 0)
                     //    .attr("x", 10 + 9*selectedBookScale(scrollTop))
@@ -3808,7 +4154,7 @@ var thisData = 0
                                 return "Eigentumsangaben: "  +thisData.filter(function(d){return d.SchriftspurTyp == "P"}).length
                             })
                             .attr("y", function() {
-                                return 280 //+ ((d3.select(".detail_year")).node().getBBox().height) + ((d3.select(".detail_genre")).node().getBBox().height) + ((d3.select(".detail_titel")).node().getBBox().height) + (d3.select(".detail_verfasser")).node().getBBox().height
+                                return 350 //+ ((d3.select(".detail_year")).node().getBBox().height) + ((d3.select(".detail_genre")).node().getBBox().height) + ((d3.select(".detail_titel")).node().getBBox().height) + (d3.select(".detail_verfasser")).node().getBBox().height
                             })
                             .attr("dy", 0)
                 //            .attr("x", 10 + 9*selectedBookScale(scrollTop))
@@ -3825,7 +4171,7 @@ var thisData = 0
                                   }).length
                                 })
                                 .attr("y", function() {
-                                    return 300 //+ ((d3.select(".detail_year")).node().getBBox().height) + ((d3.select(".detail_genre")).node().getBBox().height) + ((d3.select(".detail_titel")).node().getBBox().height) + (d3.select(".detail_verfasser")).node().getBBox().height
+                                    return 370 //+ ((d3.select(".detail_year")).node().getBBox().height) + ((d3.select(".detail_genre")).node().getBBox().height) + ((d3.select(".detail_titel")).node().getBBox().height) + (d3.select(".detail_verfasser")).node().getBBox().height
                                 })
                                 .attr("dy", 0)
                     //            .attr("x", 10 + 9*selectedBookScale(scrollTop))
@@ -3838,7 +4184,7 @@ var thisData = 0
                                         return "Marginalien: "  +thisData.filter(function(d){return d.Benutzungsspur == "5" && d.SchriftspurTyp != "P"}).length
                                     })
                                     .attr("y", function() {
-                                        return 320 //+ ((d3.select(".detail_year")).node().getBBox().height) + ((d3.select(".detail_genre")).node().getBBox().height) + ((d3.select(".detail_titel")).node().getBBox().height) + (d3.select(".detail_verfasser")).node().getBBox().height
+                                        return 390 //+ ((d3.select(".detail_year")).node().getBBox().height) + ((d3.select(".detail_genre")).node().getBBox().height) + ((d3.select(".detail_titel")).node().getBBox().height) + (d3.select(".detail_verfasser")).node().getBBox().height
                                     })
                                     .attr("dy", 0)
                       //              .attr("x", 10 + 9*selectedBookScale(scrollTop))
@@ -3851,7 +4197,7 @@ var thisData = 0
                                             return "Sonstiges Material: "  +thisData.filter(function(d){return d.Benutzungsspur == "6" || d.Benutzungsspur == "6?"}).length
                                         })
                                         .attr("y", function() {
-                                            return 340 //+ ((d3.select(".detail_year")).node().getBBox().height) + ((d3.select(".detail_genre")).node().getBBox().height) + ((d3.select(".detail_titel")).node().getBBox().height) + (d3.select(".detail_verfasser")).node().getBBox().height
+                                            return 410 //+ ((d3.select(".detail_year")).node().getBBox().height) + ((d3.select(".detail_genre")).node().getBBox().height) + ((d3.select(".detail_titel")).node().getBBox().height) + (d3.select(".detail_verfasser")).node().getBBox().height
                                         })
                                         .attr("dy", 0)
                     //                    .attr("x", 10 + 9*selectedBookScale(scrollTop))
@@ -3883,7 +4229,7 @@ transcriptions.selectAll("text")
 .enter()
 .append("text")
 .text(function(d){return d.SchriftspurTranskription})
-.style("font-size", 12)
+.style("font-size", 12 + "px")
 .attr("x", transcriptPositionScale(scrollTop)*selectedBookScale(scrollTop)+10)
 .attr("y", function(d,i){
           if (i == 0){
@@ -3902,7 +4248,7 @@ else if(d.Schreibmedium == "blauer Buntstift"){return "blue"}})
 .selectAll("tspan")
 .attr("x", transcriptPositionScale(scrollTop)*selectedBookScale(scrollTop)+10)
 
-transcriptions.selectAll("text").classed("transcriptionText", true).style("font-size", function(){return transcriptFontSize(scrollTop)})
+transcriptions.selectAll("text").classed("transcriptionText", true).style("font-size", function(){return transcriptFontSize(scrollTop)+ "px"})
 
 
 d3.selectAll(".transcriptionText")
@@ -3922,9 +4268,9 @@ d3.selectAll(".transcriptionText")
       .attr("r", detailCircleScale(scrollTop))
       .attr("fill", "white")
       // .attr("fill", function(d){ if (d.SchriftspurTyp == "P" && d.Schreibmedium != "Stempel") {
-      //     return "#333333"
+      //     return "#5B5B5B"
       // } else if (d.SchriftspurTyp == "P" && d.Schreibmedium == "Stempel") {
-      //     return "#333333"
+      //     return "#5B5B5B"
       // } else if (d.SchriftspurTyp == "B") {
       //     return "#4D8DFF"
       // } else if (d.SchriftspurTyp == "K") {
@@ -4146,7 +4492,7 @@ d3.selectAll(".transcriptions").selectAll("path")
                     transitions = false
                 }, 1000);
                 if (filter == null) {
-                  areachart.selectAll("path").classed("filtered", false)
+                  areachart.selectAll("path").classed("filtered", false).classed("eingefaltet", true)
 
                     dataContainer.selectAll(".nodes")
                         .attr("opacity", 1)
@@ -4157,7 +4503,7 @@ d3.selectAll(".transcriptions").selectAll("path")
                         })
                         .attr("opacity", 1)
                         .transition()
-                        .attr("fill", "#333333")
+                        .attr("fill", "#5B5B5B")
 
                         dataContainer.selectAll(".nodes")
                             .filter(function(d) {
@@ -4165,7 +4511,7 @@ d3.selectAll(".transcriptions").selectAll("path")
                             })
                             .attr("opacity", 1)
                             .transition()
-                            .attr("fill", "#333333")
+                            .attr("fill", "#5B5B5B")
 
 
                             dataContainer.selectAll(".nodes")
@@ -4254,7 +4600,7 @@ d3.selectAll(".transcriptions").selectAll("path")
                                                                         })
                                                                         .attr("opacity", 1)
                                                                         .transition()
-                                                                        .attr("fill", "#4D8DFF")
+                                                                        .attr("fill", "#f91b49")
 
                 }else if (filter == "Fontane") {
 
@@ -4757,6 +5103,7 @@ areachart.selectAll("path").classed("filtered", true).filter(".sonstigeMarkierun
             ///////////////////////////////////////
 
 
+
             function animate() {
 
                 if (transitions == true || scrollTop !== newScrollTop) {
@@ -4770,11 +5117,160 @@ areachart.selectAll("path").classed("filtered", true).filter(".sonstigeMarkierun
             window.requestAnimationFrame(animate);
 
 
+
+
+
+function hashFunction(){
+if (scrollTop < -3000){
+  window.location.hash = "#level=distanz"+"?filter="+filter+"?auswahl="+clickedBook
+
+}else if(scrollTop >= -3000 && scrollTop <= 1200){
+
+  window.location.hash = "#level=start"+"?filter="+filter+"?auswahl="+clickedBook
+
+}else if(scrollTop > 1200 ){
+  window.location.hash = "#level=detail"+"?filter="+filter+"?auswahl="+clickedBook
+
+}
+}
+
+var fullHash = 0
+var level = "start"
+
+function hashLoad(){
+  if (window.location.hash == ""){
+    setTimeout(function() {
+
+      window.scrollTo(0, 6000)
+    }, 10);
+  }
+
+  else if (window.location.hash != ""){
+  fullHash = window.location.hash.split("?");
+  console.log(fullHash)
+  level = fullHash[0].substring(7)
+  filter = fullHash[1].substring(7)
+  //clickedBook = fullHash[2].substring(8)
+  console.log(level)
+  console.log(filter)
+  console.log(clickedBook)
+
+if (filter == "eigentumsangaben" || filter == "provenienz" || filter == "provenienzstempel"){
+
+    farbausfaltungProvenienz()
+    eigentumsangaben.selectAll(".EigentumsangabenPlus").text(" ⊖")
+    markierungen.selectAll(".MarkierungenPlus").text(" ⊕")
+    marginalien.selectAll(".MarginalienPlus").text(" ⊕")
+    eigentumsangaben.selectAll("text").style("font-weight", "bolder").style("opacity", 1)
+    zusatzMaterial.selectAll("text").style("font-weight", "400").style("opacity",.6)
+    marginalien.selectAll("text").style("font-weight", "400").style("opacity", .6)
+    markierungen.selectAll("text").style("font-weight", "400").style("opacity", .6)
+
+    eigentumsangabendetail.transition().duration(800).attr("transform", "scale(1,1)").style("opacity", 1)
+    markierungendetail.transition().duration(800).attr("transform", "scale(0,1)").style("opacity", 1)
+    marginaliendetail.transition().duration(800).attr("transform", "scale(0,1)").style("opacity", 1)
+
+}else if (filter == "markierungen" || filter == "anstreichung" || filter == "unterstreichung" || filter == "durchstreichung" || filter == "sonstigeMarkierung" || filter == "anderes"){
+  farbausfaltungMarkierung()
+
+  eigentumsangaben.selectAll(".EigentumsangabenPlus").text(" ⊕")
+  markierungen.selectAll(".MarkierungenPlus").text(" ⊖")
+  marginalien.selectAll(".MarginalienPlus").text(" ⊕")
+  markierungen.selectAll("text").style("font-weight", "bolder").style("opacity", 1)
+  zusatzMaterial.selectAll("text").style("font-weight", "400").style("opacity", .6)
+  marginalien.selectAll("text").style("font-weight", "400").style("opacity", .6)
+  eigentumsangaben.selectAll("text").style("font-weight", "400").style("opacity", .6)
+
+  eigentumsangabendetail.transition().duration(800).attr("transform", "scale(0,1)").style("opacity", 1)
+  markierungendetail.transition().duration(800).attr("transform", "scale(1,1)").style("opacity", 1)
+  marginaliendetail.transition().duration(800).attr("transform", "scale(0,1)").style("opacity", 1)
+}else if (filter == "marginalien" || filter == "bewertung" || filter == "kommentar" || filter == "textkorrektur" || filter == "variante" || filter == "uebersetzung"){
+  farbausfaltungMarginalien()
+
+  marginalien.selectAll(".MarginalienPlus").text(" ⊖")
+  marginalien.selectAll("text").style("font-weight", "bolder")
+  marginaliendetail.transition().duration(800).attr("transform", "scale(1,1)").style("opacity", 1)
+
+  eigentumsangaben.selectAll(".EigentumsangabenPlus").text(" ⊕")
+  markierungen.selectAll(".MarkierungenPlus").text(" ⊕")
+  marginalien.selectAll(".MarginalienPlus").text(" ⊖")
+  marginalien.selectAll("text").style("font-weight", "bolder").style("opacity", 1)
+  zusatzMaterial.selectAll("text").style("font-weight", "400").style("opacity", .6)
+  markierungen.selectAll("text").style("font-weight", "400").style("opacity", .6)
+  eigentumsangaben.selectAll("text").style("font-weight", "400").style("opacity", .6)
+
+  eigentumsangabendetail.transition().duration(800).attr("transform", "scale(0,1)").style("opacity", 1)
+  markierungendetail.transition().duration(800).attr("transform", "scale(0,1)").style("opacity", 1)
+  marginaliendetail.transition().duration(800).attr("transform", "scale(1,1)").style("opacity", 1)
+}else if(filter == "zusatzMaterial"){
+  eigentumsangaben.selectAll(".EigentumsangabenPlus").text(" ⊕")
+  markierungen.selectAll(".MarkierungenPlus").text(" ⊕")
+  marginalien.selectAll(".MarginalienPlus").text(" ⊕")
+  zusatzMaterial.selectAll("text").style("font-weight", "bolder").style("opacity", 1)
+  marginalien.selectAll("text").style("font-weight", "400").style("opacity", .6)
+  markierungen.selectAll("text").style("font-weight", "400").style("opacity", .6)
+  eigentumsangaben.selectAll("text").style("font-weight", "400").style("opacity", .6)
+
+  eigentumsangabendetail.transition().duration(800).attr("transform", "scale(0,1)").style("opacity", 1)
+  markierungendetail.transition().duration(800).attr("transform", "scale(0,1)").style("opacity", 1)
+  marginaliendetail.transition().duration(800).attr("transform", "scale(0,1)").style("opacity", 1)
+}
+
+  filterInteraction()
+
+
+
+
+
+
+
+
+
+setTimeout(function () {
+  if (level == "start"){
+    $("html,body").animate({
+        scrollTop: 6000
+    }, '3000')
+
+  }else if (level == "distanz"){
+    $("html,body").animate({
+        scrollTop: 0
+    }, '3000')
+
+  }else if (level == "detail"){
+    $("html,body").animate({
+        scrollTop: 9000
+    }, '3000')
+  }
+
+}, 500);
+}
+}
+
+
+
+
+
+
+
+
+
             function scrollFunction() {
+              hashFunction()
               if (scrollTop < 0) {
+
 
 detailview = false
 
+bookG
+    .selectAll("rect")
+    .attr("cursor", function() {
+        if (scrollTop >= 0 ) {
+            return "pointer"
+        } else if (scrollTop < 0 && scrollTop > -4000){
+            return "not-allowed"
+        }else{ return "auto"}
+    })
 
  d3.select("#svgFrontTitles").style("display", "none")
 
@@ -4782,20 +5278,26 @@ detailview = false
      d3.select("#svgFrontTitles").style("display", "inline")
 
    }else if(scrollTop == 0 && detailview == true){
-        d3.select("#svgFrontTitles").style("display", "none")
+    //    d3.select("#svgFrontTitles").style("display", "none")
 }
 
 
-
-                bookG
-                    .selectAll("rect")
-                    .attr("cursor", function() {
-                        if (scrollTop > -5) {
-                            return "pointer"
-                        } else {
-                            return "auto"
-                        }
-                    })
+bookG
+    .selectAll("rect")
+    .attr("cursor", function() {
+        if (scrollTop >= 0 ) {
+            return "pointer"
+        } else if (scrollTop < 0 && scrollTop > -4000){
+            return "not-allowed"
+        }else{ return "auto"}
+    })
+    .attr("pointer-events", function() {
+        if (scrollTop >= 0 ) {
+            return "auto"
+        } else if (scrollTop < 0 && scrollTop > -4000){
+            return "auto"
+        }else{ return "none"}
+    })
 
 
 
@@ -5099,10 +5601,10 @@ detailview = false
                 ///////////////////////////////////////
                 ///////////////////////////////////////
                 ///////////////////////////////////////
-                else if (scrollTop > 0) {
+                else if (scrollTop >= 0) {
                   /////remove Detailview von buchauswahl
 
-                  d3.select("#svgFrontTitles").style("display", "none")
+                //  d3.select("#svgFrontTitles").style("display", "none")
 
                                 // d3.selectAll(".detailinfo")
                                 //     .transition()
@@ -5370,7 +5872,7 @@ if (clickedBook == 0){
                                     .range([buchBreite, sLBuchBreiteUnselected])
                                     .clamp(true)
 
-                                    console.log(d3.select(this).datum().values[0].Verfasser)
+                                    //console.log(d3.select(this).datum().values[0].Verfasser)
                                   //  var thisCountunselected = datenByAuthor.filter(function(D,I){return D.key === d3.select(this).datum().values[0].Verfasser})[0].values.length
 
                                     return implicateScaleWidth(scrollTop)//thisCountunselected
@@ -5398,7 +5900,7 @@ if (clickedBook == 0){
                                     .range([buchBreite, sLBuchBreiteUnselected])
                                     .clamp(true)
 
-                                    console.log(d3.select(this).datum().values[0].Verfasser)
+                                  //  console.log(d3.select(this).datum().values[0].Verfasser)
                                   //  var thisCountunselected = datenByAuthor.filter(function(D,I){return D.key === d3.select(this).datum().values[0].Verfasser})[0].values.length
 
                                     return implicateScaleWidth(scrollTop)*1//thisCountunselected
@@ -5545,6 +6047,68 @@ bookFingerprint.selectAll(".nodesbg")
                                 return "translate(" + (marginleft + (implicateScaleX1(scrollTop))) + "," + (posY) + ")"
                             }
                         })
+
+
+                        //bu
+                                                d3.selectAll(".bookTitleFrontG")
+                                                .attr("transform", function(d, i) {
+                                                  //falls erstes Element
+                                                    if (i == 0) {
+                                                        posx3 = 0
+                                                        posx = 0
+                                                        return "translate(" + (marginleft - 1 + (posx3)-21.5) + "," + (posY) + ")"
+
+                                                        //falls vorheriges Element Selected und anderer Verfasser
+                                                    } else if (i != 0 && datenByTitle[i - 1].values[0].Verfasser != d.values[0].Verfasser && datenByTitle[i - 1].values[0].Verfasser == thisVerfasserSelected) {
+                                                        posx3 = posx3 + sLBuchAbstandSelected + sLAuthorAbstand2
+                                                        posx = posx + authorAbstand
+
+                                                        var implicateScaleX1 = d3.scaleLinear()
+                                                            .domain([500, 2000])
+                                                            .range([posx, posx3])
+                                                            .clamp(true)
+
+                                                        return "translate(" + (marginleft + (implicateScaleX1(scrollTop))-21.5) + "," + (posY) + ")"
+
+                                                        //falls vorheriges Element Selected und gleicher Verfasser
+                                                    } else if (i != 0 && datenByTitle[i - 1].values[0].Verfasser == thisVerfasserSelected) {
+                                                        posx3 = posx3 + sLBuchAbstandSelected
+                                                        posx = posx + buchBgBreite
+
+                                                        var implicateScaleX1 = d3.scaleLinear()
+                                                            .domain([500, 2000])
+                                                            .range([posx, posx3])
+                                                            .clamp(true)
+
+                                                        return "translate(" + (marginleft + (implicateScaleX1(scrollTop))-21.5) + "," + (posY) + ")"
+
+                                                        //falls vorheriges Element NICHT Selected und anderer Verfasser
+                                                    } else if (i != 0 && datenByTitle[i - 1].values[0].Verfasser != d.values[0].Verfasser && datenByTitle[i - 1].values[0].Verfasser != thisVerfasserSelected) {
+                                                        posx3 = posx3 + sLAuthorAbstand2
+                                                        posx = posx + authorAbstand
+
+                                                        var implicateScaleX1 = d3.scaleLinear()
+                                                            .domain([500, 2000])
+                                                            .range([posx, posx3])
+                                                            .clamp(true)
+
+                                                        return "translate(" + (marginleft + (implicateScaleX1(scrollTop))-21.5) + "," + (posY) + ")"
+
+                                                        //falls vorheriges Element NICHT Selected und gleicher Verfasser
+                                                    } else {
+                                                        posx3 = posx3 + sLBuchAbstandUnselected
+                                                        posx = posx + buchBgBreite
+
+                                                        var implicateScaleX1 = d3.scaleLinear()
+                                                            .domain([500, 2000])
+                                                            .range([posx, posx3])
+                                                            .clamp(true)
+
+                                                        return "translate(" + (marginleft + (implicateScaleX1(scrollTop))-21.5) + "," + (posY) + ")"
+                                                    }
+                                                })
+
+
 
                     bookGFront
                         .attr("transform", function(d, i) {
@@ -5771,9 +6335,29 @@ if (clickedBook != 0 && scrollTop >0){
                       return "translate(" + (marginleft - 2 + (posx)) + "," + (posY) + ")"
                   }
               })
-          //    .selectAll("rect")
 
-          //    d3.selectAll(".bookBG").attr("opacity", 1)
+
+///Buchtitel
+              d3.selectAll(".bookTitleFrontG")
+              .attr("transform", function(d, i) {
+                  if (i == 0) {
+                      posx = 0
+                      return "translate(" + (marginleft + (posx)-21.5) + "," + (posY) + ")"
+                  } else if (i != 0 && datenByTitle[i - 1].values[0].BookID == clickedBook) {
+                      posx = posx + BuchauswahlFeldScale(scrollTop)
+                      return "translate(" + (marginleft + (posx)-21.5) + "," + (posY) + ")"
+                  } else if (i != 0 && datenByTitle[i - 1].values[0].Verfasser != d.values[0].Verfasser) {
+                      posx = posx + onSelectionAuthorAbstand
+                      return "translate(" + (marginleft + (posx)-21.5) + "," + (posY) + ")"
+                  } else {
+                      posx = posx + onSelectionBuchAbstand
+                      return "translate(" + (marginleft + (posx)-21.5) + "," + (posY) + ")"
+                  }
+              })
+
+
+
+
 
 
           bookG.selectAll(".bookBG")
@@ -5791,7 +6375,7 @@ if (clickedBook != 0 && scrollTop >0){
               .style("opacity", 0.3)
 
               d3.selectAll(".transcriptText")
-              .style("font-size", function(){return transcriptFontSize(scrollTop)})
+              .style("font-size", function(){return transcriptFontSize(scrollTop) + "px"})
               .attr("x", transcriptPositionScale(scrollTop)*selectedBookScale(scrollTop)+10)
               .attr("y", function(d,i){
                         if (i == 0){
@@ -5938,7 +6522,7 @@ var thisTranscriptY = d3.select(this).node().getBBox().y
 
                     d3.selectAll(".singleBookBG").on("mousemove", function(d) {
 //console.log(posYCanvas)
-console.log(scrollTop)
+//console.log(scrollTop)
                         if (scrollTop >= 0) {
                           var currentScrollTop = Math.max(window.pageYOffset, document.documentElement.scrollTop, document.body.scrollTop)
 
@@ -5959,8 +6543,8 @@ console.log(scrollTop)
                             thisVerfasser = d3.select(this).datum().values[0].Verfasser
                             var thisBookID = d3.select(this).datum().values[0].BookID
 
-
-
+                            ///für jedes Buch, das nicht der aktuellen Selektion entspricht
+                            if (thisBookID != clickedBook || scrollTop > 500 ){
                             //tooltip.select("p").text(thisPageID)
                             if (d.values[0].maxPart < thisPage || mouseY < 0) {
                                 d3.select('.tooltip')
@@ -5980,6 +6564,28 @@ console.log(scrollTop)
                                     return "./img/m/" + thisPageID + ".jpg"
                                 })
                             }
+                          }
+                          ////Für Auswahl
+                          else{
+                            if (d.values[0].maxPart < thisPage || mouseY < 0) {
+                                d3.select('.tooltip')
+                                    .style("display", "none")
+                                    .style('top', d3.event.pageY)
+                            } else if (d.values[0].maxPart >= thisPage && mouseY > 0) {
+                                var thisPageID = (d.values.filter(function(d, i) {
+                                    return d.Part == thisPage
+                                }))[0].ID
+
+                                d3.selectAll('.detail_cover')
+                                .attr("xlink:href", function(d) {
+                                    return "./img/m/" + thisPageID + ".jpg"})
+                            }
+
+
+                            }
+//Ende
+
+
                         }
 
                     })
@@ -6006,17 +6612,21 @@ console.log(scrollTop)
                             var thisPageID = d3.select(this).datum().ID
 
 //console.log(thisPageID)
+if (scrollTop > 500 ){
+                                d3.selectAll('.detail_cover')
+                                .attr("xlink:href", function(d) {
+                                    return "./img/m/" + thisPageID + ".jpg"})
+                                }
 
-                                d3.select('.tooltip')
-                                    .style("display", "block")
-                                    .style('top', d3.event.pageY - 200 + 'px')
-                                    .style('left', d3.event.pageX + 25 + 'px')
 
-                                tooltip.select("img").attr("src", function() {
-                                    return "./img/m/" + thisPageID + ".jpg"
-                                })
 
-                        }
+}else if (scrollTop <= 500 ){
+
+  tooltip.select("img").attr("src", function() {
+      return "./img/m/" + thisPageID + ".jpg"
+  })
+
+}
 
                     })
 
@@ -6072,7 +6682,7 @@ console.log(scrollTop)
                         var nodeXPos = Number(node.attr("x")) + bookGroupPosition
                         context.fillStyle = node.attr("fill");
                         context.globalAlpha = node.attr("opacity")
-                        // context.shadowBlur = 0
+              //          context.shadowBlur = 0
 
 
                         context.beginPath();
@@ -6092,11 +6702,14 @@ console.log(scrollTop)
 
                         context.fillStyle = node.attr("fill");
                         context.globalAlpha = node.attr("opacity")
-                    //  context.globalCompositeOperation = 'multiply';
+                        //context.globalCompositeOperation = 'multiply';
 
                         // if (filter != null && node.attr("opacity")!= 0){
+
+
                         // context.shadowColor = node.attr("fill");
-                        // context.shadowBlur = 10;}
+                        // context.shadowBlur = 5
+                        //;}
                         // else{ context.shadowBlur = 0}
 
                         context.beginPath();
