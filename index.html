@@ -142,7 +142,7 @@
         #header {
             z-index: 200;
             position: fixed;
-            left: 105px;
+            left: 125px;
             top: 0px;
             width: 100%;
         }
@@ -524,7 +524,7 @@
         }
 
         .BuchTitelLabel {
-            font-size: 11px;
+            font-size: 12px;
         }
 
         .detailinfo {
@@ -1635,7 +1635,7 @@ var scrollTop2 = Math.max(window.pageYOffset, document.documentElement.scrollTop
 
 
 
-            var marginleft = 22
+            var marginleft = 42
             var marginright = 30
 
             var xOffset = 2
@@ -3143,13 +3143,13 @@ draw()
                 .attr("transform", function(d, i) {
                     if (i == 0) {
                         posx = 0
-                        return "translate(" + (marginleft-21.5 + (posx)) + "," + (posY) + ")"
+                        return "translate(" + (marginleft-40.5 + (posx)) + "," + (posY) + ")"
                     } else if (i != 0 && datenByTitle[i - 1].values[0].Verfasser != d.values[0].Verfasser && d.values[0].AuthorCount > 1) {
                         posx = posx + authorAbstand
-                        return "translate(" + (marginleft-21.5 + (posx)) + "," + (posY) + ")"
+                        return "translate(" + (marginleft-40.5 + (posx)) + "," + (posY) + ")"
                     } else {
                         posx = posx + buchBgBreite
-                        return "translate(" + (marginleft-21.5 + (posx)) + "," + (posY) + ")"
+                        return "translate(" + (marginleft-40.5 + (posx)) + "," + (posY) + ")"
                     }
                 })
                 .attr("class", "bookTitleFrontG")
@@ -3158,14 +3158,31 @@ draw()
 
                 bookTitleFront.append("rect")
                 .attr("height", 1500)
-                .attr("width", 20)
+                .attr("width", 40)
                 .attr("fill", "#474747")
                 .attr("class", "BuchTitelRect")
 
-                bookTitleFront.append("text").attr("x", -2).attr("y", 10).style("text-anchor", "end")
+
+                bookTitleFront.append("text").attr("x", -4).attr("y", 16).style("text-anchor", "end")
                 .text(function(d) {
-                    if (d.values[0].BuchTitel.length > 80) {
-                        return (d.values[0].BuchTitel).substring(0, 80) + " [...]"
+                    if (d.values[0].Verfasser_Original.length > 70) {
+                        return (d.values[0].Verfasser_Original).substring(0, 70) + " [...]"
+                    } else {
+                        return d.values[0].Verfasser_Original
+                    }
+                })
+                .attr("fill", "white")
+                .attr("class", "BuchTitelLabel")
+                .style("font-weight", "bold")
+                .style("letter-spacing", "1px")
+                .attr("transform", "rotate(-90)")
+
+
+
+              bookTitleFront.append("text").attr("x", -4).attr("y", 32).style("text-anchor", "end")
+                .text(function(d) {
+                    if (d.values[0].BuchTitel.length > 70) {
+                        return (d.values[0].BuchTitel).substring(0, 70) + " [...]"
                     } else {
                         return d.values[0].BuchTitel
                     }
@@ -3173,6 +3190,15 @@ draw()
                 .attr("fill", "white")
                 .attr("class", "BuchTitelLabel")
                 .attr("transform", "rotate(-90)")
+
+
+                bookTitleFront.append("text").attr("x", -areaheight).attr("y", 24).style("text-anchor", "start")
+                  .text(function(d) {
+                          return d.values[0].Genre + " (1802)"
+                  })
+                  .attr("fill", "white")
+                  .attr("class", "BuchTitelLabel")
+                  .attr("transform", "rotate(-90)")
 
 
             var authorGroup = bookG
@@ -3463,7 +3489,7 @@ draw()
                             d3.select(".tooltip")
                                 .style("display", "block")
                                 .style('top', d3.event.pageY - 100 + 'px')
-                                .style('left', d3.event.pageX + 25 + 'px')
+                                .style('left', function(){if (d3.event.pageX < width/2){return d3.event.pageX + 25 + 'px'}else {return d3.event.pageX -250 + 'px'}})
 
                             tooltip.select("img").attr("src", function() {
                                 return "./img/m/" + thisPageID + ".jpg"
@@ -3977,16 +4003,16 @@ var thisData = 0
                     .attr("transform", function(d, i) {
                         if (i == 0) {
                             posx = 0
-                            return "translate(" + (marginleft + (posx)-21.5) + "," + (posY) + ")"
+                            return "translate(" + (marginleft + (posx)-40.5) + "," + (posY) + ")"
                         } else if (i != 0 && datenByTitle[i - 1].values[0].BookID == clickedBook) {
                             posx = posx + BuchauswahlFeldScale(scrollTop)
-                            return "translate(" + (marginleft + (posx)-21.5) + "," + (posY) + ")"
+                            return "translate(" + (marginleft + (posx)-40.5) + "," + (posY) + ")"
                         } else if (i != 0 && datenByTitle[i - 1].values[0].Verfasser != d.values[0].Verfasser) {
                             posx = posx + onSelectionAuthorAbstand
-                            return "translate(" + (marginleft + (posx)-21.5) + "," + (posY) + ")"
+                            return "translate(" + (marginleft + (posx)-40.5) + "," + (posY) + ")"
                         } else {
                             posx = posx + onSelectionBuchAbstand
-                            return "translate(" + (marginleft + (posx)-21.5) + "," + (posY) + ")"
+                            return "translate(" + (marginleft + (posx)-40.5) + "," + (posY) + ")"
                         }
                     })
 
@@ -6056,7 +6082,7 @@ bookFingerprint.selectAll(".nodesbg")
                                                     if (i == 0) {
                                                         posx3 = 0
                                                         posx = 0
-                                                        return "translate(" + (marginleft - 1 + (posx3)-21.5) + "," + (posY) + ")"
+                                                        return "translate(" + (marginleft - 1 + (posx3)-40.5) + "," + (posY) + ")"
 
                                                         //falls vorheriges Element Selected und anderer Verfasser
                                                     } else if (i != 0 && datenByTitle[i - 1].values[0].Verfasser != d.values[0].Verfasser && datenByTitle[i - 1].values[0].Verfasser == thisVerfasserSelected) {
@@ -6068,7 +6094,7 @@ bookFingerprint.selectAll(".nodesbg")
                                                             .range([posx, posx3])
                                                             .clamp(true)
 
-                                                        return "translate(" + (marginleft + (implicateScaleX1(scrollTop))-21.5) + "," + (posY) + ")"
+                                                        return "translate(" + (marginleft + (implicateScaleX1(scrollTop))-40.5) + "," + (posY) + ")"
 
                                                         //falls vorheriges Element Selected und gleicher Verfasser
                                                     } else if (i != 0 && datenByTitle[i - 1].values[0].Verfasser == thisVerfasserSelected) {
@@ -6080,7 +6106,7 @@ bookFingerprint.selectAll(".nodesbg")
                                                             .range([posx, posx3])
                                                             .clamp(true)
 
-                                                        return "translate(" + (marginleft + (implicateScaleX1(scrollTop))-21.5) + "," + (posY) + ")"
+                                                        return "translate(" + (marginleft + (implicateScaleX1(scrollTop))-40.5) + "," + (posY) + ")"
 
                                                         //falls vorheriges Element NICHT Selected und anderer Verfasser
                                                     } else if (i != 0 && datenByTitle[i - 1].values[0].Verfasser != d.values[0].Verfasser && datenByTitle[i - 1].values[0].Verfasser != thisVerfasserSelected) {
@@ -6092,7 +6118,7 @@ bookFingerprint.selectAll(".nodesbg")
                                                             .range([posx, posx3])
                                                             .clamp(true)
 
-                                                        return "translate(" + (marginleft + (implicateScaleX1(scrollTop))-21.5) + "," + (posY) + ")"
+                                                        return "translate(" + (marginleft + (implicateScaleX1(scrollTop))-40.5) + "," + (posY) + ")"
 
                                                         //falls vorheriges Element NICHT Selected und gleicher Verfasser
                                                     } else {
@@ -6104,7 +6130,7 @@ bookFingerprint.selectAll(".nodesbg")
                                                             .range([posx, posx3])
                                                             .clamp(true)
 
-                                                        return "translate(" + (marginleft + (implicateScaleX1(scrollTop))-21.5) + "," + (posY) + ")"
+                                                        return "translate(" + (marginleft + (implicateScaleX1(scrollTop))-40.5) + "," + (posY) + ")"
                                                     }
                                                 })
 
@@ -6342,16 +6368,16 @@ if (clickedBook != 0 && scrollTop >0){
               .attr("transform", function(d, i) {
                   if (i == 0) {
                       posx = 0
-                      return "translate(" + (marginleft + (posx)-21.5) + "," + (posY) + ")"
+                      return "translate(" + (marginleft + (posx)-40.5) + "," + (posY) + ")"
                   } else if (i != 0 && datenByTitle[i - 1].values[0].BookID == clickedBook) {
                       posx = posx + BuchauswahlFeldScale(scrollTop)
-                      return "translate(" + (marginleft + (posx)-21.5) + "," + (posY) + ")"
+                      return "translate(" + (marginleft + (posx)-40.5) + "," + (posY) + ")"
                   } else if (i != 0 && datenByTitle[i - 1].values[0].Verfasser != d.values[0].Verfasser) {
                       posx = posx + onSelectionAuthorAbstand
-                      return "translate(" + (marginleft + (posx)-21.5) + "," + (posY) + ")"
+                      return "translate(" + (marginleft + (posx)-40.5) + "," + (posY) + ")"
                   } else {
                       posx = posx + onSelectionBuchAbstand
-                      return "translate(" + (marginleft + (posx)-21.5) + "," + (posY) + ")"
+                      return "translate(" + (marginleft + (posx)-40.5) + "," + (posY) + ")"
                   }
               })
 
@@ -6557,8 +6583,8 @@ var thisTranscriptY = d3.select(this).node().getBBox().y
 
                                 d3.select('.tooltip')
                                     .style("display", "block")
-                                    .style('top', d3.event.pageY - 200 + 'px')
-                                    .style('left', d3.event.pageX + 25 + 'px')
+                                    .style('top', d3.event.pageY - 100 + 'px')
+                                    .style('left', function(){if (d3.event.pageX < width/2){return d3.event.pageX + 25 + 'px'}else {return d3.event.pageX -250 + 'px'}})
 
                                 tooltip.select("img").attr("src", function() {
                                     return "./img/m/" + thisPageID + ".jpg"
