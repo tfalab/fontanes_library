@@ -995,7 +995,17 @@ var scrollTop2 = Math.max(window.pageYOffset, document.documentElement.scrollTop
 
         ///Load data
       //  d3.csv("data/data.csv", function(error, dataset) {
-        d3.csv("data/data.csv").then(function(dataset) {
+
+      Promise.all([
+        d3.csv("data/data.csv"),
+        d3.csv("data/korpus.csv"),
+      ])
+      .then(([dataset, korpus]) =>  {
+      //   console.log(dataset)
+         console.log(korpus)
+      // });
+      //
+      //   d3.csv("data/data.csv").then(function(dataset) {
 
 
 
@@ -3182,12 +3192,12 @@ draw()
 
 
               bookTitleFront.append("text").attr("x", -4).attr("y", 32).style("text-anchor", "end")
-                .text(function(d) {
-                    if (d.values[0].BuchTitel.length > 70) {
-                        return (d.values[0].BuchTitel).substring(0, 70) + " [...]"
+                .text(function(d) {if(korpus.filter(function(D,I){return D.KurzSignatur == d.values[0].BookID})[0]){
+                    if (korpus.filter(function(D,I){return D.KurzSignatur == d.values[0].BookID})[0].Kurztitel.length > 70) {
+                        return (korpus.filter(function(D,I){return D.KurzSignatur == d.values[0].BookID})[0].Kurztitel).substring(0, 70) + " [...]"
                     } else {
-                        return d.values[0].BuchTitel
-                    }
+                        return korpus.filter(function(D,I){return D.KurzSignatur == d.values[0].BookID})[0].Kurztitel
+                    }}
                 })
                 .attr("fill", "white")
                 .attr("class", "BuchTitelLabel")
@@ -3195,9 +3205,12 @@ draw()
 
 
                 bookTitleFront.append("text").attr("x", -areaheight).attr("y", 24).style("text-anchor", "start")
-                  .text(function(d) {
-                          return d.values[0].Genre + " (1802)"
-                  })
+                  .text(function(d) {if(korpus.filter(function(D,I){return D.KurzSignatur == d.values[0].BookID})[0])
+                          {if (korpus.filter(function(D,I){return D.KurzSignatur == d.values[0].BookID})[0].Formalschlagwort_Genre != "null"){
+
+                            return korpus.filter(function(D,I){return D.KurzSignatur == d.values[0].BookID})[0].Formalschlagwort_Genre +" ("+korpus.filter(function(D,I){return D.KurzSignatur == d.values[0].BookID})[0].Jahr+")"
+}else{return "("+korpus.filter(function(D,I){return D.KurzSignatur == d.values[0].BookID})[0].Jahr +")"}
+                  }})
                   .attr("fill", "white")
                   .attr("class", "BuchTitelLabel")
                   .attr("transform", "rotate(-90)")
@@ -4192,7 +4205,7 @@ var thisData = 0
                     detailInfoTextBox.append("text")
                         .attr("class", "detail_genre")
                         .text(function(d) {
-                            return "Genre: " + d.values[0].Genre
+                            return "Genre: " + korpus.filter(function(D,I){return D.KurzSignatur == d.values[0].BookID})[0].Formalschlagwort_Genre//d.values[0].Genre
                         })
                         .attr("y", function() {
                             return 290})
@@ -4207,8 +4220,8 @@ var thisData = 0
                     detailInfoTextBox.append("text")
                         .attr("class", "detail_year")
                         .text(function(d) {
-                            return "Datierung: " + "XXXX"
-                        })
+                        return "Datierung: " + korpus.filter(function(D,I){return D.KurzSignatur == d.values[0].BookID})[0].Jahr//d.values[0].Genre
+                    })
                         .attr("y", function() {
                             return 310// + ((d3.select(".detail_genre")).node().getBBox().height) + ((d3.select(".detail_titel")).node().getBBox().height) + (d3.select(".detail_verfasser")).node().getBBox().height
                         })
