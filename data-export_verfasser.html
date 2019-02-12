@@ -31,12 +31,12 @@
         body {
              font-family: 'Roboto', sans-serif;
 
-            background-color: #EBE3DD;
+            background-color:white;
             margin: 0;
             overflow-y: scroll;
             overflow-x: scroll;
             width: 100%;
-            height: 45000px;
+            font-size: 10px;
         }
 
         /* ::-webkit-scrollbar {
@@ -63,6 +63,7 @@
             font-size: 12px;
             width: 1000px;
             height: 60px;
+            display:none;
             /*  letter-spacing: 0.5px */
             /* display: none; */
         }
@@ -155,6 +156,7 @@
             left: 125px;
             top: 0px;
             width: 100%;
+            display:none;
         }
 
 
@@ -169,6 +171,7 @@
             top: 0px;
             box-shadow: 2px 0px 5px grey;
             padding-top: 0px;
+            display:none;
         }
 
         #scrollnavi p {
@@ -188,6 +191,7 @@
             position: fixed;
             width: 80px;
             height: 100%;
+            display:none;
         }
 
         #headerIcons {
@@ -283,6 +287,7 @@
             width: 120px;
             left: 0;
             top: 0px;
+            display:none;
         }
 
         #svg {
@@ -290,6 +295,7 @@
             margin-left: 83px;
             left: 0;
             margin-top: 150px;
+            display:none;
         }
 
         #svgFront {
@@ -299,6 +305,7 @@
             left: 0;
             margin-top: 150px;
             pointer-events: none;
+            display:none;
         }
 
         #svgFrontTitles {
@@ -309,6 +316,7 @@
             margin-top: 150px;
             pointer-events: none;
             display:  inline;
+            display:none;
         }
 
         canvas {
@@ -319,6 +327,7 @@
             width: 100%;
             height: 6500px;
             pointer-events: none;
+            display:none;
         }
 
 
@@ -1074,6 +1083,15 @@ var scrollTop2 = Math.max(window.pageYOffset, document.documentElement.scrollTop
 
 
 
+
+
+
+
+
+
+
+
+
 ///////////////////search
 var searchDaten = [
     {
@@ -1190,8 +1208,18 @@ $("#search").on("select2-clearing", function(e) {
             })
 
 
-          //  console.log(datenByTitle)
 
+           var countSpuren = []
+
+           datenByTitle.forEach(function(D,I){
+            countSpuren.push({
+              id: I,
+              book: D.key
+            })
+
+           })
+
+           console.table(countSpuren)
 
             //console.log(datenByTitle)
             //////////legend///////////////////////////////////////
@@ -2133,6 +2161,7 @@ draw()
 
             datenByAuthor.forEach(function(D, I) {
                 D.Abschnitte = []
+                D.Seitenzahl = 0
                 //	D.Abschnitte2 = []
                 //	D.Abschnitte2.push({Provenienz:[0,0,0,0,0,0,0,0,0,0], Stempel:[], Anstreichung:[], Unterstreichung:[], Durchstreichung:[], SonstigeMarkierung:[], ZusatzMaterial:[],Bewertung:[],Kommentar:[],Textkorrektur:[],Variante:[],Uebersetzung:[],Anderes:[],Leer:[]})
                 D.Abschnitte.push({
@@ -2557,6 +2586,9 @@ draw()
 
 
                 D.values.forEach(function(E, G) {
+                  D.Seitenzahl = D.Seitenzahl + +E.values[0].maxPart
+                  console.log(E.values[0].maxPart)
+
                     E.values.forEach(function(F, C) {
                         if (F.Part / F.maxPart <= 0.05) {
                             if (F.SchriftspurTyp === "P" && F.Schreibmedium !== "Stempel") {
@@ -3208,7 +3240,76 @@ draw()
             D.maxTraceNumberNorm = D.maxTraceNumber/D.Abschnitte[0].BuchAnzahlAutor
           //  D.maxTraceNumberNormBefore = datenByAuthor[I-1].maxTraceNumberNorm
 
+            D.Anstreichung = D.Abschnitte[0].Anstreichung + D.Abschnitte[1].Anstreichung + D.Abschnitte[2].Anstreichung + D.Abschnitte[3].Anstreichung + D.Abschnitte[4].Anstreichung
+            +D.Abschnitte[5].Anstreichung + D.Abschnitte[6].Anstreichung + D.Abschnitte[7].Anstreichung + D.Abschnitte[8].Anstreichung + D.Abschnitte[9].Anstreichung + D.Abschnitte[10].Anstreichung
+            + D.Abschnitte[11].Anstreichung + D.Abschnitte[12].Anstreichung + D.Abschnitte[13].Anstreichung+ D.Abschnitte[14].Anstreichung+ D.Abschnitte[15].Anstreichung+ D.Abschnitte[16].Anstreichung
+            + D.Abschnitte[17].Anstreichung+ D.Abschnitte[18].Anstreichung+ D.Abschnitte[19].Anstreichung + D.Abschnitte[20].Anstreichung
+
+            D.Unterstreichung = D.Abschnitte[0].Unterstreichung + D.Abschnitte[1].Unterstreichung + D.Abschnitte[2].Unterstreichung + D.Abschnitte[3].Unterstreichung + D.Abschnitte[4].Unterstreichung
+            +D.Abschnitte[5].Unterstreichung + D.Abschnitte[6].Unterstreichung + D.Abschnitte[7].Unterstreichung + D.Abschnitte[8].Unterstreichung + D.Abschnitte[9].Unterstreichung + D.Abschnitte[10].Unterstreichung
+            + D.Abschnitte[11].Unterstreichung + D.Abschnitte[12].Unterstreichung + D.Abschnitte[13].Unterstreichung+ D.Abschnitte[14].Unterstreichung+ D.Abschnitte[15].Unterstreichung+ D.Abschnitte[16].Unterstreichung
+            + D.Abschnitte[17].Unterstreichung+ D.Abschnitte[18].Unterstreichung+ D.Abschnitte[19].Unterstreichung + D.Abschnitte[20].Unterstreichung
+
+            D.Durchstreichung = D.Abschnitte[0].Durchstreichung + D.Abschnitte[1].Durchstreichung + D.Abschnitte[2].Durchstreichung + D.Abschnitte[3].Durchstreichung + D.Abschnitte[4].Durchstreichung
+            +D.Abschnitte[5].Durchstreichung + D.Abschnitte[6].Durchstreichung + D.Abschnitte[7].Durchstreichung + D.Abschnitte[8].Durchstreichung + D.Abschnitte[9].Durchstreichung + D.Abschnitte[10].Durchstreichung
+            + D.Abschnitte[11].Durchstreichung + D.Abschnitte[12].Durchstreichung + D.Abschnitte[13].Durchstreichung+ D.Abschnitte[14].Durchstreichung+ D.Abschnitte[15].Durchstreichung+ D.Abschnitte[16].Durchstreichung
+            + D.Abschnitte[17].Durchstreichung+ D.Abschnitte[18].Durchstreichung+ D.Abschnitte[19].Durchstreichung + D.Abschnitte[20].Durchstreichung
+
+            D.SonstigeMarkierung = D.Abschnitte[0].SonstigeMarkierung + D.Abschnitte[1].SonstigeMarkierung + D.Abschnitte[2].SonstigeMarkierung + D.Abschnitte[3].SonstigeMarkierung + D.Abschnitte[4].SonstigeMarkierung
+            +D.Abschnitte[5].SonstigeMarkierung + D.Abschnitte[6].SonstigeMarkierung + D.Abschnitte[7].SonstigeMarkierung + D.Abschnitte[8].SonstigeMarkierung + D.Abschnitte[9].SonstigeMarkierung + D.Abschnitte[10].SonstigeMarkierung
+            + D.Abschnitte[11].SonstigeMarkierung + D.Abschnitte[12].SonstigeMarkierung + D.Abschnitte[13].SonstigeMarkierung+ D.Abschnitte[14].SonstigeMarkierung+ D.Abschnitte[15].SonstigeMarkierung+ D.Abschnitte[16].SonstigeMarkierung
+            + D.Abschnitte[17].SonstigeMarkierung+ D.Abschnitte[18].SonstigeMarkierung+ D.Abschnitte[19].SonstigeMarkierung + D.Abschnitte[20].SonstigeMarkierung
+
+            D.ZusatzMaterial = D.Abschnitte[0].ZusatzMaterial + D.Abschnitte[1].ZusatzMaterial + D.Abschnitte[2].ZusatzMaterial + D.Abschnitte[3].ZusatzMaterial + D.Abschnitte[4].ZusatzMaterial
+            +D.Abschnitte[5].ZusatzMaterial + D.Abschnitte[6].ZusatzMaterial + D.Abschnitte[7].ZusatzMaterial + D.Abschnitte[8].ZusatzMaterial + D.Abschnitte[9].ZusatzMaterial + D.Abschnitte[10].ZusatzMaterial
+            + D.Abschnitte[11].ZusatzMaterial + D.Abschnitte[12].ZusatzMaterial + D.Abschnitte[13].ZusatzMaterial+ D.Abschnitte[14].ZusatzMaterial+ D.Abschnitte[15].ZusatzMaterial+ D.Abschnitte[16].ZusatzMaterial
+            + D.Abschnitte[17].ZusatzMaterial+ D.Abschnitte[18].ZusatzMaterial+ D.Abschnitte[19].ZusatzMaterial + D.Abschnitte[20].ZusatzMaterial
+
+            D.Anderes = D.Abschnitte[0].Anderes + D.Abschnitte[1].Anderes + D.Abschnitte[2].Anderes + D.Abschnitte[3].Anderes + D.Abschnitte[4].Anderes
+            +D.Abschnitte[5].Anderes + D.Abschnitte[6].Anderes + D.Abschnitte[7].Anderes + D.Abschnitte[8].Anderes + D.Abschnitte[9].Anderes + D.Abschnitte[10].Anderes
+            + D.Abschnitte[11].Anderes + D.Abschnitte[12].Anderes + D.Abschnitte[13].Anderes+ D.Abschnitte[14].Anderes+ D.Abschnitte[15].Anderes+ D.Abschnitte[16].Anderes
+            + D.Abschnitte[17].Anderes+ D.Abschnitte[18].Anderes+ D.Abschnitte[19].Anderes + D.Abschnitte[20].Anderes
+
+
+                        D.Provenienz = D.Abschnitte[0].Provenienz + D.Abschnitte[1].Provenienz + D.Abschnitte[2].Provenienz + D.Abschnitte[3].Provenienz + D.Abschnitte[4].Provenienz
+                        +D.Abschnitte[5].Provenienz + D.Abschnitte[6].Provenienz + D.Abschnitte[7].Provenienz + D.Abschnitte[8].Provenienz + D.Abschnitte[9].Provenienz + D.Abschnitte[10].Provenienz
+                        + D.Abschnitte[11].Provenienz + D.Abschnitte[12].Provenienz + D.Abschnitte[13].Provenienz+ D.Abschnitte[14].Provenienz+ D.Abschnitte[15].Provenienz+ D.Abschnitte[16].Provenienz
+                        + D.Abschnitte[17].Provenienz+ D.Abschnitte[18].Provenienz+ D.Abschnitte[19].Provenienz + D.Abschnitte[20].Provenienz
+
+                        D.Stempel = D.Abschnitte[0].Stempel + D.Abschnitte[1].Stempel + D.Abschnitte[2].Stempel + D.Abschnitte[3].Stempel + D.Abschnitte[4].Stempel
+                        +D.Abschnitte[5].Stempel + D.Abschnitte[6].Stempel + D.Abschnitte[7].Stempel + D.Abschnitte[8].Stempel + D.Abschnitte[9].Stempel + D.Abschnitte[10].Stempel
+                        + D.Abschnitte[11].Stempel + D.Abschnitte[12].Stempel + D.Abschnitte[13].Stempel+ D.Abschnitte[14].Stempel+ D.Abschnitte[15].Stempel+ D.Abschnitte[16].Stempel
+                        + D.Abschnitte[17].Stempel+ D.Abschnitte[18].Stempel+ D.Abschnitte[19].Stempel + D.Abschnitte[20].Stempel
+
+                        D.Bewertung = D.Abschnitte[0].Bewertung + D.Abschnitte[1].Bewertung + D.Abschnitte[2].Bewertung + D.Abschnitte[3].Bewertung + D.Abschnitte[4].Bewertung
+                        +D.Abschnitte[5].Bewertung + D.Abschnitte[6].Bewertung + D.Abschnitte[7].Bewertung + D.Abschnitte[8].Bewertung + D.Abschnitte[9].Bewertung + D.Abschnitte[10].Bewertung
+                        + D.Abschnitte[11].Bewertung + D.Abschnitte[12].Bewertung + D.Abschnitte[13].Bewertung+ D.Abschnitte[14].Bewertung+ D.Abschnitte[15].Bewertung+ D.Abschnitte[16].Bewertung
+                        + D.Abschnitte[17].Bewertung+ D.Abschnitte[18].Bewertung+ D.Abschnitte[19].Bewertung + D.Abschnitte[20].Bewertung
+
+                        D.Kommentar = D.Abschnitte[0].Kommentar + D.Abschnitte[1].Kommentar + D.Abschnitte[2].Kommentar + D.Abschnitte[3].Kommentar + D.Abschnitte[4].Kommentar
+                        +D.Abschnitte[5].Kommentar + D.Abschnitte[6].Kommentar + D.Abschnitte[7].Kommentar + D.Abschnitte[8].Kommentar + D.Abschnitte[9].Kommentar + D.Abschnitte[10].Kommentar
+                        + D.Abschnitte[11].Kommentar + D.Abschnitte[12].Kommentar + D.Abschnitte[13].Kommentar+ D.Abschnitte[14].Kommentar+ D.Abschnitte[15].Kommentar+ D.Abschnitte[16].Kommentar
+                        + D.Abschnitte[17].Kommentar+ D.Abschnitte[18].Kommentar+ D.Abschnitte[19].Kommentar + D.Abschnitte[20].Kommentar
+
+                        D.Textkorrektur = D.Abschnitte[0].Textkorrektur + D.Abschnitte[1].Textkorrektur + D.Abschnitte[2].Textkorrektur + D.Abschnitte[3].Textkorrektur + D.Abschnitte[4].Textkorrektur
+                        +D.Abschnitte[5].Textkorrektur + D.Abschnitte[6].Textkorrektur + D.Abschnitte[7].Textkorrektur + D.Abschnitte[8].Textkorrektur + D.Abschnitte[9].Textkorrektur + D.Abschnitte[10].Textkorrektur
+                        + D.Abschnitte[11].Textkorrektur + D.Abschnitte[12].Textkorrektur + D.Abschnitte[13].Textkorrektur+ D.Abschnitte[14].Textkorrektur+ D.Abschnitte[15].Textkorrektur+ D.Abschnitte[16].Textkorrektur
+                        + D.Abschnitte[17].Textkorrektur+ D.Abschnitte[18].Textkorrektur+ D.Abschnitte[19].Textkorrektur + D.Abschnitte[20].Textkorrektur
+
+                        D.Variante = D.Abschnitte[0].Variante + D.Abschnitte[1].Variante + D.Abschnitte[2].Variante + D.Abschnitte[3].Variante + D.Abschnitte[4].Variante
+                        +D.Abschnitte[5].Variante + D.Abschnitte[6].Variante + D.Abschnitte[7].Variante + D.Abschnitte[8].Variante + D.Abschnitte[9].Variante + D.Abschnitte[10].Variante
+                        + D.Abschnitte[11].Variante + D.Abschnitte[12].Variante + D.Abschnitte[13].Variante+ D.Abschnitte[14].Variante+ D.Abschnitte[15].Variante+ D.Abschnitte[16].Variante
+                        + D.Abschnitte[17].Variante+ D.Abschnitte[18].Variante+ D.Abschnitte[19].Variante + D.Abschnitte[20].Variante
+
+                        D.Uebersetzung = D.Abschnitte[0].Uebersetzung + D.Abschnitte[1].Uebersetzung + D.Abschnitte[2].Uebersetzung + D.Abschnitte[3].Uebersetzung + D.Abschnitte[4].Uebersetzung
+                        +D.Abschnitte[5].Uebersetzung + D.Abschnitte[6].Uebersetzung + D.Abschnitte[7].Uebersetzung + D.Abschnitte[8].Uebersetzung + D.Abschnitte[9].Uebersetzung + D.Abschnitte[10].Uebersetzung
+                        + D.Abschnitte[11].Uebersetzung + D.Abschnitte[12].Uebersetzung + D.Abschnitte[13].Uebersetzung+ D.Abschnitte[14].Uebersetzung+ D.Abschnitte[15].Uebersetzung+ D.Abschnitte[16].Uebersetzung
+                        + D.Abschnitte[17].Uebersetzung+ D.Abschnitte[18].Uebersetzung+ D.Abschnitte[19].Uebersetzung + D.Abschnitte[20].Uebersetzung
+
+
+
             })
+
 
             datenByAuthor.forEach(function(D, I) {
 
@@ -3221,6 +3322,26 @@ draw()
               D.maxTraceNumberNormBefore = datenByAuthor[I-1].maxTraceNumberNorm
 }
             })
+
+
+
+
+
+
+
+console.log(datenByAuthor[0].Abschnitte)
+
+
+
+
+
+
+
+
+
+
+
+
 
 
             var posx = 0
@@ -3678,7 +3799,7 @@ draw()
                     //    console.log(mouseY)
                         //console.log(mouseY/pageheight)
                         //console.log(d.values)
-                        var thisPage = Math.round(round45(mouseY) / pageheight) + 1
+                        var thisPage = (round45(mouseY) / pageheight) + 1
                     //    console.log(thisPage)
                         function round45(x) {
                             return Math.ceil(x / pageheight) * pageheight
@@ -6780,7 +6901,7 @@ var thisTranscriptY = d3.select(this).node().getBBox().y
                             //console.log(d.values)
 
                       //      console.log(mouseY)
-                            var thisPage = Math.round(round45(mouseY) / explicateScale2(scrollTop))
+                            var thisPage = (round45(mouseY) / explicateScale2(scrollTop))
 //console.log(thisPage)
 
                             function round45(x) {
@@ -6968,6 +7089,92 @@ if (scrollTop > 500 ){
                 })
 
             }
+
+
+
+
+
+console.log(datenByTitle)
+
+
+
+
+
+var table = d3.select('body').append('table')
+  var thead = table.append('thead')
+  var	tbody = table.append('tbody');
+
+
+console.log(datenByTitle)
+console.log(datenByAuthor)
+
+
+
+      // create a row for each object in the data
+      d3.select("body").append("p")
+      .text("Autor*Seitenzahl*Buchzahl*Anstreichung*Unterstreichung*Durchstreichung*SonstigeMarkierung*ZusatzMaterial*Anderes*Provenienz*Stempel*Kommentar*Bewertung*Textkorrektur*Variante*Uebersetzung*AnstreichungNorm*UnterstreichungNorm*DurchstreichungNorm*SonstigeMarkierungNorm*ZusatzMaterialNorm*AnderesNorm*ProvenienzNorm*StempelNorm*KommentarNorm*BewertungNorm*TextkorrekturNorm*VarianteNorm*UebersetzungNorm*AnstreichungBuchNorm*UnterstreichungBuchNorm*DurchstreichungBuchNorm*SonstigeMarkierungBuchNorm*ZusatzMaterialBuchNorm*AnderesBuchNorm*ProvenienzBuchNorm*StempelBuchNorm*KommentarBuchNorm*BewertungBuchNorm*TextkorrekturBuchNorm*VarianteBuchNorm*UebersetzungBuchNorm")
+
+    		d3.select("body").selectAll(".zeilen")
+    		  .data(datenByAuthor)
+    		  .enter()
+    		  .append('p')
+          .attr("class", "zeilen")
+          .text(function(d){return d.key
+            +"*"+ d.Seitenzahl
+            +"*"+ d.values.length
+            +"*"+ d.Anstreichung
+            +"*"+ d.Unterstreichung
+            +"*"+ d.Durchstreichung
+            +"*"+ d.SonstigeMarkierung
+            +"*"+ d.ZusatzMaterial
+            +"*"+ d.Anderes
+            +"*"+ d.Provenienz
+            +"*"+ d.Stempel
+            +"*"+ d.Kommentar
+            +"*"+ d.Bewertung
+            +"*"+ d.Textkorrektur
+            +"*"+ d.Variante
+            +"*"+ d.Uebersetzung
+
+            //norm nach Seiten
+            +"*"+ (d.Anstreichung / d.Seitenzahl).toFixed(6)
+            +"*"+ (d.Unterstreichung / d.Seitenzahl).toFixed(6)
+            +"*"+ (d.Durchstreichung / d.Seitenzahl).toFixed(6)
+            +"*"+ (d.SonstigeMarkierung / d.Seitenzahl).toFixed(6)
+            +"*"+ (d.ZusatzMaterial / d.Seitenzahl).toFixed(6)
+            +"*"+ (d.Anderes / d.Seitenzahl).toFixed(6)
+            +"*"+ (d.Provenienz / d.Seitenzahl).toFixed(6)
+            +"*"+ (d.Stempel / d.Seitenzahl).toFixed(6)
+            +"*"+ (d.Kommentar / d.Seitenzahl).toFixed(6)
+            +"*"+ (d.Bewertung / d.Seitenzahl).toFixed(6)
+            +"*"+ (d.Textkorrektur / d.Seitenzahl).toFixed(6)
+            +"*"+ (d.Variante / d.Seitenzahl).toFixed(6)
+            +"*"+ (d.Uebersetzung / d.Seitenzahl).toFixed(6)
+
+            //norm nach Buch
+            +"*"+ (d.Anstreichung / d.values.length).toFixed(6)
+            +"*"+ (d.Unterstreichung / d.values.length).toFixed(6)
+            +"*"+ (d.Durchstreichung / d.values.length).toFixed(6)
+            +"*"+ (d.SonstigeMarkierung / d.values.length).toFixed(6)
+            +"*"+ (d.ZusatzMaterial / d.values.length).toFixed(6)
+            +"*"+ (d.Anderes / d.values.length).toFixed(6)
+            +"*"+ (d.Provenienz / d.values.length).toFixed(6)
+            +"*"+ (d.Stempel / d.values.length).toFixed(6)
+            +"*"+ (d.Kommentar / d.values.length).toFixed(6)
+            +"*"+ (d.Bewertung / d.values.length).toFixed(6)
+            +"*"+ (d.Textkorrektur / d.values.length).toFixed(6)
+            +"*"+ (d.Variante / d.values.length).toFixed(6)
+            +"*"+ (d.Uebersetzung / d.values.length).toFixed(6)
+        });
+
+
+
+
+
+
+
+
+
 
 
 

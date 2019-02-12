@@ -31,12 +31,12 @@
         body {
              font-family: 'Roboto', sans-serif;
 
-            background-color: #EBE3DD;
+            background-color:white;
             margin: 0;
             overflow-y: scroll;
             overflow-x: scroll;
             width: 100%;
-            height: 45000px;
+            font-size: 10px;
         }
 
         /* ::-webkit-scrollbar {
@@ -63,6 +63,7 @@
             font-size: 12px;
             width: 1000px;
             height: 60px;
+            display:none;
             /*  letter-spacing: 0.5px */
             /* display: none; */
         }
@@ -155,6 +156,7 @@
             left: 125px;
             top: 0px;
             width: 100%;
+            display:none;
         }
 
 
@@ -169,6 +171,7 @@
             top: 0px;
             box-shadow: 2px 0px 5px grey;
             padding-top: 0px;
+            display:none;
         }
 
         #scrollnavi p {
@@ -188,6 +191,7 @@
             position: fixed;
             width: 80px;
             height: 100%;
+            display:none;
         }
 
         #headerIcons {
@@ -283,6 +287,7 @@
             width: 120px;
             left: 0;
             top: 0px;
+            display:none;
         }
 
         #svg {
@@ -290,6 +295,7 @@
             margin-left: 83px;
             left: 0;
             margin-top: 150px;
+            display:none;
         }
 
         #svgFront {
@@ -299,6 +305,7 @@
             left: 0;
             margin-top: 150px;
             pointer-events: none;
+            display:none;
         }
 
         #svgFrontTitles {
@@ -309,6 +316,7 @@
             margin-top: 150px;
             pointer-events: none;
             display:  inline;
+            display:none;
         }
 
         canvas {
@@ -319,6 +327,7 @@
             width: 100%;
             height: 6500px;
             pointer-events: none;
+            display:none;
         }
 
 
@@ -1074,6 +1083,15 @@ var scrollTop2 = Math.max(window.pageYOffset, document.documentElement.scrollTop
 
 
 
+
+
+
+
+
+
+
+
+
 ///////////////////search
 var searchDaten = [
     {
@@ -1190,8 +1208,18 @@ $("#search").on("select2-clearing", function(e) {
             })
 
 
-          //  console.log(datenByTitle)
 
+           var countSpuren = []
+
+           datenByTitle.forEach(function(D,I){
+            countSpuren.push({
+              id: I,
+              book: D.key
+            })
+
+           })
+
+           console.table(countSpuren)
 
             //console.log(datenByTitle)
             //////////legend///////////////////////////////////////
@@ -3223,6 +3251,26 @@ draw()
             })
 
 
+
+
+
+
+
+console.log(datenByAuthor[0].Abschnitte)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
             var posx = 0
             var posx2 = 0
 
@@ -3678,7 +3726,7 @@ draw()
                     //    console.log(mouseY)
                         //console.log(mouseY/pageheight)
                         //console.log(d.values)
-                        var thisPage = Math.round(round45(mouseY) / pageheight) + 1
+                        var thisPage = (round45(mouseY) / pageheight) + 1
                     //    console.log(thisPage)
                         function round45(x) {
                             return Math.ceil(x / pageheight) * pageheight
@@ -6780,7 +6828,7 @@ var thisTranscriptY = d3.select(this).node().getBBox().y
                             //console.log(d.values)
 
                       //      console.log(mouseY)
-                            var thisPage = Math.round(round45(mouseY) / explicateScale2(scrollTop))
+                            var thisPage = (round45(mouseY) / explicateScale2(scrollTop))
 //console.log(thisPage)
 
                             function round45(x) {
@@ -6968,6 +7016,72 @@ if (scrollTop > 500 ){
                 })
 
             }
+
+
+
+
+
+console.log(datenByTitle)
+
+
+
+
+
+var table = d3.select('body').append('table')
+  var thead = table.append('thead')
+  var	tbody = table.append('tbody');
+
+
+console.log(datenByTitle)
+      // create a row for each object in the data
+      d3.select("body").append("p")
+      .text("ID*Autor*Seitenzahl*Anstreichung*Unterstreichung*Durchstreichung*SonstigeMarkierung*ZusatzMaterial*Anderes*Provenienz*Stempel*Kommentar*Bewertung*Textkorrektur*Variante*Uebersetzung*AnstreichungNorm*UnterstreichungNorm*DurchstreichungNorm*SonstigeMarkierungNorm*ZusatzMaterialNorm*AnderesNorm*ProvenienzNorm*StempelNorm*KommentarNorm*BewertungNorm*TextkorrekturNorm*VarianteNorm*UebersetzungNorm")
+
+    		d3.select("body").selectAll(".zeilen")
+    		  .data(datenByTitle)
+    		  .enter()
+    		  .append('p')
+          .attr("class", "zeilen")
+          .text(function(d){return d.key
+            +"*"+ d.values[0].maxPart
+            +"*"+ d.values[0].Verfasser
+            +"*"+ d.values.filter(function(d){return d.Benutzungsspur == "1"}).length
+            +"*"+ d.values.filter(function(d){return d.Benutzungsspur == "2"}).length
+            +"*"+ d.values.filter(function(d){return d.Benutzungsspur == "3"}).length
+            +"*"+ d.values.filter(function(d){return d.Benutzungsspur == "4"}).length
+            +"*"+ d.values.filter(function(d){return d.Benutzungsspur == "6"}).length
+            +"*"+ d.values.filter(function(d){return d.Benutzungsspur == "7"}).length
+            +"*"+ d.values.filter(function(d){return d.SchriftspurTyp == "P" && d.Schreibmedium != "Stempel"}).length
+            +"*"+ d.values.filter(function(d){return d.SchriftspurTyp == "P" && d.Schreibmedium == "Stempel"}).length
+            +"*"+ d.values.filter(function(d){return d.SchriftspurTyp == "K"}).length
+            +"*"+ d.values.filter(function(d){return d.SchriftspurTyp == "B"}).length
+            +"*"+ d.values.filter(function(d){return d.SchriftspurTyp == "T"}).length
+            +"*"+ d.values.filter(function(d){return d.SchriftspurTyp == "V"}).length
+            +"*"+ d.values.filter(function(d){return d.SchriftspurTyp == "U"}).length
+            ///normalized
+            +"*"+ (d.values.filter(function(d){return d.Benutzungsspur == "1"}).length/d.values[0].maxPart).toFixed(6)
+            +"*"+ (d.values.filter(function(d){return d.Benutzungsspur == "2"}).length/d.values[0].maxPart).toFixed(6)
+            +"*"+ (d.values.filter(function(d){return d.Benutzungsspur == "3"}).length/d.values[0].maxPart).toFixed(6)
+            +"*"+ (d.values.filter(function(d){return d.Benutzungsspur == "4"}).length/d.values[0].maxPart).toFixed(6)
+            +"*"+ (d.values.filter(function(d){return d.Benutzungsspur == "6"}).length/d.values[0].maxPart).toFixed(6)
+            +"*"+ (d.values.filter(function(d){return d.Benutzungsspur == "7"}).length/d.values[0].maxPart).toFixed(6)
+            +"*"+ (d.values.filter(function(d){return d.SchriftspurTyp == "P" && d.Schreibmedium != "Stempel"}).length/d.values[0].maxPart).toFixed(6)
+            +"*"+ (d.values.filter(function(d){return d.SchriftspurTyp == "P" && d.Schreibmedium == "Stempel"}).length/d.values[0].maxPart).toFixed(6)
+            +"*"+ (d.values.filter(function(d){return d.SchriftspurTyp == "K"}).length/d.values[0].maxPart).toFixed(6)
+            +"*"+ (d.values.filter(function(d){return d.SchriftspurTyp == "B"}).length/d.values[0].maxPart).toFixed(6)
+            +"*"+ (d.values.filter(function(d){return d.SchriftspurTyp == "T"}).length/d.values[0].maxPart).toFixed(6)
+            +"*"+ (d.values.filter(function(d){return d.SchriftspurTyp == "V"}).length/d.values[0].maxPart).toFixed(6)
+            +"*"+ (d.values.filter(function(d){return d.SchriftspurTyp == "U"}).length/d.values[0].maxPart).toFixed(6)
+        });
+
+
+
+
+
+
+
+
+
 
 
 
