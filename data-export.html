@@ -7035,16 +7035,19 @@ var table = d3.select('body').append('table')
 console.log(datenByTitle)
       // create a row for each object in the data
       d3.select("body").append("p")
-      .text("ID*Autor*Seitenzahl*Anstreichung*Unterstreichung*Durchstreichung*SonstigeMarkierung*ZusatzMaterial*Anderes*Provenienz*Stempel*Kommentar*Bewertung*Textkorrektur*Variante*Uebersetzung*AnstreichungNorm*UnterstreichungNorm*DurchstreichungNorm*SonstigeMarkierungNorm*ZusatzMaterialNorm*AnderesNorm*ProvenienzNorm*StempelNorm*KommentarNorm*BewertungNorm*TextkorrekturNorm*VarianteNorm*UebersetzungNorm")
+      .text("ID*Seitenzahl*Verfasserr*Genre*Anstreichung*Unterstreichung*Durchstreichung*SonstigeMarkierung*ZusatzMaterial*Anderes*Provenienz*Stempel*Kommentar*Bewertung*Textkorrektur*Variante*Uebersetzung*AnstreichungNorm*UnterstreichungNorm*DurchstreichungNorm*SonstigeMarkierungNorm*ZusatzMaterialNorm*AnderesNorm*ProvenienzNorm*StempelNorm*KommentarNorm*BewertungNorm*TextkorrekturNorm*VarianteNorm*UebersetzungNorm")
 
     		d3.select("body").selectAll(".zeilen")
     		  .data(datenByTitle)
     		  .enter()
     		  .append('p')
           .attr("class", "zeilen")
-          .text(function(d){return d.key
+          .text(function(d){
+            if (korpus.filter(function(D,I){return D.KurzSignatur == d.values[0].BookID})[0]){
+            return d.key
             +"*"+ d.values[0].maxPart
             +"*"+ d.values[0].Verfasser
+            +"*"+ korpus.filter(function(D,I){return D.KurzSignatur == d.values[0].BookID})[0].Formalschlagwort_Genre
             +"*"+ d.values.filter(function(d){return d.Benutzungsspur == "1"}).length
             +"*"+ d.values.filter(function(d){return d.Benutzungsspur == "2"}).length
             +"*"+ d.values.filter(function(d){return d.Benutzungsspur == "3"}).length
@@ -7072,7 +7075,41 @@ console.log(datenByTitle)
             +"*"+ (d.values.filter(function(d){return d.SchriftspurTyp == "T"}).length/d.values[0].maxPart).toFixed(6)
             +"*"+ (d.values.filter(function(d){return d.SchriftspurTyp == "V"}).length/d.values[0].maxPart).toFixed(6)
             +"*"+ (d.values.filter(function(d){return d.SchriftspurTyp == "U"}).length/d.values[0].maxPart).toFixed(6)
-        });
+        }else{
+          return d.key
+            +"*"+ d.values[0].maxPart
+            +"*"+ d.values[0].Verfasser
+            +"*"+ "null"
+            +"*"+ d.values.filter(function(d){return d.Benutzungsspur == "1"}).length
+            +"*"+ d.values.filter(function(d){return d.Benutzungsspur == "2"}).length
+            +"*"+ d.values.filter(function(d){return d.Benutzungsspur == "3"}).length
+            +"*"+ d.values.filter(function(d){return d.Benutzungsspur == "4"}).length
+            +"*"+ d.values.filter(function(d){return d.Benutzungsspur == "6"}).length
+            +"*"+ d.values.filter(function(d){return d.Benutzungsspur == "7"}).length
+            +"*"+ d.values.filter(function(d){return d.SchriftspurTyp == "P" && d.Schreibmedium != "Stempel"}).length
+            +"*"+ d.values.filter(function(d){return d.SchriftspurTyp == "P" && d.Schreibmedium == "Stempel"}).length
+            +"*"+ d.values.filter(function(d){return d.SchriftspurTyp == "K"}).length
+            +"*"+ d.values.filter(function(d){return d.SchriftspurTyp == "B"}).length
+            +"*"+ d.values.filter(function(d){return d.SchriftspurTyp == "T"}).length
+            +"*"+ d.values.filter(function(d){return d.SchriftspurTyp == "V"}).length
+            +"*"+ d.values.filter(function(d){return d.SchriftspurTyp == "U"}).length
+            ///normalized
+            +"*"+ (d.values.filter(function(d){return d.Benutzungsspur == "1"}).length/d.values[0].maxPart).toFixed(6)
+            +"*"+ (d.values.filter(function(d){return d.Benutzungsspur == "2"}).length/d.values[0].maxPart).toFixed(6)
+            +"*"+ (d.values.filter(function(d){return d.Benutzungsspur == "3"}).length/d.values[0].maxPart).toFixed(6)
+            +"*"+ (d.values.filter(function(d){return d.Benutzungsspur == "4"}).length/d.values[0].maxPart).toFixed(6)
+            +"*"+ (d.values.filter(function(d){return d.Benutzungsspur == "6"}).length/d.values[0].maxPart).toFixed(6)
+            +"*"+ (d.values.filter(function(d){return d.Benutzungsspur == "7"}).length/d.values[0].maxPart).toFixed(6)
+            +"*"+ (d.values.filter(function(d){return d.SchriftspurTyp == "P" && d.Schreibmedium != "Stempel"}).length/d.values[0].maxPart).toFixed(6)
+            +"*"+ (d.values.filter(function(d){return d.SchriftspurTyp == "P" && d.Schreibmedium == "Stempel"}).length/d.values[0].maxPart).toFixed(6)
+            +"*"+ (d.values.filter(function(d){return d.SchriftspurTyp == "K"}).length/d.values[0].maxPart).toFixed(6)
+            +"*"+ (d.values.filter(function(d){return d.SchriftspurTyp == "B"}).length/d.values[0].maxPart).toFixed(6)
+            +"*"+ (d.values.filter(function(d){return d.SchriftspurTyp == "T"}).length/d.values[0].maxPart).toFixed(6)
+            +"*"+ (d.values.filter(function(d){return d.SchriftspurTyp == "V"}).length/d.values[0].maxPart).toFixed(6)
+            +"*"+ (d.values.filter(function(d){return d.SchriftspurTyp == "U"}).length/d.values[0].maxPart).toFixed(6)
+        }
+
+      });
 
 
 
