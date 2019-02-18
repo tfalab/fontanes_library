@@ -633,9 +633,7 @@
 
           <div class="search-container">
             <div id="search"></div>
-              <!-- <input type="text" placeholder="MARGINALIEN-SUCHE" name="search"> -->
-              <!-- <button type="submit"><i class="fa fa-list-ol listbutton"></i></button> -->
-              <!-- <button type="submit"><i class="fa fa-search searchbutton"></i></button> -->
+
 
           </div>
 
@@ -643,15 +641,7 @@
 
       <h1>Fontanes Handbibliothek</h1>
       <svg id="legend"></svg>
-      <!-- <div id="legendNeu">
-       <div class="AuswahlFilter"><p class="Benutzungsspur">Benutzungsspur-Typ:</p>
-         <p class="eigentumsangaben Benutzungsspur">Eigentumsangaben<span class="plusminus">⊕</span></p> <div class="Benutzungsspurb"><p class="Benutzungsspurausgefahren"><span class="provenienz">Provenienz</span><span class="provenienzstempel">Provenienz-Stempel</span></p></div>
-         <p class="markierungen Benutzungsspur">Markierungen<span class="plusminus">⊕</span></p><p class="Benutzungsspur"><span class="anstreichung">Anstreichung</span><span class="unterstreichung">Unterstreichung</span><span class="durchstreichung">Durchstreichung</span><span class="sonstigeMarkierung">Sonstige Markierung</span></p>
-         <p class="marginalien Benutzungsspur">Marginalien<span class="plusminus">⊕</span></p><p class="Benutzungsspur"><span class="bewertung">Bewertung</span><span class="kommentar">Kommentar</span><span class="textkorrektur">Textkorrektur</span><span class="variante">Variante</span><span class="uebersetzung">Übersetzung</span></p>
-         <p class="zusatzMaterial Benutzungsspur">Zusätzliches Material</p><p class="anderes Benutzungsspur">Anderes</p></div>
-       <div class="AuswahlFilter"><p class="Schreibhand">Schreibhand:</p><p class="SchreibhandFontane Schreibhand">Theodor Fontane</p><p class="SchreibhandFamilie Schreibhand">Fontanes Familie</p><p class="SchreibhandAndere Schreibhand">Andere / Unbekannt</p></div>
-       <div class="AuswahlFilter"><p class="Schreibmedium">Schreibmedium:</p></div>
-      </div> -->
+
   </div>
   <svg id="svg"></svg>
 
@@ -663,8 +653,6 @@
 
 
 
-
-    <!-- <div id="scrollnavi"></div> -->
 
     <div id="container">
 
@@ -1210,7 +1198,7 @@ $("#search").on("select2-clearing", function(e) {
             .text("Schriftspur-Typ")
             .style("font-weight", "bold")
             .style("letter-spacing", "1px")
-            .attr("y", 36)
+            .attr("y", 14)
             .attr("x", 0)
 
             var eigentumsangaben = legend.append("g")
@@ -1219,7 +1207,7 @@ $("#search").on("select2-clearing", function(e) {
                 .attr("transform", "translate(135,0)")
 
                 eigentumsangaben.append("text")
-                .attr("y", 36)
+                .attr("y", 14)
 
             var zusatzMaterial = legend.append("g")
                 .attr("class", "zusatzMaterial")
@@ -1239,7 +1227,7 @@ $("#search").on("select2-clearing", function(e) {
                 .attr("transform", "translate(300,0)")
 
                 markierungen.append("text")
-                .attr("y", 36)
+                .attr("y", 14)
 
             var marginalien = legend.append("g")
                 .attr("class", "marginalien")
@@ -1247,64 +1235,64 @@ $("#search").on("select2-clearing", function(e) {
                 .attr("transform", "translate(435,0)")
 
                 marginalien.append("text")
-                .attr("y", 36)
-
-
-            var marginalienVerfasser = legend.append("g")
-                .attr("class", "marginalienVerfasser")
-                .style("cursor", "pointer")
-
-                marginalienVerfasser.append("text")
-                .text("Marginalien Schreibhand")
-                .style("font-weight", "bold")
-                .style("cursor", "auto")
-                .style("letter-spacing", "1px")
                 .attr("y", 14)
-                .attr("x", 0)
 
-              //  var SchreibhandFilter = null
 
-                marginalienVerfasser.append("text")
-                .text("Theodor Fontane")
-                .attr("y", 14)
-                .attr("x", 200)
-                .on("click", function(){
-                  if(filter != "Fontane"){
-                    filter = "Fontane"
-                    filterInteraction()
-                  }else{
-                    filter = null
-                    filterInteraction()
-                  }
-                })
-
-                marginalienVerfasser.append("text")
-                .text("Fontanes Familie")
-                .attr("y", 14)
-                .attr("x", 330)
-                .on("click", function(){
-                  if(filter != "Familie"){
-                    filter = "Familie"
-                    filterInteraction()
-                  }else{
-                    filter = null
-                    filterInteraction()
-                  }
-                })
-
-                marginalienVerfasser.append("text")
-                .text("Andere / Unbekannt")
-                .attr("y", 14)
-                .attr("x", 460)
-                .on("click", function(){
-                  if(filter != "Unbekannt"){
-                    filter = "Unbekannt"
-                    filterInteraction()
-                  }else{
-                    filter = null
-                    filterInteraction()
-                  }
-                })
+            // var marginalienVerfasser = legend.append("g")
+            //     .attr("class", "marginalienVerfasser")
+            //     .style("cursor", "pointer")
+            //
+            //     marginalienVerfasser.append("text")
+            //     .text("Marginalien Schreibhand")
+            //     .style("font-weight", "bold")
+            //     .style("cursor", "auto")
+            //     .style("letter-spacing", "1px")
+            //     .attr("y", 14)
+            //     .attr("x", 0)
+            //
+            //   //  var SchreibhandFilter = null
+            //
+            //     marginalienVerfasser.append("text")
+            //     .text("Theodor Fontane")
+            //     .attr("y", 14)
+            //     .attr("x", 200)
+            //     .on("click", function(){
+            //       if(filter != "Fontane"){
+            //         filter = "Fontane"
+            //         filterInteraction()
+            //       }else{
+            //         filter = null
+            //         filterInteraction()
+            //       }
+            //     })
+            //
+            //     marginalienVerfasser.append("text")
+            //     .text("Fontanes Familie")
+            //     .attr("y", 14)
+            //     .attr("x", 330)
+            //     .on("click", function(){
+            //       if(filter != "Familie"){
+            //         filter = "Familie"
+            //         filterInteraction()
+            //       }else{
+            //         filter = null
+            //         filterInteraction()
+            //       }
+            //     })
+            //
+            //     marginalienVerfasser.append("text")
+            //     .text("Andere / Unbekannt")
+            //     .attr("y", 14)
+            //     .attr("x", 460)
+            //     .on("click", function(){
+            //       if(filter != "Unbekannt"){
+            //         filter = "Unbekannt"
+            //         filterInteraction()
+            //       }else{
+            //         filter = null
+            //         filterInteraction()
+            //       }
+            //     })
 
                 ////////////////Provenienz-Filter Start
                 ///////////////////////////////////////////////
@@ -1326,6 +1314,7 @@ $("#search").on("select2-clearing", function(e) {
                         marginalien.selectAll(".MarginalienPlus").text(" ⊕")
                         eigentumsangaben.selectAll("text").style("font-weight", "bolder").style("opacity", 1)
                         zusatzMaterial.selectAll("text").style("font-weight", "400").style("opacity",.6)
+                        anderes.selectAll("text").style("font-weight", "400").style("opacity",.6)
                         marginalien.selectAll("text").style("font-weight", "400").style("opacity", .6)
                         markierungen.selectAll("text").style("font-weight", "400").style("opacity", .6)
 
@@ -1343,6 +1332,7 @@ $("#search").on("select2-clearing", function(e) {
                         eigentumsangaben.selectAll(".EigentumsangabenPlus").text(" ⊕")
                         zusatzMaterial.selectAll("text").style("font-weight", "400").style("opacity", 1)
                         marginalien.selectAll("text").style("font-weight", "400").style("opacity", 1)
+                        anderes.selectAll("text").style("font-weight", "400").style("opacity", 1)
                         markierungen.selectAll("text").style("font-weight", "400").style("opacity", 1)
                         eigentumsangaben.selectAll("text").style("font-weight", "400").style("opacity", 1)
                         eigentumsangabendetail.transition().duration(800).attr("transform", "scale(0,1)").style("opacity", 0)
@@ -1379,7 +1369,7 @@ $("#search").on("select2-clearing", function(e) {
 
                                 eigentumsangabendetail.append("text")
                                     .text("Schriftl. Provenienzangaben")
-                                    .attr("y", 50)
+                                    .attr("y", 28)
                                     .attr("x", 0)
                                     .attr("class", "provenienz")
                                     .on("click", function(){
@@ -1395,7 +1385,7 @@ $("#search").on("select2-clearing", function(e) {
 
                                 eigentumsangabendetail.append("text")
                                     .text("Provenienz-Stempel")
-                                    .attr("y", 50)
+                                    .attr("y", 28)
                                     .attr("x", 210)
                                     .attr("class", "provenienzstempel")
                                     .on("click", function(){
@@ -1431,6 +1421,7 @@ $("#search").on("select2-clearing", function(e) {
                     marginalien.selectAll(".MarginalienPlus").text(" ⊕")
                     markierungen.selectAll("text").style("font-weight", "bolder").style("opacity", 1)
                     zusatzMaterial.selectAll("text").style("font-weight", "400").style("opacity", .6)
+                    anderes.selectAll("text").style("font-weight", "400").style("opacity", .6)
                     marginalien.selectAll("text").style("font-weight", "400").style("opacity", .6)
                     eigentumsangaben.selectAll("text").style("font-weight", "400").style("opacity", .6)
 
@@ -1451,6 +1442,7 @@ $("#search").on("select2-clearing", function(e) {
                     marginalien.selectAll("text").style("font-weight", "400").style("opacity", 1)
                     markierungen.selectAll("text").style("font-weight", "400").style("opacity", 1)
                     eigentumsangaben.selectAll("text").style("font-weight", "400").style("opacity", 1)
+                    anderes.selectAll("text").style("font-weight", "400").style("opacity", 1)
                     markierungendetail.transition().duration(800).attr("transform", "scale(0,1)").style("opacity", 0)
                     }
                 })
@@ -1485,7 +1477,7 @@ $("#search").on("select2-clearing", function(e) {
 
             markierungendetail.append("text")
                 .text("Anstreichung")
-                .attr("y", 50)
+                .attr("y", 28)
                 .attr("x", 0)
                 .attr("class", "anstreichung")
                 .on("click", function(){
@@ -1500,7 +1492,7 @@ $("#search").on("select2-clearing", function(e) {
 
             markierungendetail.append("text")
                 .text("Unterstreichung")
-                .attr("y", 50)
+                .attr("y", 28)
                 .attr("x", 110)
                 .attr("class", "unterstreichung")
                 .on("click", function(){
@@ -1515,7 +1507,7 @@ $("#search").on("select2-clearing", function(e) {
 
             markierungendetail.append("text")
                 .text("Durchstreichung")
-                .attr("y", 50)
+                .attr("y", 28)
                 .attr("x", 240)
                 .attr("class", "durchstreichung")
                 .on("click", function(){
@@ -1530,7 +1522,7 @@ $("#search").on("select2-clearing", function(e) {
 
             markierungendetail.append("text")
                 .text("Sonstige Markierung")
-                .attr("y", 50)
+                .attr("y", 28)
                 .attr("x", 370)
                 .attr("class", "sonstigeMarkierung")
                 .on("click", function(){
@@ -1545,7 +1537,7 @@ $("#search").on("select2-clearing", function(e) {
 
             // markierungendetail.append("text")
             //     .text("Anderes")
-            //     .attr("y", 50)
+            //     .attr("y", 28)
             //     .attr("x", 530)
             //     .attr("class", "anderes")
             //     .on("click", function(){
@@ -1585,6 +1577,7 @@ $("#search").on("select2-clearing", function(e) {
                                     marginalien.selectAll(".MarginalienPlus").text(" ⊖")
                                     marginalien.selectAll("text").style("font-weight", "bolder").style("opacity", 1)
                                     zusatzMaterial.selectAll("text").style("font-weight", "400").style("opacity", .6)
+                                    anderes.selectAll("text").style("font-weight", "400").style("opacity", .6)
                                     markierungen.selectAll("text").style("font-weight", "400").style("opacity", .6)
                                     eigentumsangaben.selectAll("text").style("font-weight", "400").style("opacity", .6)
 
@@ -1602,6 +1595,7 @@ $("#search").on("select2-clearing", function(e) {
                                     filterInteraction()
                                     marginalien.selectAll(".MarginalienPlus").text(" ⊕")
                                     zusatzMaterial.selectAll("text").style("font-weight", "400").style("opacity", 1)
+                                    anderes.selectAll("text").style("font-weight", "400").style("opacity", 1)
                                     marginalien.selectAll("text").style("font-weight", "400").style("opacity", 1)
                                     markierungen.selectAll("text").style("font-weight", "400").style("opacity", 1)
                                     eigentumsangaben.selectAll("text").style("font-weight", "400").style("opacity", 1)
@@ -1637,7 +1631,7 @@ $("#search").on("select2-clearing", function(e) {
 
             marginaliendetail.append("text")
                 .text("Bewertung")
-                .attr("y", 50)
+                .attr("y", 28)
                 .attr("x", 0)
                 .attr("class", "bewertung")
                 .on("click", function(){
@@ -1652,7 +1646,7 @@ $("#search").on("select2-clearing", function(e) {
 
             marginaliendetail.append("text")
                 .text("Kommentar")
-                .attr("y", 50)
+                .attr("y", 28)
                 .attr("x", 90)
                 .attr("class", "kommentar")
                 .on("click", function(){
@@ -1667,7 +1661,7 @@ $("#search").on("select2-clearing", function(e) {
 
             marginaliendetail.append("text")
                 .text("Textkorrektur")
-                .attr("y", 50)
+                .attr("y", 28)
                 .attr("x", 190)
                 .attr("class", "textkorrektur")
                 .on("click", function(){
@@ -1682,7 +1676,7 @@ $("#search").on("select2-clearing", function(e) {
 
             marginaliendetail.append("text")
                 .text("Variante")
-                .attr("y", 50)
+                .attr("y", 28)
                 .attr("x", 310)
                 .attr("class", "variante")
                 .on("click", function(){
@@ -1697,7 +1691,7 @@ $("#search").on("select2-clearing", function(e) {
 
             marginaliendetail.append("text")
                 .text("Übersetzung")
-                .attr("y", 50)
+                .attr("y", 28)
                 .attr("x", 390)
                 .attr("class", "uebersetzung")
                 .on("click", function(){
@@ -1715,7 +1709,7 @@ $("#search").on("select2-clearing", function(e) {
 
             zusatzMaterial.append("text")
                 .text("Zusätzliches Material")
-                .attr("y", 36)
+                .attr("y", 14)
               //  .attr("x", 600)
                 .on("click", function(){
                   if(filter != "zusatzMaterial"){
@@ -1728,6 +1722,8 @@ $("#search").on("select2-clearing", function(e) {
                     marginalien.selectAll("text").style("font-weight", "400").style("opacity", .6)
                     markierungen.selectAll("text").style("font-weight", "400").style("opacity", .6)
                     eigentumsangaben.selectAll("text").style("font-weight", "400").style("opacity", .6)
+                    anderes.selectAll("text").style("font-weight", "400").style("opacity", .6)
+
 
                     eigentumsangabendetail.transition().duration(800).attr("transform", "scale(0,1)").style("opacity", 1)
                     markierungendetail.transition().duration(800).attr("transform", "scale(0,1)").style("opacity", 1)
@@ -1735,6 +1731,7 @@ $("#search").on("select2-clearing", function(e) {
                   }else{
                     filter = null
                     filterInteraction()
+                    anderes.selectAll("text").style("font-weight", "400").style("opacity", 1)
                     zusatzMaterial.selectAll("text").style("font-weight", "400").style("opacity", 1)
                     marginalien.selectAll("text").style("font-weight", "400").style("opacity", 1)
                     markierungen.selectAll("text").style("font-weight", "400").style("opacity", 1)
@@ -1746,7 +1743,7 @@ $("#search").on("select2-clearing", function(e) {
 
                 anderes.append("text")
                     .text("Anderes")
-                    .attr("y", 36)
+                    .attr("y", 14)
                   //  .attr("x", 600)
                     .on("click", function(){
                       if(filter != "anderes"){
@@ -1755,7 +1752,8 @@ $("#search").on("select2-clearing", function(e) {
                         eigentumsangaben.selectAll(".EigentumsangabenPlus").text(" ⊕")
                         markierungen.selectAll(".MarkierungenPlus").text(" ⊕")
                         marginalien.selectAll(".MarginalienPlus").text(" ⊕")
-                        zusatzMaterial.selectAll("text").style("font-weight", "bolder").style("opacity", 1)
+                        anderes.selectAll("text").style("font-weight", "bolder").style("opacity", 1)
+                        zusatzMaterial.selectAll("text").style("font-weight", "400").style("opacity", .6)
                         marginalien.selectAll("text").style("font-weight", "400").style("opacity", .6)
                         markierungen.selectAll("text").style("font-weight", "400").style("opacity", .6)
                         eigentumsangaben.selectAll("text").style("font-weight", "400").style("opacity", .6)
@@ -1766,6 +1764,7 @@ $("#search").on("select2-clearing", function(e) {
                       }else{
                         filter = null
                         filterInteraction()
+                        anderes.selectAll("text").style("font-weight", "400").style("opacity", 1)
                         zusatzMaterial.selectAll("text").style("font-weight", "400").style("opacity", 1)
                         marginalien.selectAll("text").style("font-weight", "400").style("opacity", 1)
                         markierungen.selectAll("text").style("font-weight", "400").style("opacity", 1)
@@ -2106,7 +2105,7 @@ draw()
 
                             var detailCircleScale= d3.scaleLinear()
                                 .domain([2500, 3000])
-                                .range([0,2])
+                                .range([0,9])
                                 .clamp(true)
 
                                 var transcriptPositionScale= d3.scaleLinear()
@@ -4511,26 +4510,19 @@ d3.selectAll(".transcriptionText")
        .selectAll("tspan").attr("y", function(){
           return lastTranscriptMaxY+transcriptFontSize(scrollTop)})
 
-      transcriptions.append("circle")
-      .attr("r", detailCircleScale(scrollTop))
-      .attr("fill", "white")
-      // .attr("fill", function(d){ if (d.SchriftspurTyp == "P" && d.Schreibmedium != "Stempel") {
-      //     return "#5B5B5B"
-      // } else if (d.SchriftspurTyp == "P" && d.Schreibmedium == "Stempel") {
-      //     return "#5B5B5B"
-      // } else if (d.SchriftspurTyp == "B") {
-      //     return "#f72652"
-      // } else if (d.SchriftspurTyp == "K") {
-      //     return "#f72652"
-      // } else if (d.SchriftspurTyp == "T") {
-      //     return "#f72652"
-      // } else if (d.SchriftspurTyp == "U") {
-      //     return "#f72652"
-      // } else if (d.SchriftspurTyp == "V") {
-      //     return "#f72652"
-      // }})
-      .attr("cx",  transcriptPositionScale(scrollTop)*selectedBookScale(scrollTop))
-      .attr("cy", lastTranscriptMaxY+transcriptFontSize(scrollTop)-3)
+      transcriptions.append("image")
+      .attr("xlink:href", function(){
+        if(d.SchriftspurSchreibhand == "Theodor Fontane"){return "icons/icon_fontaneA.svg"}
+        else if(d.SchriftspurSchreibhand == "?Theodor Fontane?"){return "icons/icon_fontaneB.svg"}
+        else if(d.SchriftspurSchreibhand == "Unbekannt" || d.SchriftspurSchreibhand == "unbekannt" || d.SchriftspurSchreibhand == "null"){return "icons/icon_unbekannt.svg"}
+        else{return "icons/icon_andereA.svg"}
+    })
+      .attr("width", detailCircleScale(scrollTop))
+      .attr("height", detailCircleScale(scrollTop))
+      .attr("title", function(){return d.SchriftspurSchreibhand })
+      .attr("class", "schreibhandIcon")
+      .attr("x",  transcriptPositionScale(scrollTop)*selectedBookScale(scrollTop)-3)
+      .attr("y", lastTranscriptMaxY+transcriptFontSize(scrollTop)-3- (detailCircleScale(scrollTop)/2))
 
 
 ////line between transcript and rect
@@ -4549,11 +4541,19 @@ d3.selectAll(".transcriptionText")
 
 
     }else{
-        transcriptions.append("circle")
-        .attr("r", detailCircleScale(scrollTop))
-        .attr("fill", "white")
-        .attr("cx",  transcriptPositionScale(scrollTop)*selectedBookScale(scrollTop))
-        .attr("cy", thisTranscriptY+transcriptFontSize(scrollTop)-6)
+        transcriptions.append("image")
+        .attr("xlink:href", function(){
+          if(d.SchriftspurSchreibhand == "Theodor Fontane"){return "icons/icon_fontaneA.svg"}
+          else if(d.SchriftspurSchreibhand == "?Theodor Fontane?"){return "icons/icon_fontaneB.svg"}
+          else if(d.SchriftspurSchreibhand == "Unbekannt" || d.SchriftspurSchreibhand == "unbekannt" || d.SchriftspurSchreibhand == "null"){return "icons/icon_unbekannt.svg"}
+          else{return "icons/icon_andereA.svg"}
+      })
+        .attr("title", function(){return d.SchriftspurSchreibhand })
+        .attr("width", detailCircleScale(scrollTop))
+        .attr("height", detailCircleScale(scrollTop))
+        .attr("class", "schreibhandIcon")
+        .attr("x",  transcriptPositionScale(scrollTop)*selectedBookScale(scrollTop)-3)
+        .attr("y", thisTranscriptY+transcriptFontSize(scrollTop)-6-(detailCircleScale(scrollTop)/2))
 
         ////line between transcript and rect
               transcriptions.append("path")
@@ -4577,11 +4577,19 @@ d3.selectAll(".transcriptionText")
 else{
 var thisTranscriptY = d3.select(this).node().getBBox().y
 
-  transcriptions.append("circle")
-  .attr("r", detailCircleScale(scrollTop))
-  .attr("fill", "white")
-  .attr("cx",  transcriptPositionScale(scrollTop)*selectedBookScale(scrollTop))
-  .attr("cy", thisTranscriptY+transcriptFontSize(scrollTop)-6)
+  transcriptions.append("image")
+  .attr("xlink:href", function(){
+    if(d.SchriftspurSchreibhand == "Theodor Fontane"){return "icons/icon_fontaneA.svg"}
+    else if(d.SchriftspurSchreibhand == "?Theodor Fontane?"){return "icons/icon_fontaneB.svg"}
+    else if(d.SchriftspurSchreibhand == "Unbekannt" || d.SchriftspurSchreibhand == "unbekannt" || d.SchriftspurSchreibhand == "null"){return "icons/icon_unbekannt.svg"}
+    else{return "icons/icon_andereA.svg"}
+})
+  .attr("title", function(){return d.SchriftspurSchreibhand })
+  .attr("width", detailCircleScale(scrollTop))
+  .attr("height", detailCircleScale(scrollTop))
+  .attr("class", "schreibhandIcon")
+  .attr("x",  transcriptPositionScale(scrollTop)*selectedBookScale(scrollTop)-3)
+  .attr("y", thisTranscriptY+transcriptFontSize(scrollTop)-6-(detailCircleScale(scrollTop)/2))
 
 
   ////line between transcript and rect
@@ -6644,8 +6652,9 @@ d3.selectAll(".transcriptions").attr("opacity", function(d){return detailTranscr
 
 
 
-d3.selectAll(".transcriptions").selectAll("circle")
-.attr("r", detailCircleScale(scrollTop))
+d3.selectAll(".transcriptions").selectAll(".schreibhandIcon")
+.attr("width", detailCircleScale(scrollTop))
+.attr("height", detailCircleScale(scrollTop))
 
 d3.selectAll(".transcriptions").selectAll("path")
 .style("opacity", transcriptPathScaleOpacity(scrollTop))
@@ -6664,9 +6673,9 @@ d3.selectAll(".transcriptionText")
        .selectAll("tspan").attr("y", function(){
           return lastTranscriptMaxY+transcriptFontSize(scrollTop)})
 
-      d3.selectAll(".transcriptions").selectAll("circle").filter(function(D,I){return I == i})
-      .attr("cx",  transcriptPositionScale(scrollTop)*selectedBookScale(scrollTop))
-      .attr("cy", lastTranscriptMaxY+transcriptFontSize(scrollTop)-3)
+      d3.selectAll(".transcriptions").selectAll(".schreibhandIcon").filter(function(D,I){return I == i})
+      .attr("x",  transcriptPositionScale(scrollTop)*selectedBookScale(scrollTop)-3)
+      .attr("y", lastTranscriptMaxY+transcriptFontSize(scrollTop)-3-(detailCircleScale(scrollTop)/2))
 //
 //
 ////line between transcript and rect
@@ -6680,9 +6689,9 @@ d3.selectAll(".transcriptionText")
 
 
     }else{
-        d3.selectAll(".transcriptions").selectAll("circle").filter(function(D,I){return I == i})
-        .attr("cx",  transcriptPositionScale(scrollTop)*selectedBookScale(scrollTop))
-        .attr("cy", thisTranscriptY+transcriptFontSize(scrollTop)-6)
+        d3.selectAll(".transcriptions").selectAll(".schreibhandIcon").filter(function(D,I){return I == i})
+        .attr("x",  transcriptPositionScale(scrollTop)*selectedBookScale(scrollTop)-3)
+        .attr("y", thisTranscriptY+transcriptFontSize(scrollTop)-6-(detailCircleScale(scrollTop)/2))
 
         ////line between transcript and rect
               d3.selectAll(".transcriptions").selectAll("path").filter(function(D,I){return I == i})
@@ -6701,9 +6710,9 @@ d3.selectAll(".transcriptionText")
 else{
 var thisTranscriptY = d3.select(this).node().getBBox().y
 
-  d3.selectAll(".transcriptions").selectAll("circle").filter(function(D,I){return I == i})
-  .attr("cx",  transcriptPositionScale(scrollTop)*selectedBookScale(scrollTop))
-  .attr("cy", thisTranscriptY+transcriptFontSize(scrollTop)-6)
+  d3.selectAll(".transcriptions").selectAll(".schreibhandIcon").filter(function(D,I){return I == i})
+  .attr("x",  transcriptPositionScale(scrollTop)*selectedBookScale(scrollTop)-3)
+  .attr("y", thisTranscriptY+transcriptFontSize(scrollTop)-6-(detailCircleScale(scrollTop)/2))
 
 //
   ////line between transcript and rect
@@ -6760,6 +6769,38 @@ var thisTranscriptY = d3.select(this).node().getBBox().y
                         })
 
                     }
+
+
+                    //////
+                    ////
+                    ////Hover Schreibhand-icon starting
+
+                    d3.selectAll(".schreibhandIcon")
+                    .on("mouseover", schreibhandIconFunction)
+                    .on("mouseout", function(){d3.selectAll(".schreibhandTooltip").remove()})
+
+
+function schreibhandIconFunction(){
+  var scheibhandTitle = d3.select(this).attr("title")
+
+    d3.select("body").append("p")
+    .attr("class", "schreibhandTooltip")
+    .style("background-color", "#474747")
+    .style("padding", "10px")
+    .style("color", "white")
+    .style("position", "absolute")
+    .style("z-index", "300")
+    .style("font-size", "11pt")
+    .style('top', d3.event.pageY  -30 + 'px')
+    .style('left', d3.event.pageX + 10+ 'px')
+    .text("~"+scheibhandTitle)
+
+}
+
+                    ///////////
+                    ///////Hover-Schreibhand ende
+
+
 
 
 

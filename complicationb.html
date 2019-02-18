@@ -35,7 +35,8 @@
             margin: 0;
             overflow-y: scroll;
             overflow-x: scroll;
-            width: 100%;    }
+            width: 100%;
+            height: 5000px;}
 
         /* ::-webkit-scrollbar {
             display: none;
@@ -673,11 +674,98 @@
     <script>
 
 
+    var tooltip = d3.select("body")
+        .append("div")
+        .style("position", "absolute")
+        .style("z-index", "300")
+        .style("display", "none")
+        .attr("width", 200)
+        .attr("class", "tooltip")
+
+    tooltip
+    .append("p").attr("class","tooltipTitle")
+    .append("img").attr("width", 200).attr("height", "auto")
+
+
     Promise.all([
       d3.csv("data/complication.csv"),
       d3.csv("data/korpus.csv"),
     ])
     .then(([complicationData, korpus]) =>  {
+
+      var transitions = false
+      var scroller = d3.select('body')
+
+      window.onscroll = function(){//console.log(Math.max(window.pageYOffset, document.documentElement.scrollTop, document.body.scrollTop))
+    //    console.log(scroller.node().scrollTop)
+    //    console.log($(window).scrollTop())
+        var scrollTop2 = Math.max(window.pageYOffset, document.documentElement.scrollTop, document.body.scrollTop)
+
+                        newScrollTop = scrollTop2
+                  //     console.log(newScrollTop)
+
+                        ////////////////////scrollnavi/
+                        ////////////////////////////////////////
+
+                        // var scrollCircleScale = d3.scaleLinear()
+                        //     .domain([-4990, 0, 2600])
+                        //     .range([firstScrollIcon, secondScrollIcon, thirdScrollIcon-5])
+                        //     .clamp(true)
+
+                        // d3.selectAll(".scrollCircleFollower")
+                        //     .attr("cy", scrollCircleScale(newScrollTop))
+
+
+      }
+
+      var scrollTop = 0
+      var newScrollTop = scroller.node().scrollTop// - 5050 - 301
+    //console.log(scroller.node().scrollTop)
+
+      scroller
+          .on("scroll", function() {
+
+
+
+    var scrollTop2 = Math.max(window.pageYOffset, document.documentElement.scrollTop, document.body.scrollTop)
+
+
+              newScrollTop = scrollTop2
+
+
+
+
+              ////////////////////scrollnavi/
+              ////////////////////////////////////////
+
+
+
+              // d3.selectAll(".scrollCircleFollower")
+              //     .attr("cy", scrollCircleScale(newScrollTop))
+
+
+              ////////////////////scrollnaviEnde
+              ////////////////////////////////////////
+          })
+compScrollFunction()
+
+          function animate() {
+
+              if (transitions == true || scrollTop !== newScrollTop) {
+                  scrollTop = newScrollTop
+                  compScrollFunction()
+
+              }
+              window.requestAnimationFrame(animate);
+          }
+          window.requestAnimationFrame(animate);
+
+
+
+
+
+
+
 
 
 
@@ -1269,7 +1357,7 @@
                                   transitions = false
                               }, 1000);
 
-                              pieGroup.selectAll(".provenienz,.provenienzstempel,.sonstigeMarkierung,.anstreichung,.unterstreichung,.durchstreichung,.bewertung,.kommentar,.textkorrektur,.uebersetzung,.variante").classed("eingefaltet", false)
+                              d3.selectAll(".pieG").selectAll(".provenienz,.provenienzstempel,.sonstigeMarkierung,.anstreichung,.unterstreichung,.durchstreichung,.bewertung,.kommentar,.textkorrektur,.uebersetzung,.variante").classed("eingefaltet", false)
 
 
                       }
@@ -1281,7 +1369,7 @@
                       transitions = false
                       }, 1000);
 
-                      pieGroup.selectAll(".provenienz,.provenienzstempel").classed("eingefaltet", true)
+                      d3.selectAll(".pieG").selectAll(".provenienz,.provenienzstempel").classed("eingefaltet", true)
 
 
                       }
@@ -1295,7 +1383,7 @@
                                   transitions = false
                               }, 1000);
 
-                              pieGroup.selectAll(".provenienz,.provenienzstempel,.sonstigeMarkierung,.anstreichung,.unterstreichung,.durchstreichung,.bewertung,.kommentar,.textkorrektur,.uebersetzung,.variante").classed("eingefaltet", false)
+                              d3.selectAll(".pieG").selectAll(".provenienz,.provenienzstempel,.sonstigeMarkierung,.anstreichung,.unterstreichung,.durchstreichung,.bewertung,.kommentar,.textkorrektur,.uebersetzung,.variante").classed("eingefaltet", false)
 
 
                           }
@@ -1307,7 +1395,7 @@
                                   transitions = false
                               }, 1000);
 
-                              pieGroup.selectAll(".unterstreichung,.anstreichung,.durchstreichung,.sonstigeMarkierung").classed("eingefaltet", true)
+                              d3.selectAll(".pieG").selectAll(".unterstreichung,.anstreichung,.durchstreichung,.sonstigeMarkierung").classed("eingefaltet", true)
 
 
                           }
@@ -1321,7 +1409,7 @@
                                   transitions = false
                               }, 1000);
 
-                              pieGroup.selectAll(".provenienz,.provenienzstempel,.sonstigeMarkierung,.anstreichung,.unterstreichung,.durchstreichung,.bewertung,.kommentar,.textkorrektur,.uebersetzung,.variante").classed("eingefaltet", false)
+                              d3.selectAll(".pieG").selectAll(".provenienz,.provenienzstempel,.sonstigeMarkierung,.anstreichung,.unterstreichung,.durchstreichung,.bewertung,.kommentar,.textkorrektur,.uebersetzung,.variante").classed("eingefaltet", false)
 
 
                           }
@@ -1333,7 +1421,7 @@
                                   transitions = false
                               }, 1000);
 
-                              pieGroup.selectAll(".bewertung,.kommentar,.textkorrektur,.uebersetzung,.variante").classed("eingefaltet", true)
+                              d3.selectAll(".pieG").selectAll(".bewertung,.kommentar,.textkorrektur,.uebersetzung,.variante").classed("eingefaltet", true)
 
 
                           }
@@ -1360,97 +1448,97 @@
                           transitions = false
                       }, 1000);
                       if (filter == null) {
-                        pieGroup.selectAll("path").classed("filtered", false).classed("eingefaltet", true)
+                        d3.selectAll(".pieG").selectAll("path").classed("filtered", false).classed("eingefaltet", true)
 
 
 
                       }else if (filter == "Fontane") {
 
-                          pieGroup.selectAll("path").classed("filtered", true).filter(".schreibhandFontane").classed("filtered", false)
+                          d3.selectAll(".pieG").selectAll("path").classed("filtered", true).filter(".schreibhandFontane").classed("filtered", false)
 
 
                       }  else if (filter == "Familie") {
 
-                            pieGroup.selectAll("path").classed("filtered", true).filter(".schreibhandFamilie").classed("filtered", false)
+                            d3.selectAll(".pieG").selectAll("path").classed("filtered", true).filter(".schreibhandFamilie").classed("filtered", false)
 
 
                         }
                       else if (filter == "eigentumsangaben") {
 
-                          pieGroup.selectAll("path").classed("filtered", true).filter(".provenienz,.provenienzstempel").classed("filtered", false)
+                          d3.selectAll(".pieG").selectAll("path").classed("filtered", true).filter(".provenienz,.provenienzstempel").classed("filtered", false)
 
 
                       }
                       else if (filter == "provenienz") {
 
-                          pieGroup.selectAll("path").classed("filtered", true).filter(".provenienz").classed("filtered", false)
+                          d3.selectAll(".pieG").selectAll("path").classed("filtered", true).filter(".provenienz").classed("filtered", false)
 
 
 
                       } else if (filter == "provenienzstempel") {
 
-                          pieGroup.selectAll("path").classed("filtered", true).filter(".provenienzstempel").classed("filtered", false)
+                          d3.selectAll(".pieG").selectAll("path").classed("filtered", true).filter(".provenienzstempel").classed("filtered", false)
 
 
                             } else if (filter == "markierungen") {
 
-                              pieGroup.selectAll("path").classed("filtered", true).filter(".unterstreichung,.anstreichung,.durchstreichung,.sonstigeMarkierung").classed("filtered", false)
+                              d3.selectAll(".pieG").selectAll("path").classed("filtered", true).filter(".unterstreichung,.anstreichung,.durchstreichung,.sonstigeMarkierung").classed("filtered", false)
 
 
 
                             } else if (filter == "anstreichung") {
 
-                              pieGroup.selectAll("path").classed("filtered", true).filter(".anstreichung").classed("filtered", false)
+                              d3.selectAll(".pieG").selectAll("path").classed("filtered", true).filter(".anstreichung").classed("filtered", false)
 
 
 
                       } else if (filter == "unterstreichung") {
 
-                        pieGroup.selectAll("path").classed("filtered", true).filter(".unterstreichung").classed("filtered", false)
+                        d3.selectAll(".pieG").selectAll("path").classed("filtered", true).filter(".unterstreichung").classed("filtered", false)
 
 
                       } else if (filter == "durchstreichung") {
 
-                        pieGroup.selectAll("path").classed("filtered", true).filter(".durchstreichung").classed("filtered", false)
+                        d3.selectAll(".pieG").selectAll("path").classed("filtered", true).filter(".durchstreichung").classed("filtered", false)
 
 
                       } else if (filter == "sonstigeMarkierung") {
 
-      pieGroup.selectAll("path").classed("filtered", true).filter(".sonstigeMarkierung").classed("filtered", false)
+      d3.selectAll(".pieG").selectAll("path").classed("filtered", true).filter(".sonstigeMarkierung").classed("filtered", false)
 
 
                       } else if (filter == "zusatzMaterial") {
-                        pieGroup.selectAll("path").classed("filtered", true).filter(".zusatzMaterial").classed("filtered", false)
+                        d3.selectAll(".pieG").selectAll("path").classed("filtered", true).filter(".zusatzMaterial").classed("filtered", false)
 
 
                             } else if (filter == "marginalien") {
-                              pieGroup.selectAll("path").classed("filtered", true).filter(".bewertung,.kommentar,.textkorrektur,.uebersetzung,.variante").classed("filtered", false)
+                              d3.selectAll(".pieG").selectAll("path").classed("filtered", true).filter(".bewertung,.kommentar,.textkorrektur,.uebersetzung,.variante").classed("filtered", false)
 
 
 
                       } else if (filter == "bewertung") {
-                        pieGroup.selectAll("path").classed("filtered", true).filter(".bewertung").classed("filtered", false)
+                        d3.selectAll(".pieG").selectAll("path").classed("filtered", true).filter(".bewertung").classed("filtered", false)
 
 
                       } else if (filter == "kommentar") {
-                        pieGroup.selectAll("path").classed("filtered", true).filter(".kommentar").classed("filtered", false)
+                        d3.selectAll(".pieG").selectAll("path").classed("filtered", true).filter(".kommentar").classed("filtered", false)
 
 
                       } else if (filter == "textkorrektur") {
-                        pieGroup.selectAll("path").classed("filtered", true).filter(".textkorrektur").classed("filtered", false)
+                        d3.selectAll(".pieG").selectAll("path").classed("filtered", true).filter(".textkorrektur").classed("filtered", false)
 
 
                       } else if (filter == "variante") {
-                        pieGroup.selectAll("path").classed("filtered", true).filter(".variante").classed("filtered", false)
+                        d3.selectAll(".pieG").selectAll("path").classed("filtered", true).filter(".variante").classed("filtered", false)
 
 
                       } else if (filter == "uebersetzung") {
-                        pieGroup.selectAll("path").classed("filtered", true).filter(".uebersetzung").classed("filtered", false)
+                        d3.selectAll(".pieG").selectAll("path").classed("filtered", true).filter(".uebersetzung").classed("filtered", false)
 
 
 
                       } else if (filter == "anderes") {
-                        pieGroup.selectAll("path").classed("filtered", true).filter(".anderes").classed("filtered", false)
+                        d3.selectAll(".pieG").selectAll("path").classed("filtered", true).filter(".anderes").classed("filtered", false)
 
 
                       }
@@ -1496,19 +1584,6 @@
 
 
     d3.select("#complicationsvg").attr("width", width).attr("height", height)
-    .call(d3.zoom()
-            .scaleExtent([1 / 2, 3])
-        //    .center([width / 2, height / 2])
-            .on("zoom", zoomed));
-
-            function zoomed() {
-            //  .selectAll(".link")
-
-              complicationVis.attr("transform", d3.event.transform);
-
-
-            }
-
 
     let complicationVis = d3.select("#complicationsvg").append("g")
 
@@ -1522,6 +1597,14 @@
             .range([0, 1200])
 
 
+            var compOpacityScale = d3.scaleLinear()
+                .domain([0, 4000])
+                .range([0, 1])
+                .clamp(true)
+
+
+
+
         /////////node-pie starting
         let arc = d3.arc();
 
@@ -1531,11 +1614,40 @@
 
 
             let pieGroup = complicationVis.selectAll(".pieG")
-            .data(complicationData.filter(function(d){return d.level =="verfasser"}))
+            .data(complicationData)
             .join("g")
             .attr("class", "pieG")
             .attr("transform", function(d,i){return "translate("+scatterScaleX(d.x)+","+scatterScaleY(d.y)+")"})
             .each(multiple)
+            .style("opacity", function(d,i){return 1-compOpacityScale(scrollTop)})
+            .filter(function(d,i){return d.level == "buch"})
+            .style("opacity", function(d,i){return compOpacityScale(scrollTop)})
+            .attr("transform", function(d,i){
+              let posXalsBuch = d.x
+              let posXalsVerfasser = complicationData.filter(function(Y,Z){return Y.ID == d.Verfasser})[0].x
+              let posYalsBuch = d.y
+              let posYalsVerfasser = complicationData.filter(function(Y,Z){return Y.ID == d.Verfasser})[0].y
+
+              let scatterScaleBuchX = d3.scaleLinear()
+                  .domain([-20, 20])
+                  .range([0, 1200])
+
+                  let scatterScaleBuchY = d3.scaleLinear()
+                      .domain([10, -30])
+                      .range([0, 1200])
+
+                let scatterScaleBuchVerfasserX = d3.scaleLinear()
+                    .domain([0, 4000])
+                    .range([posXalsVerfasser, posXalsBuch])
+
+                let scatterScaleBuchVerfasserY = d3.scaleLinear()
+                        .domain([0, 4000])
+                        .range([posYalsVerfasser, posYalsBuch])
+
+
+
+              return "translate("+scatterScaleBuchX(scatterScaleBuchVerfasserX(scrollTop))+","+scatterScaleBuchY(scatterScaleBuchVerfasserY(scrollTop))+")"})
+          //  .attr("fill", function(d,i){console.log(complicationData.filter(function(Y,Z){return Y.ID == d.Verfasser})[0].x)  })
 
             function multiple(d) {
               let radius = d3.scaleSqrt()
@@ -1543,19 +1655,14 @@
                   .range([3, 30]);
 
 
-                  d3.select(this).append("circle")
-                   .attr("cx", 0)
-                   .attr("cy", 0)
-                   .attr("r", radius(d.pieDataSum))
-                   .attr("fill", "white")
-                   .style("opacity", 0.7)
 
                    d3.select(this).selectAll(".pieArc")
                        .data(pie(d.pieData))
                        .enter().append("g")
                          .attr("class", "pieArc")
                          .append("path")
-                         .attr("d", function(e, c) { return arc.outerRadius(radius(d.pieDataSum)).innerRadius(radius(d.pieDataSum)*0.7)(e, c)})
+                         .attr("d", function(e, c) { if(d.level == "buch"){return arc.outerRadius(radius(d.pieDataSum)).innerRadius(radius(d.pieDataSum)*0.7)(e, c)}
+                        else {return arc.outerRadius(radius(d.pieDataSum)).innerRadius(radius(d.pieDataSum)*0)(e, c)}})
                          .attr("class", function(d,i){
                            if(i==0){return "pieArc bewertung"}else if(i==1){return "pieArc kommentar"}else if(i==2){return "pieArc textkorrektur"}else if(i==3){return "pieArc variante"}else if(i==4){return "pieArc uebersetzung"}
                            else if(i==5){return "pieArc anstreichung"}else if(i == 6){return "pieArc unterstreichung"}else if(i == 7){return "pieArc durchstreichung"}  else if(i==8){return "pieArc sonstigeMarkierung"}
@@ -1567,6 +1674,47 @@
 
               }
 
+
+
+              ///////Ende Pies
+
+
+              function compScrollFunction() {
+
+
+d3.selectAll(".pieG").filter(function(d,i){return d.level == "verfasser"}).style("opacity", function(d,i){return 1-compOpacityScale(scrollTop)})
+
+d3.selectAll(".pieG").filter(function(d,i){return d.level == "buch"})
+.style("opacity", function(d,i){return compOpacityScale(scrollTop)})
+.attr("transform", function(d,i){
+  let posXalsBuch = d.x
+  let posXalsVerfasser = complicationData.filter(function(Y,Z){return Y.ID == d.Verfasser})[0].x
+  let posYalsBuch = d.y
+  let posYalsVerfasser = complicationData.filter(function(Y,Z){return Y.ID == d.Verfasser})[0].y
+
+  let scatterScaleBuchX = d3.scaleLinear()
+      .domain([-20, 20])
+      .range([0, 1200])
+
+      let scatterScaleBuchY = d3.scaleLinear()
+          .domain([10, -30])
+          .range([0, 1200])
+
+    let scatterScaleBuchVerfasserX = d3.scaleLinear()
+        .domain([0, 4000])
+        .range([posXalsVerfasser, posXalsBuch])
+
+    let scatterScaleBuchVerfasserY = d3.scaleLinear()
+            .domain([0, 4000])
+            .range([posYalsVerfasser, posYalsBuch])
+
+
+
+  return "translate("+scatterScaleBuchX(scatterScaleBuchVerfasserX(scrollTop))+","+scatterScaleBuchY(scatterScaleBuchVerfasserY(scrollTop))+")"})
+
+
+
+              }
 
 
 
