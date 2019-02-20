@@ -31,8 +31,9 @@
         body {
              font-family: 'Roboto', sans-serif;
 
-            background-color: #EBE3DD;
+            background-color: rgb(23, 22, 20);
             margin: 0;
+            color: rgb(237, 237, 219);
             overflow-y: scroll;
             overflow-x: scroll;
             width: 100%;
@@ -55,6 +56,7 @@
         }
 
         #legend {
+            fill: rgb(237, 237, 219);
             text-transform: uppercase;
             margin-left: 0px;
             margin-top: 10px;
@@ -166,7 +168,7 @@
             width: 80px;
             left: 0;
             top: 0px;
-            box-shadow: 2px 0px 5px grey;
+            box-shadow: 2px 0px 5px black;
             padding-top: 0px;
         }
 
@@ -772,558 +774,534 @@ compScrollFunction()
 
 
 
-                  var filter = null
-                  var eigentumsangabenEntfaltet = false
-                  var markierungenEntfaltet = false
-                  var marginalienEntfaltet = false
 
-                  var legend = d3.select("#legend")
+                      var filter = null
+                      var eigentumsangabenEntfaltet = false
+                      var markierungenEntfaltet = false
+                      var marginalienEntfaltet = false
 
-                  legend.append("text")
-                  .text("Schriftspur-Typ")
-                  .style("font-weight", "bold")
-                  .style("letter-spacing", "1px")
-                  .attr("y", 36)
-                  .attr("x", 0)
+                      var legend = d3.select("#legend")
 
-                  var eigentumsangaben = legend.append("g")
-                      .attr("class", "eigentumsangaben")
-                      .style("cursor", "pointer")
-                      .attr("transform", "translate(135,0)")
-
-                      eigentumsangaben.append("text")
-                      .attr("y", 36)
-
-                  var zusatzMaterial = legend.append("g")
-                      .attr("class", "zusatzMaterial")
-                      .style("cursor", "pointer")
-                      .attr("transform", "translate(555,0)")
-
-
-
-                  var anderes = legend.append("g")
-                          .attr("class", "anderes")
-                          .style("cursor", "pointer")
-                          .attr("transform", "translate(725,0)")
-
-                  var markierungen = legend.append("g")
-                      .attr("class", "markierungen")
-                      .style("cursor", "pointer")
-                      .attr("transform", "translate(300,0)")
-
-                      markierungen.append("text")
-                      .attr("y", 36)
-
-                  var marginalien = legend.append("g")
-                      .attr("class", "marginalien")
-                      .style("cursor", "pointer")
-                      .attr("transform", "translate(435,0)")
-
-                      marginalien.append("text")
-                      .attr("y", 36)
-
-
-                  var marginalienVerfasser = legend.append("g")
-                      .attr("class", "marginalienVerfasser")
-                      .style("cursor", "pointer")
-
-                      marginalienVerfasser.append("text")
-                      .text("Marginalien Schreibhand")
+                      legend.append("text")
+                      .text("Schriftspur-Typ")
                       .style("font-weight", "bold")
-                      .style("cursor", "auto")
                       .style("letter-spacing", "1px")
                       .attr("y", 14)
                       .attr("x", 0)
 
-                    //  var SchreibhandFilter = null
+                      var eigentumsangaben = legend.append("g")
+                          .attr("class", "eigentumsangaben")
+                          .style("cursor", "pointer")
+                          .attr("transform", "translate(135,0)")
 
-                      marginalienVerfasser.append("text")
-                      .text("Theodor Fontane")
-                      .attr("y", 14)
-                      .attr("x", 200)
-                      .on("click", function(){
-                        if(filter != "Fontane"){
-                          filter = "Fontane"
-                          filterInteraction()
-                        }else{
-                          filter = null
-                          filterInteraction()
-                        }
-                      })
+                          eigentumsangaben.append("text")
+                          .attr("y", 14)
 
-                      marginalienVerfasser.append("text")
-                      .text("Fontanes Familie")
-                      .attr("y", 14)
-                      .attr("x", 330)
-                      .on("click", function(){
-                        if(filter != "Familie"){
-                          filter = "Familie"
-                          filterInteraction()
-                        }else{
-                          filter = null
-                          filterInteraction()
-                        }
-                      })
-
-                      marginalienVerfasser.append("text")
-                      .text("Andere / Unbekannt")
-                      .attr("y", 14)
-                      .attr("x", 460)
-                      .on("click", function(){
-                        if(filter != "Unbekannt"){
-                          filter = "Unbekannt"
-                          filterInteraction()
-                        }else{
-                          filter = null
-                          filterInteraction()
-                        }
-                      })
-
-                      ////////////////Provenienz-Filter Start
-                      ///////////////////////////////////////////////
+                      var zusatzMaterial = legend.append("g")
+                          .attr("class", "zusatzMaterial")
+                          .style("cursor", "pointer")
+                          .attr("transform", "translate(555,0)")
 
 
-                      eigentumsangaben.select("text").append("tspan")
-                          .text("Provenienzangaben")
-                          .attr("class", "EigentumsangabenFilter")
+
+                      var anderes = legend.append("g")
+                              .attr("class", "anderes")
+                              .style("cursor", "pointer")
+                              .attr("transform", "translate(725,0)")
+
+                      var markierungen = legend.append("g")
+                          .attr("class", "markierungen")
+                          .style("cursor", "pointer")
+                          .attr("transform", "translate(300,0)")
+
+                          markierungen.append("text")
+                          .attr("y", 14)
+
+                      var marginalien = legend.append("g")
+                          .attr("class", "marginalien")
+                          .style("cursor", "pointer")
+                          .attr("transform", "translate(435,0)")
+
+                          marginalien.append("text")
+                          .attr("y", 14)
+
+
+                      // var marginalienVerfasser = legend.append("g")
+                      //     .attr("class", "marginalienVerfasser")
+                      //     .style("cursor", "pointer")
+                      //
+                      //     marginalienVerfasser.append("text")
+                      //     .text("Marginalien Schreibhand")
+                      //     .style("font-weight", "bold")
+                      //     .style("cursor", "auto")
+                      //     .style("letter-spacing", "1px")
+                      //     .attr("y", 14)
+                      //     .attr("x", 0)
+                      //
+                      //   //  var SchreibhandFilter = null
+                      //
+                      //     marginalienVerfasser.append("text")
+                      //     .text("Theodor Fontane")
+                      //     .attr("y", 14)
+                      //     .attr("x", 200)
+                      //     .on("click", function(){
+                      //       if(filter != "Fontane"){
+                      //         filter = "Fontane"
+                      //         filterInteraction()
+                      //       }else{
+                      //         filter = null
+                      //         filterInteraction()
+                      //       }
+                      //     })
+                      //
+                      //     marginalienVerfasser.append("text")
+                      //     .text("Fontanes Familie")
+                      //     .attr("y", 14)
+                      //     .attr("x", 330)
+                      //     .on("click", function(){
+                      //       if(filter != "Familie"){
+                      //         filter = "Familie"
+                      //         filterInteraction()
+                      //       }else{
+                      //         filter = null
+                      //         filterInteraction()
+                      //       }
+                      //     })
+                      //
+                      //     marginalienVerfasser.append("text")
+                      //     .text("Andere / Unbekannt")
+                      //     .attr("y", 14)
+                      //     .attr("x", 460)
+                      //     .on("click", function(){
+                      //       if(filter != "Unbekannt"){
+                      //         filter = "Unbekannt"
+                      //         filterInteraction()
+                      //       }else{
+                      //         filter = null
+                      //         filterInteraction()
+                      //       }
+                      //     })
+
+                          ////////////////Provenienz-Filter Start
+                          ///////////////////////////////////////////////
+
+
+                          eigentumsangaben.select("text").append("tspan")
+                              .text("Provenienzangaben")
+                              .attr("class", "EigentumsangabenFilter")
+                              .on("click", function() {
+                                if (filter != "eigentumsangaben"){
+                                  filter = "eigentumsangaben"
+                                  eigentumsangabenEntfaltet = true
+
+
+                                  farbausfaltungProvenienz()
+                                  filterInteraction()
+                                  eigentumsangaben.selectAll(".EigentumsangabenPlus").text(" ⊖")
+                                  markierungen.selectAll(".MarkierungenPlus").text(" ⊕")
+                                  marginalien.selectAll(".MarginalienPlus").text(" ⊕")
+                                  eigentumsangaben.selectAll("text").style("font-weight", "bolder").style("opacity", 1)
+                                  zusatzMaterial.selectAll("text").style("font-weight", "400").style("opacity",.6)
+                                  anderes.selectAll("text").style("font-weight", "400").style("opacity",.6)
+                                  marginalien.selectAll("text").style("font-weight", "400").style("opacity", .6)
+                                  markierungen.selectAll("text").style("font-weight", "400").style("opacity", .6)
+
+                                  eigentumsangabendetail.transition().duration(800).attr("transform", "scale(1,1)").style("opacity", 1)
+                                  markierungendetail.transition().duration(800).attr("transform", "scale(0,1)").style("opacity", 1)
+                                  marginaliendetail.transition().duration(800).attr("transform", "scale(0,1)").style("opacity", 1)
+
+                                }
+                                else {
+                                  filter = null
+                                  eigentumsangabenEntfaltet = false
+
+                                  farbeinfaltungProvenienz()
+                                  filterInteraction()
+                                  eigentumsangaben.selectAll(".EigentumsangabenPlus").text(" ⊕")
+                                  zusatzMaterial.selectAll("text").style("font-weight", "400").style("opacity", 1)
+                                  marginalien.selectAll("text").style("font-weight", "400").style("opacity", 1)
+                                  anderes.selectAll("text").style("font-weight", "400").style("opacity", 1)
+                                  markierungen.selectAll("text").style("font-weight", "400").style("opacity", 1)
+                                  eigentumsangaben.selectAll("text").style("font-weight", "400").style("opacity", 1)
+                                  eigentumsangabendetail.transition().duration(800).attr("transform", "scale(0,1)").style("opacity", 0)
+                                  }
+
+                              })
+
+                          eigentumsangaben.select("text").append("tspan")
+                              .text(" ⊕")
+                              .attr("class", "EigentumsangabenPlus")
+                              .style("font-size", 17 + "px")
+                              // .on("click", function() {
+                              //   if (eigentumsangabenEntfaltet == false){
+                              //     eigentumsangabenEntfaltet = true
+                              //
+                              //     farbausfaltungProvenienz()
+                              //     eigentumsangaben.selectAll(".EigentumsangabenPlus").text(" ⊖")
+                              //     eigentumsangaben.selectAll("text").style("font-weight", "bolder")
+                              //     eigentumsangabendetail.transition().duration(800).attr("transform", "scale(1,1)").style("opacity", 1)
+                              //   }
+                              //   else {
+                              //     eigentumsangabenEntfaltet = false
+                              //
+                              //     farbeinfaltungProvenienz()
+                              //     eigentumsangaben.selectAll(".EigentumsangabenPlus").text(" ⊕")
+                              //     eigentumsangaben.selectAll("text").style("font-weight", "500")
+                              //     eigentumsangabendetail.transition().duration(800).attr("transform", "scale(0,1)").style("opacity", 0)
+                              //     }
+                              // })
+
+
+
+                                          var eigentumsangabendetail = eigentumsangaben.append("g").attr("class", "detail").attr("transform", "scale(0,1)").style("opacity", 0)
+
+                                          eigentumsangabendetail.append("text")
+                                              .text("Schriftl. Provenienzangaben")
+                                              .attr("y", 28)
+                                              .attr("x", 0)
+                                              .attr("class", "provenienz")
+                                              .on("click", function(){
+                                                if(filter != "provenienz"){
+                                                  filter = "provenienz"
+                                                  filterInteraction()
+                                                }else{
+                                                  filter = null
+                                                  filterInteraction()
+                                                }
+                                              })
+
+
+                                          eigentumsangabendetail.append("text")
+                                              .text("Provenienz-Stempel")
+                                              .attr("y", 28)
+                                              .attr("x", 210)
+                                              .attr("class", "provenienzstempel")
+                                              .on("click", function(){
+                                                if(filter != "provenienzstempel"){
+                                                  filter = "provenienzstempel"
+                                                  filterInteraction()
+                                                }else{
+                                                  filter = null
+                                                  filterInteraction()
+                                                }
+                                              })
+
+
+          ////////////////Provenienz-Filter Ende
+          ///////////////////////////////////////////////
+
+
+          ////////////////Markierung-Filter Start
+          ///////////////////////////////////////////////
+
+                      markierungen.select("text").append("tspan")
+                          .text("Markierungen")
+                          .attr("class", "MarkierungFilter")
                           .on("click", function() {
-                            if (filter != "eigentumsangaben"){
-                              filter = "eigentumsangaben"
-                              eigentumsangabenEntfaltet = true
+                            if (filter != "markierungen"){
+                              filter = "markierungen"
+                              markierungenEntfaltet = true
 
-
-                              farbausfaltungProvenienz()
+                              farbausfaltungMarkierung()
                               filterInteraction()
-                              eigentumsangaben.selectAll(".EigentumsangabenPlus").text(" ⊖")
-                              markierungen.selectAll(".MarkierungenPlus").text(" ⊕")
+                              eigentumsangaben.selectAll(".EigentumsangabenPlus").text(" ⊕")
+                              markierungen.selectAll(".MarkierungenPlus").text(" ⊖")
                               marginalien.selectAll(".MarginalienPlus").text(" ⊕")
-                              eigentumsangaben.selectAll("text").style("font-weight", "bolder").style("opacity", 1)
-                              zusatzMaterial.selectAll("text").style("font-weight", "400").style("opacity",.6)
+                              markierungen.selectAll("text").style("font-weight", "bolder").style("opacity", 1)
+                              zusatzMaterial.selectAll("text").style("font-weight", "400").style("opacity", .6)
+                              anderes.selectAll("text").style("font-weight", "400").style("opacity", .6)
                               marginalien.selectAll("text").style("font-weight", "400").style("opacity", .6)
-                              markierungen.selectAll("text").style("font-weight", "400").style("opacity", .6)
+                              eigentumsangaben.selectAll("text").style("font-weight", "400").style("opacity", .6)
 
-                              eigentumsangabendetail.transition().duration(800).attr("transform", "scale(1,1)").style("opacity", 1)
-                              markierungendetail.transition().duration(800).attr("transform", "scale(0,1)").style("opacity", 1)
+                              eigentumsangabendetail.transition().duration(800).attr("transform", "scale(0,1)").style("opacity", 1)
+                              markierungendetail.transition().duration(800).attr("transform", "scale(1,1)").style("opacity", 1)
                               marginaliendetail.transition().duration(800).attr("transform", "scale(0,1)").style("opacity", 1)
+
 
                             }
                             else {
                               filter = null
-                              eigentumsangabenEntfaltet = false
+                              markierungenEntfaltet = false
 
-                              farbeinfaltungProvenienz()
+                              farbeinfaltungMarkierung()
                               filterInteraction()
-                              eigentumsangaben.selectAll(".EigentumsangabenPlus").text(" ⊕")
+                              markierungen.selectAll(".MarkierungenPlus").text(" ⊕")
                               zusatzMaterial.selectAll("text").style("font-weight", "400").style("opacity", 1)
                               marginalien.selectAll("text").style("font-weight", "400").style("opacity", 1)
                               markierungen.selectAll("text").style("font-weight", "400").style("opacity", 1)
                               eigentumsangaben.selectAll("text").style("font-weight", "400").style("opacity", 1)
-                              eigentumsangabendetail.transition().duration(800).attr("transform", "scale(0,1)").style("opacity", 0)
+                              anderes.selectAll("text").style("font-weight", "400").style("opacity", 1)
+                              markierungendetail.transition().duration(800).attr("transform", "scale(0,1)").style("opacity", 0)
                               }
-
                           })
 
-                      eigentumsangaben.select("text").append("tspan")
+
+
+
+                      markierungen.select("text").append("tspan")
                           .text(" ⊕")
-                          .attr("class", "EigentumsangabenPlus")
+                          .attr("class", "MarkierungenPlus")
                           .style("font-size", 17 + "px")
                           // .on("click", function() {
-                          //   if (eigentumsangabenEntfaltet == false){
-                          //     eigentumsangabenEntfaltet = true
+                          //   if (markierungenEntfaltet == false){
+                          //     markierungenEntfaltet = true
                           //
-                          //     farbausfaltungProvenienz()
-                          //     eigentumsangaben.selectAll(".EigentumsangabenPlus").text(" ⊖")
-                          //     eigentumsangaben.selectAll("text").style("font-weight", "bolder")
-                          //     eigentumsangabendetail.transition().duration(800).attr("transform", "scale(1,1)").style("opacity", 1)
+                          //     farbausfaltungMarkierung()
+                          //     markierungen.selectAll(".MarkierungenPlus").text(" ⊖")
+                          //     markierungen.selectAll("text").style("font-weight", "bolder")
+                          //     markierungendetail.transition().duration(800).attr("transform", "scale(1,1)").style("opacity", 1)
                           //   }
                           //   else {
-                          //     eigentumsangabenEntfaltet = false
+                          //   markierungenEntfaltet = false
                           //
-                          //     farbeinfaltungProvenienz()
-                          //     eigentumsangaben.selectAll(".EigentumsangabenPlus").text(" ⊕")
-                          //     eigentumsangaben.selectAll("text").style("font-weight", "500")
-                          //     eigentumsangabendetail.transition().duration(800).attr("transform", "scale(0,1)").style("opacity", 0)
+                          //     farbeinfaltungMarkierung()
+                          //     markierungen.selectAll(".MarkierungenPlus").text(" ⊕")
+                          //     markierungen.selectAll("text").style("font-weight", "500")
+                          //     markierungendetail.transition().duration(800).attr("transform", "scale(0,1)").style("opacity", 0)
                           //     }
                           // })
 
+                      var markierungendetail = markierungen.append("g").attr("class", "detail").attr("transform", "scale(0,1)").style("opacity", 0)
+
+                      markierungendetail.append("text")
+                          .text("Anstreichung")
+                          .attr("y", 28)
+                          .attr("x", 0)
+                          .attr("class", "anstreichung")
+                          .on("click", function(){
+                            if(filter != "anstreichung"){
+                              filter = "anstreichung"
+                              filterInteraction()
+                            }else{
+                              filter = null
+                              filterInteraction()
+                            }
+                          })
+
+                      markierungendetail.append("text")
+                          .text("Unterstreichung")
+                          .attr("y", 28)
+                          .attr("x", 110)
+                          .attr("class", "unterstreichung")
+                          .on("click", function(){
+                            if(filter != "unterstreichung"){
+                              filter = "unterstreichung"
+                              filterInteraction()
+                            }else{
+                              filter = null
+                              filterInteraction()
+                            }
+                          })
+
+                      markierungendetail.append("text")
+                          .text("Durchstreichung")
+                          .attr("y", 28)
+                          .attr("x", 240)
+                          .attr("class", "durchstreichung")
+                          .on("click", function(){
+                            if(filter != "durchstreichung"){
+                              filter = "durchstreichung"
+                              filterInteraction()
+                            }else{
+                              filter = null
+                              filterInteraction()
+                            }
+                          })
+
+                      markierungendetail.append("text")
+                          .text("Sonstige Markierung")
+                          .attr("y", 28)
+                          .attr("x", 370)
+                          .attr("class", "sonstigeMarkierung")
+                          .on("click", function(){
+                            if(filter != "sonstigeMarkierung"){
+                              filter = "sonstigeMarkierung"
+                              filterInteraction()
+                            }else{
+                              filter = null
+                              filterInteraction()
+                            }
+                          })
+
+                      // markierungendetail.append("text")
+                      //     .text("Anderes")
+                      //     .attr("y", 28)
+                      //     .attr("x", 530)
+                      //     .attr("class", "anderes")
+                      //     .on("click", function(){
+                      //       if(filter != "anderes"){
+                      //         filter = "anderes"
+                      //         filterInteraction()
+                      //       }else{
+                      //         filter = null
+                      //         filterInteraction()
+                      //       }
+                      //     })
 
 
-                                      var eigentumsangabendetail = eigentumsangaben.append("g").attr("class", "detail").attr("transform", "scale(0,1)").style("opacity", 0)
 
-                                      eigentumsangabendetail.append("text")
-                                          .text("Schriftl. Provenienzangaben")
-                                          .attr("y", 50)
-                                          .attr("x", 0)
-                                          .attr("class", "provenienz")
-                                          .on("click", function(){
-                                            if(filter != "provenienz"){
-                                              filter = "provenienz"
+                          ////////////////Markierung-Filter Ende
+                          ///////////////////////////////////////////////
+
+                          ////////////////Marginalien-Filter Start
+                          ///////////////////////////////////////////////
+
+                                      marginalien.select("text").append("tspan")
+                                          .text("Marginalien")
+                                          .attr("class", "MarginalienFilter")
+                                          .on("click", function() {
+                                            if (filter != "marginalien"){
+                                              filter = "marginalien"
+                                              marginalienEntfaltet = true
+
+                                              farbausfaltungMarginalien()
                                               filterInteraction()
-                                            }else{
-                                              filter = null
-                                              filterInteraction()
+                                              marginalien.selectAll(".MarginalienPlus").text(" ⊖")
+                                              marginalien.selectAll("text").style("font-weight", "bolder")
+                                              marginaliendetail.transition().duration(800).attr("transform", "scale(1,1)").style("opacity", 1)
+
+                                              eigentumsangaben.selectAll(".EigentumsangabenPlus").text(" ⊕")
+                                              markierungen.selectAll(".MarkierungenPlus").text(" ⊕")
+                                              marginalien.selectAll(".MarginalienPlus").text(" ⊖")
+                                              marginalien.selectAll("text").style("font-weight", "bolder").style("opacity", 1)
+                                              zusatzMaterial.selectAll("text").style("font-weight", "400").style("opacity", .6)
+                                              anderes.selectAll("text").style("font-weight", "400").style("opacity", .6)
+                                              markierungen.selectAll("text").style("font-weight", "400").style("opacity", .6)
+                                              eigentumsangaben.selectAll("text").style("font-weight", "400").style("opacity", .6)
+
+                                              eigentumsangabendetail.transition().duration(800).attr("transform", "scale(0,1)").style("opacity", 1)
+                                              markierungendetail.transition().duration(800).attr("transform", "scale(0,1)").style("opacity", 1)
+                                              marginaliendetail.transition().duration(800).attr("transform", "scale(1,1)").style("opacity", 1)
+
+
                                             }
+                                            else {
+                                              filter = null
+                                              marginalienEntfaltet = false
+
+                                              farbeinfaltungMarginalien()
+                                              filterInteraction()
+                                              marginalien.selectAll(".MarginalienPlus").text(" ⊕")
+                                              zusatzMaterial.selectAll("text").style("font-weight", "400").style("opacity", 1)
+                                              anderes.selectAll("text").style("font-weight", "400").style("opacity", 1)
+                                              marginalien.selectAll("text").style("font-weight", "400").style("opacity", 1)
+                                              markierungen.selectAll("text").style("font-weight", "400").style("opacity", 1)
+                                              eigentumsangaben.selectAll("text").style("font-weight", "400").style("opacity", 1)
+                                              marginaliendetail.transition().duration(800).attr("transform", "scale(0,1)").style("opacity", 0)
+                                              }
                                           })
 
 
-                                      eigentumsangabendetail.append("text")
-                                          .text("Provenienz-Stempel")
-                                          .attr("y", 50)
-                                          .attr("x", 210)
-                                          .attr("class", "provenienzstempel")
-                                          .on("click", function(){
-                                            if(filter != "provenienzstempel"){
-                                              filter = "provenienzstempel"
-                                              filterInteraction()
-                                            }else{
-                                              filter = null
-                                              filterInteraction()
-                                            }
-                                          })
+                                      marginalien.select("text").append("tspan")
+                                          .attr("class", "MarginalienPlus")
+                                          .text(" ⊕")
+                                          .style("font-size", 17 + "px")
+                                          // .on("click", function() {
+                                          //   if (marginalienEntfaltet == false){
+                                          //     marginalienEntfaltet = true
+                                          //
+                                          //     farbausfaltungMarginalien()
+                                          //     marginalien.selectAll(".MarginalienPlus").text(" ⊖")
+                                          //     marginalien.selectAll("text").style("font-weight", "bolder")
+                                          //     marginaliendetail.transition().duration(800).attr("transform", "scale(1,1)").style("opacity", 1)
+                                          //   }
+                                          //   else {
+                                          //     marginalienEntfaltet = false
+                                          //
+                                          //     farbeinfaltungMarginalien()
+                                          //     marginalien.selectAll(".MarginalienPlus").text(" ⊕")
+                                          //     marginalien.selectAll("text").style("font-weight", "500")
+                                          //     marginaliendetail.transition().duration(800).attr("transform", "scale(0,1)").style("opacity", 0)
+                                          //     }
+                                          // })
 
+                      var marginaliendetail = marginalien.append("g").attr("class", "detail").attr("transform", "scale(0,1)").style("opacity", 0)
 
-      ////////////////Provenienz-Filter Ende
-      ///////////////////////////////////////////////
+                      marginaliendetail.append("text")
+                          .text("Bewertung")
+                          .attr("y", 28)
+                          .attr("x", 0)
+                          .attr("class", "bewertung")
+                          .on("click", function(){
+                            if(filter != "bewertung"){
+                              filter = "bewertung"
+                              filterInteraction()
+                            }else{
+                              filter = null
+                              filterInteraction()
+                            }
+                          })
 
+                      marginaliendetail.append("text")
+                          .text("Kommentar")
+                          .attr("y", 28)
+                          .attr("x", 90)
+                          .attr("class", "kommentar")
+                          .on("click", function(){
+                            if(filter != "kommentar"){
+                              filter = "kommentar"
+                              filterInteraction()
+                            }else{
+                              filter = null
+                              filterInteraction()
+                            }
+                          })
 
-      ////////////////Markierung-Filter Start
-      ///////////////////////////////////////////////
+                      marginaliendetail.append("text")
+                          .text("Textkorrektur")
+                          .attr("y", 28)
+                          .attr("x", 190)
+                          .attr("class", "textkorrektur")
+                          .on("click", function(){
+                            if(filter != "textkorrektur"){
+                              filter = "textkorrektur"
+                              filterInteraction()
+                            }else{
+                              filter = null
+                              filterInteraction()
+                            }
+                          })
 
-                  markierungen.select("text").append("tspan")
-                      .text("Markierungen")
-                      .attr("class", "MarkierungFilter")
-                      .on("click", function() {
-                        if (filter != "markierungen"){
-                          filter = "markierungen"
-                          markierungenEntfaltet = true
+                      marginaliendetail.append("text")
+                          .text("Variante")
+                          .attr("y", 28)
+                          .attr("x", 310)
+                          .attr("class", "variante")
+                          .on("click", function(){
+                            if(filter != "variante"){
+                              filter = "variante"
+                              filterInteraction()
+                            }else{
+                              filter = null
+                              filterInteraction()
+                            }
+                          })
 
-                          farbausfaltungMarkierung()
-                          filterInteraction()
-                          eigentumsangaben.selectAll(".EigentumsangabenPlus").text(" ⊕")
-                          markierungen.selectAll(".MarkierungenPlus").text(" ⊖")
-                          marginalien.selectAll(".MarginalienPlus").text(" ⊕")
-                          markierungen.selectAll("text").style("font-weight", "bolder").style("opacity", 1)
-                          zusatzMaterial.selectAll("text").style("font-weight", "400").style("opacity", .6)
-                          marginalien.selectAll("text").style("font-weight", "400").style("opacity", .6)
-                          eigentumsangaben.selectAll("text").style("font-weight", "400").style("opacity", .6)
+                      marginaliendetail.append("text")
+                          .text("Übersetzung")
+                          .attr("y", 28)
+                          .attr("x", 390)
+                          .attr("class", "uebersetzung")
+                          .on("click", function(){
+                            if(filter != "uebersetzung"){
+                              filter = "uebersetzung"
+                              filterInteraction()
+                            }else{
+                              filter = null
+                              filterInteraction()
+                            }
+                          })
 
-                          eigentumsangabendetail.transition().duration(800).attr("transform", "scale(0,1)").style("opacity", 1)
-                          markierungendetail.transition().duration(800).attr("transform", "scale(1,1)").style("opacity", 1)
-                          marginaliendetail.transition().duration(800).attr("transform", "scale(0,1)").style("opacity", 1)
+                          ////////////////Marginalien-Filter Ende
+                          ///////////////////////////////////////////////
 
-
-                        }
-                        else {
-                          filter = null
-                          markierungenEntfaltet = false
-
-                          farbeinfaltungMarkierung()
-                          filterInteraction()
-                          markierungen.selectAll(".MarkierungenPlus").text(" ⊕")
-                          zusatzMaterial.selectAll("text").style("font-weight", "400").style("opacity", 1)
-                          marginalien.selectAll("text").style("font-weight", "400").style("opacity", 1)
-                          markierungen.selectAll("text").style("font-weight", "400").style("opacity", 1)
-                          eigentumsangaben.selectAll("text").style("font-weight", "400").style("opacity", 1)
-                          markierungendetail.transition().duration(800).attr("transform", "scale(0,1)").style("opacity", 0)
-                          }
-                      })
-
-
-
-
-                  markierungen.select("text").append("tspan")
-                      .text(" ⊕")
-                      .attr("class", "MarkierungenPlus")
-                      .style("font-size", 17 + "px")
-                      // .on("click", function() {
-                      //   if (markierungenEntfaltet == false){
-                      //     markierungenEntfaltet = true
-                      //
-                      //     farbausfaltungMarkierung()
-                      //     markierungen.selectAll(".MarkierungenPlus").text(" ⊖")
-                      //     markierungen.selectAll("text").style("font-weight", "bolder")
-                      //     markierungendetail.transition().duration(800).attr("transform", "scale(1,1)").style("opacity", 1)
-                      //   }
-                      //   else {
-                      //   markierungenEntfaltet = false
-                      //
-                      //     farbeinfaltungMarkierung()
-                      //     markierungen.selectAll(".MarkierungenPlus").text(" ⊕")
-                      //     markierungen.selectAll("text").style("font-weight", "500")
-                      //     markierungendetail.transition().duration(800).attr("transform", "scale(0,1)").style("opacity", 0)
-                      //     }
-                      // })
-
-                  var markierungendetail = markierungen.append("g").attr("class", "detail").attr("transform", "scale(0,1)").style("opacity", 0)
-
-                  markierungendetail.append("text")
-                      .text("Anstreichung")
-                      .attr("y", 50)
-                      .attr("x", 0)
-                      .attr("class", "anstreichung")
-                      .on("click", function(){
-                        if(filter != "anstreichung"){
-                          filter = "anstreichung"
-                          filterInteraction()
-                        }else{
-                          filter = null
-                          filterInteraction()
-                        }
-                      })
-
-                  markierungendetail.append("text")
-                      .text("Unterstreichung")
-                      .attr("y", 50)
-                      .attr("x", 110)
-                      .attr("class", "unterstreichung")
-                      .on("click", function(){
-                        if(filter != "unterstreichung"){
-                          filter = "unterstreichung"
-                          filterInteraction()
-                        }else{
-                          filter = null
-                          filterInteraction()
-                        }
-                      })
-
-                  markierungendetail.append("text")
-                      .text("Durchstreichung")
-                      .attr("y", 50)
-                      .attr("x", 240)
-                      .attr("class", "durchstreichung")
-                      .on("click", function(){
-                        if(filter != "durchstreichung"){
-                          filter = "durchstreichung"
-                          filterInteraction()
-                        }else{
-                          filter = null
-                          filterInteraction()
-                        }
-                      })
-
-                  markierungendetail.append("text")
-                      .text("Sonstige Markierung")
-                      .attr("y", 50)
-                      .attr("x", 370)
-                      .attr("class", "sonstigeMarkierung")
-                      .on("click", function(){
-                        if(filter != "sonstigeMarkierung"){
-                          filter = "sonstigeMarkierung"
-                          filterInteraction()
-                        }else{
-                          filter = null
-                          filterInteraction()
-                        }
-                      })
-
-                  // markierungendetail.append("text")
-                  //     .text("Anderes")
-                  //     .attr("y", 50)
-                  //     .attr("x", 530)
-                  //     .attr("class", "anderes")
-                  //     .on("click", function(){
-                  //       if(filter != "anderes"){
-                  //         filter = "anderes"
-                  //         filterInteraction()
-                  //       }else{
-                  //         filter = null
-                  //         filterInteraction()
-                  //       }
-                  //     })
-
-
-
-                      ////////////////Markierung-Filter Ende
-                      ///////////////////////////////////////////////
-
-                      ////////////////Marginalien-Filter Start
-                      ///////////////////////////////////////////////
-
-                                  marginalien.select("text").append("tspan")
-                                      .text("Marginalien")
-                                      .attr("class", "MarginalienFilter")
-                                      .on("click", function() {
-                                        if (filter != "marginalien"){
-                                          filter = "marginalien"
-                                          marginalienEntfaltet = true
-
-                                          farbausfaltungMarginalien()
-                                          filterInteraction()
-                                          marginalien.selectAll(".MarginalienPlus").text(" ⊖")
-                                          marginalien.selectAll("text").style("font-weight", "bolder")
-                                          marginaliendetail.transition().duration(800).attr("transform", "scale(1,1)").style("opacity", 1)
-
-                                          eigentumsangaben.selectAll(".EigentumsangabenPlus").text(" ⊕")
-                                          markierungen.selectAll(".MarkierungenPlus").text(" ⊕")
-                                          marginalien.selectAll(".MarginalienPlus").text(" ⊖")
-                                          marginalien.selectAll("text").style("font-weight", "bolder").style("opacity", 1)
-                                          zusatzMaterial.selectAll("text").style("font-weight", "400").style("opacity", .6)
-                                          markierungen.selectAll("text").style("font-weight", "400").style("opacity", .6)
-                                          eigentumsangaben.selectAll("text").style("font-weight", "400").style("opacity", .6)
-
-                                          eigentumsangabendetail.transition().duration(800).attr("transform", "scale(0,1)").style("opacity", 1)
-                                          markierungendetail.transition().duration(800).attr("transform", "scale(0,1)").style("opacity", 1)
-                                          marginaliendetail.transition().duration(800).attr("transform", "scale(1,1)").style("opacity", 1)
-
-
-                                        }
-                                        else {
-                                          filter = null
-                                          marginalienEntfaltet = false
-
-                                          farbeinfaltungMarginalien()
-                                          filterInteraction()
-                                          marginalien.selectAll(".MarginalienPlus").text(" ⊕")
-                                          zusatzMaterial.selectAll("text").style("font-weight", "400").style("opacity", 1)
-                                          marginalien.selectAll("text").style("font-weight", "400").style("opacity", 1)
-                                          markierungen.selectAll("text").style("font-weight", "400").style("opacity", 1)
-                                          eigentumsangaben.selectAll("text").style("font-weight", "400").style("opacity", 1)
-                                          marginaliendetail.transition().duration(800).attr("transform", "scale(0,1)").style("opacity", 0)
-                                          }
-                                      })
-
-
-                                  marginalien.select("text").append("tspan")
-                                      .attr("class", "MarginalienPlus")
-                                      .text(" ⊕")
-                                      .style("font-size", 17 + "px")
-                                      // .on("click", function() {
-                                      //   if (marginalienEntfaltet == false){
-                                      //     marginalienEntfaltet = true
-                                      //
-                                      //     farbausfaltungMarginalien()
-                                      //     marginalien.selectAll(".MarginalienPlus").text(" ⊖")
-                                      //     marginalien.selectAll("text").style("font-weight", "bolder")
-                                      //     marginaliendetail.transition().duration(800).attr("transform", "scale(1,1)").style("opacity", 1)
-                                      //   }
-                                      //   else {
-                                      //     marginalienEntfaltet = false
-                                      //
-                                      //     farbeinfaltungMarginalien()
-                                      //     marginalien.selectAll(".MarginalienPlus").text(" ⊕")
-                                      //     marginalien.selectAll("text").style("font-weight", "500")
-                                      //     marginaliendetail.transition().duration(800).attr("transform", "scale(0,1)").style("opacity", 0)
-                                      //     }
-                                      // })
-
-                  var marginaliendetail = marginalien.append("g").attr("class", "detail").attr("transform", "scale(0,1)").style("opacity", 0)
-
-                  marginaliendetail.append("text")
-                      .text("Bewertung")
-                      .attr("y", 50)
-                      .attr("x", 0)
-                      .attr("class", "bewertung")
-                      .on("click", function(){
-                        if(filter != "bewertung"){
-                          filter = "bewertung"
-                          filterInteraction()
-                        }else{
-                          filter = null
-                          filterInteraction()
-                        }
-                      })
-
-                  marginaliendetail.append("text")
-                      .text("Kommentar")
-                      .attr("y", 50)
-                      .attr("x", 90)
-                      .attr("class", "kommentar")
-                      .on("click", function(){
-                        if(filter != "kommentar"){
-                          filter = "kommentar"
-                          filterInteraction()
-                        }else{
-                          filter = null
-                          filterInteraction()
-                        }
-                      })
-
-                  marginaliendetail.append("text")
-                      .text("Textkorrektur")
-                      .attr("y", 50)
-                      .attr("x", 190)
-                      .attr("class", "textkorrektur")
-                      .on("click", function(){
-                        if(filter != "textkorrektur"){
-                          filter = "textkorrektur"
-                          filterInteraction()
-                        }else{
-                          filter = null
-                          filterInteraction()
-                        }
-                      })
-
-                  marginaliendetail.append("text")
-                      .text("Variante")
-                      .attr("y", 50)
-                      .attr("x", 310)
-                      .attr("class", "variante")
-                      .on("click", function(){
-                        if(filter != "variante"){
-                          filter = "variante"
-                          filterInteraction()
-                        }else{
-                          filter = null
-                          filterInteraction()
-                        }
-                      })
-
-                  marginaliendetail.append("text")
-                      .text("Übersetzung")
-                      .attr("y", 50)
-                      .attr("x", 390)
-                      .attr("class", "uebersetzung")
-                      .on("click", function(){
-                        if(filter != "uebersetzung"){
-                          filter = "uebersetzung"
-                          filterInteraction()
-                        }else{
-                          filter = null
-                          filterInteraction()
-                        }
-                      })
-
-                      ////////////////Marginalien-Filter Ende
-                      ///////////////////////////////////////////////
-
-                  zusatzMaterial.append("text")
-                      .text("Zusätzliches Material")
-                      .attr("y", 36)
-                    //  .attr("x", 600)
-                      .on("click", function(){
-                        if(filter != "zusatzMaterial"){
-                          filter = "zusatzMaterial"
-                          filterInteraction()
-                          eigentumsangaben.selectAll(".EigentumsangabenPlus").text(" ⊕")
-                          markierungen.selectAll(".MarkierungenPlus").text(" ⊕")
-                          marginalien.selectAll(".MarginalienPlus").text(" ⊕")
-                          zusatzMaterial.selectAll("text").style("font-weight", "bolder").style("opacity", 1)
-                          marginalien.selectAll("text").style("font-weight", "400").style("opacity", .6)
-                          markierungen.selectAll("text").style("font-weight", "400").style("opacity", .6)
-                          eigentumsangaben.selectAll("text").style("font-weight", "400").style("opacity", .6)
-
-                          eigentumsangabendetail.transition().duration(800).attr("transform", "scale(0,1)").style("opacity", 1)
-                          markierungendetail.transition().duration(800).attr("transform", "scale(0,1)").style("opacity", 1)
-                          marginaliendetail.transition().duration(800).attr("transform", "scale(0,1)").style("opacity", 1)
-                        }else{
-                          filter = null
-                          filterInteraction()
-                          zusatzMaterial.selectAll("text").style("font-weight", "400").style("opacity", 1)
-                          marginalien.selectAll("text").style("font-weight", "400").style("opacity", 1)
-                          markierungen.selectAll("text").style("font-weight", "400").style("opacity", 1)
-                          eigentumsangaben.selectAll("text").style("font-weight", "400").style("opacity", 1)
-                        }
-                      })
-
-
-
-                      anderes.append("text")
-                          .text("Anderes")
-                          .attr("y", 36)
+                      zusatzMaterial.append("text")
+                          .text("Zusätzliches Material")
+                          .attr("y", 14)
                         //  .attr("x", 600)
                           .on("click", function(){
-                            if(filter != "anderes"){
-                              filter = "anderes"
+                            if(filter != "zusatzMaterial"){
+                              filter = "zusatzMaterial"
                               filterInteraction()
                               eigentumsangaben.selectAll(".EigentumsangabenPlus").text(" ⊕")
                               markierungen.selectAll(".MarkierungenPlus").text(" ⊕")
@@ -1332,6 +1310,8 @@ compScrollFunction()
                               marginalien.selectAll("text").style("font-weight", "400").style("opacity", .6)
                               markierungen.selectAll("text").style("font-weight", "400").style("opacity", .6)
                               eigentumsangaben.selectAll("text").style("font-weight", "400").style("opacity", .6)
+                              anderes.selectAll("text").style("font-weight", "400").style("opacity", .6)
+
 
                               eigentumsangabendetail.transition().duration(800).attr("transform", "scale(0,1)").style("opacity", 1)
                               markierungendetail.transition().duration(800).attr("transform", "scale(0,1)").style("opacity", 1)
@@ -1339,12 +1319,53 @@ compScrollFunction()
                             }else{
                               filter = null
                               filterInteraction()
+                              anderes.selectAll("text").style("font-weight", "400").style("opacity", 1)
                               zusatzMaterial.selectAll("text").style("font-weight", "400").style("opacity", 1)
                               marginalien.selectAll("text").style("font-weight", "400").style("opacity", 1)
                               markierungen.selectAll("text").style("font-weight", "400").style("opacity", 1)
                               eigentumsangaben.selectAll("text").style("font-weight", "400").style("opacity", 1)
                             }
                           })
+
+
+
+                          anderes.append("text")
+                              .text("Anderes")
+                              .attr("y", 14)
+                            //  .attr("x", 600)
+                              .on("click", function(){
+                                if(filter != "anderes"){
+                                  filter = "anderes"
+                                  filterInteraction()
+                                  eigentumsangaben.selectAll(".EigentumsangabenPlus").text(" ⊕")
+                                  markierungen.selectAll(".MarkierungenPlus").text(" ⊕")
+                                  marginalien.selectAll(".MarginalienPlus").text(" ⊕")
+                                  anderes.selectAll("text").style("font-weight", "bolder").style("opacity", 1)
+                                  zusatzMaterial.selectAll("text").style("font-weight", "400").style("opacity", .6)
+                                  marginalien.selectAll("text").style("font-weight", "400").style("opacity", .6)
+                                  markierungen.selectAll("text").style("font-weight", "400").style("opacity", .6)
+                                  eigentumsangaben.selectAll("text").style("font-weight", "400").style("opacity", .6)
+
+                                  eigentumsangabendetail.transition().duration(800).attr("transform", "scale(0,1)").style("opacity", 1)
+                                  markierungendetail.transition().duration(800).attr("transform", "scale(0,1)").style("opacity", 1)
+                                  marginaliendetail.transition().duration(800).attr("transform", "scale(0,1)").style("opacity", 1)
+                                }else{
+                                  filter = null
+                                  filterInteraction()
+                                  anderes.selectAll("text").style("font-weight", "400").style("opacity", 1)
+                                  zusatzMaterial.selectAll("text").style("font-weight", "400").style("opacity", 1)
+                                  marginalien.selectAll("text").style("font-weight", "400").style("opacity", 1)
+                                  markierungen.selectAll("text").style("font-weight", "400").style("opacity", 1)
+                                  eigentumsangaben.selectAll("text").style("font-weight", "400").style("opacity", 1)
+                                }
+                              })
+
+
+
+
+                      ////////////////////////////////////////////////////////////
+                      ////////////////////////////////////////////////////////////
+                      //////////////////////////////////////////////////////////////
 
 
 
@@ -1586,6 +1607,7 @@ compScrollFunction()
     d3.select("#complicationsvg").attr("width", width).attr("height", height)
 
     let complicationVis = d3.select("#complicationsvg").append("g")
+  //  .attr("transform", function(d, i) {return "translate("+-width/2+","+-height/2+")scale(2,2)"})
 
 
     let scatterScaleX = d3.scaleLinear()
@@ -1598,7 +1620,7 @@ compScrollFunction()
 
 
             var compOpacityScale = d3.scaleLinear()
-                .domain([0, 4000])
+                .domain([0, 1000])
                 .range([0, 1])
                 .clamp(true)
 
@@ -1675,6 +1697,27 @@ compScrollFunction()
               }
 
 
+d3.selectAll(".pieG")
+.on("mouseover", function(d){pieHover(d.ID)})
+.on("mouseout", function(){d3.selectAll(".pieLabel").remove()})
+
+
+function pieHover(d){
+  console.log(d)
+  var scheibhandTitle = d
+
+d3.select("body").append("p")
+.attr("class", "pieLabel")
+.style("background-color", "#474747")
+.style("padding", "10px")
+.style("color", "white")
+.style("position", "absolute")
+.style("z-index", "300")
+.style("font-size", "11pt")
+.style('top', d3.event.pageY  -30 + 'px')
+.style('left', d3.event.pageX + 10+ 'px')
+.text(d)
+}
 
               ///////Ende Pies
 
@@ -1708,9 +1751,14 @@ d3.selectAll(".pieG").filter(function(d,i){return d.level == "buch"})
             .domain([0, 4000])
             .range([posYalsVerfasser, posYalsBuch])
 
+    let radiusSizing = d3.scaleLinear()
+                .domain([0, 4000])
+                .range([0, 1])
+                .clamp(true)
 
 
-  return "translate("+scatterScaleBuchX(scatterScaleBuchVerfasserX(scrollTop))+","+scatterScaleBuchY(scatterScaleBuchVerfasserY(scrollTop))+")"})
+
+  return "translate("+scatterScaleBuchX(scatterScaleBuchVerfasserX(scrollTop))+","+scatterScaleBuchY(scatterScaleBuchVerfasserY(scrollTop))+")scale(+"+radiusSizing(scrollTop)+","+radiusSizing(scrollTop)+")"})
 
 
 

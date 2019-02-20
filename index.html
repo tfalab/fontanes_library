@@ -3747,9 +3747,6 @@ draw()
                                 return d.values[0].BookID == thisBookID
                             })
                           .style("display", "inline")
-
-
-
                     }
                 })
                 .on("mouseout", function() {
@@ -3787,8 +3784,48 @@ draw()
                         .style("display", "none")
 
                 })
+
+                d3.selectAll(".singleBookBG")
+                .filter(function(d,i){return d3.select(this).datum().values[0].BookID != clickedBook })
                 .on("click", bookClick)
 
+                d3.selectAll(".singleBookBG")
+                .filter(function(d,i){return d3.select(this).datum().values[0].BookID == clickedBook })
+                .on("click", function(d,i){
+
+
+                  if (scrollTop >= 0 && d3.select(this).datum().values[0].BookID == clickedBook) {
+                    var currentScrollTop = Math.max(window.pageYOffset, document.documentElement.scrollTop, document.body.scrollTop)
+
+                //    var mouseY = ((d3.event.layerY || d3.event.offsety) - currentScrollTop-120);
+                var mouseY = ((d3.event.pageY) - currentScrollTop-270-posYCanvas);
+
+                      //console.log(mouseY/pageheight)
+                      //console.log(d.values)
+
+                //      console.log(mouseY)
+                      var thisPage = Math.round(round45(mouseY) / explicateScale2(scrollTop))
+
+                      var thisPageID = (d.values.filter(function(d, i) {
+                          return d.Part == thisPage
+                      }))[0].ID
+                //console.log(thisPage)
+
+                      function round45(x) {
+                          return Math.ceil(x / explicateScale2(scrollTop)) * explicateScale2(scrollTop)
+                      }
+                      //console.log(d.values.filter(function(D,I){return D.Part == 3}))
+                      thisVerfasser = d3.select(this).datum().values[0].Verfasser
+                      var thisBookID = d3.select(this).datum().values[0].BookID
+
+
+                        window.open(
+                             "./img/m/" + thisPageID + ".jpg",
+                             '_blank' // <- This is what makes it open in a new window.
+                           );
+
+                  }
+                })
 
             bookFingerprint.append("rect")
                 .attr("class", "nodesbg")
@@ -4047,6 +4084,13 @@ function farbeinfaltungProvenienz() {
 
 var detailview = false
 var thisData = 0
+
+
+
+//////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////
+/////////////////////////////
+/////bookClick Function Anfang
 
             function bookClick() {
         //      d3.select("#svgFrontTitles").style("display", "none")
@@ -4612,6 +4656,585 @@ d3.selectAll(".transcriptions").selectAll("path")
 .style("opacity", transcriptPathScaleOpacity(scrollTop))
 
             }
+
+
+
+            //////////////////////////////////////////////////////////
+            //////////////////////////////////////////////////////////
+            /////////////////////////////
+            /////bookClick Function Ende
+
+
+
+            //////////////////////////////////////////////////////////
+            //////////////////////////////////////////////////////////
+            /////////////////////////////
+            /////bookhash selection Function Anfang
+
+                        function bookClickHash(data) {
+                    //      d3.select("#svgFrontTitles").style("display", "none")
+                            ///Trigger animation in Canvas
+                            transitions = true
+
+                            ///Stop animation in Canvas
+                            setTimeout(function() {
+                                transitions = false
+                            }, 20000);
+
+                            ///Hide Background for Author Group
+                            authorGroup.selectAll("rect").attr("display", "none")
+
+
+                            ///create array thisData that only includes pages with Benutzungsspuren
+                            thisData = data
+
+
+                            ///set a selection based on ID
+                            //clickedBook = d3.select(this).datum().values[0].BookID
+
+                            ///create Variable that counts number of "Schriftspuren" on one page
+                            var maxX = 0
+
+                            ///create variable that helps to position the books
+                            var posX = 0
+
+
+
+                            ////Create Scale for book/page width, based on scroll position
+                            var selectedBookScale = d3.scaleLinear()
+                                .domain([0, 3000])
+                                .range([selectedBookBuchlevel, selectedBookSeitenlevel])
+                                .clamp(true)
+
+                            var unselectedBookSameAuthorScale = d3.scaleLinear()
+                                .domain([0, 3000])
+                                .range([unselectedBookSameAuthorBuchlevel, unselectedBookSameAuthorSeitenlevel])
+                                .clamp(true)
+
+                            var unselectedBookScale = d3.scaleLinear()
+                                .domain([0, 3000])
+                                .range([unselectedBookBuchlevel, unselectedBookSeitenlevel])
+                                .clamp(true)
+
+                                var BuchauswahlFeldScale = d3.scaleLinear()
+                                    .domain([0, 3000])
+                                    .range([BuchauswahlFeld, BuchauswahlFeldSeitenFeld])
+                                    .clamp(true)
+
+                                    var onSelectionAuthorAbstand = (chartArea-100-(BuchauswahlFeldScale(scrollTop)+ (BuchAnzahl-1)*unselectedBookBuchlevel)) / (authorAnzahl) //-100 muss eventuell raus? warum die benötigt werden ist un klar
+
+
+                            bookFingerprint.selectAll(".nodes")
+                              .filter(function(d, i) {
+                                    return d.BookID != clickedBook
+                                    })
+                                .transition()
+                                .duration(500)
+                                .attr("width", function(d) {
+                                        return unselectedBookScale(scrollTop)
+                                })
+
+                                .attr("x", 0)
+
+
+
+
+                                bookFingerprint.selectAll(".nodes")
+                                .filter(function(d, i) {
+                                                        return d.BookID == clickedBook
+                                                    })
+                                    .transition()
+                                    .duration(500)
+                                .attr("width", function(d) {
+                                        return selectedBookScale(scrollTop)
+                                })
+                                .attr("x", function(d, i) {
+                                    if (i > 5 && thisData[i - 6].ID == d.ID) {
+                                      //  maxX = (Math.max(maxX, 7))
+                                        return 7*selectedBookScale(scrollTop)-selectedBookScale(scrollTop)*6
+                                    } else if (i > 4 && thisData[i - 5].ID == d.ID) {
+                                    //    maxX = (Math.max(maxX, 6))
+                                        return 7*selectedBookScale(scrollTop)-selectedBookScale(scrollTop)*5
+                                    } else if (i > 3 && thisData[i - 4].ID == d.ID) {
+                                    //    maxX = (Math.max(maxX, 5))
+                                        return 7*selectedBookScale(scrollTop)-selectedBookScale(scrollTop)*4
+                                    } else if (i > 2 && thisData[i - 3].ID == d.ID) {
+                                    //    maxX = (Math.max(maxX, 4))
+                                        return 7*selectedBookScale(scrollTop)-selectedBookScale(scrollTop)*3
+                                    } else if (i > 1 && thisData[i - 2].ID == d.ID) {
+                                      //  maxX = (Math.max(maxX, 3))
+                                        return 7*selectedBookScale(scrollTop)-selectedBookScale(scrollTop)*2
+                                    } else if (i != 0 && thisData[i - 1].ID == d.ID) {
+                                      //  maxX = (Math.max(maxX, 2))
+                                        return 7*selectedBookScale(scrollTop)-selectedBookScale(scrollTop)
+                                    } else {
+                                  //      maxX = (Math.max(maxX, 1))
+                                        return 7*selectedBookScale(scrollTop)
+                                    }
+                                })
+
+                            bookFingerprint.selectAll(".nodesbg")
+                                .transition()
+                                .duration(500)
+                                .attr("width", function(d) {
+                                    if (d.values[0].BookID == clickedBook) {
+                                        return selectedBookScale(scrollTop)
+                                    } else {
+                                        return unselectedBookScale(scrollTop)
+                                    }
+                                })
+                                .attr("x", function(d) {
+                                    if (d.values[0].BookID == clickedBook) {
+                                        return 7*selectedBookScale(scrollTop)
+                                    } else {
+                                        return 0
+                                    }
+                                })
+
+
+
+                            bookFingerprint
+                                .transition()
+                                .duration(500)
+                                .attr("transform", function(d, i) {
+                                    if (i == 0) {
+                                        posx = 0
+                                        return "translate(" + (marginleft + (posx)) + "," + (posYCanvas) + ")"
+                                    } else if (i != 0 && datenByTitle[i - 1].values[0].BookID == clickedBook) {
+                                        posx = posx + BuchauswahlFeldScale(scrollTop)
+                                        return "translate(" + (marginleft + (posx)) + "," + (posYCanvas) + ")"
+                                    } else if (i != 0 && datenByTitle[i - 1].values[0].Verfasser != d.values[0].Verfasser) {
+                                        posx = posx + onSelectionAuthorAbstand
+                                        return "translate(" + (marginleft + (posx)) + "," + (posYCanvas) + ")"
+                                    } else {
+                                        posx = posx + onSelectionBuchAbstand
+                                        return "translate(" + (marginleft + (posx)) + "," + (posYCanvas) + ")"
+                                    }
+                                })
+
+
+                            bookG
+                               .transition()
+                               .duration(500)
+                                .attr("transform", function(d, i) {
+                                    if (i == 0) {
+                                        posx = 0
+                                        return "translate(" + (marginleft - 2 + (posx)) + "," + (posY) + ")"
+                                    } else if (i != 0 && datenByTitle[i - 1].values[0].BookID == clickedBook) {
+                                        posx = posx + BuchauswahlFeldScale(scrollTop)
+                                        return "translate(" + (marginleft - 2 + (posx)) + "," + (posY) + ")"
+                                    } else if (i != 0 && datenByTitle[i - 1].values[0].Verfasser != d.values[0].Verfasser) {
+                                        posx = posx + onSelectionAuthorAbstand
+                                        return "translate(" + (marginleft - 2 + (posx)) + "," + (posY) + ")"
+                                    } else {
+                                        posx = posx + onSelectionBuchAbstand
+                                        return "translate(" + (marginleft - 2 + (posx)) + "," + (posY) + ")"
+                                    }
+                                })
+
+
+                                d3.selectAll(".bookTitleFrontG")
+                                .attr("transform", function(d, i) {
+                                    if (i == 0) {
+                                        posx = 0
+                                        return "translate(" + (marginleft + (posx)-40.5) + "," + (posY) + ")"
+                                    } else if (i != 0 && datenByTitle[i - 1].values[0].BookID == clickedBook) {
+                                        posx = posx + BuchauswahlFeldScale(scrollTop)
+                                        return "translate(" + (marginleft + (posx)-40.5) + "," + (posY) + ")"
+                                    } else if (i != 0 && datenByTitle[i - 1].values[0].Verfasser != d.values[0].Verfasser) {
+                                        posx = posx + onSelectionAuthorAbstand
+                                        return "translate(" + (marginleft + (posx)-40.5) + "," + (posY) + ")"
+                                    } else {
+                                        posx = posx + onSelectionBuchAbstand
+                                        return "translate(" + (marginleft + (posx)-40.5) + "," + (posY) + ")"
+                                    }
+                                })
+
+
+
+
+
+                            //    .selectAll("rect")
+
+                            //    d3.selectAll(".bookBG").attr("opacity", 1)
+
+
+                            bookG.selectAll(".bookBG")
+                                .transition()
+                                //.delay(50)
+                                .duration(500)
+                                .style("opacity", 0)
+                                //.attr("fill", function(d){console.log(d.values[0].BookID)})
+                                .attr("width", function(d) {
+                                    if (d.values[0].BookID == clickedBook) {
+                                        return BuchauswahlFeldScale(scrollTop)
+                                    } else {
+                                        return buchBreite
+                                    }
+                                })
+                                .filter(function(d){return d.values[0].BookID == clickedBook})
+                                .style("fill", "#cec1b8")
+                                .style("opacity", 0.3)
+
+
+
+
+                            detailview = true
+                            ///Detailinfo bei Klick einblenden
+                            var detailInfoParent = (d3.select("#svg").selectAll(".bookBG").filter(function(d){return d.key == clickedBook})).append("g").attr("class", "detailInfoParent")//.attr("pointer-events", "visible")
+
+                            var detailInfo = detailInfoParent.append("g")//.attr("pointer-events", "visible")
+
+                            var detailInfoTextBox = detailInfo.append("g").attr("class", "detailInfoTextBox").attr("transform", function(d){return "translate(" + detailInfoTextBoxScale(scrollTop) + "," + 0 + ")"})
+
+
+                            detailInfo.attr("class", "detailinfo")
+                            .attr("transform", "scale(0,1)")
+                            .transition()
+                            .duration(600)
+                            .attr("transform", "scale(1,1)")
+
+
+
+
+
+
+
+
+                              detailInfo.append("text")
+                                  .attr("class", "detail_titel")
+                                  // .text(function(d) {
+                                  //     return d.values[0].BuchTitel
+                                  // })
+                                  .text(function(d) {if(korpus.filter(function(D,I){return D.KurzSignatur == d.values[0].BookID})[0]){
+                                      if (korpus.filter(function(D,I){return D.KurzSignatur == d.values[0].BookID})[0].Kurztitel.length > 70) {
+                                          return (korpus.filter(function(D,I){return D.KurzSignatur == d.values[0].BookID})[0].Kurztitel).substring(0, 70) + " [...]"
+                                      } else {
+                                          return korpus.filter(function(D,I){return D.KurzSignatur == d.values[0].BookID})[0].Kurztitel
+                                      }}
+                                  })
+                                  .attr("y", -5)
+                                  .attr("dy", 0)
+                                  .attr("text-anchor", "middle")
+                                  .attr("x", 9*selectedBookScale(scrollTop))
+                                  .call(wrapUp, 300)
+                                  .selectAll("tspan")
+                                  .attr("x", 9*selectedBookScale(scrollTop))
+                                  .attr("text-anchor", "middle")
+
+
+
+                // var detailInfoScale = d3.scaleLinear()
+                //     .domain([50, 400])
+                //     .range([1, 0])
+                //     .clamp(true)
+
+
+                    detailInfoTextBox.attr("opacity", function(d){return detailInfoScale(scrollTop)})
+
+
+                                detailInfoTextBox.append("image")
+                                    .attr("xlink:href", function(d) {
+                                        return "./img/m/" + (d.values.filter(function(D) {
+                                            return D.Part === "1"
+                                        })[0].ID) + ".jpg"
+                                    })
+                                    //.attr("xlink:href", function(d){return console.log(d.values.filter(function(D){return D.Part === "1"}))})
+                                    .attr("class", "detail_cover")
+                                    .attr("y", function() {
+                                        return 0
+                                    })
+                                  //  .attr("x", 10 + 9*selectedBookScale(scrollTop))
+                                    .attr("height", 250+"px")
+                                    .attr("width", 190+"px")
+
+
+
+
+
+                                detailInfoTextBox.append("text")
+                                    .attr("class", "detail_verfasser")
+                                    .text(function(d) {
+                                        return "Verfasser: " + d.values[0].Verfasser
+                                    })
+                                    .attr("y", function() {
+                                        return 270// + (d3.select(".detail_titel")).node().getBBox().height
+                                    })
+                                    .attr("dy", 0)
+                              //      .attr("x", 10 + 9*selectedBookScale(scrollTop))
+                                    .call(wrap, 220)
+                                    .selectAll("tspan")
+                                    .attr("x", 0)
+                                  //  .attr("x", 10 + 9*selectedBookScale(scrollTop))
+
+
+                                detailInfoTextBox.append("text")
+                                    .attr("class", "detail_genre")
+                                    .text(function(d) {
+                                        return "Genre: " + korpus.filter(function(D,I){return D.KurzSignatur == d.values[0].BookID})[0].Formalschlagwort_Genre//d.values[0].Genre
+                                    })
+                                    .attr("y", function() {
+                                        return 290})
+                                    .attr("dy", 0)
+                            //        .attr("x", 10 + 9*selectedBookScale(scrollTop))
+                                    .call(wrap, 200)
+                                    .selectAll("tspan")
+                                    .attr("x", 0)
+                          //          .attr("x", 10 + 9*selectedBookScale(scrollTop))
+
+
+                                detailInfoTextBox.append("text")
+                                    .attr("class", "detail_year")
+                                    .text(function(d) {
+                                    return "Datierung: " + korpus.filter(function(D,I){return D.KurzSignatur == d.values[0].BookID})[0].Jahr//d.values[0].Genre
+                                })
+                                    .attr("y", function() {
+                                        return 310// + ((d3.select(".detail_genre")).node().getBBox().height) + ((d3.select(".detail_titel")).node().getBBox().height) + (d3.select(".detail_verfasser")).node().getBBox().height
+                                    })
+                                    .attr("dy", 0)
+            //                        .attr("x", 10 + 9*selectedBookScale(scrollTop))
+
+
+                                detailInfoTextBox.append("text")
+                                    .attr("class", "detail_seitenzahl")
+                                    .text(function(d) {
+                                        return "Seitenzahl: " + d.values[0].maxPart
+                                    })
+                                    .attr("y", function() {
+                                        return 330 //+ ((d3.select(".detail_year")).node().getBBox().height) + ((d3.select(".detail_genre")).node().getBBox().height) + ((d3.select(".detail_titel")).node().getBBox().height) + (d3.select(".detail_verfasser")).node().getBBox().height
+                                    })
+                                    .attr("dy", 0)
+                                //    .attr("x", 10 + 9*selectedBookScale(scrollTop))
+
+
+                                    detailInfoTextBox.append("text")
+                                        .attr("class", "eigentumsangaben")
+                                        .text(function(d) {
+                                            return "Provenienzangaben: "  +thisData.filter(function(d){return d.SchriftspurTyp == "P"}).length
+                                        })
+                                        .attr("y", function() {
+                                            return 350 //+ ((d3.select(".detail_year")).node().getBBox().height) + ((d3.select(".detail_genre")).node().getBBox().height) + ((d3.select(".detail_titel")).node().getBBox().height) + (d3.select(".detail_verfasser")).node().getBBox().height
+                                        })
+                                        .attr("dy", 0)
+                            //            .attr("x", 10 + 9*selectedBookScale(scrollTop))
+
+
+                                        detailInfoTextBox.append("text")
+                                            .attr("class", "markierungen")
+                                            .text(function(d) {
+                                                return "Markierungen: "  +thisData.filter(function(d){return d.Benutzungsspur == "1" || d.Benutzungsspur == "1?" ||
+                                                d.Benutzungsspur == "2" || d.Benutzungsspur == "2?" ||
+                                                d.Benutzungsspur == "3" || d.Benutzungsspur == "3?" ||
+                                                d.Benutzungsspur == "4" || d.Benutzungsspur == "4?" ||
+                                                d.Benutzungsspur == "7" || d.Benutzungsspur == "7?"
+                                              }).length
+                                            })
+                                            .attr("y", function() {
+                                                return 370 //+ ((d3.select(".detail_year")).node().getBBox().height) + ((d3.select(".detail_genre")).node().getBBox().height) + ((d3.select(".detail_titel")).node().getBBox().height) + (d3.select(".detail_verfasser")).node().getBBox().height
+                                            })
+                                            .attr("dy", 0)
+                                //            .attr("x", 10 + 9*selectedBookScale(scrollTop))
+
+
+
+                                            detailInfoTextBox.append("text")
+                                                .attr("class", "marginalien")
+                                                .text(function(d) {
+                                                    return "Marginalien: "  +thisData.filter(function(d){return d.Benutzungsspur == "5" && d.SchriftspurTyp != "P"}).length
+                                                })
+                                                .attr("y", function() {
+                                                    return 390 //+ ((d3.select(".detail_year")).node().getBBox().height) + ((d3.select(".detail_genre")).node().getBBox().height) + ((d3.select(".detail_titel")).node().getBBox().height) + (d3.select(".detail_verfasser")).node().getBBox().height
+                                                })
+                                                .attr("dy", 0)
+                                  //              .attr("x", 10 + 9*selectedBookScale(scrollTop))
+
+
+
+                                                detailInfoTextBox.append("text")
+                                                    .attr("class", "zusatzMaterial")
+                                                    .text(function(d) {
+                                                        return "Sonstiges Material: "  +thisData.filter(function(d){return d.Benutzungsspur == "6" || d.Benutzungsspur == "6?"}).length
+                                                    })
+                                                    .attr("y", function() {
+                                                        return 410 //+ ((d3.select(".detail_year")).node().getBBox().height) + ((d3.select(".detail_genre")).node().getBBox().height) + ((d3.select(".detail_titel")).node().getBBox().height) + (d3.select(".detail_verfasser")).node().getBBox().height
+                                                    })
+                                                    .attr("dy", 0)
+                                //                    .attr("x", 10 + 9*selectedBookScale(scrollTop))
+
+                                                    var detailTranscriptScale = d3.scaleLinear()
+                                                        .domain([-0.01,0, 380])
+                                                        .range([0,1, 1])
+                                                        .clamp(true)
+
+            var transcriptions = detailInfoParent.append("g").attr("clip-path","url(#transcript-clip)").append("g").classed("transcriptions", true).attr("opacity", function(d){return detailTranscriptScale(scrollTop)})
+
+            var transcriptData = thisData.filter(function(d){return d.SchriftspurTranskription!= "null"})
+
+            var explicateScale2 = d3.scaleLinear()
+                .domain([500, 2500])
+                .range([pageheight, 31])
+                .clamp(true)
+            //var lasttranscripty = 0
+
+            // var transcriptFontSize = d3.scaleLinear()
+            //     .domain([500, 3000])
+            //     .range([1.5, 12])
+            //     .clamp(true)
+            //
+
+
+            transcriptions.selectAll("text")
+            .data(transcriptData)
+            .enter()
+            .append("text")
+            .text(function(d){return d.SchriftspurTranskription})
+            .style("font-size", 12 + "px")
+            .attr("x", transcriptPositionScale(scrollTop)*selectedBookScale(scrollTop)+10)
+            .attr("y", function(d,i){
+                      if (i == 0){
+                        return transcriptYStart(scrollTop)+(explicateScale2(scrollTop))*d.Part}
+                      else {
+                        return transcriptYStart(scrollTop)+(explicateScale2(scrollTop))*d.Part}})
+            .attr("dy", 0)
+            .attr("dx", 0)
+            .attr("class", function(d,i){if(d.Schreibmedium == "Stempel"){return "stempel"} else {return "handschrift"}})
+            .classed("transcriptText", true)
+            .style("fill", function(d){if(d.Schreibmedium == "Bleistift" || d.Schreibmedium == "Bleistift?"){return "grey"}else if(d.Schreibmedium == "Tinte" || d.Schreibmedium == "Tinte?"){return "black"}
+            else if(d.Schreibmedium == "roter Buntstift" || d.Schreibmedium == "roter Buntstift?"){return "red"}  else if(d.Schreibmedium == "lila Buntstift"){return "DarkOrchid"}
+            else if(d.Schreibmedium == "blauer Buntstift"){return "blue"}})
+            .text(function(d,i){return d.SchriftspurTranskription})
+            .call(wraptext, 270)
+            .selectAll("tspan")
+            .attr("x", transcriptPositionScale(scrollTop)*selectedBookScale(scrollTop)+10)
+
+            transcriptions.selectAll("text").classed("transcriptionText", true).style("font-size", function(){return transcriptFontSize(scrollTop)+ "px"})
+
+
+            d3.selectAll(".transcriptionText")
+             .each(function(d,i){
+               if(i>0){
+               var thisTranscriptY = d3.select(this).node().getBBox().y
+               var lastTranscriptMaxY = d3.selectAll(".transcriptionText").filter(function(D,I){return I == i-1}).node().getBBox().y + d3.selectAll(".transcriptionText").filter(function(D,I){return I == i-1}).node().getBBox().height
+
+               if (thisTranscriptY <= lastTranscriptMaxY){
+                 d3.select(this)
+                 .attr("y", function(){
+                   return lastTranscriptMaxY+transcriptFontSize(scrollTop)})
+                   .selectAll("tspan").attr("y", function(){
+                      return lastTranscriptMaxY+transcriptFontSize(scrollTop)})
+
+                  transcriptions.append("image")
+                  .attr("xlink:href", function(){
+                    if(d.SchriftspurSchreibhand == "Theodor Fontane"){return "icons/icon_fontaneA.svg"}
+                    else if(d.SchriftspurSchreibhand == "?Theodor Fontane?"){return "icons/icon_fontaneB.svg"}
+                    else if(d.SchriftspurSchreibhand == "Unbekannt" || d.SchriftspurSchreibhand == "unbekannt" || d.SchriftspurSchreibhand == "null"){return "icons/icon_unbekannt.svg"}
+                    else{return "icons/icon_andereA.svg"}
+                })
+                  .attr("width", detailCircleScale(scrollTop))
+                  .attr("height", detailCircleScale(scrollTop))
+                  .attr("title", function(){return d.SchriftspurSchreibhand })
+                  .attr("class", "schreibhandIcon")
+                  .attr("x",  transcriptPositionScale(scrollTop)*selectedBookScale(scrollTop)-3)
+                  .attr("y", lastTranscriptMaxY+transcriptFontSize(scrollTop)-3- (detailCircleScale(scrollTop)/2))
+
+
+            ////line between transcript and rect
+                  transcriptions.append("path")
+                  .style("stroke", "white")
+                  .style("stroke-width", 1)
+                  .style("opacity", .7)
+                  .style("fill", "none")
+                  //.style("stroke-dasharray", "1,2")
+                  .attr("d", function(d, i){
+                      var line = d3.line().curve(d3.curveBasis)
+                      var data = [[transcriptPositionScale(scrollTop)*selectedBookScale(scrollTop)-3, lastTranscriptMaxY+transcriptFontSize(scrollTop)-3], [transcriptPositionScale(scrollTop)*selectedBookScale(scrollTop)-20, lastTranscriptMaxY+transcriptFontSize(scrollTop)-3],  [8*selectedBookScale(scrollTop)+20, thisTranscriptY+15], [8*selectedBookScale(scrollTop), thisTranscriptY+15]];
+
+                      return line(data)
+                  })
+
+
+                }else{
+                    transcriptions.append("image")
+                    .attr("xlink:href", function(){
+                      if(d.SchriftspurSchreibhand == "Theodor Fontane"){return "icons/icon_fontaneA.svg"}
+                      else if(d.SchriftspurSchreibhand == "?Theodor Fontane?"){return "icons/icon_fontaneB.svg"}
+                      else if(d.SchriftspurSchreibhand == "Unbekannt" || d.SchriftspurSchreibhand == "unbekannt" || d.SchriftspurSchreibhand == "null"){return "icons/icon_unbekannt.svg"}
+                      else{return "icons/icon_andereA.svg"}
+                  })
+                    .attr("title", function(){return d.SchriftspurSchreibhand })
+                    .attr("width", detailCircleScale(scrollTop))
+                    .attr("height", detailCircleScale(scrollTop))
+                    .attr("class", "schreibhandIcon")
+                    .attr("x",  transcriptPositionScale(scrollTop)*selectedBookScale(scrollTop)-3)
+                    .attr("y", thisTranscriptY+transcriptFontSize(scrollTop)-6-(detailCircleScale(scrollTop)/2))
+
+                    ////line between transcript and rect
+                          transcriptions.append("path")
+                          .style("stroke", "white")
+                          .style("stroke-width", 1)
+                          .style("opacity", .7)
+                          .style("fill", "none")
+                          //.style("stroke-dasharray", "1,2")
+                          .attr("d", function(d, i){
+                              var line = d3.line().curve(d3.curveBasis)
+                              var data = [[transcriptPositionScale(scrollTop)*selectedBookScale(scrollTop)-3, thisTranscriptY+transcriptFontSize(scrollTop)-6], [transcriptPositionScale(scrollTop)*selectedBookScale(scrollTop)-20, thisTranscriptY+transcriptFontSize(scrollTop)-6],  [8*selectedBookScale(scrollTop)+20, thisTranscriptY+transcriptFontSize(scrollTop)-6], [8*selectedBookScale(scrollTop), thisTranscriptY+15]];
+
+                              return line(data)
+                          })
+
+
+
+                }
+
+             }
+            else{
+            var thisTranscriptY = d3.select(this).node().getBBox().y
+
+              transcriptions.append("image")
+              .attr("xlink:href", function(){
+                if(d.SchriftspurSchreibhand == "Theodor Fontane"){return "icons/icon_fontaneA.svg"}
+                else if(d.SchriftspurSchreibhand == "?Theodor Fontane?"){return "icons/icon_fontaneB.svg"}
+                else if(d.SchriftspurSchreibhand == "Unbekannt" || d.SchriftspurSchreibhand == "unbekannt" || d.SchriftspurSchreibhand == "null"){return "icons/icon_unbekannt.svg"}
+                else{return "icons/icon_andereA.svg"}
+            })
+              .attr("title", function(){return d.SchriftspurSchreibhand })
+              .attr("width", detailCircleScale(scrollTop))
+              .attr("height", detailCircleScale(scrollTop))
+              .attr("class", "schreibhandIcon")
+              .attr("x",  transcriptPositionScale(scrollTop)*selectedBookScale(scrollTop)-3)
+              .attr("y", thisTranscriptY+transcriptFontSize(scrollTop)-6-(detailCircleScale(scrollTop)/2))
+
+
+              ////line between transcript and rect
+                    transcriptions.append("path")
+                    .style("stroke", "white")
+                    .style("stroke-width", 1)
+                    .style("opacity", .7)
+                    .style("fill", "none")
+                    //.style("stroke-dasharray", "1,2")
+                    .attr("d", function(d, i){
+                        var line = d3.line().curve(d3.curveBasis)
+                        var data = [[transcriptPositionScale(scrollTop)*selectedBookScale(scrollTop)-3, thisTranscriptY+transcriptFontSize(scrollTop)-6], [transcriptPositionScale(scrollTop)*selectedBookScale(scrollTop)-20, thisTranscriptY+transcriptFontSize(scrollTop)-6],  [8*selectedBookScale(scrollTop)+20, thisTranscriptY+transcriptFontSize(scrollTop)-6], [8*selectedBookScale(scrollTop), thisTranscriptY+15]];
+
+                        return line(data)
+                    })
+
+            }})
+
+            d3.selectAll(".transcriptions").selectAll("path")
+            .style("opacity", transcriptPathScaleOpacity(scrollTop))
+
+                        }
+
+
+
+                        //////////////////////////////////////////////////////////
+                        //////////////////////////////////////////////////////////
+                        /////////////////////////////
+                        /////bookHashSelection Function Ende
+
+
+
 
 
 
@@ -5376,17 +5999,10 @@ areachart.selectAll("path").classed("filtered", true).filter(".sonstigeMarkierun
 
 
 function hashFunction(){
-if (scrollTop < -3000){
-  window.location.hash = "#level=distanz"+"?filter="+filter+"?auswahl="+clickedBook
+  console.log(scrollTop)
 
-}else if(scrollTop >= -3000 && scrollTop <= 1200){
+  window.location.hash = "#level="+scrollTop+"?filter="+filter+"?auswahl="+clickedBook
 
-  window.location.hash = "#level=start"+"?filter="+filter+"?auswahl="+clickedBook
-
-}else if(scrollTop > 1200 ){
-  window.location.hash = "#level=detail"+"?filter="+filter+"?auswahl="+clickedBook
-
-}
 }
 
 var fullHash = 0
@@ -5405,7 +6021,19 @@ function hashLoad(){
   console.log(fullHash)
   level = fullHash[0].substring(7)
   filter = fullHash[1].substring(7)
-  //clickedBook = fullHash[2].substring(8)
+  clickedBook = fullHash[2].substring(8)
+
+  if (clickedBook != 0){
+    thisData =  datenByTitle.filter(function(d){return d.key == clickedBook})[0]
+    .values.filter(function(d) {
+            return d.Benutzungsspur != "null"
+        })
+
+  bookClickHash(thisData)
+  }
+
+
+  console.log(thisData)
   console.log(level)
   console.log(filter)
   console.log(clickedBook)
@@ -5482,21 +6110,15 @@ if (filter == "eigentumsangaben" || filter == "provenienz" || filter == "proveni
 
 
 setTimeout(function () {
-  if (level == "start"){
     $("html,body").animate({
-        scrollTop: 6000
+        scrollTop: +level+6000
     }, '3000')
 
-  }else if (level == "distanz"){
     $("html,body").animate({
-        scrollTop: 0
-    }, '3000')
+        scrollTop: +level+6000+1
+    }, '1')
 
-  }else if (level == "detail"){
-    $("html,body").animate({
-        scrollTop: 9000
-    }, '3000')
-  }
+
 
 }, 500);
 }
@@ -6429,7 +7051,7 @@ bookFingerprint.selectAll(".nodesbg")
 
 if (clickedBook != 0 && scrollTop >0){
 
-
+//console.log(clickedBook)
 
   ///create Variable that counts number of "Schriftspuren" on one page
   var maxX = 0
@@ -6808,7 +7430,8 @@ function schreibhandIconFunction(){
                     //////////////
                     ///Hover-Thumb
 
-                    d3.selectAll(".singleBookBG").on("mousemove", function(d) {
+                    d3.selectAll(".singleBookBG")
+                    .on("mousemove", function(d) {
 //console.log(posYCanvas)
 //console.log(scrollTop)
                         if (scrollTop >= 0) {
@@ -6877,6 +7500,49 @@ function schreibhandIconFunction(){
                         }
 
                     })
+
+                    d3.selectAll(".singleBookBG")
+                    .filter(function(d,i){return d3.select(this).datum().values[0].BookID != clickedBook })
+                    .on("click", bookClick)
+
+                    d3.selectAll(".singleBookBG")
+                    .filter(function(d,i){return d3.select(this).datum().values[0].BookID == clickedBook })
+                    .on("click", function(d,i){
+
+
+                      if (scrollTop >= 0 && d3.select(this).datum().values[0].BookID == clickedBook) {
+                        var currentScrollTop = Math.max(window.pageYOffset, document.documentElement.scrollTop, document.body.scrollTop)
+
+                    //    var mouseY = ((d3.event.layerY || d3.event.offsety) - currentScrollTop-120);
+                    var mouseY = ((d3.event.pageY) - currentScrollTop-270-posYCanvas);
+
+                          //console.log(mouseY/pageheight)
+                          //console.log(d.values)
+
+                    //      console.log(mouseY)
+                          var thisPage = Math.round(round45(mouseY) / explicateScale2(scrollTop))
+
+                          var thisPageID = (d.values.filter(function(d, i) {
+                              return d.Part == thisPage
+                          }))[0].ID
+                    //console.log(thisPage)
+
+                          function round45(x) {
+                              return Math.ceil(x / explicateScale2(scrollTop)) * explicateScale2(scrollTop)
+                          }
+                          //console.log(d.values.filter(function(D,I){return D.Part == 3}))
+                          thisVerfasser = d3.select(this).datum().values[0].Verfasser
+                          var thisBookID = d3.select(this).datum().values[0].BookID
+
+
+                            window.open(
+                                 "./img/m/" + thisPageID + ".jpg",
+                                 '_blank' // <- This is what makes it open in a new window.
+                               );
+
+                      }
+                    })
+
 
 
                     //////////////
