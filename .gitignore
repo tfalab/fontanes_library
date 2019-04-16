@@ -3,3 +3,4 @@
 img/
 *.jpg
 *.~lock*
+data/.~lock*
