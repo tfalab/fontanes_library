@@ -1023,23 +1023,23 @@ text-align: left;
     }
 
     .about-close{
+      position: absolute;
       cursor: pointer;
-      float: right;
+      right:10px;
+      z-index:999;
       font-size: 30px;
       top:0px;
     }
 
     #detailview{
       position: fixed;
-      width: 70%;
-      height: 90%;
+      width: 70vw;
+      height: 90vh;
       background-color: rgba(71, 71, 71, 0.9);
       color: white;
       z-index: 1000;
-      padding-left: 0px;
-      padding-right: 20px;
+      padding: 0px;
       box-shadow: 2px 0px 5px grey;
-      padding-bottom: 0px;
       display: none;
       opacity: 0;
       margin: auto;
@@ -1050,32 +1050,45 @@ text-align: left;
       vertical-align: top;
     }
 
+
     #detailview table{
-        padding: 20px;
+        padding: 10px;
         font-size: 1em;
         display: inline-block;
         vertical-align: top;
         font-size: 14px;
-        max-width: 400px;
+        height: 100%;
+        width: 35%;
+        top:0;
+        float: left;
+        bottom:0;
     }
 
     #detailview tr{
         vertical-align: top;
+        padding:0;
+
     }
 
     #detailview td{
         vertical-align: top;
+        padding:0;
     }
 
+    .td-title{
+      width:  30%;
+    }
 
-    #detailview img{
-      position: relative;
-      height: 100%;
-      max-width: 70%;
+    .tableImage{
       display: inline-block;
-
+      max-width: 60%;
+      float: left;
+      height: 90vh;
     }
 
-.dv-table-img{
-  height:100%;
-}
+    .tableimg{
+      display: inline-block;
+      float: left;
+      max-width: 100%;
+      max-height: 100%;
+    }

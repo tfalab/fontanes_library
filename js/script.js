@@ -3926,7 +3926,8 @@ dataContainer.selectAll(".nodesbg").filter(function(d){return d3.select(this).da
 
               d3.select("#overlay").style("display", "block").transition().duration(600).style("opacity", .5)
               d3.select("#detailview").style("display", "block").transition().duration(600).style("opacity", 1)
-              d3.select("#detailview").append("img").attr("src", "./img/m/" + thisPageID + ".jpg")
+              d3.select("#detailview").append("div").attr("class", "tableImage")
+              .append("img").attr("src", "./img/m/" + thisPageID + ".jpg").attr("class", "tableimg")
 
               var detailviewTable = d3.select("#detailview").append("table").attr("id", "detailviewTable")
 
@@ -3940,49 +3941,49 @@ dataContainer.selectAll(".nodesbg").filter(function(d){return d3.select(this).da
               var detailviewTableTr8 = detailviewTable.append("tr")
               var detailviewTableTr9 = detailviewTable.append("tr")
 
-              detailviewTableTr1.append("td").text("Buchtitel: ")
+              detailviewTableTr1.append("td").text("Buchtitel: ").attr("class", "td-title")
               detailviewTableTr1.append("td").text(function(d) {
                   return korpus.filter(function(D, I) {
                     return D.KurzSignatur == thisBookID
                   })[0].Titel
                 })
 
-              detailviewTableTr2.append("td").text("Verfasser: ")
+              detailviewTableTr2.append("td").text("Verfasser: ").attr("class", "td-title")
               detailviewTableTr2.append("td").text(function(d) {
                   return korpus.filter(function(D, I) {
                     return D.KurzSignatur == thisBookID
                   })[0].Verfasser
                 })
 
-              detailviewTableTr3.append("td").text("Herausgeber: ")
+              detailviewTableTr3.append("td").text("Herausgeber: ").attr("class", "td-title")
               detailviewTableTr3.append("td").text(function(d) {
                   return korpus.filter(function(D, I) {
                     return D.KurzSignatur == thisBookID
                   })[0].Herausgeber
                 })
 
-              detailviewTableTr4.append("td").text("Verlag: ")
+              detailviewTableTr4.append("td").text("Verlag: ").attr("class", "td-title")
               detailviewTableTr4.append("td").text(function(d) {
                   return korpus.filter(function(D, I) {
                     return D.KurzSignatur == thisBookID
                   })[0].Verlag
                 })
 
-              detailviewTableTr5.append("td").text("Genre: ")
+              detailviewTableTr5.append("td").text("Genre: ").attr("class", "td-title")
               detailviewTableTr5.append("td").text(function(d) {
                   return korpus.filter(function(D, I) {
                     return D.KurzSignatur == thisBookID
                   })[0].Formalschlagwort_Genre
                 })
 
-              detailviewTableTr6.append("td").text("Ort: ")
+              detailviewTableTr6.append("td").text("Ort: ").attr("class", "td-title")
               detailviewTableTr6.append("td").text(function(d) {
                   return korpus.filter(function(D, I) {
                     return D.KurzSignatur == thisBookID
                   })[0].Ort
                 })
 
-                detailviewTableTr7.append("td").text("Datierung: ")
+                detailviewTableTr7.append("td").text("Datierung: ").attr("class", "td-title")
                 detailviewTableTr7.append("td").text(function(d) {
                     return korpus.filter(function(D, I) {
                       return D.KurzSignatur == thisBookID
@@ -3991,7 +3992,7 @@ dataContainer.selectAll(".nodesbg").filter(function(d){return d3.select(this).da
 
 
 
-              detailviewTableTr8.append("td").text("Seiten-ID: ")
+              detailviewTableTr8.append("td").text("Seiten-ID: ").attr("class", "td-title")
               detailviewTableTr8.append("td").text(thisPageID)
 
               // window.open(
@@ -4870,7 +4871,8 @@ dataContainer.selectAll(".nodesbg").filter(function(d){return d3.select(this).da
 
               d3.select("#overlay").style("display", "block").transition().duration(600).style("opacity", .5)
               d3.select("#detailview").style("display", "block").transition().duration(600).style("opacity", 1)
-              d3.select("#detailview").append("img").attr("src", "./img/m/" + thisPageID + ".jpg")
+              d3.select("#detailview").append("div").attr("class", "tableImage")
+              .append("img").attr("src", "./img/m/" + thisPageID + ".jpg").attr("class", "tableimg")
 
               var detailviewTable = d3.select("#detailview").append("table").attr("id", "detailviewTable")
 
@@ -4884,49 +4886,49 @@ dataContainer.selectAll(".nodesbg").filter(function(d){return d3.select(this).da
               var detailviewTableTr8 = detailviewTable.append("tr")
               var detailviewTableTr9 = detailviewTable.append("tr")
 
-              detailviewTableTr1.append("td").text("Buchtitel: ")
+              detailviewTableTr1.append("td").text("Buchtitel: ").attr("class", "td-title")
               detailviewTableTr1.append("td").text(function(d) {
                   return korpus.filter(function(D, I) {
                     return D.KurzSignatur == thisBookID
                   })[0].Titel
                 })
 
-              detailviewTableTr2.append("td").text("Verfasser: ")
+              detailviewTableTr2.append("td").text("Verfasser: ").attr("class", "td-title")
               detailviewTableTr2.append("td").text(function(d) {
                   return korpus.filter(function(D, I) {
                     return D.KurzSignatur == thisBookID
                   })[0].Verfasser
                 })
 
-              detailviewTableTr3.append("td").text("Herausgeber: ")
+              detailviewTableTr3.append("td").text("Herausgeber: ").attr("class", "td-title")
               detailviewTableTr3.append("td").text(function(d) {
                   return korpus.filter(function(D, I) {
                     return D.KurzSignatur == thisBookID
                   })[0].Herausgeber
                 })
 
-              detailviewTableTr4.append("td").text("Verlag: ")
+              detailviewTableTr4.append("td").text("Verlag: ").attr("class", "td-title")
               detailviewTableTr4.append("td").text(function(d) {
                   return korpus.filter(function(D, I) {
                     return D.KurzSignatur == thisBookID
                   })[0].Verlag
                 })
 
-              detailviewTableTr5.append("td").text("Genre: ")
+              detailviewTableTr5.append("td").text("Genre: ").attr("class", "td-title")
               detailviewTableTr5.append("td").text(function(d) {
                   return korpus.filter(function(D, I) {
                     return D.KurzSignatur == thisBookID
                   })[0].Formalschlagwort_Genre
                 })
 
-              detailviewTableTr6.append("td").text("Ort: ")
+              detailviewTableTr6.append("td").text("Ort: ").attr("class", "td-title")
               detailviewTableTr6.append("td").text(function(d) {
                   return korpus.filter(function(D, I) {
                     return D.KurzSignatur == thisBookID
                   })[0].Ort
                 })
 
-                detailviewTableTr7.append("td").text("Datierung: ")
+                detailviewTableTr7.append("td").text("Datierung: ").attr("class", "td-title")
                 detailviewTableTr7.append("td").text(function(d) {
                     return korpus.filter(function(D, I) {
                       return D.KurzSignatur == thisBookID
@@ -4935,7 +4937,7 @@ dataContainer.selectAll(".nodesbg").filter(function(d){return d3.select(this).da
 
 
 
-              detailviewTableTr8.append("td").text("Seiten-ID: ")
+              detailviewTableTr8.append("td").text("Seiten-ID: ").attr("class", "td-title")
               detailviewTableTr8.append("td").text(thisPageID)
               // window.open(
               //   "./img/m/" + d.ID + ".jpg",
@@ -7688,7 +7690,9 @@ dataContainer.selectAll(".nodesbg").filter(function(d){return d3.select(this).da
 
                   d3.select("#overlay").style("display", "block").transition().duration(600).style("opacity", .5)
                   d3.select("#detailview").style("display", "block").transition().duration(600).style("opacity", 1)
-                  d3.select("#detailview").append("img").attr("src", "./img/m/" + thisPageID + ".jpg")
+
+                  d3.select("#detailview").append("div").attr("class", "tableImage")
+                  .append("img").attr("src", "./img/m/" + thisPageID + ".jpg").attr("class", "tableimg")
 
                   var detailviewTable = d3.select("#detailview").append("table").attr("id", "detailviewTable")
 
@@ -7702,49 +7706,55 @@ dataContainer.selectAll(".nodesbg").filter(function(d){return d3.select(this).da
                   var detailviewTableTr8 = detailviewTable.append("tr")
                   var detailviewTableTr9 = detailviewTable.append("tr")
 
-                  detailviewTableTr1.append("td").text("Buchtitel: ")
+
+
+
+                //  d3.select(".tableImage").append("img").attr("src", "./img/m/" + thisPageID + ".jpg")
+
+
+                  detailviewTableTr1.append("td").text("Buchtitel: ").attr("class", "td-title")
                   detailviewTableTr1.append("td").text(function(d) {
                       return korpus.filter(function(D, I) {
                         return D.KurzSignatur == thisBookID
                       })[0].Titel
                     })
 
-                  detailviewTableTr2.append("td").text("Verfasser: ")
+                  detailviewTableTr2.append("td").text("Verfasser: ").attr("class", "td-title")
                   detailviewTableTr2.append("td").text(function(d) {
                       return korpus.filter(function(D, I) {
                         return D.KurzSignatur == thisBookID
                       })[0].Verfasser
                     })
 
-                  detailviewTableTr3.append("td").text("Herausgeber: ")
+                  detailviewTableTr3.append("td").text("Herausgeber: ").attr("class", "td-title")
                   detailviewTableTr3.append("td").text(function(d) {
                       return korpus.filter(function(D, I) {
                         return D.KurzSignatur == thisBookID
                       })[0].Herausgeber
                     })
 
-                  detailviewTableTr4.append("td").text("Verlag: ")
+                  detailviewTableTr4.append("td").text("Verlag: ").attr("class", "td-title")
                   detailviewTableTr4.append("td").text(function(d) {
                       return korpus.filter(function(D, I) {
                         return D.KurzSignatur == thisBookID
                       })[0].Verlag
                     })
 
-                  detailviewTableTr5.append("td").text("Genre: ")
+                  detailviewTableTr5.append("td").text("Genre: ").attr("class", "td-title")
                   detailviewTableTr5.append("td").text(function(d) {
                       return korpus.filter(function(D, I) {
                         return D.KurzSignatur == thisBookID
                       })[0].Formalschlagwort_Genre
                     })
 
-                  detailviewTableTr6.append("td").text("Ort: ")
+                  detailviewTableTr6.append("td").text("Ort: ").attr("class", "td-title")
                   detailviewTableTr6.append("td").text(function(d) {
                       return korpus.filter(function(D, I) {
                         return D.KurzSignatur == thisBookID
                       })[0].Ort
                     })
 
-                    detailviewTableTr7.append("td").text("Datierung: ")
+                    detailviewTableTr7.append("td").text("Datierung: ").attr("class", "td-title")
                     detailviewTableTr7.append("td").text(function(d) {
                         return korpus.filter(function(D, I) {
                           return D.KurzSignatur == thisBookID
@@ -7753,7 +7763,7 @@ dataContainer.selectAll(".nodesbg").filter(function(d){return d3.select(this).da
 
 
 
-                  detailviewTableTr8.append("td").text("Seiten-ID: ")
+                  detailviewTableTr8.append("td").text("Seiten-ID: ").attr("class", "td-title")
                   detailviewTableTr8.append("td").text(thisPageID)
                   //
                   // detailviewTableTr9.append("td").text("Seiten-Inhalte: ")
