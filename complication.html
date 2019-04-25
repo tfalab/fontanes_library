@@ -912,7 +912,7 @@ compScrollFunction()
                       var legend = d3.select("#legend")
 
                       legend.append("text")
-                      .text("Schriftspur-Typ")
+                      .text("Lesespuren: ")
                       .style("font-weight", "bold")
                       .style("varter-spacing", "1px")
                       .attr("y", 14)
@@ -1958,13 +1958,13 @@ d3.selectAll(".coverimagesMulti").remove()
 pietooltip.selectAll(".tooltipImage").selectAll(".coverimages")
 .data(function(){
   if(d.level != "verfasser"){
-    return korpus.filter(function(D, I){return D.KurzSignatur == id })
+    return korpus.filter(function(D, I){return D.Cover && D.KurzSignatur == id })
 }else{
-    return korpus.filter(function(D, I){return D.Verfasser == id })
+    return korpus.filter(function(D, I){return D.Cover && D.Verfasser == id })
 }})
 .enter()
 .append("img")
-.attr("src", function(D,I){return "./img/m/" + D.ID + ".jpg"})
+.attr("src", function(D,I){return "./img/m/" + D.Cover })
 .attr("class", function(){if (d.level != "verfasser"){return "coverimagesSolo"}else{return "coverimagesMulti"}})
 
 pietooltip.selectAll(".tooltipTitle").text(function(D){if(d.level != "verfasser"){return korpus.filter(function(E, G) {
@@ -2104,7 +2104,7 @@ d3.selectAll(".pieG").filter(function(d,i){return d.level == "buch"})
 
 
 d3.select(".complicationVisG")
-  .attr("transform", function(d, i) {return "translate("+scatterZoomPositionX(scrollTop)+","+scatterZoomPositionY(scrollTop)+")scale("+scatterZoomScale(scrollTop)+","+scatterZoomScale(scrollTop)+")"})
+  //.attr("transform", function(d, i) {return "translate("+scatterZoomPositionX(scrollTop)+","+scatterZoomPositionY(scrollTop)+")scale("+scatterZoomScale(scrollTop)+","+scatterZoomScale(scrollTop)+")"})
 
 
 

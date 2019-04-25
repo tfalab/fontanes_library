@@ -63,11 +63,10 @@
       overflow-x: scroll;
       width: 100%;
       height: 58500px;
+      overflow:-moz-scrollbars-none!important;
     }
 
-    /* ::-webkit-scrollbar {
-            display: none;
-        } */
+    body::-webkit-scrollbar { width: 0 !important; height: 0 !important }
 
 
     h1 {
@@ -88,19 +87,30 @@
       /* font-family: 'Volkhov', serif; */
     }
 
+    text, p, h1, img{
+      -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+   -khtml-user-select: none; /* Konqueror HTML */
+     -moz-user-select: none; /* Firefox */
+      -ms-user-select: none; /* Internet Explorer/Edge */
+          user-select: none; /* Non-prefixed version, currently
+                                supported by Chrome and Opera */
+    }
+
     #legend {
       text-transform: uppercase;
       margin-left: 0px;
       /* margin-top: 10px; */
       font-weight: 400;
       font-size: 1em;
-      width: 1000px;
+      width: 100%;
       height: 60px;
       pointer-events: visible;
       /* filter: url(#glow); */
       /*  letter-spacing: 0.5px */
       /* display: none; */
     }
+
 
 
     .plusminus {
@@ -201,13 +211,21 @@
         background: rgba(71, 71, 71, 0.82);
         color: #FFFFFF;
         font-family: Arial;
-        font-size: 12px;
+        font-size: 1em;
         box-shadow: 2px 0px 5px grey;
         text-align: center;
         right:72px;
         top: 60px;
         padding: 0px;
     }
+
+    @media screen and (min-width: 2000px) {
+      .sharebubble {
+          right:78px;
+          top: 68px;
+      }
+}
+
     .sharebubble:after {
         content: '';
         position: absolute;
@@ -226,7 +244,7 @@
             position: fixed;
             background: rgba(71, 71, 71, 0.82);
             color: #FFFFFF;
-            font-size: 12px;
+            font-size: 1em;
             box-shadow: 2px 0px 5px grey;
             text-align: center;
             width: 370px;
@@ -235,6 +253,14 @@
             padding: 8px;
             text-align: left;
         }
+
+        @media screen and (min-width: 2000px) {
+          .tippbubble {
+              right:125px;
+              top: 68px;
+          }
+    }
+
         .tippbubble:after {
             content: '';
             position: absolute;
@@ -249,10 +275,6 @@
         }
 
 .tippbubble p{
-  /* margin-top: 0px;
-  margin-bottom: 0px;
-  margin-left: 10px;
-  margin-right: 10px; */
   margin: 0px;
   text-align: justify;
 }
@@ -320,7 +342,7 @@
       padding: 4px;
       width: 160px;
       margin-top: 20px;
-      font-size: 12px;
+      font-size: 1em;
       border-width: 1px;
       border-color: lightgrey;
       border-style: solid;
@@ -331,7 +353,7 @@
       padding: 4px 6px;
       margin-top: 20px;
       background: white;
-      font-size: 12px;
+      font-size: 1em;
       color: grey;
       border-width: 1px;
       border-color: lightgrey;
@@ -354,7 +376,13 @@
       font-family: 'Roboto', sans-serif !important;
     }
 
-
+    @media screen and (min-width: 2000px) {
+      .headericons {
+        margin-top: 15px;
+        width: 38px;
+        height: 38px;
+      }
+}
 
     /*
         * === SEARCH BOX===
@@ -380,11 +408,18 @@
     .search {
       position: relative;
       width: 300px;
-      font-size: 12px;
+      font-size: 1em;
       margin-left: 0px;
       margin-top: 20px;
       border: 0;
     }
+
+    @media screen and (max-width: 1200px) {
+      .search{
+        margin-top: 20px;
+        width: 200px;
+      }
+}
 
 
 
@@ -424,6 +459,7 @@
       margin-top: 150px;
       pointer-events: none;
       display: inline;
+      z-index: 200;
     }
 
     canvas {
@@ -701,6 +737,13 @@
     .authorLabel {
       font-size: 0.9em;
       font-weight: 400;
+      -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+   -khtml-user-select: none; /* Konqueror HTML */
+     -moz-user-select: none; /* Firefox */
+      -ms-user-select: none; /* Internet Explorer/Edge */
+          user-select: none; /* Non-prefixed version, currently
+                                supported by Chrome and Opera */
     }
 
     .BuchTitelLabel {
@@ -793,7 +836,7 @@
 
 
     .select2-highlighted{
-      font-size: 12px;
+      font-size: 1em;
       background-color: #262626!important;
       color: white;
     }
@@ -1056,7 +1099,6 @@ text-align: left;
         font-size: 1em;
         display: inline-block;
         vertical-align: top;
-        font-size: 14px;
         height: 100%;
         width: 35%;
         top:0;
