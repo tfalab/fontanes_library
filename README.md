@@ -6,6 +6,9 @@ Text about this documentation. Prototype
 ## The Data
 
 ## Prototype Documenation
+### Modus I: Distribution of Reading Traces
+
+### Modus II: Similarity Comparison
 
 ## Libararies
 
