@@ -4,7 +4,8 @@
 <head>
   <meta charset="utf-8">
   <title>Fontanes Handbibliothek</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
+  <meta name="viewport" content="user-scalable=yes">
   <meta name="description" content="Eine explorative Visualisierung von Lese- und Schriftspuren in Theodor Fontanes Handbibliothek mit der Datenerschließung des Theodor Fontane Archivs." />
   <meta property="og:url" content="https//uclab.fh-potsdam.de/ff" />
   <meta property="og:type" content="website" />
@@ -22,7 +23,7 @@
   <script src="js/jquery.min.js"></script>
   <script src="js/select2.min.js"></script>
   <link rel="stylesheet" type="text/css" href="css/select2.css">
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/style_exhibition.css">
 
 </head>
 
@@ -30,50 +31,32 @@
   <div id="header">
     <div id="headerIcons">
       <img alt="Teile die Ansicht" title="Teile die Ansicht" id="iconshare" src="icons/icon-share.svg" class="headericons">
-      <img alt="Tipps" id="tippIcon" title="Tipps" src="icons/icon-tipps.svg" class="headericons">
+      <img alt="Hilfe" id="tippIcon" title="Hilfe" src="icons/icon-tipps.svg" class="headericons">
       <img alt="Mehr Infos" id="aboutIcon" title="Mehr Infos" src="icons/icon-info.svg" class="headericons">
       <div class="sharebubble" style="display: none;"><input type="text" value="https://uclab.fh-potsdam.de/ff" id="shareInput"><button class="sharecopybutton" onclick="shareFunction()">URL KOPIEREN</button></div>
-      <div class="tippbubble" style="display: none;">
-        <div class="tipp1">
-          <p>Tipp 1/6: <span class="tipptexts">Scrolle hoch, um die Gesamtverteilung von Lesespuren je Autor*in zusammengefasst zu betrachten oder scrolle hinunter, um in die Werke einzelner Autor*innen hinein zu zoomen. Nutze alternativ die
+  <div class="tippbubble" style="display: none;">
+         <div class="tipp1">
+           <img src="img/tutorialScroll.gif" width="100%" style="margin-top:5px; margin-bottom:5px">
+          <p><span class="tipptexts">Scrolle hoch, um die Gesamtverteilung von Lesespuren je Autor*in zusammengefasst zu betrachten oder scrolle hinunter, um in die Werke einzelner Autor*innen hinein zu zoomen. Nutze alternativ die
               Navigations-Leiste am linken Seitenrand zur Navigation zwischen den drei Ebenen.</span></p>
-          <p class="nachherTipp zuTipp2">Nächster Tipp</p>
+          <p class="nachherTipp tippsende">Okay!</p>
         </div>
-
-        <div class="tipp2">
-          <p>Tipp 2/6: <span class="tipptexts">Ein Balken repräsentiert ein Buch. Klicke in der Startansicht oder auf der Einzelseitenebene auf ein Buch, um Details zu entfalten und nutze Scrolling für weiteres Ein- und Auszoomen.</span></p>
-          <p class="vorherTipp zuTipp1">Vorheriger Tipp</p>
-          <p class="nachherTipp zuTipp3">Nächster Tipp</p>
-        </div>
-
-        <div class="tipp3">
-          <p>Tipp 3/6: <span class="tipptexts">Die Bücher sind nach Verfasser*innen geordnet, wobei alle Verfasser*innen mit weniger als zwei Büchern in der Sammlung »Sonstige« zusammengefasst sind. Klicke auf eine*n Verfasser*in, um in die
-              zugehörigen Bücher hineinzuzoomen. Klicke dann auf ein Buch, um die Details zu diesem Buch zu entfalten.</span></p>
-          <p class="vorherTipp zuTipp2">Vorheriger Tipp</p>
-          <p class="nachherTipp zuTipp4">Nächster Tipp</p>
-        </div>
-
-        <div class="tipp4">
-          <p>Tipp 4/6: <span class="tipptexts">Neben Fontane haben auch seine Familie, Freunde und Verleger Schriftspuren in seinen Büchern hinterlassen. Um den/die Verfasser*in einer Schriftspur zu erkennen, gehe nach Selektion eines Buches auf der
-              Seiten-Ebene (untere Ebene) mit deiner Maus über die Pfeile/Kreise vor den Transkriptionen. Ein Klick auf eine Seite öffnet die Detailansicht mit einer Abbildung der Originalseite.</span></p>
-          <p class="vorherTipp zuTipp3">Vorheriger Tipp</p>
-          <p class="nachherTipp  zuTipp5">Nächster Tipp</p>
-        </div>
-
-        <div class="tipp5">
-          <p>Tipp 5/6: <span class="tipptexts">Nutze die ESC-Taste auf deiner Tastatur, um die Visualisierung und alle Filter zurückzusetzen.</span></p>
-          <p class="vorherTipp zuTipp4">Vorheriger Tipp</p>
-          <p class="nachherTipp zuTipp6">Nächster Tipp</p>
-        </div>
-
-        <div class="tipp6">
-          <p>Tipp 6/6: <span class="tipptexts">Jede Ansicht, Position und Auswahl wird in der URL kodiert. Kopiere die URL oder nutze den »Teilen«-Button, um eine bestimmte Ansicht zu teilen.</span></p>
-          <p class="vorherTipp zuTipp5">Vorheriger Tipp</p>
-          <p class="nachherTipp tippsende">Tipps schließen</p>
-        </div>
-
       </div>
 
+      <div class="explicationbubble bubble" style="display: none"><p>Visualisierung basierend auf einer sequentiellen Anordnung (oben nach unten) der Buchseiten und Bücher geordnet nach Verfasser*innen.</p>
+          </div>
+
+      <div class="complicationbubble bubble" style="display: none"><p>Visualisierung mit einer Anordnung basierend auf einer (quanitativen) Ähnlichkeitsanalyse der Lesespurvorkommen zwischen Büchern/Verfasser*innen.</p>
+          </div>
+
+          <div class="verfasserbubble bubble" style="display: none"><p>Autor*innen-Ebene: Durchschnittliche Verteilung der Lesespuren von allen Büchern eines gleichen Autors abschnittsweise von oben (Buchanfang) nach unten (Buchende) in Form von Flächen-Diagrammen</p>
+              </div>
+
+          <div class="buchbubble bubble" style="display: none"><p>Buch-Ebene: Übersicht aller Bücher (je ein Balken) der Handbibliothek, geordnet nach Autor*innen.</p>
+              </div>
+
+              <div class="seitenbubble bubble" style="display: none"><p>Seiten-Ebene: Zoom in die Visualisierung, zur gezielten Auswahl von einzelnen Seiten.</p>
+                  </div>
 
 
       <div class="search-container">
@@ -92,14 +75,122 @@
 
   </div>
   <svg id="svg"></svg>
-
+  <svg id="complicationsvg"></svg>
 
   <div id="scrollnavi">
     <svg id="scrollSvg"></svg>
   </div>
 
 
+  <div class="piedetailview">
+        <div class="piedetailviewclose">&#10005;</div>
+    <div class="tooltipImage"></div>
+    <table class="tg">
+<tr>
+  <p class="tooltipTitle"></p>
+</tr>
+<tr class="tr-verfasser">
+  <td class="tooltiptypes">Verfasser:</td>
+  <td class="tt-verfasser tt-data"></td>
+</tr>
+<tr class="tr-herausgeber">
+  <td class="tooltiptypes">Herausgeber:</td>
+  <td class="tt-herausgeber tt-data"></td>
+</tr>
+<tr class="tr-verlag">
+  <td class="tooltiptypes">Verlag:</td>
+  <td class="tt-verlag tt-data"></td>
+</tr>
+<tr class="tr-genre">
+  <td class="tooltiptypes">Genre:</td>
+  <td class="tt-genre tt-data"></td>
+</tr>
+<tr class="tr-datierung">
+  <td class="tooltiptypes">Datierung:</td>
+  <td class="tt-datierung tt-data"></td>
+</tr>
+<tr class="tr-ort">
+  <td class="tooltiptypes">Ort:</td>
+  <td class="tt-ort tt-data"></td>
+</tr>
+<tr class="tr-schreibhand">
+  <td class="tooltiptypes">Marginalien-Schreibhände:</td>
+  <td class="tt-schreibhand tt-data"></td>
+</tr>
+<tr class="tr-seitenzahl">
+  <td class="tooltiptypes tt-seitenzahl1">Seitenzahl:</td>
+  <td class="tt-seitenzahl tt-data"></td>
+</tr>
+<tr class="eigentumsangaben">
+  <td class="tooltiptypes">Provenienzangaben:</td>
+  <td class="tt-provenienz tt-data"></td>
+</tr>
+<tr class="provenienz">
+  <td class="tooltiptypesb">Schriftl. Provenienzangaben:</td>
+  <td class="tt-provenienzangaben tt-data"></td>
+</tr>
+<tr class="provenienzstempel">
+  <td class="tooltiptypesb">Provenienz-Stempel:</td>
+  <td class="tt-provenienzstempel tt-data"></td>
+</tr>
+<tr class="marginalien">
+  <td class="tooltiptypes">Marginalien:</td>
+  <td class="tt-marginalien tt-data"></td>
+</tr>
+<tr class="bewertung">
+  <td class="tooltiptypesb">Bewertungen:</td>
+  <td class="tt-bewertung tt-data"></td>
+</tr>
+<tr class="kommentar">
+  <td class="tooltiptypesb">Kommentare:</td>
+  <td class="tt-kommentar tt-data"></td>
+</tr>
+<tr class="textkorrektur">
+  <td class="tooltiptypesb">Textkorrekturen:</td>
+  <td class="tt-textkorrektur tt-data"></td>
+</tr>
+<tr class="variante">
+  <td class="tooltiptypesb">Varianten:</td>
+  <td class="tt-variante tt-data"></td>
+</tr>
+<tr class="uebersetzung">
+  <td class="tooltiptypesb">Übersetzung:</td>
+  <td class="tt-uebersetzung tt-data"></td>
+</tr>
+<tr class="markierungen">
+  <td class="tooltiptypes">Markierungen:</td>
+  <td class="tt-markierungen tt-data"></td>
+</tr>
+<tr class="unterstreichung">
+  <td class="tooltiptypesb">Unterstreichungen:</td>
+  <td class="tt-unterstreichung tt-data"></td>
+</tr>
+<tr class="anstreichung">
+  <td class="tooltiptypesb">Anstreichungen:</td>
+  <td class="tt-anstreichung tt-data"></td>
+</tr>
+<tr class="durchstreichung">
+  <td class="tooltiptypesb">Durchstreichungen:</td>
+  <td class="tt-durchstreichung tt-data"></td>
+</tr>
+<tr class="sonstigeMarkierung">
+  <td class="tooltiptypesb">Sonstige Markierungen:</td>
+  <td class="tt-sonstigeMarkierung tt-data"></td>
+</tr>
+<tr class="zusatzMaterial">
+  <td class="tooltiptypes">Zusätzliches Material:</td>
+  <td class="tt-zusatzMaterial tt-data"></td>
+</tr>
+<tr class="anderes">
+  <td class="tooltiptypes">Anderes:</td>
+  <td class="tt-anderes tt-data"></td>
+</tr>
+</table>
+<p class="tooltiptypes tt-transkriptionentitel">Marginalien-Transkriptionen:</p>
+<p class="tooltiptypes tt-bio">Verfasser*innen Biographie:</p>
+<p class="tt-transkriptionen tr-transkriptionen"></p>
 
+  </div>
 
 
   <div id="container">
@@ -133,13 +224,90 @@
         <h2>Zur Visualisierung</span></h2>
       </div>
       <div id="einfuerunginvis">
-        <h2><a href="http://fontanearchiv.de/blogbeitrag/2019/03/27/fontanes-handbibliothek-visualisiert/" target="_blank">Einführung</a></h2>
+        <h2>Wie funktioniert’s?</h2>
       </div>
       <div id="mehrinfos">
         <h2>Impressum</h2>
       </div>
     </div>
   </div>
+
+
+  <div id="tutorial" class="tutorial">
+    <div class="about-close">&#10005;</div>
+      <h1>WIE FUNKTIONIERT DIE VISUALISIERUNG?</h1>
+      <h2>Zwei Modi: Lesespur-Verteilung vs. Ähnlichkeitsvergleich</h2>
+      <p>Die Visualisierung ermöglicht den Wechsel zwischen zwei Modi mit je unterschiedlichen Schwerpunkten. Während der ersten Modus (Startseite), die Verteilung der Lesespuren entlang der Lesereihenfolge der Bücher anordnet und visualisiert, wird im zweiten Modus die Ähnlichkeit quantitativer Vorkommen von Lesespuren verglichen. Ein Klick auf die Buttons am oberen Rand der linken Navigationsleiste wechselt die Ansicht bei Beibehaltung von aktuellen Selektionen und Filterungen.</p>
+      <img src="img/tutorialGif3.gif" width="75%">
+
+
+      <div class="modus1">
+      <h2>MODUS I: LESESPUR-VERTEILUNG<h2>
+      <h2>Wechsle zwischen drei Ansichten</h2>
+      <p>Das entwickelte Visualisierungskonzept legt einenFokus auf die kontinuierliche, auf mehreren Ebenen zoom- und filterbare, Navigation, welche die Erkundung einzelner Objekte ebenso zulässt wie den Vergleich von übergreifenden Mustern. Scrollen nach oben oder nach unten ermöglicht dabei kontinuierliche, sinnhafte Übergänge zwischen drei Ebenen, startend mit einer Gesamtübersicht über alle Bücher der Sammlung (Buch-Ebene).
+  Alternativ zum Scrollen kann auch die Navigationsleiste am linken Rand benutzt werden um zwischen den Ebenen zu navigieren. Ein Klick auf eine*n Autor*in ermöglicht zudem einen direkten Zoom in deren/dessen Werke.
+  </p>
+        <img src="img/tutorial03.png" width="100%">
+      <img src="img/tutorialGif2.gif" width="75%" style="margin-top:30px; margin-bottom:20px"><br>
+      <img src="img/tutorialGif3.gif" width="75%">
+
+
+  <h2>Filterung und Entfaltung von Details</h2>
+
+  <p>Eine Filterleiste über der Visualisierung dient als Legende für die Farbkodierung und bietet die Möglichkeit zur Fokussierung auf bestimmte Lesespur-Typen. Die Auswahl eines Lesespur-Typs löst die Entfaltung der entsprechenden Unterkategorien in der Filterleiste aus und ermöglicht eine Fokussierung auf ausgewählte Merkmale.</p>
+  <p>Die Auswahl eines Buches entfaltet abhängig von der aktuellen Zoom-Ebene zusätzliche Details.
+  Die Bücher sind nach Verfasser*innen geordnet, wobei alle Verfasser*innen mit weniger als zwei Büchern in der Sammlung unter »Sonstige« zusammengefasst sind. Klicke auf eine*n Verfasser*in, um in die
+  zugehörigen Bücher hineinzuzoomen. Klicke dann auf ein Buch, um die Details zu diesem Buch zu entfalten.
+
+  Neben Fontane haben auch seine Familie, Freunde und Verleger Schriftspuren in seinen Büchern hinterlassen. Um den/die Verfasser*in einer Schriftspur zu erkennen, gehe nach Selektion eines Buches auf der »Seiten-Ebene« (untere Ebene) mit deiner Maus über die Pfeile/Kreise vor den Transkriptionen. Ein Klick auf eine Seite öffnet die Detailansicht mit einer Abbildung der Originalseite.</p>
+
+  <img src="img/tutorialGif4.gif" width="75%" style="margin-bottom:20px"><br>
+  <img src="img/tutorialGif6.gif" width="75%">
+
+  <h2>Suche</h2>
+  <p>Mit Hilfe eines Suchfeldes, welches gleichzeitig als Übersichtsliste aller Marginalien (geordnet nach Anzahl des Vorkommens) dient, kann man gezielt nach bestimmten Lesespuren wie z.B. »gut« oder »brillant« suchen und sich diese direkt in der Visualisierung anzeigen lassen.</p>
+  <img src="img/tutorialGif5.gif" width="75%">
+
+  <h2>Weitere Nutzungshinweise</h2>
+  <p>Nutze die ESC-Taste auf deiner Tastatur, um die Visualisierung und alle Filter zurückzusetzen.
+  Zudem wird jede Ansicht, Position und Auswahl in der URL kodiert. Kopiere die URL oder nutze den »Teilen«-Button, um eine bestimmte Ansicht zu teilen.</p>
+
+</div>
+
+<div class="modus2">
+<h2>MODUS II: ÄHNLICHKEITSVERGLEICH<h2>
+<h2>Wechsle zwischen zwei Ansichten</h2>
+<p>Im aktuell ausgewählten Modus, einer Visualisierung zum Ähnlichkeitsvergleich aller Bücher/Autor*Innen werden Bücher/Autor*innen (abhängig von der Ebene) in einer Matrix anhand der Vorkommen von Lesespuren angeordnet (basierend auf multidimensionaler Skalierung).In der Visualisierung lässt sich durch Scrolling bzw der Navigationsleiste zwischen zwei Ebenen navigieren, der Autor*innen-Ebene und der Buch-Ebene. Bücher/Autor*Innen mit ähnlichen Schriftspur-Vorkommen liegen nahe beieinander, was in der Visualisierung dazu führt, dass Bücher bzw. Verfasser*Innen, die im Vergleich zu den anderen Büchern eine besondere Anzahl an bestimmten Lesespuren enthalten, eher am äußeren Rand positioniert werden und Bücher mit eher durchschnittlichem Lesespuren-Vorkommen sich in der Mitte sammeln.
+</p>
+  <img src="img/tutorial03.png" width="100%">
+<img src="img/tutorialGif2.gif" width="75%" style="margin-top:30px; margin-bottom:20px"><br>
+<img src="img/tutorialGif3.gif" width="75%">
+
+
+<h2>Buch-Ebene</h2>
+<p>Eine Filterleiste über der Visualisierung dient als Legende für die Farbkodierung und bietet die Möglichkeit zur Fokussierung auf bestimmte Lesespur-Typen. Die Auswahl eines Lesespur-Typs löst die Entfaltung der entsprechenden Unterkategorien in der Filterleiste aus und ermöglicht eine Fokussierung auf ausgewählte Merkmale.</p>
+
+
+<h2>Autor*innen-Ebene</h2>
+<p>Eine Filterleiste über der Visualisierung dient als Legende für die Farbkodierung und bietet die Möglichkeit zur Fokussierung auf bestimmte Lesespur-Typen. Die Auswahl eines Lesespur-Typs löst die Entfaltung der entsprechenden Unterkategorien in der Filterleiste aus und ermöglicht eine Fokussierung auf ausgewählte Merkmale.</p>
+
+
+<h2>Filterung und Entfaltung von Details</h2>
+
+<p>Eine Filterleiste über der Visualisierung dient als Legende für die Farbkodierung und bietet die Möglichkeit zur Fokussierung auf bestimmte Lesespur-Typen. Die Auswahl eines Lesespur-Typs löst die Entfaltung der entsprechenden Unterkategorien in der Filterleiste aus und ermöglicht eine Fokussierung auf ausgewählte Merkmale.</p>
+<p>Die Auswahl eines Buches oder von Autor*innen öffnet eine Übersicht mit Basis-Informationen inklusive der Buchcover zur Auswahl.</p>
+
+<img src="img/tutorialGif6.gif" width="75%">
+
+<h2>Weitere Nutzungshinweise</h2>
+<p>Nutze die ESC-Taste auf deiner Tastatur, um die Visualisierung und alle Filter zurückzusetzen.
+Zudem wird jede Ansicht, Position und Auswahl in der URL kodiert. Kopiere die URL oder nutze den »Teilen«-Button, um eine bestimmte Ansicht zu teilen.</p>
+
+</div>
+
+
+  </div>
+
 
 
   <div id="about">
@@ -174,10 +342,11 @@
             <h2>Verwendete Webtechnologien</h2>
             <p>HTML5, CSS, Canvas, D3.js, jQuery</p><br>
 
-            <h2>Publikation</h2>
+            <h2>Publikationen</h2>
+            <p><a href="https://dev.clariah.nl/files/dh2019/boa/0490.html" target="_blank">Scalable Exploration. Prototype Study For The Visualization Of An Author’s Library On The Example Of 'Theodor Fontane’s Library', in: Book of Abstracts of the Digital Humanities conference (DH) 2019: Complexities. Utrecht (The Netherlands), 2019</a></p>
             <p><a href="https://uclab.fh-potsdam.de/wp/wp-content/uploads/dhd2019_abstract_fontane.pdf" target="_blank">Skalierbare Exploration.
                 Prototypenstudie zur Visualisierung einer Autorenbibliothek am Beispiel der ›Handbibliothek Theodor Fontanes‹, in: Konferenzband zur DHd 2019 Frankfurt & Mainz - Digital Humanities: multimedial & multimodal, 2019</a></p>
-            <br><br>
+            <br>
             <br>
             <a href="https://uclab.fh-potsdam.de" target="_blank"><img src="icons/logo-uclab.svg" height="50px" style="margin-right:40px"></a><a href="https://www.fontanearchiv.de" target="_blank"><img src="icons/fontane-logo.svg" height="40px"
                 style="margin-bottom:10px"></a><br>
@@ -196,7 +365,13 @@
   <div id="detailview">
     <div class="about-close">&#10005;</div>
   </div>
-  <script src="js/script.js"></script>
+  <div class="detailviewPrevious" style="display: none"></div>
+  <div class="detailviewNext" style="display: none"></div>
+
+  <script src="js/config.js"></script>
+  <script src="js/legend.js"></script>
+  <script src="js/script_comp.js"></script>
+
 
 
 </body>

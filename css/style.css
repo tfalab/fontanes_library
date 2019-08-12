@@ -60,7 +60,7 @@
       background-color: #f7e5d7;
       margin: 0;
       overflow-y: scroll;
-      overflow-x: scroll;
+      /* overflow-x: scroll; */
       width: 100%;
       height: 58500px;
       overflow:-moz-scrollbars-none!important;
@@ -133,8 +133,8 @@
 
 
     .eigentumsangaben {
-      fill: #5B5B5B;
-      color: #5B5B5B;
+      fill: #707070;
+      color: #707070;
     }
 
     .markierungen {
@@ -247,12 +247,13 @@
             font-size: 1em;
             box-shadow: 2px 0px 5px grey;
             text-align: center;
-            width: 370px;
+            width: 300px;
             right:108px;
             top: 60px;
             padding: 8px;
             text-align: left;
         }
+
 
         @media screen and (min-width: 2000px) {
           .tippbubble {
@@ -332,6 +333,8 @@
   border-width:0px;
   margin-right: 3px;
 }
+
+
 
 
     .search-container {
@@ -418,6 +421,12 @@
       .search{
         margin-top: 20px;
         width: 200px;
+        height: 20px;
+      }
+
+      .select2-default, .select2-choice{
+        height:22px!important;
+
       }
 }
 
@@ -472,6 +481,19 @@
       pointer-events: none;
     }
 
+    @media screen and (max-width: 1100px) {
+      canvas  {
+      margin-top: 240px;
+      }
+}
+
+    @media screen and (min-width: 2000px) {
+      canvas  {
+      margin-top: 310px;
+      }
+}
+
+
 
     #container {
       top: 0px;
@@ -516,8 +538,8 @@
     }
 
     .durchstreichung {
-      color: #4020d0;
-      fill: #4020d0;
+      color: #944cfd;
+      fill: #944cfd;
       cursor: pointer;
       -webkit-transition: fill 0.5s linear;
       -moz-transition: fill 0.5s linear;
@@ -586,8 +608,8 @@
 
 
     .provenienz {
-      color: #494747;
-      fill: #494747;
+      color: #7e7e8e;
+      fill: #7e7e8e;
       cursor: pointer;
       -webkit-transition: fill 0.5s linear;
       -moz-transition: fill 0.5s linear;
@@ -596,7 +618,7 @@
     }
 
     .provenienz.eingefaltet {
-      fill: #5B5B5B;
+      fill: #707070;
       -webkit-transition: fill 0.5s linear;
       -moz-transition: fill 0.5s linear;
       -o-transition: fill 0.5s linear;
@@ -605,8 +627,8 @@
     }
 
     .provenienzstempel {
-      color: #828282;
-      fill: #828282;
+      color: #a3a3a3;
+      fill: #a3a3a3;
       cursor: pointer;
       -webkit-transition: fill 0.5s linear;
       -moz-transition: fill 0.5s linear;
@@ -616,7 +638,7 @@
     }
 
     .provenienzstempel.eingefaltet {
-      fill: #5B5B5B;
+      fill: #707070;
       -webkit-transition: fill 0.5s linear;
       -moz-transition: fill 0.5s linear;
       -o-transition: fill 0.5s linear;
@@ -662,8 +684,8 @@
     }
 
     .textkorrektur {
-      color: #8D084E;
-      fill: #8D084E;
+      color: #a4105f;
+      fill: #a4105f;
       cursor: pointer;
       -webkit-transition: fill 0.5s linear;
       -moz-transition: fill 0.5s linear;
@@ -700,8 +722,8 @@
     }
 
     .variante {
-      color: #FD9698;
-      fill: #FD9698;
+      color: #fb8385;
+      fill: #fb8385;
       cursor: pointer;
       -webkit-transition: fill 0.5s linear;
       -moz-transition: fill 0.5s linear;
@@ -733,6 +755,16 @@
       -o-transition: fill 0.5s linear;
       transition: fill 0.5s linear;
     }
+
+    .pieArc.filtered {
+      fill: black !important;
+      -webkit-transition: fill 0.5s linear;
+      -moz-transition: fill 0.5s linear;
+      -o-transition: fill 0.5s linear;
+      transition: fill 0.5s linear;
+    }
+
+
 
     .authorLabel {
       font-size: 0.9em;
@@ -861,6 +893,18 @@
       text-align: center;
     }
 
+    @media screen and (max-width: 1000px) {
+    #start{
+      width: calc(100% - 60px);
+      height: 100%;
+      top:0;
+      left:0;
+      padding-left: 30px;
+      padding-right: 30px;
+      box-shadow: none;
+    }
+}
+
 
     #start h3{
       color: white;
@@ -970,6 +1014,122 @@ text-decoration: none;
 
 
 
+    #tutorial{
+      display: none;
+      position: fixed;
+      opacity: 0;
+      width: 1024px;
+      height: 800px;
+      background-color: rgba(71, 71, 71, 0.9);
+      color: white;
+      z-index: 1000;
+      overflow-y: auto;
+      padding-left: 30px;
+      padding-right: 20px;
+      box-shadow: 2px 0px 5px grey;
+      padding-bottom: 10px;
+      display:block;
+      margin: auto;
+      left: calc(50% - 511px);
+      top: calc(50% - 400px);
+      text-align: center;
+    }
+
+
+    #tutorial .about-close{
+      position: fixed;
+      cursor: pointer;
+      z-index:999;
+      font-size: 30px;
+      right: calc(50% - 545px);
+      top: calc(50% - 390px);
+    }
+
+    @media screen and (max-height: 850px) {
+      #tutorial{
+        display: none;
+        position: fixed;
+        opacity: 0;
+        width: 800px;
+        height: 600px;
+        background-color: rgba(71, 71, 71, 0.9);
+        color: white;
+        z-index: 1000;
+        overflow-y: auto;
+        padding-left: 30px;
+        padding-right: 20px;
+        box-shadow: 2px 0px 5px grey;
+        padding-bottom: 10px;
+        display:block;
+        margin: auto;
+        left: calc(50% - 400px);
+        top: calc(50% - 300px);
+        text-align: center;
+      }
+
+
+      #tutorial .about-close{
+        position: fixed;
+        cursor: pointer;
+        z-index: 999;
+        font-size: 30px;
+        right: calc(50% - 430px);
+        top: calc(50% - 290px);
+      }
+    }
+
+
+    #tutorial h1{
+      color: white;
+      font-size: 28px;
+      font-weight: 400;
+      margin-left: 0px;
+      margin-right: 0px;
+      margin-top: 15px;
+      margin-bottom: 0px!important;
+      text-align: center;
+    }
+
+    #tutorial h2{
+      color: white;
+      font-size: 20px;
+      margin-top: 40px;
+      text-align: center;
+    }
+
+    #tutorial p{
+      color: white;
+      font-size: 16px;
+      font-weight: 300;
+      width: 75%;
+      margin-left: 12.5%;
+      text-align: center;
+    }
+
+
+    #tutorial a{
+color: #a6cee3;
+    }
+
+    #tutorial a:hover{
+color: white;
+text-decoration: none;
+    }
+
+    #tutorial a:active{
+color: white;
+text-decoration: none;
+    }
+
+    #tutorial a:visited{
+color: white;
+text-decoration: none;
+    }
+
+
+
+
+
     #about{
       position: fixed;
       width: 800px;
@@ -1074,11 +1234,13 @@ text-align: left;
       top:0px;
     }
 
+
+
     #detailview{
       position: fixed;
       width: 70vw;
       height: 90vh;
-      background-color: rgba(71, 71, 71, 0.9);
+      background-color: rgba(54, 52, 52, 0.95);
       color: white;
       z-index: 1000;
       padding: 0px;
@@ -1104,7 +1266,15 @@ text-align: left;
         top:0;
         float: left;
         bottom:0;
+        padding-left: 20px;
     }
+
+    @media screen and (min-width: 2000px) {
+      #detailview table{
+        font-size: 1.5em;
+        padding-left: 30px;
+      }
+}
 
     #detailview tr{
         vertical-align: top;
@@ -1115,6 +1285,7 @@ text-align: left;
     #detailview td{
         vertical-align: top;
         padding:0;
+        width:
     }
 
     .td-title{
@@ -1133,4 +1304,113 @@ text-align: left;
       float: left;
       max-width: 100%;
       max-height: 100%;
+    }
+
+
+/*
+COMPLICATION
+*/
+
+
+    #complicationsvg{
+      position: fixed;
+        margin-left: 83px;
+        left: 0;
+        margin-top: 0px;
+        display: none;
+    }
+
+.piedetailviewclose{
+  display:none;
+  position:fixed;
+  cursor: pointer;
+  right:580px;
+  z-index:999;
+  font-size: 30px;
+  top:20px;
+}
+
+    .piedetailview{
+      background-color: rgba(54, 52, 52, 0.95);
+      opacity: 1;
+      color: white;
+      position: fixed;
+      z-index: 300;
+      padding:30px;
+      width: 550px;
+      right: 0;
+      top:0;
+      height: 100%;
+      display: none;
+      padding-top: 20px;
+    }
+
+    .tooltipTitle{
+      font-size: 1.5em;
+      text-align: left;
+      margin: 0;
+      font-weight: bold;
+    }
+
+    .tooltiptypes{
+      margin: 0;
+      font-weight: 400;
+      font-size: 13px;
+    }
+    .tooltiptypesb{
+      margin: 0;
+      padding-left: 20px;
+      font-weight: 400;
+      font-size: 13px;
+    }
+
+    .tooltipImage{
+      float: left;
+      height:100%;
+      padding: 0px;
+      margin: 0px;
+      vertical-align: top;
+      text-align: right;
+      width: 245px;
+      padding-right: 5px;
+    }
+
+
+    .coverimagesSolo{
+      width: 240px;
+      vertical-align: top;
+      text-align: left;
+      margin: 0px;
+    }
+
+
+    .coverimagesMulti{
+      width: 80px;
+      vertical-align: top;
+      text-align: left;
+      margin: 0px;
+    }
+
+
+
+    .tg td{
+      vertical-align: top;
+      height: 0px;
+      font-size: 13px;
+      vertical-align: top;
+      margin:0;
+    }
+
+
+    .tg tr{
+      height:0px;
+      margin:0;
+    }
+
+    .tt-data{
+      font-weight: bold;
+    }
+
+    .tr-verfasser,.tr-herausgeber,.tr-verlag,.tr-genre,.tr-datierung,.tr-ort,.tr-schreibhand,.tr-transkriptionen{
+      display:none;
     }
