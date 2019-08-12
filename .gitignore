@@ -1,7 +1,5 @@
 .DS_Store
-.DS_Store
-img/
-*.jpg
+img/m/
 *.~lock*
 data/.~lock*
 alt/
