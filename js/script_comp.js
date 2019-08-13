@@ -1269,8 +1269,6 @@ Promise.all([
       var sLTotalBuchWidthUnselected = (BuchAnzahl - thisVerfasserSelectedBookCount - (authorAnzahl - 1)) * sLBuchAbstandUnselected
       var sLAuthorAbstand2 = (chartArea - (sLTotalBuchWidthSelected + sLTotalBuchWidthUnselected)) / (authorAnzahl - 1)
 
-      console.log(thisVerfasserSelectedBookCount)
-      console.log(BuchAnzahl)
 
       ///Setting für Buch-buchauswahl
 
@@ -2550,9 +2548,6 @@ Promise.all([
 
         ///Author-Ebene Größen und Abstände
 
-        console.log(authorAnzahl)
-        console.log(BuchAnzahl)
-
         sLTotalBuchWidthSelected = (thisVerfasserSelectedBookCount) * sLBuchAbstandSelected
         sLTotalBuchWidthUnselected = (BuchAnzahl - thisVerfasserSelectedBookCount - (authorAnzahl - 1)) * sLBuchAbstandUnselected
         sLAuthorAbstand2 = (chartArea - (sLTotalBuchWidthSelected + sLTotalBuchWidthUnselected)) / (authorAnzahl - 1)
@@ -3224,8 +3219,6 @@ Promise.all([
 
 
         D.values.forEach(function(E, G) {
-          ///console.log(E)
-
           var leseSpuren = d3.nest()
             .key(function(d) {
               return d.ID;
@@ -4497,8 +4490,6 @@ Promise.all([
             })
 
           }else if (scrollTop < 3000){
-            console.log(scrollTop)
-
             $("html,body").animate({
               scrollTop: 6000
             }, 805)
@@ -5601,12 +5592,7 @@ Promise.all([
           .range([BuchauswahlFeld, BuchauswahlFeldSeitenFeld])
           .clamp(true)
 
-        var onSelectionAuthorAbstand = ((chartArea) - BuchauswahlFeldScale(scrollTop) - ((BuchAnzahl - authorAnzahl - 2) * onSelectionBuchAbstandScale(scrollTop))) / (authorAnzahl - 1) //-100 muss eventuell raus? warum die benötigt werden ist un klar
-        console.log(((BuchAnzahl - 2) * onSelectionBuchAbstandScale(scrollTop)))
-        console.log(BuchauswahlFeldScale(scrollTop))
-        console.log(((chartArea) - BuchauswahlFeldScale(scrollTop) - ((BuchAnzahl - 2) * onSelectionBuchAbstandScale(scrollTop))))
-        console.log(authorAnzahl - 1)
-        console.log(onSelectionAuthorAbstand)
+        var onSelectionAuthorAbstand = ((chartArea) - BuchauswahlFeldScale(scrollTop) - ((BuchAnzahl - authorAnzahl - 2) * onSelectionBuchAbstandScale(scrollTop))) / (authorAnzahl - 1)
 
         bookFingerprint.selectAll(".nodes")
           .filter(function(d, i) {
@@ -8186,7 +8172,7 @@ Promise.all([
 
 
 
-            var onSelectionAuthorAbstand = ((chartArea) - BuchauswahlFeldScale(scrollTop) - ((BuchAnzahl - authorAnzahl - 2) * onSelectionBuchAbstandScale(scrollTop))) / (authorAnzahl - 1) //-100 muss eventuell raus? warum die benötigt werden ist un klar
+            var onSelectionAuthorAbstand = ((chartArea) - BuchauswahlFeldScale(scrollTop) - ((BuchAnzahl - authorAnzahl - 2) * onSelectionBuchAbstandScale(scrollTop))) / (authorAnzahl - 1)
 
             bookFingerprint.selectAll(".nodes")
               .filter(function(d, i) {
@@ -10769,6 +10755,9 @@ Promise.all([
       var dragPosYBefore = 0
 
       function dragstarted(event) {
+        if(pieDetailviewOn == true){
+          pieDetailClose()
+        }
 
         d3.select(this).classed("active", true);
 
@@ -11228,7 +11217,6 @@ Promise.all([
         .attr("class", function(d) {
           return "pieMovementLines"
         })
-        //  .classed("fill", function(d){console.log(d.Verfasser)})
         .append("line")
         .attr("x1", function(d) {
           return scatterScaleX(d.verfasserX)
