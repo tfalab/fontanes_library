@@ -11475,7 +11475,9 @@ Promise.all([
               }
             })
 
-          piedetailview.select(".tr-herausgeber").filter(function(D) {
+          piedetailview.select(".tr-herausgeber")
+          .style("display", "none")
+          .filter(function(D) {
             return korpus.filter(function(E, G) {
               return E.KurzSignatur == id
             })[0].Herausgeber != ""
@@ -11492,7 +11494,9 @@ Promise.all([
               }
             })
 
-          piedetailview.select(".tr-verlag").filter(function(D) {
+          piedetailview.select(".tr-verlag")
+          .style("display", "none")
+          .filter(function(D) {
             return korpus.filter(function(E, G) {
               return E.KurzSignatur == id
             })[0].Verlag != ""
@@ -11509,7 +11513,9 @@ Promise.all([
               }
             })
 
-          piedetailview.select(".tr-genre").filter(function(D) {
+          piedetailview.select(".tr-genre")
+          .style("display", "none")
+          .filter(function(D) {
             return korpus.filter(function(E, G) {
               return E.KurzSignatur == id
             })[0].Formalschlagwort_Genre != ""
@@ -11526,7 +11532,9 @@ Promise.all([
               }
             })
 
-          piedetailview.select(".tr-datierung").filter(function(D) {
+          piedetailview.select(".tr-datierung")
+          .style("display", "none")
+          .filter(function(D) {
             return korpus.filter(function(E, G) {
               return E.KurzSignatur == id
             })[0].Jahr != ""
@@ -11543,7 +11551,9 @@ Promise.all([
               }
             })
 
-          piedetailview.select(".tr-ort").filter(function(D) {
+          piedetailview.select(".tr-ort")
+          .style("display", "none")
+          .filter(function(D) {
             return korpus.filter(function(E, G) {
               return E.KurzSignatur == id
             })[0].Ort != ""

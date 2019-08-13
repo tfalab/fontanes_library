@@ -728,6 +728,8 @@
     }
 
 
+
+
     .provenienz {
       color: #7e7e8e;
       fill: #7e7e8e;
@@ -866,6 +868,23 @@
       color: #ffffff;
       fill: #ffffff;
       background-color: rgb(206, 193, 184);
+    }
+
+
+    .eigentumsangaben .tooltiptypes, .eigentumsangaben .tt-provenienz{
+      color: #9e9c9c;
+    }
+
+    .provenienz .tooltiptypesb, .provenienz .tt-provenienz{
+      color:#9b9bb0;
+    }
+
+    .provenienzstempel .tooltiptypesb, .provenienzstempel .tt-provenienzstempel{
+      color:#e8dcdc;
+    }
+
+    .textkorrektur .tooltiptypesb, .textkorrektur .tt-textkorrektur{
+      color:#d2177b;
     }
 
 
@@ -1546,15 +1565,15 @@ COMPLICATION
       margin: 0;
       font-weight: 400;
       font-size: 13px;
-      color: white;
     }
+
     .tooltiptypesb{
       margin: 0;
       padding-left: 20px;
       font-weight: 400;
       font-size: 13px;
-      color: white;
     }
+
 
     .tooltipImage{
       float: left;
