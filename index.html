@@ -36,26 +36,26 @@
       <div class="sharebubble" style="display: none;"><input type="text" value="https://uclab.fh-potsdam.de/ff" id="shareInput"><button class="sharecopybutton" onclick="shareFunction()">URL KOPIEREN</button></div>
   <div class="tippbubble" style="display: none;">
          <div class="tipp1">
-           <img src="img/tutorialScroll.gif" width="100%" style="margin-top:5px; margin-bottom:5px">
+           <img src="img/scrolling.gif" width="100%" style="margin-top:5px; margin-bottom:5px">
           <p><span class="tipptexts">Scrolle hoch, um die Gesamtverteilung von Lesespuren je Autor*in zusammengefasst zu betrachten oder scrolle hinunter, um in die Werke einzelner Autor*innen hinein zu zoomen. Nutze alternativ die
-              Navigations-Leiste am linken Seitenrand zur Navigation zwischen den drei Ebenen.</span></p>
+              Navigations-Leiste am linken Seitenrand.</span></p>
           <p class="nachherTipp tippsende">Okay!</p>
         </div>
       </div>
 
-      <div class="explicationbubble bubble" style="display: none"><p>Modus I (Lesespur-Verteilung): Visualisierung basierend auf einer sequentiellen Anordnung (oben nach unten) der Buchseiten und Bücher geordnet nach Verfasser*innen.</p>
+      <div class="explicationbubble bubble" style="display: none"><p>Lesespuren: Visualisierung basierend auf sequentieller Anordnung der Bücher und Seiten geordnet nach Verfasser*innen.</p>
           </div>
 
-      <div class="complicationbubble bubble" style="display: none"><p>Modus II (Ähnlichkeitsvergleich): Visualisierung mit einer Anordnung basierend auf einer (quanitativen) Ähnlichkeitsanalyse der Lesespurvorkommen zwischen Büchern/Verfasser*innen.</p>
+      <div class="complicationbubble bubble" style="display: none"><p>Ähnlichkeiten: visuelle Anordnung basierend auf einer Ähnlichkeitsanalyse der Lesespuren verschiedener Bücher und Verfasser*innen.</p>
           </div>
 
-          <div class="verfasserbubble bubble" style="display: none"><p>Autor*innen-Ebene: Durchschnittliche Verteilung der Lesespuren von allen Büchern eines gleichen Autors abschnittsweise von oben (Buchanfang) nach unten (Buchende) in Form von Flächen-Diagrammen</p>
+          <div class="verfasserbubble bubble" style="display: none"><p>Verteilung der Lesespuren in allen Büchern eines*einer Autor*in abschnittsweise von Buchanfang (oben) bis Buchende (unten) in Form von Flächendiagrammen.</p>
               </div>
 
-          <div class="buchbubble bubble" style="display: none"><p>Buch-Ebene: Übersicht aller Bücher (je ein Balken) der Handbibliothek, geordnet nach Autor*innen.</p>
+          <div class="buchbubble bubble" style="display: none"><p>Übersicht aller Bücher (je ein Balken), geordnet nach Autor*innen.</p>
               </div>
 
-              <div class="seitenbubble bubble" style="display: none"><p>Seiten-Ebene: Zoom in die Visualisierung, zur gezielten Auswahl von einzelnen Seiten.</p>
+              <div class="seitenbubble bubble" style="display: none"><p>Zoom in die Visualisierung, zur gezielten Auswahl einzelner Seiten.</p>
                   </div>
 
 
@@ -120,6 +120,10 @@
 <tr class="tr-seitenzahl">
   <td class="tooltiptypes tt-seitenzahl1">Seitenzahl:</td>
   <td class="tt-seitenzahl tt-data"></td>
+</tr>
+<tr class="seitenmitlesespuren">
+  <td class="tooltiptypes">Seiten mit Lesespuren:</td>
+  <td class="tt-seitenmitlesespuren tt-data"></td>
 </tr>
 <tr class="eigentumsangaben">
   <td class="tooltiptypes">Provenienzangaben:</td>
@@ -236,20 +240,20 @@
   <div id="tutorial" class="tutorial">
     <div class="about-close">&#10005;</div>
       <h1>WIE FUNKTIONIERT DIE VISUALISIERUNG?</h1>
-      <h2>Zwei Modi: Lesespur-Verteilung vs. Ähnlichkeitsvergleich</h2>
-      <p>Die Visualisierung ermöglicht den Wechsel zwischen zwei Modi mit je unterschiedlichen Schwerpunkten. Während der ersten Modus (Startseite), die Verteilung der Lesespuren entlang der Lesereihenfolge der Bücher anordnet und visualisiert, wird im zweiten Modus die Ähnlichkeit quantitativer Vorkommen von Lesespuren verglichen. Ein Klick auf die Buttons am oberen Rand der linken Navigationsleiste wechselt die Ansicht bei Beibehaltung von aktuellen Selektionen und Filterungen.</p>
-      <img src="img/tutorialGif3.gif" width="75%">
+      <h2>Zwei Modi: Lesespuren vs. Ähnlichkeiten</h2>
+      <p>Die Visualisierung ermöglicht den Wechsel zwischen zwei Modi mit je unterschiedlichen Schwerpunkten. Während der erste Modus (Startseite) die Verteilung der Lesespuren entlang einer linearen Lesereihenfolge der Bücher anordnet und visualisiert, wird im zweiten Modus die quantitative Verteilung von Lesespuren verglichen. Ein Klick auf die Buttons am oberen Rand der linken Navigationsleiste wechselt die Ansicht unter Beibehaltung der aktuellen Selektionen und Filterungen.</p>
+      <img src="img/moduswechsel.gif" width="75%">
 
 
       <div class="modus1">
-      <h2>MODUS I: LESESPUR-VERTEILUNG<h2>
+      <h2>MODUS I: LESESPUREN<h2>
       <h2>Wechsle zwischen drei Ansichten</h2>
       <p>Das entwickelte Visualisierungskonzept legt einenFokus auf die kontinuierliche, auf mehreren Ebenen zoom- und filterbare, Navigation, welche die Erkundung einzelner Objekte ebenso zulässt wie den Vergleich von übergreifenden Mustern. Scrollen nach oben oder nach unten ermöglicht dabei kontinuierliche, sinnhafte Übergänge zwischen drei Ebenen, startend mit einer Gesamtübersicht über alle Bücher der Sammlung (Buch-Ebene).
   Alternativ zum Scrollen kann auch die Navigationsleiste am linken Rand benutzt werden um zwischen den Ebenen zu navigieren. Ein Klick auf eine*n Autor*in ermöglicht zudem einen direkten Zoom in deren/dessen Werke.
   </p>
         <img src="img/tutorial03.png" width="100%">
-      <img src="img/tutorialGif2.gif" width="75%" style="margin-top:30px; margin-bottom:20px"><br>
-      <img src="img/tutorialGif3.gif" width="75%">
+      <img src="img/scrolling.gif" width="75%" style="margin-top:30px; margin-bottom:20px"><br>
+
 
 
   <h2>Filterung und Entfaltung von Details</h2>
@@ -261,12 +265,12 @@
 
   Neben Fontane haben auch seine Familie, Freunde und Verleger Schriftspuren in seinen Büchern hinterlassen. Um den/die Verfasser*in einer Schriftspur zu erkennen, gehe nach Selektion eines Buches auf der »Seiten-Ebene« (untere Ebene) mit deiner Maus über die Pfeile/Kreise vor den Transkriptionen. Ein Klick auf eine Seite öffnet die Detailansicht mit einer Abbildung der Originalseite.</p>
 
-  <img src="img/tutorialGif4.gif" width="75%" style="margin-bottom:20px"><br>
-  <img src="img/tutorialGif6.gif" width="75%">
+  <img src="img/filter.gif" width="75%"><br>
+  <img src="img/selection.gif" width="75%" style="margin-top:30px">
 
   <h2>Suche</h2>
   <p>Mit Hilfe eines Suchfeldes, welches gleichzeitig als Übersichtsliste aller Marginalien (geordnet nach Anzahl des Vorkommens) dient, kann man gezielt nach bestimmten Lesespuren wie z.B. »gut« oder »brillant« suchen und sich diese direkt in der Visualisierung anzeigen lassen.</p>
-  <img src="img/tutorialGif5.gif" width="75%">
+  <img src="img/suche.gif" width="75%">
 
   <h2>Weitere Nutzungshinweise</h2>
   <p>Nutze die ESC-Taste auf deiner Tastatur, um die Visualisierung und alle Filter zurückzusetzen.
@@ -275,28 +279,34 @@
 </div>
 
 <div class="modus2">
-<h2>MODUS II: ÄHNLICHKEITSVERGLEICH<h2>
-<p>Im aktuell ausgewählten Modus, einer Visualisierung zum Ähnlichkeitsvergleich aller Bücher/Autor*Innen werden Bücher/Autor*innen (abhängig von der Ebene) in einer Matrix anhand der Vorkommen von Lesespuren angeordnet (basierend auf multidimensionaler Skalierung). In der Visualisierung lässt sich durch Scrolling bzw der Navigationsleiste zwischen zwei Ebenen navigieren, der Autor*innen-Ebene und der Buch-Ebene. Bücher/Autor*Innen mit ähnlichen Schriftspur-Vorkommen liegen nahe beieinander, was in der Visualisierung dazu führt, dass Bücher bzw. Verfasser*Innen, die im Vergleich zu den anderen Büchern eine besondere Anzahl an bestimmten Lesespuren enthalten, eher am äußeren Rand positioniert werden und Bücher mit eher durchschnittlichem Lesespuren-Vorkommen sich in der Mitte sammeln.
+<h2>MODUS II: ÄHNLICHKEITEN<h2>
+<p>Im aktuell ausgewählten Modus, einer Visualisierung zum Ähnlichkeitsvergleich, werden Bücher oder Autor*innen anhand des Vorkommens von Lesespuren (basierend auf multidimensionaler Skalierung) angeordnet und können so verglichen werden. In der Visualisierung lässt sich durch Scrolling bzw. mit Hilfe der Navigationsleiste zwischen beiden Ebenen nahtlos navigieren und in die Ansichten hineinzoomen.
+Bücher oder Autor*Innen mit ähnlichen Schriftspuren (Anzahl und Arten) liegen hier nahe beieinander, was dazu führt, dass außergewöhnliche Bücher eher am äußeren Rand positioniert werden und solche mit eher durchschnittlichen Lesespuren sich in der Mitte sammeln.
 </p>
 
-<img src="img/tutorialGif2.gif" width="75%" style="margin-top:30px; margin-bottom:20px"><br>
+<img src="img/scrolling_complication.gif" width="75%" style="margin-top:30px; margin-bottom:20px"><br>
 <img src="img/complication_beispiel.jpg" width="75%">
 
 
-<h2>Buch-Ebene</h2>
-<p>Auf der Buch-Ebene wird das Lesespur-Vorkommen zwischen allen Büchern verglichen und die Bücher nach Ähnlichkeit auf der Fläche angeordnet, wodurch Bücher mit ähnlichen Lesespuren in der Nähe von einander positioniert werden.</p>
+<h2>Bücher:</h2>
+<p>Auf der Ebene der Bücher werden Anzahl und Arten der Lesespuren zwischen allen Büchern verglichen und die Bücher entsprechend ihrer Ähnlichkeiten zueinander auf der Fläche angeordnet, wodurch Bücher mit ähnlichen Lesespuren in der Nähe zueinander positioniert werden. Ein Klick auf ein Buch hebt alle Bücher der gleichen Person hervor und markiert den durchschnittlichen Wert aller Bücher durch ein Netzwerk. Weiterhin öffnet der Klick eine Leiste mit zusätzlichen Detailinformationen für das ausgewählte Buch inklusive aller Marginalien. Ein Klick auf eine Marginalien-Transkription in der Detail-Leiste öffnet die zugehörige Detailansicht der Seite, auf der die Marginalie vorkommt.</p>
+<img src="img/buch_complication.gif" width="75%">
 
 
-<h2>Autor*innen-Ebene</h2>
+
+<h2>Autor*innen:</h2>
+<p>Auf der Ebene der Autor*innen wird das durchschnittliche Vorkommen von Lesespuren in allen Büchern der Autor*innen in einer ähnlichkeitsbasierten Ansicht angeordnet, sodass Autor*innen mit ähnlichen Mengen und Arten von Lesespuren nahe beieinander positioniert sind.
+Ein Klick auf eine*n Autor*in öffnet eine Detailansicht, welche einen Überblick über die vorkommenden Lesespuren gibt, die Cover aller Bücher der ausgewählten Autor*innen und eine Kurzbiographie zeigt.
+</p>
+<img src="img/autor_complication.gif" width="75%">
+
+
+
+<h2>Filterung</h2>
+
 <p>Eine Filterleiste über der Visualisierung dient als Legende für die Farbkodierung und bietet die Möglichkeit zur Fokussierung auf bestimmte Lesespur-Typen. Die Auswahl eines Lesespur-Typs löst die Entfaltung der entsprechenden Unterkategorien in der Filterleiste aus und ermöglicht eine Fokussierung auf ausgewählte Merkmale.</p>
 
-
-<h2>Filterung und Entfaltung von Details</h2>
-
-<p>Eine Filterleiste über der Visualisierung dient als Legende für die Farbkodierung und bietet die Möglichkeit zur Fokussierung auf bestimmte Lesespur-Typen. Die Auswahl eines Lesespur-Typs löst die Entfaltung der entsprechenden Unterkategorien in der Filterleiste aus und ermöglicht eine Fokussierung auf ausgewählte Merkmale.</p>
-<p>Die Auswahl eines Buches oder von Autor*innen öffnet eine Übersicht mit Basis-Informationen inklusive der Buchcover zur Auswahl.</p>
-
-<img src="img/tutorialGif6.gif" width="75%">
+<img src="img/filter_complication.gif" width="75%">
 
 <h2>Weitere Nutzungshinweise</h2>
 <p>Nutze die ESC-Taste auf deiner Tastatur, um die Visualisierung und alle Filter zurückzusetzen.

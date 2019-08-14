@@ -1,10 +1,10 @@
 var legend = d3.select("#legend")
 
 legend.append("text")
-  .text("Lesespur-Typ")
+  .text("L\u2006e\u2006s\u2006e\u2006s\u2006p\u2006u\u2006r\u2006-\u2006T\u2006y\u2006p")
   .attr("class", "legendTitle")
   .style("font-weight", "bold")
-  .style("letter-spacing", "1px")
+  //.style("letter-spacing", "1px")
   .attr("y", legendSchriftspurY)
   .attr("x", +2)
 

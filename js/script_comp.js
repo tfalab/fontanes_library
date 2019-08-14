@@ -5958,7 +5958,8 @@ Promise.all([
             return thisData.filter(function(d) {
               return (d.Benutzungsspur.includes("5") == true && d.SchriftspurTyp != "P")
             }).length
-          }).style("font-weight", "bold")
+          })
+          .style("font-weight", "bold")
 
         detailMarginalien
           .filter(function(d) {
@@ -9126,8 +9127,8 @@ Promise.all([
         d3.select(".modus1").style("display", "block")
         d3.select(".modus2").style("display", "none")
 
-        d3.select(".verfasserbubble").select("p").text("Autor*innen-Ebene: Durchschnittliche Verteilung der Lesespuren von allen Büchern eines gleichen Autors abschnittsweise von oben (Buchanfang) nach unten (Buchende) in Form von Flächen-Diagrammen.")
-        d3.select(".buchbubble").select("p").text("Buch-Ebene: Übersicht aller Bücher (je ein Balken) der Handbibliothek, geordnet nach Autor*innen.")
+        d3.select(".verfasserbubble").select("p").text("Verteilung der Lesespuren in allen Büchern eines*einer Autor*in abschnittsweise von Buchanfang (oben) bis Buchende (unten) in Form von Flächendiagrammen.")
+        d3.select(".buchbubble").select("p").text("Übersicht aller Bücher (je ein Balken), geordnet nach Autor*innen.")
 
         transitions = true
         transitionsNeu++
@@ -9227,8 +9228,8 @@ Promise.all([
       d3.select(".search-container").style("display", "none")
       d3.select(".detailDiv").style("display", "none")
 
-      d3.select(".verfasserbubble").select("p").text("Autor*innen-Ebene: Ähnlichkeitsbasierte Anordnung der Autor*innen basierend auf den vorkommenden Lesespuren.")
-      d3.select(".buchbubble").select("p").text("Buch-Ebene: Ähnlichkeitsbasierte Anordnung der Bücher basierend auf den vorkommenden Lesespuren.")
+      d3.select(".verfasserbubble").select("p").text("Ähnlichkeitsbasierte Anordnung der Autor*innen basierend auf der Anzahl und Art der vorkommenden Lesespuren.")
+      d3.select(".buchbubble").select("p").text("Ähnlichkeitsbasierte Anordnung der Bücher basierend auf der Anzahl und Art der vorkommenden Lesespuren.")
 
 
       d3.selectAll("#complicationsvg").style("display", "block")
@@ -11819,14 +11820,15 @@ Promise.all([
           })
 
 
-        piedetailview.selectAll(".tt-provenienz")
-          .text(function(D) {
-            return +complicationData.filter(function(E, G) {
-              return E.ID === id
-            })[0].ProvenienzTotal + +complicationData.filter(function(E, G) {
-              return E.ID === id
-            })[0].StempelTotal
-          })
+
+        // piedetailview.selectAll(".tt-provenienz")
+        //   .text(function(D) {
+        //     return +complicationData.filter(function(E, G) {
+        //       return E.ID === id
+        //     })[0].ProvenienzTotal + +complicationData.filter(function(E, G) {
+        //       return E.ID === id
+        //     })[0].StempelTotal
+        //   })
 
         piedetailview.selectAll(".tt-provenienzangaben")
           .text(function(D) {
@@ -11843,21 +11845,21 @@ Promise.all([
             })[0].StempelTotal
           })
 
-
-        piedetailview.selectAll(".tt-marginalien")
-          .text(function(D) {
-            return +complicationData.filter(function(E, G) {
-              return E.ID === id
-            })[0].BewertungTotal + +complicationData.filter(function(E, G) {
-              return E.ID === id
-            })[0].KommentarTotal + +complicationData.filter(function(E, G) {
-              return E.ID === id
-            })[0].TextkorrekturTotal + +complicationData.filter(function(E, G) {
-              return E.ID === id
-            })[0].VarianteTotal + +complicationData.filter(function(E, G) {
-              return E.ID === id
-            })[0].UebersetzungTotal
-          })
+        //
+        // piedetailview.selectAll(".tt-marginalien")
+        //   .text(function(D) {
+        //     return +complicationData.filter(function(E, G) {
+        //       return E.ID === id
+        //     })[0].BewertungTotal + +complicationData.filter(function(E, G) {
+        //       return E.ID === id
+        //     })[0].KommentarTotal + +complicationData.filter(function(E, G) {
+        //       return E.ID === id
+        //     })[0].TextkorrekturTotal + +complicationData.filter(function(E, G) {
+        //       return E.ID === id
+        //     })[0].VarianteTotal + +complicationData.filter(function(E, G) {
+        //       return E.ID === id
+        //     })[0].UebersetzungTotal
+        //   })
 
         piedetailview.selectAll(".tt-bewertung")
           .text(function(D) {
@@ -11898,18 +11900,18 @@ Promise.all([
           })
 
 
-        piedetailview.selectAll(".tt-markierungen")
-          .text(function(D) {
-            return +complicationData.filter(function(E, G) {
-              return E.ID === id
-            })[0].AnstreichungTotal + +complicationData.filter(function(E, G) {
-              return E.ID === id
-            })[0].UnterstreichungTotal + +complicationData.filter(function(E, G) {
-              return E.ID === id
-            })[0].DurchstreichungTotal + +complicationData.filter(function(E, G) {
-              return E.ID === id
-            })[0].SonstigeMarkierungTotal
-          })
+        //piedetailview.selectAll(".tt-markierungen")
+          // .text(function(D) {
+          //   return +complicationData.filter(function(E, G) {
+          //     return E.ID === id
+          //   })[0].AnstreichungTotal + +complicationData.filter(function(E, G) {
+          //     return E.ID === id
+          //   })[0].UnterstreichungTotal + +complicationData.filter(function(E, G) {
+          //     return E.ID === id
+          //   })[0].DurchstreichungTotal + +complicationData.filter(function(E, G) {
+          //     return E.ID === id
+          //   })[0].SonstigeMarkierungTotal
+          // })
 
         piedetailview.selectAll(".tt-anstreichung")
           .text(function(D) {
