@@ -1,19 +1,19 @@
 if (window.location.hash != "") {
-  d3.select("#overlay").style("display", "none")
-  d3.select("#start").style("display", "none")
-  d3.select("#tutorial").style("display", "none")
-  d3.select(".tippbubble").style("display", "none")
-  d3.select("html,body").style("overflow-y", "scroll")
+  d3.select("#overlay").style("display", "none");
+  d3.select("#start").style("display", "none");
+  d3.select("#tutorial").style("display", "none");
+  d3.select(".tippbubble").style("display", "none");
+  d3.select("html,body").style("overflow-y", "scroll");
 
 } else {
   if (localStorage.getItem("isNewSession") !== 'true') {
-    d3.select("#tutorial").style("display", "none")
-    d3.select(".tippbubble").style("display", "inline")
+    d3.select("#tutorial").style("display", "none");
+    d3.select(".tippbubble").style("display", "inline");
 
     localStorage.setItem('isNewSession', 'true');
   } else {
-    d3.select("#tutorial").style("display", "none")
-    d3.select(".tippbubble").style("display", "inline")
+    d3.select("#tutorial").style("display", "none");
+    d3.select(".tippbubble").style("display", "inline");
   }
 }
 
@@ -35,62 +35,74 @@ noScroll2.addEventListener('touchmove', function(e) {
 }, false);
 
 
+d3.select("#englishIntro").on("click", function(){
+  d3.selectAll(".german").style("display", "none");
+  d3.selectAll(".english").style("display", "block");
+});
 
+d3.select("#germanIntro").on("click", function(){
+  d3.selectAll(".english").style("display", "none");
+  d3.selectAll(".german").style("display", "block");
+});
+
+d3.selectAll("#englishdemo").on("click", function() {
+  window.open("https://vimeo.com/355280580");
+});
 
 d3.selectAll("#mehrinfos").on("click", function() {
-  d3.select("#overlay").style("display", "block").transition().duration(600).style("opacity", .5)
-  d3.select("#start").style("opacity", 0)
-  d3.select("#about").style("display", "block").transition().duration(600).style("opacity", 1)
+  d3.select("#overlay").style("display", "block").transition().duration(600).style("opacity", 0.5);
+  d3.select("#start").style("opacity", 0);
+  d3.select("#about").style("display", "block").transition().duration(600).style("opacity", 1);
 
   setTimeout(function() {
-    d3.select("#start").style("display", "none")
+    d3.select("#start").style("display", "none");
   }, 800);
 
-})
+});
 
 d3.selectAll("#aboutIcon").on("click", function() {
-  d3.select("#overlay").style("display", "block").transition().duration(600).style("opacity", .5)
-  d3.select("#about").style("opacity", 0)
-  d3.select("#start").style("display", "block").transition().duration(600).style("opacity", 1)
-  d3.select("#tutorial").style("display", "none")
-  d3.select(".tippbubble").style("display", "none")
-  d3.select(".sharebubble").style("display", "none")
-  d3.select("html,body").style("overflow-y", "hidden")
+  d3.select("#overlay").style("display", "block").transition().duration(600).style("opacity", 0.5);
+  d3.select("#about").style("opacity", 0);
+  d3.select("#start").style("display", "block").transition().duration(600).style("opacity", 1);
+  d3.select("#tutorial").style("display", "none");
+  d3.select(".tippbubble").style("display", "none");
+  d3.select(".sharebubble").style("display", "none");
+  d3.select("html,body").style("overflow-y", "hidden");
 
-})
+});
 
 d3.selectAll("#einfuerunginvis").on("click", function() {
-  d3.select("html,body").style("overflow-y", "hidden")
-  d3.select("#overlay").style("display", "block").transition().duration(600).style("opacity", .5)
-  d3.select("#about").style("opacity", 0)
-  d3.select("#start").style("opacity", 0)
-  d3.select("#tutorial").style("display", "block").transition().duration(600).style("opacity", 1)
-  d3.select(".tippbubble").style("display", "none")
-  d3.select(".sharebubble").style("display", "none")
+  d3.select("html,body").style("overflow-y", "hidden");
+  d3.select("#overlay").style("display", "block").transition().duration(600).style("opacity", 0.5);
+  d3.select("#about").style("opacity", 0);
+  d3.select("#start").style("opacity", 0);
+  d3.select("#tutorial").style("display", "block").transition().duration(600).style("opacity", 1);
+  d3.select(".tippbubble").style("display", "none");
+  d3.select(".sharebubble").style("display", "none");
 
 
-})
+});
 
 
 
-d3.selectAll(".about-close, #overlay, #vielspass").on("click", aboutCloseFunction)
+d3.selectAll(".about-close, #overlay, #vielspass").on("click", aboutCloseFunction);
 
 function aboutCloseFunction() {
-  d3.select("html,body").style("overflow-y", "scroll")
-  d3.select("#overlay").transition().duration(600).style("opacity", 0)
-  d3.select("#start").transition().duration(600).style("opacity", 0)
-  d3.select("#about").transition().duration(600).style("opacity", 0)
-  d3.select("#detailview").transition().duration(600).style("opacity", 0)
-  d3.select("#tutorial").transition().duration(600).style("opacity", 0)
-  d3.selectAll(".detailviewPrevious,.detailviewNext").style("display", "none")
+  d3.select("html,body").style("overflow-y", "scroll");
+  d3.select("#overlay").transition().duration(600).style("opacity", 0);
+  d3.select("#start").transition().duration(600).style("opacity", 0);
+  d3.select("#about").transition().duration(600).style("opacity", 0);
+  d3.select("#detailview").transition().duration(600).style("opacity", 0);
+  d3.select("#tutorial").transition().duration(600).style("opacity", 0);
+  d3.selectAll(".detailviewPrevious,.detailviewNext").style("display", "none");
 
 
   setTimeout(function() {
-    d3.select("#overlay").style("display", "none")
-    d3.select("#start").style("display", "none")
-    d3.select("#about").style("display", "none")
-    d3.select("#detailview").style("display", "none")
-    d3.select("#tutorial").style("display", "none")
+    d3.select("#overlay").style("display", "none");
+    d3.select("#start").style("display", "none");
+    d3.select("#about").style("display", "none");
+    d3.select("#detailview").style("display", "none");
+    d3.select("#tutorial").style("display", "none");
   }, 800);
 }
 
@@ -104,39 +116,39 @@ function shareFunction() {
   document.execCommand("copy");
 
   setTimeout(function() {
-    d3.select(".sharebubble").style("display", "none")
+    d3.select(".sharebubble").style("display", "none");
   }, 100);
 
 }
 
 d3.select("#iconshare").on("click", function() {
   if (d3.select(".sharebubble").style("display") == "inline") {
-    d3.select(".sharebubble").style("display", "none")
+    d3.select(".sharebubble").style("display", "none");
   } else {
-    d3.select(".tippbubble").style("display", "none")
-    d3.select(".sharebubble").style("display", "inline")
+    d3.select(".tippbubble").style("display", "none");
+    d3.select(".sharebubble").style("display", "inline");
   }
-})
+});
 
 d3.select("#tippIcon").on("click", function() {
-  d3.select("html,body").style("overflow-y", "hidden")
-  d3.select("#overlay").style("display", "block").transition().duration(600).style("opacity", .5)
-  d3.select("#about").style("opacity", 0)
-  d3.select("#start").style("opacity", 0)
-  d3.select("#tutorial").style("display", "block").transition().duration(600).style("opacity", 1)
-  d3.select(".tippbubble").style("display", "none")
-  d3.select(".sharebubble").style("display", "none")
-})
+  d3.select("html,body").style("overflow-y", "hidden");
+  d3.select("#overlay").style("display", "block").transition().duration(600).style("opacity", 0.5);
+  d3.select("#about").style("opacity", 0);
+  d3.select("#start").style("opacity", 0);
+  d3.select("#tutorial").style("display", "block").transition().duration(600).style("opacity", 1);
+  d3.select(".tippbubble").style("display", "none");
+  d3.select(".sharebubble").style("display", "none");
+});
 
 
 d3.selectAll(".tippsende").on("click", function() {
-  d3.select(".tippbubble").transition().duration(800).style("opacity", 0).transition().delay(1000).style("display", "none")
-})
+  d3.select(".tippbubble").transition().duration(800).style("opacity", 0).transition().delay(1000).style("display", "none");
+});
 
 
 setTimeout(function() {
 
-  window.scrollTo(0, 3000)
+  window.scrollTo(0, 3000);
 
 
 }, 10);
@@ -146,13 +158,13 @@ setTimeout(function() {
 
 
 
-var scroller = d3.select('body')
+var scroller = d3.select('body');
 
 window.onscroll = function() {
 
-  var scrollTop2 = Math.max(window.pageYOffset, document.documentElement.scrollTop, document.body.scrollTop)
+  var scrollTop2 = Math.max(window.pageYOffset, document.documentElement.scrollTop, document.body.scrollTop);
 
-  newScrollTop = scrollTop2 - 3000
+  newScrollTop = scrollTop2 - 3000;
 
 
 
@@ -163,12 +175,12 @@ window.onscroll = function() {
   var scrollCircleScale = d3.scaleLinear()
     .domain([-3000, 0, 2600])
     .range([firstScrollIcon, secondScrollIcon, thirdScrollIcon - 5])
-    .clamp(true)
+    .clamp(true);
 
   var scrollCircleScale2 = d3.scaleLinear()
     .domain([-2500, 0])
     .range([firstScrollIcon, secondScrollIcon])
-    .clamp(true)
+    .clamp(true);
 
 
 
@@ -179,46 +191,46 @@ window.onscroll = function() {
       .attr("cy", scrollCircleScale(newScrollTop))
       .attr("r", function() {
         if (window.innerWidth < 2000) {
-          return 5
+          return 5;
         } else {
-          return 10
+          return 10;
         }
-      })
+      });
 
   } else if (modus == "similarity") {
 
     var scrollCircleZoomScale = d3.scaleLinear()
       .domain([-3000, -2500, 0, 3000])
       .range([1, 5, 5, 1])
-      .clamp(true)
+      .clamp(true);
 
 
     d3.selectAll(".scrollCircleFollower")
       .attr("cy", scrollCircleScale2(newScrollTop))
       .attr("r", function() {
         if (window.innerWidth < 2000) {
-          return scrollCircleZoomScale(newScrollTop)
+          return scrollCircleZoomScale(newScrollTop);
         } else {
-          return scrollCircleZoomScale(newScrollTop) * 2
+          return scrollCircleZoomScale(newScrollTop) * 2;
         }
-      })
+      });
   } else {
 
     d3.selectAll(".scrollCircleFollower")
-      .attr("cy", scrollCircleScale(newScrollTop))
+      .attr("cy", scrollCircleScale(newScrollTop));
   }
 
-}
+};
 
 
 
 scroller
   .on("scroll", function() {
 
-    var scrollTop2 = Math.max(window.pageYOffset, document.documentElement.scrollTop, document.body.scrollTop)
+    var scrollTop2 = Math.max(window.pageYOffset, document.documentElement.scrollTop, document.body.scrollTop);
 
 
-    newScrollTop = scrollTop2
+    newScrollTop = scrollTop2;
 
 
 
@@ -229,20 +241,20 @@ scroller
     if (modus == "distribution") {
 
       d3.selectAll(".scrollCircleFollower")
-        .attr("cy", scrollCircleScale(newScrollTop))
+        .attr("cy", scrollCircleScale(newScrollTop));
 
     } else if (modus == "similarity") {
 
       d3.selectAll(".scrollCircleFollower")
-        .attr("cy", scrollCircleScale2(newScrollTop))
+        .attr("cy", scrollCircleScale2(newScrollTop));
     } else {
 
       d3.selectAll(".scrollCircleFollower")
-        .attr("cy", scrollCircleScale(newScrollTop))
+        .attr("cy", scrollCircleScale(newScrollTop));
     }
     ////////////////////scrollnaviEnde
     ////////////////////////////////////////
-  })
+  });
 
 
 
@@ -258,77 +270,77 @@ var tooltip = d3.select("body")
   .style("z-index", "300")
   .style("display", "none")
   .attr("width", 200)
-  .attr("class", "tooltip")
+  .attr("class", "tooltip");
 
-tooltip.append("img").attr("width", 200).attr("height", "auto")
+tooltip.append("img").attr("width", 200).attr("height", "auto");
 
 
 
 var svg = d3.select("#svg")
   .style('width', width + 'px')
-  .style('height', height + 'px')
+  .style('height', height + 'px');
 
 var svgFront = d3.select("#svgFront")
   .style('width', width + 'px')
-  .style('height', height + 'px')
+  .style('height', height + 'px');
 
 var svgFrontTitles = d3.select("#svgFrontTitles")
   .style('width', width + 'px')
-  .style('height', height + 'px')
+  .style('height', height + 'px');
 
 
-var scrollSvg = d3.select("#scrollSvg")
+var scrollSvg = d3.select("#scrollSvg");
 
-var firstScrollIcon = canvasTop + 9
-var thirdScrollIcon = window.innerHeight - 40
-var secondScrollIcon = firstScrollIcon + (thirdScrollIcon - firstScrollIcon) / 2
+var firstScrollIcon = canvasTop + 9;
+var thirdScrollIcon = window.innerHeight - 40;
+var secondScrollIcon = firstScrollIcon + (thirdScrollIcon - firstScrollIcon) / 2;
 
-var scrollBgLines = scrollSvg.append("g").attr("transform", "translate(39,-5)")
-var scrollCircles = scrollSvg.append("g").attr("transform", "translate(40,-5)")
-var scrollIcons = scrollSvg.append("g").attr("transform", "translate(0,-18)")
-var scrollLabels = scrollSvg.append("g").attr("transform", "translate(58,-5)")
+var scrollBgLines = scrollSvg.append("g").attr("transform", "translate(39,-5)");
+var scrollCircles = scrollSvg.append("g").attr("transform", "translate(40,-5)");
+var scrollIcons = scrollSvg.append("g").attr("transform", "translate(0,-18)");
+var scrollLabels = scrollSvg.append("g").attr("transform", "translate(58,-5)");
 
 
 d3.selectAll(".verfasserbubble").style("top", function() {
-  return -10 + firstScrollIcon - d3.select(".verfasserbubble").style("height").replace(/px/, "") / 2 + "px"
-})
+  return -10 + firstScrollIcon - d3.select(".verfasserbubble").style("height").replace(/px/, "") / 2 + "px";
+});
 d3.selectAll(".buchbubble").style("top", function() {
-  return -10 + secondScrollIcon - d3.select(".buchbubble").style("height").replace(/px/, "") / 2 + "px"
-})
+  return -10 + secondScrollIcon - d3.select(".buchbubble").style("height").replace(/px/, "") / 2 + "px";
+});
 d3.selectAll(".seitenbubble").style("top", function() {
-  return -15 + thirdScrollIcon - d3.select(".seitenbubble").style("height").replace(/px/, "") / 2 + "px"
-})
+  return -15 + thirdScrollIcon - d3.select(".seitenbubble").style("height").replace(/px/, "") / 2 + "px";
+});
 
 scrollSvg.append("image").attr("xlink:href", "icons/distribution.svg")
   .attr("class", "distributionbutton")
   .attr("y", function(d) {
     if (window.innerWidth < 2000) {
-      return 10
+      return 10;
     } else {
-      return 10
+      return 10;
     }
   })
   .attr("x", function(d) {
     if (window.innerWidth < 2000) {
-      return 18
+      return 18;
     } else {
-      return 18
+      return 18;
     }
   })
   .attr("width", function(d) {
     if (window.innerWidth < 2000) {
-      return 45
+      return 45;
     } else {
-      return 65
+      return 65;
     }
   })
   .attr("height", function(d) {
     if (window.innerWidth < 2000) {
-      return 45
+      return 45;
     } else {
-      return 65
+      return 65;
     }
-  })
+  });
 
 
 scrollSvg.append("image").attr("xlink:href", "icons/similarity.svg")
@@ -336,32 +348,32 @@ scrollSvg.append("image").attr("xlink:href", "icons/similarity.svg")
   .attr("class", "similaritybutton")
   .attr("y", function(d) {
     if (window.innerWidth < 2000) {
-      return 70
+      return 70;
     } else {
-      return 90
+      return 90;
     }
   })
   .attr("x", function(d) {
     if (window.innerWidth < 2000) {
-      return 18
+      return 18;
     } else {
-      return 18
+      return 18;
     }
   })
   .attr("width", function(d) {
     if (window.innerWidth < 2000) {
-      return 45
+      return 45;
     } else {
-      return 65
+      return 65;
     }
   })
   .attr("height", function(d) {
     if (window.innerWidth < 2000) {
-      return 45
+      return 45;
     } else {
-      return 65
+      return 65;
     }
-  })
+  });
 
 
 
@@ -370,37 +382,37 @@ scrollBgLines.append("line")
   .attr("x1", 0)
   .attr("x2", function(d) {
     if (window.innerWidth < 2000) {
-      return 4
+      return 4;
     } else {
-      return 5
+      return 5;
     }
   })
   .attr("y1", firstScrollIcon)
   .attr("y2", thirdScrollIcon)
   .attr("stroke", "white")
   .style("opacity", 0.3)
-  .attr("class", "firstScrollLine")
+  .attr("class", "firstScrollLine");
 
 scrollBgLines.append("line")
   .attr("x1", function(d) {
     if (window.innerWidth < 2000) {
-      return 22
+      return 22;
     } else {
-      return 34
+      return 34;
     }
   })
   .attr("x2", function(d) {
     if (window.innerWidth < 2000) {
-      return 18
+      return 18;
     } else {
-      return 29
+      return 29;
     }
   })
   .attr("y1", firstScrollIcon)
   .attr("y2", thirdScrollIcon)
   .attr("stroke", "white")
   .style("opacity", 0.3)
-  .attr("class", "secondScrollLine")
+  .attr("class", "secondScrollLine");
 
 
 
@@ -408,54 +420,54 @@ scrollIcons.append("image")
   .attr("xlink:href", "icons/authorlevel.svg")
   .attr("y", function(d) {
     if (window.innerWidth < 2000) {
-      return firstScrollIcon + 5
+      return firstScrollIcon + 5;
     } else {
-      return firstScrollIcon + 2
+      return firstScrollIcon + 2;
     }
   })
   .attr("x", function(d) {
     if (window.innerWidth < 2000) {
-      return 10
+      return 10;
     } else {
-      return 7
+      return 7;
     }
   })
   .attr("width", function(d) {
     if (window.innerWidth < 2000) {
-      return 20
+      return 20;
     } else {
-      return 25
+      return 25;
     }
   })
   .attr("height", function(d) {
     if (window.innerWidth < 2000) {
-      return 20
+      return 20;
     } else {
-      return 25
+      return 25;
     }
   })
   .style("cursor", "pointer")
   .on("click", function() {
-    d3.event.stopPropagation()
+    d3.event.stopPropagation();
     if (modus == "distribution") {
       $("html,body").animate({
         scrollTop: 0
-      }, 805)
+      }, 805);
     } else if (modus == "similarity") {
       $("html,body").animate({
         scrollTop: 500
-      }, 805)
+      }, 805);
     }
   })
   .attr("class", "autorIcon")
   .on("mouseover", function() {
     d3.selectAll(".verfasserbubble").style("display", "block").style("top", function() {
-      return -10 + firstScrollIcon - d3.select(".verfasserbubble").style("height").replace(/px/, "") / 2 + "px"
-    })
+      return -10 + firstScrollIcon - d3.select(".verfasserbubble").style("height").replace(/px/, "") / 2 + "px";
+    });
   })
   .on("mouseout", function() {
-    d3.selectAll(".verfasserbubble").style("display", "none")
-  })
+    d3.selectAll(".verfasserbubble").style("display", "none");
+  });
 
 
 
@@ -466,48 +478,48 @@ scrollIcons.append("image")
   .attr("xlink:href", "icons/buchlevel.svg")
   .attr("y", function(d) {
     if (window.innerWidth < 2000) {
-      return secondScrollIcon + 5
+      return secondScrollIcon + 5;
     } else {
-      return secondScrollIcon + 2
+      return secondScrollIcon + 2;
     }
   })
   .attr("x", function(d) {
     if (window.innerWidth < 2000) {
-      return 10
+      return 10;
     } else {
-      return 7
+      return 7;
     }
   })
   .attr("width", function(d) {
     if (window.innerWidth < 2000) {
-      return 20
+      return 20;
     } else {
-      return 25
+      return 25;
     }
   })
   .attr("height", function(d) {
     if (window.innerWidth < 2000) {
-      return 20
+      return 20;
     } else {
-      return 25
+      return 25;
     }
   })
   .style("cursor", "pointer")
   .on("click", function() {
-    d3.event.stopPropagation()
+    d3.event.stopPropagation();
     $("html,body").animate({
       scrollTop: 3000
-    }, 805)
+    }, 805);
   })
   .attr("class", "buchIcon")
   .on("mouseover", function() {
     d3.selectAll(".buchbubble").style("display", "block").style("top", function() {
-      return -10 + secondScrollIcon - d3.select(".buchbubble").style("height").replace(/px/, "") / 2 + "px"
-    })
+      return -10 + secondScrollIcon - d3.select(".buchbubble").style("height").replace(/px/, "") / 2 + "px";
+    });
   })
   .on("mouseout", function() {
-    d3.selectAll(".buchbubble").style("display", "none")
-  })
+    d3.selectAll(".buchbubble").style("display", "none");
+  });
 
 
 
@@ -516,62 +528,62 @@ scrollIcons.append("image")
   .attr("xlink:href", "icons/seitenlevel.svg")
   .attr("y", function(d) {
     if (window.innerWidth < 2000) {
-      return thirdScrollIcon + 5
+      return thirdScrollIcon + 5;
     } else {
-      return thirdScrollIcon - 2
+      return thirdScrollIcon - 2;
     }
   })
   .attr("x", function(d) {
     if (window.innerWidth < 2000) {
-      return 10
+      return 10;
     } else {
-      return 7
+      return 7;
     }
   })
   .attr("width", function(d) {
     if (window.innerWidth < 2000) {
-      return 20
+      return 20;
     } else {
-      return 25
+      return 25;
     }
   })
   .attr("height", function(d) {
     if (window.innerWidth < 2000) {
-      return 20
+      return 20;
     } else {
-      return 25
+      return 25;
     }
   })
   .style("cursor", "pointer")
   .on("click", function() {
-    d3.event.stopPropagation()
+    d3.event.stopPropagation();
     $("html,body").animate({
       scrollTop: 6000
-    }, 805)
+    }, 805);
   })
   .attr("class", "seitenIcon")
   .on("mouseover", function() {
     d3.selectAll(".seitenbubble").style("display", "block").style("top", function() {
-      return -15 + thirdScrollIcon - d3.select(".seitenbubble").style("height").replace(/px/, "") / 2 + "px"
-    })
+      return -15 + thirdScrollIcon - d3.select(".seitenbubble").style("height").replace(/px/, "") / 2 + "px";
+    });
   })
   .on("mouseout", function() {
-    d3.selectAll(".seitenbubble").style("display", "none")
-  })
+    d3.selectAll(".seitenbubble").style("display", "none");
+  });
 
 scrollCircles.append("circle")
   .attr("r", function() {
     if (window.innerWidth < 2000) {
-      return 11
+      return 11;
     } else {
-      return 18
+      return 18;
     }
   })
   .attr("cx", function() {
     if (window.innerWidth < 2000) {
-      return 10
+      return 10;
     } else {
-      return 16
+      return 16;
     }
   })
   .attr("cy", firstScrollIcon)
@@ -580,31 +592,31 @@ scrollCircles.append("circle")
   .style("cursor", "pointer")
   .attr("class", "firstScrollCircle")
   .on("click", function() {
-    d3.event.stopPropagation()
+    d3.event.stopPropagation();
     if (modus == "distribution") {
       $("html,body").animate({
         scrollTop: 0
-      }, 805)
+      }, 805);
     } else if (modus == "similarity") {
       $("html,body").animate({
         scrollTop: 500
-      }, 805)
+      }, 805);
     }
-  })
+  });
 
 scrollCircles.append("circle")
   .attr("r", function() {
     if (window.innerWidth < 2000) {
-      return 9
+      return 9;
     } else {
-      return 15
+      return 15;
     }
   })
   .attr("cx", function() {
     if (window.innerWidth < 2000) {
-      return 10
+      return 10;
     } else {
-      return 16
+      return 16;
     }
   })
   .attr("cy", secondScrollIcon)
@@ -612,27 +624,27 @@ scrollCircles.append("circle")
   .attr("fill", "#474747")
   .style("cursor", "pointer")
   .on("click", function() {
-    d3.event.stopPropagation()
+    d3.event.stopPropagation();
     $("html,body").animate({
 
       scrollTop: 3000
-    }, 805)
+    }, 805);
   })
-  .attr("class", "secondScrollCircle")
+  .attr("class", "secondScrollCircle");
 
 scrollCircles.append("circle")
   .attr("r", function() {
     if (window.innerWidth < 2000) {
-      return 7
+      return 7;
     } else {
-      return 12
+      return 12;
     }
   })
   .attr("cx", function() {
     if (window.innerWidth < 2000) {
-      return 10
+      return 10;
     } else {
-      return 16
+      return 16;
     }
   })
   .attr("cy", thirdScrollIcon - 5)
@@ -640,26 +652,26 @@ scrollCircles.append("circle")
   .attr("fill", "#474747")
   .style("cursor", "pointer")
   .on("click", function() {
-    d3.event.stopPropagation()
+    d3.event.stopPropagation();
     $("html,body").animate({
       scrollTop: 6000
-    }, 805)
+    }, 805);
   })
-  .attr("class", "thirdScrollCircle")
+  .attr("class", "thirdScrollCircle");
 
 var scrollCircleFollower = scrollCircles.append("circle")
   .attr("r", function() {
     if (window.innerWidth < 2000) {
-      return 5
+      return 5;
     } else {
-      return 10
+      return 10;
     }
   })
   .attr("cx", function() {
     if (window.innerWidth < 2000) {
-      return 10
+      return 10;
     } else {
-      return 16
+      return 16;
     }
   })
   .attr("cy", secondScrollIcon)
@@ -673,7 +685,7 @@ var scrollCircleFollower = scrollCircles.append("circle")
 
 function dragstarted(d) {
   d3.select(this).raise().classed("active", true)
-    .attr("cursor", "grabbing")
+    .attr("cursor", "grabbing");
 }
 
 function dragged(d) {
@@ -681,34 +693,34 @@ function dragged(d) {
   d3.select(this).attr("cy", function() {
     if (modus == "distribution") {
       if (d3.event.y < firstScrollIcon) {
-        return firstScrollIcon
+        return firstScrollIcon;
       } else if (d3.event.y > thirdScrollIcon - 5) {
-        return thirdScrollIcon - 5
+        return thirdScrollIcon - 5;
       } else {
-        return d3.event.y
+        return d3.event.y;
       }
     } else if (modus == "similarity") {
       if (d3.event.y < firstScrollIcon) {
-        return firstScrollIcon
+        return firstScrollIcon;
       } else if (d3.event.y > secondScrollIcon - 5) {
-        return secondScrollIcon
+        return secondScrollIcon;
       } else {
-        return d3.event.y
+        return d3.event.y;
       }
     }
 
   });
   if (modus == "distribution") {
-    window.scrollTo(0, scrollCircleScaleReverse(d3.event.y))
+    window.scrollTo(0, scrollCircleScaleReverse(d3.event.y));
   } else if (modus == "similarity") {
-    window.scrollTo(0, scrollCircleScaleReverse2(d3.event.y))
+    window.scrollTo(0, scrollCircleScaleReverse2(d3.event.y));
   }
 
 }
 
 function dragended(d) {
   d3.select(this).classed("active", false)
-    .attr("cursor", "grab")
+    .attr("cursor", "grab");
 }
 
 
@@ -716,13 +728,13 @@ d3.select("#scrollSvg").on("click", function() {
   if (modus == "distribution" && d3.event.y >= firstScrollIcon && d3.event.y <= thirdScrollIcon - 5) {
     $("html,body").animate({
       scrollTop: scrollCircleScaleReverse(d3.event.y)
-    }, '100')
+    }, '100');
   } else if (modus == "similarity" && d3.event.y >= firstScrollIcon && d3.event.y <= secondScrollIcon) {
     $("html,body").animate({
       scrollTop: scrollCircleScaleReverse2(d3.event.y)
-    }, '100')
+    }, '100');
   }
-})
+});
 
 
 
@@ -732,12 +744,12 @@ d3.select("#scrollSvg").on("click", function() {
 var scrollCircleScaleReverse = d3.scaleLinear()
   .domain([firstScrollIcon, secondScrollIcon, thirdScrollIcon + 0])
   .range([0, 3000, 6000])
-  .clamp(true)
+  .clamp(true);
 
 var scrollCircleScaleReverse2 = d3.scaleLinear()
   .domain([firstScrollIcon, secondScrollIcon])
   .range([500, 3000])
-  .clamp(true)
+  .clamp(true);
 
 
 //Real visible canvas
@@ -747,11 +759,11 @@ var canvas = d3.select('#container')
   .attr('width', scaledWidth)
   .attr('height', scaledHeight)
   .style('width', width + 'px')
-  .style('height', height + 'px')
-//	.style("display","none");
+  .style('height', height + 'px');
+
 
 var context = canvas.node().getContext('2d');
-context.scale(ratio, ratio)
+context.scale(ratio, ratio);
 
 
 
@@ -759,13 +771,13 @@ var svgFront = d3.select('body')
   .append("svg")
   .attr("id", "svgFront")
   .style('width', width + 'px')
-  .style('height', height + "px")
+  .style('height', height + "px");
 
 var svgFrontTitles = d3.select('body')
   .append("svg")
   .attr("id", "svgFrontTitles")
   .style('width', width + 'px')
-  .style('height', height + "px")
+  .style('height', height + "px");
 
 
 
@@ -779,82 +791,82 @@ var dataContainer = d3.select(detachedContainer);
 ///draw of canvas is only triggered, if a transition is active (transtion > 0) or after scrolling. If a transition occurs transitonsNeu+1 .
 //After transition ends transitionNeu is decreased again by -1
 //during a transition triggered by clicks on books, the scrollfunction shouldn't occur because it would block the bookClick transition. For this we use transitionbookClick
-var transitions = false
-var transitionsNeu = 0
-var transitionbookClick = true
+var transitions = false;
+var transitionsNeu = 0;
+var transitionbookClick = true;
 
 
 
 ///Load data
 
 Promise.all([
-    d3.csv("https://docs.google.com/spreadsheets/d/e/2PACX-1vStg2qx0x9UnOQ_7e9Z7lHpZaM9waLYmwidse5_Gjq6MmYUgfAZIpdBv1CWoqKRQjHgAx4BSgdCZ3Z6/pub?output=csv"), //daten
-    d3.csv("https://docs.google.com/spreadsheets/d/e/2PACX-1vS645PG9nYFEi8th_jpOF1OOnkReHbAJNMcUpeNG3QsUbCqamvAAKfUTVaTOVfTZPtEG0lx2twPTnEl/pub?output=csv"), //korpus
+    d3.csv("data/data190826.csv"), //daten
+    d3.csv("data/korpus.csv"), //korpus
     d3.csv("data/complication190806.csv"), //complication
   ])
   .then(([dataset, korpus, complicationData]) => {
 
-    var fullHash = 0
-    var level = "start"
+    var fullHash = 0;
+    var level = "start";
 
     if (window.location.hash != "") {
       fullHash = window.location.hash.split("?");
-      modus = fullHash[0].substring(7)
-      level = fullHash[1].substring(6)
-      filter = fullHash[2].substring(7)
-      clickedBook = fullHash[3].substring(8)
+      modus = fullHash[0].substring(7);
+      level = fullHash[1].substring(6);
+      filter = fullHash[2].substring(7);
+      clickedBook = fullHash[3].substring(8);
     }
 
 
 
     if (modus == "distribution") {
-      implication()
+      implication();
     } else if (modus == "similarity") {
-      implication()
-      complication()
+      implication();
+      complication();
       //  hashLoad()
     } else {
-      implication()
+      implication();
     }
 
     d3.select(".similaritybutton")
       .on("mouseover", function() {
-        d3.select(this).style("opacity", 1)
-        d3.select(".complicationbubble").style("display", "block")
+        d3.select(this).style("opacity", 1);
+        d3.select(".complicationbubble").style("display", "block");
       })
       .on("mouseout", function() {
-        d3.select(".complicationbubble").style("display", "none")
+        d3.select(".complicationbubble").style("display", "none");
         if (modus == "distribution") {
           // d3.selectAll(".buttonTooltip").remove()
 
-          d3.select(this).style("opacity", 0.5)
+          d3.select(this).style("opacity", 0.5);
 
         } else {
-          d3.selectAll(".buttonTooltip").remove()
+          d3.selectAll(".buttonTooltip").remove();
 
-          d3.select(this).style("opacity", 1)
+          d3.select(this).style("opacity", 1);
         }
       })
       .on("click", function() {
-        d3.select(".complicationbubble").style("display", "none")
-        modus = "similarity"
-        d3.selectAll(".complicationVisBaseG").remove()
-        d3.selectAll(".detailDiv").style("display", "none")
+        d3.select(".complicationbubble").style("display", "none");
+        modus = "similarity";
+        d3.selectAll(".complicationVisBaseG").remove();
+        d3.selectAll(".detailDiv").style("display", "none");
 
         if (scrollTop < -1700) {
-          clickedBook = 0
+          clickedBook = 0;
 
           $("html,body").animate({
             scrollTop: 500
-          }, 500)
+          }, 500);
         } else {
           $("html,body").animate({
             scrollTop: 3000
-          }, 500)
+          }, 500);
         }
 
-        complication()
-      })
+        complication();
+      });
 
 
 
@@ -864,82 +876,82 @@ Promise.all([
 
       d3.select(".distributionbutton")
         .on("mouseover", function() {
-          d3.select(this).style("opacity", 1)
-          d3.select(".explicationbubble").style("display", "block")
+          d3.select(this).style("opacity", 1);
+          d3.select(".explicationbubble").style("display", "block");
 
         })
         .on("mouseout", function() {
-          d3.select(".explicationbubble").style("display", "none")
+          d3.select(".explicationbubble").style("display", "none");
 
           if (modus == "distribution") {
-            d3.select(this).style("opacity", 1)
+            d3.select(this).style("opacity", 1);
           } else {
-            d3.select(this).style("opacity", 0.7)
+            d3.select(this).style("opacity", 0.7);
           }
         })
         .on("click", function() {
-          d3.select(".explicationbubble").style("display", "none")
-          modus = "distribution"
-          d3.selectAll(".complicationVisBaseG").remove()
+          d3.select(".explicationbubble").style("display", "none");
+          modus = "distribution";
+          d3.selectAll(".complicationVisBaseG").remove();
 
 
 
 
           if (clickedBook != 0) {
             thisData = datenByTitle.filter(function(d) {
-                return d.key == clickedBook
+                return d.key == clickedBook;
               })[0]
               .values.filter(function(d) {
-                return d.Benutzungsspur != "" && d.Benutzungsspur != "4f" && d.Benutzungsspur != "4f?"
-              })
+                return d.Benutzungsspur != "" && d.Benutzungsspur != "4f" && d.Benutzungsspur != "4f?";
+              });
           }
 
-          implicationStart()
+          implicationStart();
 
 
-          window.requestAnimationFrame(animate)
-          scrollFunction()
-          hashLoad()
+          window.requestAnimationFrame(animate);
+          scrollFunction();
+          hashLoad();
 
           if (clickedBook == 0) {
-            clickedBook = 0
-            detailview = false
-            scrollTop = scrollTop + 1
+            clickedBook = 0;
+            detailview = false;
+            scrollTop = scrollTop + 1;
 
-            scrollFunction()
+            scrollFunction();
             d3.selectAll(".detailInfoParent")
               .transition()
               .style("opacity", 0)
-              .remove()
+              .remove();
 
             d3.selectAll(".detailDiv").transition()
               .style("opacity", 0)
-              .remove()
+              .remove();
 
             d3.selectAll(".bookBG").selectAll("rect")
               .transition()
-              .style("opacity", 0)
+              .style("opacity", 0);
 
-            bookFingerprint.selectAll(".nodesbg").attr("x", "0")
+            bookFingerprint.selectAll(".nodesbg").attr("x", "0");
 
           }
 
           if (scrollTop < -1500) {
-            level = -3000
+            level = -3000;
 
             $("html,body").animate({
               scrollTop: 0
-            }, 500)
+            }, 500);
           } else {
-            level = 0
+            level = 0;
 
             $("html,body").animate({
               scrollTop: 3000
-            }, 500)
+            }, 500);
           }
 
 
-        })
+        });
 
       ///////////////////search
       var searchDaten2 = [{
@@ -966,11 +978,11 @@ Promise.all([
             }
           ]
         }
-      ]
+      ];
 
       var searchDatenCreator = dataset.filter(function(d) {
-        return d.SchriftspurTranskription != "" && d.SchriftspurTyp != "P"
-      })
+        return d.SchriftspurTranskription != "" && d.SchriftspurTyp != "P";
+      });
 
       var searchDatenGroups = d3.nest()
         .key(function(d) {
@@ -978,10 +990,10 @@ Promise.all([
         })
         .entries(searchDatenCreator)
         .sort(function(a, b) {
-          return b.values.length - a.values.length
-        })
+          return b.values.length - a.values.length;
+        });
 
-      var searchDaten = []
+      var searchDaten = [];
 
 
       searchDatenGroups.forEach(function(D, I) {
@@ -989,8 +1001,8 @@ Promise.all([
           id: I,
           text: D.key,
           count: D.values.length,
-        })
-      })
+        });
+      });
 
 
 
@@ -1001,10 +1013,6 @@ Promise.all([
       //     children:[]
       //   })
       // })
-
-
-
-
 
       // var searchDaten = []
       // searchDatenCreator.forEach(function(D, I) {
@@ -1026,173 +1034,172 @@ Promise.all([
 
 
       $("#search").on("select2-clearing", function(e) {
-        filter = null
+        filter = null;
 
-        eigentumsangaben.select("text").transition().duration(800).style("fill", "#707070")
-        anderes.select("text").transition().duration(800).style("fill", "#f284c0")
-        zusatzMaterial.select("text").transition().duration(800).style("fill", "rgb(210, 164, 0)")
-        marginalien.select("text").transition().duration(800).style("fill", "#f73f26")
-        markierungen.select("text").transition().duration(800).style("fill", "#58b0f7")
+        eigentumsangaben.select("text").transition().duration(800).style("fill", "#707070");
+        anderes.select("text").transition().duration(800).style("fill", "#f284c0");
+        zusatzMaterial.select("text").transition().duration(800).style("fill", "rgb(210, 164, 0)");
+        marginalien.select("text").transition().duration(800).style("fill", "#f73f26");
+        markierungen.select("text").transition().duration(800).style("fill", "#58b0f7");
 
-        eigentumsangaben.select("rect").transition().duration(800).style("opacity", 0)
-        anderes.select("rect").transition().duration(800).style("opacity", 0)
-        zusatzMaterial.select("rect").transition().duration(800).style("opacity", 0)
-        marginalien.select("rect").transition().duration(800).style("opacity", 0)
-        markierungen.select("rect").transition().duration(800).style("opacity", 0)
+        eigentumsangaben.select("rect").transition().duration(800).style("opacity", 0);
+        anderes.select("rect").transition().duration(800).style("opacity", 0);
+        zusatzMaterial.select("rect").transition().duration(800).style("opacity", 0);
+        marginalien.select("rect").transition().duration(800).style("opacity", 0);
+        markierungen.select("rect").transition().duration(800).style("opacity", 0);
 
-        dataContainer.selectAll(".nodesbg").transition().attr("fill", "white").attr("opacity", 1)
-        farbeinfaltungMarkierung()
-        farbeinfaltungMarginalien()
-        farbeinfaltungProvenienz()
-        filterInteraction()
+        dataContainer.selectAll(".nodesbg").transition().attr("fill", "white").attr("opacity", 1);
+        farbeinfaltungMarkierung();
+        farbeinfaltungMarginalien();
+        farbeinfaltungProvenienz();
+        filterInteraction();
 
-        zusatzMaterial.selectAll("text").style("font-weight", "400").style("opacity", 1)
-        marginalien.selectAll("text").style("font-weight", "400").style("opacity", 1)
-        anderes.selectAll("text").style("font-weight", "400").style("opacity", 1)
-        markierungen.selectAll("text").style("font-weight", "400").style("opacity", 1)
-        eigentumsangaben.selectAll("text").style("font-weight", "400").style("opacity", 1)
-        marginaliendetail.transition().duration(800).attr("transform", "scale(0,1)").style("opacity", 0).style("pointer-events", "none")
-        markierungendetail.transition().duration(800).attr("transform", "scale(0,1)").style("opacity", 0).style("pointer-events", "none")
-        eigentumsangabendetail.transition().duration(800).attr("transform", "scale(0,1)").style("opacity", 0).style("pointer-events", "none")
-
-
-
-        dataContainer.selectAll(".nodesbg").transition().attr("fill", "white").style("opacity", 1)
+        zusatzMaterial.selectAll("text").style("font-weight", "400").style("opacity", 1);
+        marginalien.selectAll("text").style("font-weight", "400").style("opacity", 1);
+        anderes.selectAll("text").style("font-weight", "400").style("opacity", 1);
+        markierungen.selectAll("text").style("font-weight", "400").style("opacity", 1);
+        eigentumsangaben.selectAll("text").style("font-weight", "400").style("opacity", 1);
+        marginaliendetail.transition().duration(800).attr("transform", "scale(0,1)").style("opacity", 0).style("pointer-events", "none");
+        markierungendetail.transition().duration(800).attr("transform", "scale(0,1)").style("opacity", 0).style("pointer-events", "none");
+        eigentumsangabendetail.transition().duration(800).attr("transform", "scale(0,1)").style("opacity", 0).style("pointer-events", "none");
 
 
-      })
+
+        dataContainer.selectAll(".nodesbg").transition().attr("fill", "white").style("opacity", 1);
+
+
+      });
 
 
       $("#search").on("select2-selecting", function(e) {
 
-        filter = null
-        clickedBook = 0
+        filter = null;
+        clickedBook = 0;
 
-        eigentumsangaben.select("text").transition().duration(800).style("fill", "#707070")
-        anderes.select("text").transition().duration(800).style("fill", "#f284c0")
-        zusatzMaterial.select("text").transition().duration(800).style("fill", "rgb(210, 164, 0)")
-        marginalien.select("text").transition().duration(800).style("fill", "#f73f26")
-        markierungen.select("text").transition().duration(800).style("fill", "#58b0f7")
+        eigentumsangaben.select("text").transition().duration(800).style("fill", "#707070");
+        anderes.select("text").transition().duration(800).style("fill", "#f284c0");
+        zusatzMaterial.select("text").transition().duration(800).style("fill", "rgb(210, 164, 0)");
+        marginalien.select("text").transition().duration(800).style("fill", "#f73f26");
+        markierungen.select("text").transition().duration(800).style("fill", "#58b0f7");
 
-        eigentumsangaben.select("rect").transition().duration(800).style("opacity", 0)
-        anderes.select("rect").transition().duration(800).style("opacity", 0)
-        zusatzMaterial.select("rect").transition().duration(800).style("opacity", 0)
-        marginalien.select("rect").transition().duration(800).style("opacity", 0)
-        markierungen.select("rect").transition().duration(800).style("opacity", 0)
+        eigentumsangaben.select("rect").transition().duration(800).style("opacity", 0);
+        anderes.select("rect").transition().duration(800).style("opacity", 0);
+        zusatzMaterial.select("rect").transition().duration(800).style("opacity", 0);
+        marginalien.select("rect").transition().duration(800).style("opacity", 0);
+        markierungen.select("rect").transition().duration(800).style("opacity", 0);
 
 
 
-        zusatzMaterial.selectAll("text").style("font-weight", "400").style("opacity", 1)
-        marginalien.selectAll("text").style("font-weight", "400").style("opacity", 1)
-        anderes.selectAll("text").style("font-weight", "400").style("opacity", 1)
-        markierungen.selectAll("text").style("font-weight", "400").style("opacity", 1)
-        eigentumsangaben.selectAll("text").style("font-weight", "400").style("opacity", 1)
-        marginaliendetail.transition().duration(800).attr("transform", "scale(0,1)").style("opacity", 0).style("pointer-events", "none")
-        markierungendetail.transition().duration(800).attr("transform", "scale(0,1)").style("opacity", 0).style("pointer-events", "none")
-        eigentumsangabendetail.transition().duration(800).attr("transform", "scale(0,1)").style("opacity", 0).style("pointer-events", "none")
+        zusatzMaterial.selectAll("text").style("font-weight", "400").style("opacity", 1);
+        marginalien.selectAll("text").style("font-weight", "400").style("opacity", 1);
+        anderes.selectAll("text").style("font-weight", "400").style("opacity", 1);
+        markierungen.selectAll("text").style("font-weight", "400").style("opacity", 1);
+        eigentumsangaben.selectAll("text").style("font-weight", "400").style("opacity", 1);
+        marginaliendetail.transition().duration(800).attr("transform", "scale(0,1)").style("opacity", 0).style("pointer-events", "none");
+        markierungendetail.transition().duration(800).attr("transform", "scale(0,1)").style("opacity", 0).style("pointer-events", "none");
+        eigentumsangabendetail.transition().duration(800).attr("transform", "scale(0,1)").style("opacity", 0).style("pointer-events", "none");
 
-        d3.selectAll(".detailDiv").remove()
-        d3.selectAll(".detailInfoParent").remove()
+        d3.selectAll(".detailDiv").remove();
+        d3.selectAll(".detailInfoParent").remove();
 
-        transitions = true
-        transitionsNeu++
+        transitions = true;
+        transitionsNeu++;
         setTimeout(function() {
-          transitions = false
-          transitionsNeu--
+          transitions = false;
+          transitionsNeu--;
 
         }, 1000);
 
 
         $("html,body").animate({
           scrollTop: 3000
-        }, '0')
+        }, '0');
 
 
-        d3.selectAll(".singleBookBG").style("opacity", 0)
+        d3.selectAll(".singleBookBG").style("opacity", 0);
 
-        dataContainer.selectAll(".nodesbg").transition().attr("fill", "#f7ece4")
+        dataContainer.selectAll(".nodesbg").transition().attr("fill", "#f7ece4");
 
 
 
 
         dataContainer.selectAll(".nodesbg").filter(function(d) {
             return d3.select(this).datum().values.filter(function(D) {
-              return D.searchCluster == e.choice.text
-            }).length > 0
+              return D.searchCluster == e.choice.text;
+            }).length > 0;
           })
-          .transition().attr("fill", "white")
+          .transition().attr("fill", "white");
 
 
 
         dataContainer.selectAll(".nodes")
           .attr("opacity", 0)
-          .attr("fill", "rgba(247, 237, 229, 0)")
+          .attr("fill", "rgba(247, 237, 229, 0)");
 
 
 
         dataContainer.selectAll(".nodes")
           .filter(function(d) {
-            return d.searchCluster == e.choice.text
+            return d.searchCluster == e.choice.text;
           })
           .attr("opacity", 1)
-          .attr("fill", "#f73f26")
+          .attr("fill", "#f73f26");
 
 
         dataContainer.selectAll(".nodes")
           .filter(function(d) {
-            return d.searchCluster == e.choice.text
-          })
-          .attr("opacity", 1)
-          .transition()
-          .attr("fill", "#dd0000")
-
-        dataContainer.selectAll(".nodes")
-          .filter(function(d) {
-            return d.searchCluster == e.choice.text
-          })
-          .filter(function(d) {
-            return d.SchriftspurTyp.includes("K") == true
+            return d.searchCluster == e.choice.text;
           })
           .attr("opacity", 1)
           .transition()
-          .attr("fill", "#FF8A5D")
+          .attr("fill", "#dd0000");
 
         dataContainer.selectAll(".nodes")
           .filter(function(d) {
-            return d.searchCluster == e.choice.text
+            return d.searchCluster == e.choice.text;
           })
           .filter(function(d) {
-            return d.SchriftspurTyp.includes("T") == true
+            return d.SchriftspurTyp.includes("K") == true;
           })
           .attr("opacity", 1)
           .transition()
-          .attr("fill", "#a4105f")
+          .attr("fill", "#FF8A5D");
 
         dataContainer.selectAll(".nodes")
           .filter(function(d) {
-            return d.searchCluster == e.choice.text
+            return d.searchCluster == e.choice.text;
           })
           .filter(function(d) {
-            return d.SchriftspurTyp.includes("V") == true
+            return d.SchriftspurTyp.includes("T") == true;
           })
           .attr("opacity", 1)
           .transition()
-          .attr("fill", "#fb8385")
+          .attr("fill", "#a4105f");
 
         dataContainer.selectAll(".nodes")
           .filter(function(d) {
-            return d.searchCluster == e.choice.text
+            return d.searchCluster == e.choice.text;
           })
           .filter(function(d) {
-            return d.SchriftspurTyp.includes("U") == true
+            return d.SchriftspurTyp.includes("V") == true;
           })
           .attr("opacity", 1)
           .transition()
-          .attr("fill", "#d93168")
+          .attr("fill", "#fb8385");
+
+        dataContainer.selectAll(".nodes")
+          .filter(function(d) {
+            return d.searchCluster == e.choice.text;
+          })
+          .filter(function(d) {
+            return d.SchriftspurTyp.includes("U") == true;
+          })
+          .attr("opacity", 1)
+          .transition()
+          .attr("fill", "#d93168");
 
 
-
-      })
+      });
 
 
 
@@ -1202,20 +1209,20 @@ Promise.all([
 
 
       setTimeout(function() {
-        hashLoad()
+        hashLoad();
       }, 50);
 
 
 
 
-      var datensatzAll = dataset //.filter(function(d,i){return d.Benutzungsspur != ""})
+      var datensatzAll = dataset;
 
       var datenByAuthor = d3.nest()
         .key(function(d) {
           if (+d.AuthorCount > 1) {
-            return d.Verfasser
+            return d.Verfasser;
           } else {
-            return "Sonstige"
+            return "Sonstige";
           }
         })
         .entries(dataset);
@@ -1226,7 +1233,7 @@ Promise.all([
             return d.BookID;
           })
           .entries(D.values);
-      })
+      });
 
 
 
@@ -1237,14 +1244,14 @@ Promise.all([
         .entries(dataset);
 
       datenByTitle.forEach(function(D, I) {
-        D.authorCount = +D.values[0].AuthorCount //.values.length
+        D.authorCount = +D.values[0].AuthorCount;
 
-      })
+      });
 
-      var BuchAnzahl = datenByTitle.length
+      var BuchAnzahl = datenByTitle.length;
       var authorAnzahl = datenByAuthor.filter(function(d, i) {
-        return d.values[0].values[0].AuthorCount > 1
-      }).length
+        return d.values[0].values[0].AuthorCount > 1;
+      }).length;
 
 
 
@@ -1252,22 +1259,22 @@ Promise.all([
 
 
 
-      var totalBuchWidth = buchBgBreite * BuchAnzahl
-      var authorAbstand = ((chartArea - totalBuchWidth) + (buchBgBreite * authorAnzahl)) / (authorAnzahl - 1)
+      var totalBuchWidth = buchBgBreite * BuchAnzahl;
+      var authorAbstand = ((chartArea - totalBuchWidth) + (buchBgBreite * authorAnzahl)) / (authorAnzahl - 1);
 
       ///Author-Ebene Größen und Abstände
-      var authorLevelAbstand = (chartArea - totalAreaChartsWidth) / authorAnzahl
+      var authorLevelAbstand = (chartArea - totalAreaChartsWidth) / authorAnzahl;
 
       ///Seiten-Ebene Größen und Abstände
-      var sLBuchAbstand = chartArea / authorAnzahl
+      var sLBuchAbstand = chartArea / authorAnzahl;
 
 
       var thisVerfasserSelectedBookCount = datenByAuthor.filter(function(d, i) {
-        return d.key == "Fontane, Theodor"
-      })[0].values.length
-      var sLTotalBuchWidthSelected = (thisVerfasserSelectedBookCount) * sLBuchAbstandSelected
-      var sLTotalBuchWidthUnselected = (BuchAnzahl - thisVerfasserSelectedBookCount - (authorAnzahl - 1)) * sLBuchAbstandUnselected
-      var sLAuthorAbstand2 = (chartArea - (sLTotalBuchWidthSelected + sLTotalBuchWidthUnselected)) / (authorAnzahl - 1)
+        return d.key == "Fontane, Theodor";
+      })[0].values.length;
+      var sLTotalBuchWidthSelected = (thisVerfasserSelectedBookCount) * sLBuchAbstandSelected;
+      var sLTotalBuchWidthUnselected = (BuchAnzahl - thisVerfasserSelectedBookCount - (authorAnzahl - 1)) * sLBuchAbstandUnselected;
+      var sLAuthorAbstand2 = (chartArea - (sLTotalBuchWidthSelected + sLTotalBuchWidthUnselected)) / (authorAnzahl - 1);
 
 
       ///Setting für Buch-buchauswahl
@@ -1276,8 +1283,8 @@ Promise.all([
 
 
 
-      var unselectedBookSameAuthorBuchlevel = 3
-      var unselectedBookSameAuthorSeitenlevel = 3
+      var unselectedBookSameAuthorBuchlevel = 3;
+      var unselectedBookSameAuthorSeitenlevel = 3;
 
 
 
@@ -1285,11 +1292,7 @@ Promise.all([
       var onSelectionBuchAbstandScale = d3.scaleLinear()
         .domain([0, 3000])
         .range([onSelectionBuchAbstandBL, onSelectionBuchAbstandSL])
-        .clamp(true)
-
-
-
-
+        .clamp(true);
 
 
 
@@ -1313,64 +1316,63 @@ Promise.all([
       d3.selectAll(".EigentumsangabenFilter")
         .on("click", function() {
           if (filter != "eigentumsangaben") {
-            filter = "eigentumsangaben"
-            eigentumsangabenEntfaltet = true
+            filter = "eigentumsangaben";
+            eigentumsangabenEntfaltet = true;
 
 
-            farbausfaltungProvenienz()
-            filterInteraction()
+            farbausfaltungProvenienz();
+            filterInteraction();
 
-            eigentumsangaben.select("text").transition().duration(800).style("fill", "white")
-            eigentumsangaben.select("rect").transition().duration(800).style("opacity", 1)
+            eigentumsangaben.select("text").transition().duration(800).style("fill", "white");
+            eigentumsangaben.select("rect").transition().duration(800).style("opacity", 1);
 
-            anderes.select("text").transition().duration(800).style("fill", "#f284c0")
-            zusatzMaterial.select("text").transition().duration(800).style("fill", "rgb(210, 164, 0)")
-            marginalien.select("text").transition().duration(800).style("fill", "#f73f26")
-            markierungen.select("text").transition().duration(800).style("fill", "#58b0f7")
+            anderes.select("text").transition().duration(800).style("fill", "#f284c0");
+            zusatzMaterial.select("text").transition().duration(800).style("fill", "rgb(210, 164, 0)");
+            marginalien.select("text").transition().duration(800).style("fill", "#f73f26");
+            markierungen.select("text").transition().duration(800).style("fill", "#58b0f7");
 
-            anderes.select("rect").transition().duration(800).style("opacity", 0)
-            zusatzMaterial.select("rect").transition().duration(800).style("opacity", 0)
-            marginalien.select("rect").transition().duration(800).style("opacity", 0)
-            markierungen.select("rect").transition().duration(800).style("opacity", 0)
+            anderes.select("rect").transition().duration(800).style("opacity", 0);
+            zusatzMaterial.select("rect").transition().duration(800).style("opacity", 0);
+            marginalien.select("rect").transition().duration(800).style("opacity", 0);
+            markierungen.select("rect").transition().duration(800).style("opacity", 0);
 
 
-            eigentumsangaben.selectAll("text").style("font-weight", "bold").style("opacity", 1)
-            zusatzMaterial.selectAll("text").style("font-weight", "200").style("opacity", .6)
-            anderes.selectAll("text").style("font-weight", "200").style("opacity", .6)
-            marginalien.selectAll("text").style("font-weight", "200").style("opacity", .6)
-            markierungen.selectAll("text").style("font-weight", "200").style("opacity", .6)
+            eigentumsangaben.selectAll("text").style("font-weight", "bold").style("opacity", 1);
+            zusatzMaterial.selectAll("text").style("font-weight", "200").style("opacity", 0.6);
+            anderes.selectAll("text").style("font-weight", "200").style("opacity", 0.6);
+            marginalien.selectAll("text").style("font-weight", "200").style("opacity", 0.6);
+            markierungen.selectAll("text").style("font-weight", "200").style("opacity", 0.6);
 
-            eigentumsangabendetail.transition().duration(800).attr("transform", "scale(1,1)").style("opacity", 1).style("pointer-events", "auto")
-            markierungendetail.transition().duration(800).attr("transform", "scale(0,1)").style("opacity", 0).style("pointer-events", "none")
-            marginaliendetail.transition().duration(800).attr("transform", "scale(0,1)").style("opacity", 0).style("pointer-events", "none")
+            eigentumsangabendetail.transition().duration(800).attr("transform", "scale(1,1)").style("opacity", 1).style("pointer-events", "auto");
+            markierungendetail.transition().duration(800).attr("transform", "scale(0,1)").style("opacity", 0).style("pointer-events", "none");
+            marginaliendetail.transition().duration(800).attr("transform", "scale(0,1)").style("opacity", 0).style("pointer-events", "none");
 
           } else {
-            eigentumsangaben.select("text").transition().duration(800).style("fill", "#707070")
-            anderes.select("text").transition().duration(800).style("fill", "#f284c0")
-            zusatzMaterial.select("text").transition().duration(800).style("fill", "rgb(210, 164, 0)")
-            marginalien.select("text").transition().duration(800).style("fill", "#f73f26")
-            markierungen.select("text").transition().duration(800).style("fill", "#58b0f7")
+            eigentumsangaben.select("text").transition().duration(800).style("fill", "#707070");
+            anderes.select("text").transition().duration(800).style("fill", "#f284c0");
+            zusatzMaterial.select("text").transition().duration(800).style("fill", "rgb(210, 164, 0)");
+            marginalien.select("text").transition().duration(800).style("fill", "#f73f26");
+            markierungen.select("text").transition().duration(800).style("fill", "#58b0f7");
 
-            eigentumsangaben.select("rect").transition().duration(800).style("opacity", 0)
-            anderes.select("rect").transition().duration(800).style("opacity", 0)
-            zusatzMaterial.select("rect").transition().duration(800).style("opacity", 0)
-            marginalien.select("rect").transition().duration(800).style("opacity", 0)
-            markierungen.select("rect").transition().duration(800).style("opacity", 0)
+            eigentumsangaben.select("rect").transition().duration(800).style("opacity", 0);
+            anderes.select("rect").transition().duration(800).style("opacity", 0);
+            zusatzMaterial.select("rect").transition().duration(800).style("opacity", 0);
+            marginalien.select("rect").transition().duration(800).style("opacity", 0);
+            markierungen.select("rect").transition().duration(800).style("opacity", 0);
 
-            filter = null
-            eigentumsangabenEntfaltet = false
+            filter = null;
+            eigentumsangabenEntfaltet = false;
 
-            farbeinfaltungProvenienz()
-            filterInteraction()
-            zusatzMaterial.selectAll("text").style("font-weight", "400").style("opacity", 1)
-            marginalien.selectAll("text").style("font-weight", "400").style("opacity", 1)
-            anderes.selectAll("text").style("font-weight", "400").style("opacity", 1)
-            markierungen.selectAll("text").style("font-weight", "400").style("opacity", 1)
-            eigentumsangaben.selectAll("text").style("font-weight", "400").style("opacity", 1)
-            eigentumsangabendetail.transition().duration(800).attr("transform", "scale(0,1)").style("opacity", 0).style("pointer-events", "none")
+            farbeinfaltungProvenienz();
+            filterInteraction();
+            zusatzMaterial.selectAll("text").style("font-weight", "400").style("opacity", 1);
+            marginalien.selectAll("text").style("font-weight", "400").style("opacity", 1);
+            anderes.selectAll("text").style("font-weight", "400").style("opacity", 1);
+            markierungen.selectAll("text").style("font-weight", "400").style("opacity", 1);
+            eigentumsangaben.selectAll("text").style("font-weight", "400").style("opacity", 1);
+            eigentumsangabendetail.transition().duration(800).attr("transform", "scale(0,1)").style("opacity", 0).style("pointer-events", "none");
           }
-
-        })
+        });
 
 
 
@@ -1378,36 +1380,36 @@ Promise.all([
       d3.selectAll(".filter-provenienz")
         .on("click", function() {
           if (filter != "provenienz") {
-            eigentumsangabendetail.selectAll("text").style("font-weight", "200").style("opacity", .6)
-            d3.select(this).style("font-weight", "bold").style("opacity", 1)
+            eigentumsangabendetail.selectAll("text").style("font-weight", "200").style("opacity", 0.6);
+            d3.select(this).style("font-weight", "bold").style("opacity", 1);
 
-            filter = "provenienz"
-            filterInteraction()
+            filter = "provenienz";
+            filterInteraction();
           } else {
-            filter = "eigentumsangaben"
-            filterInteraction()
+            filter = "eigentumsangaben";
+            filterInteraction();
 
-            eigentumsangabendetail.selectAll("text").style("font-weight", "bold").style("opacity", 1)
+            eigentumsangabendetail.selectAll("text").style("font-weight", "bold").style("opacity", 1);
           }
-        })
+        });
 
 
 
       d3.selectAll(".filter-provenienzstempel")
         .on("click", function() {
           if (filter != "provenienzstempel") {
-            eigentumsangabendetail.selectAll("text").style("font-weight", "200").style("opacity", .6)
-            d3.select(this).style("font-weight", "bold").style("opacity", 1)
+            eigentumsangabendetail.selectAll("text").style("font-weight", "200").style("opacity", 0.6);
+            d3.select(this).style("font-weight", "bold").style("opacity", 1);
 
-            filter = "provenienzstempel"
-            filterInteraction()
+            filter = "provenienzstempel";
+            filterInteraction();
           } else {
-            filter = "eigentumsangaben"
-            filterInteraction()
+            filter = "eigentumsangaben";
+            filterInteraction();
 
-            eigentumsangabendetail.selectAll("text").style("font-weight", "bold").style("opacity", 1)
+            eigentumsangabendetail.selectAll("text").style("font-weight", "bold").style("opacity", 1);
           }
-        })
+        });
 
 
       ////////////////Provenienz-Filter Ende
@@ -1422,138 +1424,138 @@ Promise.all([
       d3.selectAll(".MarkierungFilter")
         .on("click", function() {
           if (filter != "markierungen") {
-            filter = "markierungen"
-            markierungenEntfaltet = true
+            filter = "markierungen";
+            markierungenEntfaltet = true;
 
-            farbausfaltungMarkierung()
-            filterInteraction()
+            farbausfaltungMarkierung();
+            filterInteraction();
 
-            markierungen.select("text").transition().duration(800).style("fill", "white")
-            markierungen.select("rect").transition().duration(800).style("opacity", 1)
+            markierungen.select("text").transition().duration(800).style("fill", "white");
+            markierungen.select("rect").transition().duration(800).style("opacity", 1);
 
-            eigentumsangaben.select("text").transition().duration(800).style("fill", "#707070")
-            anderes.select("text").transition().duration(800).style("fill", "#f284c0")
-            zusatzMaterial.select("text").transition().duration(800).style("fill", "rgb(210, 164, 0)")
-            marginalien.select("text").transition().duration(800).style("fill", "#f73f26")
+            eigentumsangaben.select("text").transition().duration(800).style("fill", "#707070");
+            anderes.select("text").transition().duration(800).style("fill", "#f284c0");
+            zusatzMaterial.select("text").transition().duration(800).style("fill", "rgb(210, 164, 0)");
+            marginalien.select("text").transition().duration(800).style("fill", "#f73f26");
 
-            eigentumsangaben.select("rect").transition().duration(800).style("opacity", 0)
-            anderes.select("rect").transition().duration(800).style("opacity", 0)
-            zusatzMaterial.select("rect").transition().duration(800).style("opacity", 0)
-            marginalien.select("rect").transition().duration(800).style("opacity", 0)
-
-
-            markierungen.selectAll("text").style("font-weight", "bold").style("opacity", 1)
-            zusatzMaterial.selectAll("text").style("font-weight", "200").style("opacity", .6)
-            anderes.selectAll("text").style("font-weight", "200").style("opacity", .6)
-            marginalien.selectAll("text").style("font-weight", "200").style("opacity", .6)
-            eigentumsangaben.selectAll("text").style("font-weight", "200").style("opacity", .6)
+            eigentumsangaben.select("rect").transition().duration(800).style("opacity", 0);
+            anderes.select("rect").transition().duration(800).style("opacity", 0);
+            zusatzMaterial.select("rect").transition().duration(800).style("opacity", 0);
+            marginalien.select("rect").transition().duration(800).style("opacity", 0);
 
 
+            markierungen.selectAll("text").style("font-weight", "bold").style("opacity", 1);
+            zusatzMaterial.selectAll("text").style("font-weight", "200").style("opacity", 0.6);
+            anderes.selectAll("text").style("font-weight", "200").style("opacity", 0.6);
+            marginalien.selectAll("text").style("font-weight", "200").style("opacity", 0.6);
+            eigentumsangaben.selectAll("text").style("font-weight", "200").style("opacity", 0.6);
 
 
-            eigentumsangabendetail.transition().duration(800).attr("transform", "scale(0,1)").style("opacity", 0).style("pointer-events", "none")
-            markierungendetail.transition().duration(800).attr("transform", "scale(1,1)").style("opacity", 1).style("pointer-events", "auto")
-            marginaliendetail.transition().duration(800).attr("transform", "scale(0,1)").style("opacity", 0).style("pointer-events", "none")
+
+
+            eigentumsangabendetail.transition().duration(800).attr("transform", "scale(0,1)").style("opacity", 0).style("pointer-events", "none");
+            markierungendetail.transition().duration(800).attr("transform", "scale(1,1)").style("opacity", 1).style("pointer-events", "auto");
+            marginaliendetail.transition().duration(800).attr("transform", "scale(0,1)").style("opacity", 0).style("pointer-events", "none");
 
 
           } else {
-            filter = null
-            markierungenEntfaltet = false
+            filter = null;
+            markierungenEntfaltet = false;
 
-            farbeinfaltungMarkierung()
-            filterInteraction()
+            farbeinfaltungMarkierung();
+            filterInteraction();
 
-            eigentumsangaben.select("text").transition().duration(800).style("fill", "#707070")
-            anderes.select("text").transition().duration(800).style("fill", "#f284c0")
-            zusatzMaterial.select("text").transition().duration(800).style("fill", "rgb(210, 164, 0)")
-            marginalien.select("text").transition().duration(800).style("fill", "#f73f26")
-            markierungen.select("text").transition().duration(800).style("fill", "#58b0f7")
+            eigentumsangaben.select("text").transition().duration(800).style("fill", "#707070");
+            anderes.select("text").transition().duration(800).style("fill", "#f284c0");
+            zusatzMaterial.select("text").transition().duration(800).style("fill", "rgb(210, 164, 0)");
+            marginalien.select("text").transition().duration(800).style("fill", "#f73f26");
+            markierungen.select("text").transition().duration(800).style("fill", "#58b0f7");
 
-            eigentumsangaben.select("rect").transition().duration(800).style("opacity", 0)
-            anderes.select("rect").transition().duration(800).style("opacity", 0)
-            zusatzMaterial.select("rect").transition().duration(800).style("opacity", 0)
-            marginalien.select("rect").transition().duration(800).style("opacity", 0)
-            markierungen.select("rect").transition().duration(800).style("opacity", 0)
+            eigentumsangaben.select("rect").transition().duration(800).style("opacity", 0);
+            anderes.select("rect").transition().duration(800).style("opacity", 0);
+            zusatzMaterial.select("rect").transition().duration(800).style("opacity", 0);
+            marginalien.select("rect").transition().duration(800).style("opacity", 0);
+            markierungen.select("rect").transition().duration(800).style("opacity", 0);
 
-            zusatzMaterial.selectAll("text").style("font-weight", "400").style("opacity", 1)
-            marginalien.selectAll("text").style("font-weight", "400").style("opacity", 1)
-            markierungen.selectAll("text").style("font-weight", "400").style("opacity", 1)
-            eigentumsangaben.selectAll("text").style("font-weight", "400").style("opacity", 1)
-            anderes.selectAll("text").style("font-weight", "400").style("opacity", 1)
-            markierungendetail.transition().duration(800).attr("transform", "scale(0,1)").style("opacity", 0).style("pointer-events", "none")
+            zusatzMaterial.selectAll("text").style("font-weight", "400").style("opacity", 1);
+            marginalien.selectAll("text").style("font-weight", "400").style("opacity", 1);
+            markierungen.selectAll("text").style("font-weight", "400").style("opacity", 1);
+            eigentumsangaben.selectAll("text").style("font-weight", "400").style("opacity", 1);
+            anderes.selectAll("text").style("font-weight", "400").style("opacity", 1);
+            markierungendetail.transition().duration(800).attr("transform", "scale(0,1)").style("opacity", 0).style("pointer-events", "none");
           }
-        })
+        });
 
 
 
       d3.selectAll(".filter-anstreichung")
         .on("click", function() {
           if (filter != "anstreichung") {
-            markierungendetail.selectAll("text").style("font-weight", "200").style("opacity", .6)
-            d3.select(this).style("font-weight", "bold").style("opacity", 1)
+            markierungendetail.selectAll("text").style("font-weight", "200").style("opacity", 0.6);
+            d3.select(this).style("font-weight", "bold").style("opacity", 1);
 
-            filter = "anstreichung"
-            filterInteraction()
+            filter = "anstreichung";
+            filterInteraction();
           } else {
-            filter = "markierungen"
-            filterInteraction()
+            filter = "markierungen";
+            filterInteraction();
 
-            markierungendetail.selectAll("text").style("font-weight", "bold").style("opacity", 1)
+            markierungendetail.selectAll("text").style("font-weight", "bold").style("opacity", 1);
           }
-        })
+        });
 
 
 
       d3.selectAll(".filter-unterstreichung")
         .on("click", function() {
           if (filter != "unterstreichung") {
-            markierungendetail.selectAll("text").style("font-weight", "200").style("opacity", .6)
-            d3.select(this).style("font-weight", "bold").style("opacity", 1)
+            markierungendetail.selectAll("text").style("font-weight", "200").style("opacity", 0.6);
+            d3.select(this).style("font-weight", "bold").style("opacity", 1);
 
-            filter = "unterstreichung"
-            filterInteraction()
+            filter = "unterstreichung";
+            filterInteraction();
           } else {
-            filter = "markierungen"
-            filterInteraction()
+            filter = "markierungen";
+            filterInteraction();
 
-            markierungendetail.selectAll("text").style("font-weight", "bold").style("opacity", 1)
+            markierungendetail.selectAll("text").style("font-weight", "bold").style("opacity", 1);
           }
-        })
+        });
 
 
       d3.selectAll(".filter-durchstreichung")
         .on("click", function() {
           if (filter != "durchstreichung") {
-            markierungendetail.selectAll("text").style("font-weight", "200").style("opacity", .6)
-            d3.select(this).style("font-weight", "bold").style("opacity", 1)
+            markierungendetail.selectAll("text").style("font-weight", "200").style("opacity", 0.6);
+            d3.select(this).style("font-weight", "bold").style("opacity", 1);
 
-            filter = "durchstreichung"
-            filterInteraction()
+            filter = "durchstreichung";
+            filterInteraction();
           } else {
-            filter = "markierungen"
-            filterInteraction()
+            filter = "markierungen";
+            filterInteraction();
 
-            markierungendetail.selectAll("text").style("font-weight", "bold").style("opacity", 1)
+            markierungendetail.selectAll("text").style("font-weight", "bold").style("opacity", 1);
           }
-        })
+        });
 
 
 
       d3.selectAll(".filter-sonstigeMarkierung")
         .on("click", function() {
           if (filter != "sonstigeMarkierung") {
-            markierungendetail.selectAll("text").style("font-weight", "200").style("opacity", .6)
-            d3.select(this).style("font-weight", "bold").style("opacity", 1)
+            markierungendetail.selectAll("text").style("font-weight", "200").style("opacity", 0.6);
+            d3.select(this).style("font-weight", "bold").style("opacity", 1);
 
-            filter = "sonstigeMarkierung"
-            filterInteraction()
+            filter = "sonstigeMarkierung";
+            filterInteraction();
           } else {
-            filter = "markierungen"
-            filterInteraction()
+            filter = "markierungen";
+            filterInteraction();
 
-            markierungendetail.selectAll("text").style("font-weight", "bold").style("opacity", 1)
+            markierungendetail.selectAll("text").style("font-weight", "bold").style("opacity", 1);
           }
-        })
+        });
 
 
       ////////////////Markierung-Filter Ende
@@ -1567,156 +1569,156 @@ Promise.all([
       d3.selectAll(".MarginalienFilter")
         .on("click", function() {
           if (filter != "marginalien") {
-            filter = "marginalien"
-            marginalienEntfaltet = true
+            filter = "marginalien";
+            marginalienEntfaltet = true;
 
-            farbausfaltungMarginalien()
-            filterInteraction()
+            farbausfaltungMarginalien();
+            filterInteraction();
 
-            marginalien.select("text").transition().duration(800).style("fill", "white")
-            marginalien.select("rect").transition().duration(800).style("opacity", 1)
+            marginalien.select("text").transition().duration(800).style("fill", "white");
+            marginalien.select("rect").transition().duration(800).style("opacity", 1);
 
-            eigentumsangaben.select("text").transition().duration(800).style("fill", "#707070")
-            anderes.select("text").transition().duration(800).style("fill", "#f284c0")
-            zusatzMaterial.select("text").transition().duration(800).style("fill", "rgb(210, 164, 0)")
-            markierungen.select("text").transition().duration(800).style("fill", "#58b0f7")
+            eigentumsangaben.select("text").transition().duration(800).style("fill", "#707070");
+            anderes.select("text").transition().duration(800).style("fill", "#f284c0");
+            zusatzMaterial.select("text").transition().duration(800).style("fill", "rgb(210, 164, 0)");
+            markierungen.select("text").transition().duration(800).style("fill", "#58b0f7");
 
-            eigentumsangaben.select("rect").transition().duration(800).style("opacity", 0)
-            anderes.select("rect").transition().duration(800).style("opacity", 0)
-            zusatzMaterial.select("rect").transition().duration(800).style("opacity", 0)
-            markierungen.select("rect").transition().duration(800).style("opacity", 0)
+            eigentumsangaben.select("rect").transition().duration(800).style("opacity", 0);
+            anderes.select("rect").transition().duration(800).style("opacity", 0);
+            zusatzMaterial.select("rect").transition().duration(800).style("opacity", 0);
+            markierungen.select("rect").transition().duration(800).style("opacity", 0);
 
-            marginalien.selectAll("text").style("font-weight", "bold")
-            marginaliendetail.transition().duration(800).attr("transform", "scale(1,1)").style("opacity", 1).style("pointer-events", "auto")
+            marginalien.selectAll("text").style("font-weight", "bold");
+            marginaliendetail.transition().duration(800).attr("transform", "scale(1,1)").style("opacity", 1).style("pointer-events", "auto");
 
-            marginalien.selectAll("text").style("font-weight", "bold").style("opacity", 1)
-            zusatzMaterial.selectAll("text").style("font-weight", "200").style("opacity", .6)
-            anderes.selectAll("text").style("font-weight", "200").style("opacity", .6)
-            markierungen.selectAll("text").style("font-weight", "200").style("opacity", .6)
-            eigentumsangaben.selectAll("text").style("font-weight", "200").style("opacity", .6)
+            marginalien.selectAll("text").style("font-weight", "bold").style("opacity", 1);
+            zusatzMaterial.selectAll("text").style("font-weight", "200").style("opacity", 0.6);
+            anderes.selectAll("text").style("font-weight", "200").style("opacity", 0.6);
+            markierungen.selectAll("text").style("font-weight", "200").style("opacity", 0.6);
+            eigentumsangaben.selectAll("text").style("font-weight", "200").style("opacity", 0.6);
 
-            eigentumsangabendetail.transition().duration(800).attr("transform", "scale(0,1)").style("opacity", 0).style("pointer-events", "none")
-            markierungendetail.transition().duration(800).attr("transform", "scale(0,1)").style("opacity", 0).style("pointer-events", "none")
-            marginaliendetail.transition().duration(800).attr("transform", "scale(1,1)").style("opacity", 1).style("pointer-events", "auto")
+            eigentumsangabendetail.transition().duration(800).attr("transform", "scale(0,1)").style("opacity", 0).style("pointer-events", "none");
+            markierungendetail.transition().duration(800).attr("transform", "scale(0,1)").style("opacity", 0).style("pointer-events", "none");
+            marginaliendetail.transition().duration(800).attr("transform", "scale(1,1)").style("opacity", 1).style("pointer-events", "auto");
 
 
           } else {
-            filter = null
-            marginalienEntfaltet = false
+            filter = null;
+            marginalienEntfaltet = false;
 
-            farbeinfaltungMarginalien()
-            filterInteraction()
+            farbeinfaltungMarginalien();
+            filterInteraction();
 
-            eigentumsangaben.select("text").transition().duration(800).style("fill", "#707070")
-            anderes.select("text").transition().duration(800).style("fill", "#f284c0")
-            zusatzMaterial.select("text").transition().duration(800).style("fill", "rgb(210, 164, 0)")
-            marginalien.select("text").transition().duration(800).style("fill", "#f73f26")
-            markierungen.select("text").transition().duration(800).style("fill", "#58b0f7")
+            eigentumsangaben.select("text").transition().duration(800).style("fill", "#707070");
+            anderes.select("text").transition().duration(800).style("fill", "#f284c0");
+            zusatzMaterial.select("text").transition().duration(800).style("fill", "rgb(210, 164, 0)");
+            marginalien.select("text").transition().duration(800).style("fill", "#f73f26");
+            markierungen.select("text").transition().duration(800).style("fill", "#58b0f7");
 
-            eigentumsangaben.select("rect").transition().duration(800).style("opacity", 0)
-            anderes.select("rect").transition().duration(800).style("opacity", 0)
-            zusatzMaterial.select("rect").transition().duration(800).style("opacity", 0)
-            marginalien.select("rect").transition().duration(800).style("opacity", 0)
-            markierungen.select("rect").transition().duration(800).style("opacity", 0)
+            eigentumsangaben.select("rect").transition().duration(800).style("opacity", 0);
+            anderes.select("rect").transition().duration(800).style("opacity", 0);
+            zusatzMaterial.select("rect").transition().duration(800).style("opacity", 0);
+            marginalien.select("rect").transition().duration(800).style("opacity", 0);
+            markierungen.select("rect").transition().duration(800).style("opacity", 0);
 
-            zusatzMaterial.selectAll("text").style("font-weight", "400").style("opacity", 1)
-            anderes.selectAll("text").style("font-weight", "400").style("opacity", 1)
-            marginalien.selectAll("text").style("font-weight", "400").style("opacity", 1)
-            markierungen.selectAll("text").style("font-weight", "400").style("opacity", 1)
-            eigentumsangaben.selectAll("text").style("font-weight", "400").style("opacity", 1)
-            marginaliendetail.transition().duration(800).attr("transform", "scale(0,1)").style("opacity", 0).style("pointer-events", "none")
+            zusatzMaterial.selectAll("text").style("font-weight", "400").style("opacity", 1);
+            anderes.selectAll("text").style("font-weight", "400").style("opacity", 1);
+            marginalien.selectAll("text").style("font-weight", "400").style("opacity", 1);
+            markierungen.selectAll("text").style("font-weight", "400").style("opacity", 1);
+            eigentumsangaben.selectAll("text").style("font-weight", "400").style("opacity", 1);
+            marginaliendetail.transition().duration(800).attr("transform", "scale(0,1)").style("opacity", 0).style("pointer-events", "none");
           }
-        })
+        });
 
 
 
       d3.selectAll(".filter-bewertung")
         .on("click", function() {
           if (filter != "bewertung") {
-            marginaliendetail.selectAll("text").style("font-weight", "200").style("opacity", .6)
-            d3.select(this).style("font-weight", "bold").style("opacity", 1)
+            marginaliendetail.selectAll("text").style("font-weight", "200").style("opacity", 0.6);
+            d3.select(this).style("font-weight", "bold").style("opacity", 1);
 
-            filter = "bewertung"
-            filterInteraction()
+            filter = "bewertung";
+            filterInteraction();
           } else {
-            filter = "marginalien"
-            filterInteraction()
+            filter = "marginalien";
+            filterInteraction();
 
-            marginaliendetail.selectAll("text").style("font-weight", "bold").style("opacity", 1)
+            marginaliendetail.selectAll("text").style("font-weight", "bold").style("opacity", 1);
           }
-        })
+        });
 
 
 
       d3.selectAll(".filter-kommentar")
         .on("click", function() {
           if (filter != "kommentar") {
-            marginaliendetail.selectAll("text").style("font-weight", "200").style("opacity", .6)
-            d3.select(this).style("font-weight", "bold").style("opacity", 1)
+            marginaliendetail.selectAll("text").style("font-weight", "200").style("opacity", 0.6);
+            d3.select(this).style("font-weight", "bold").style("opacity", 1);
 
-            filter = "kommentar"
-            filterInteraction()
+            filter = "kommentar";
+            filterInteraction();
           } else {
-            filter = "marginalien"
-            filterInteraction()
+            filter = "marginalien";
+            filterInteraction();
 
-            marginaliendetail.selectAll("text").style("font-weight", "bold").style("opacity", 1)
+            marginaliendetail.selectAll("text").style("font-weight", "bold").style("opacity", 1);
           }
-        })
+        });
 
 
 
       d3.selectAll(".filter-textkorrektur")
         .on("click", function() {
           if (filter != "textkorrektur") {
-            marginaliendetail.selectAll("text").style("font-weight", "200").style("opacity", .6)
-            d3.select(this).style("font-weight", "bold").style("opacity", 1)
+            marginaliendetail.selectAll("text").style("font-weight", "200").style("opacity", 0.6);
+            d3.select(this).style("font-weight", "bold").style("opacity", 1);
 
-            filter = "textkorrektur"
-            filterInteraction()
+            filter = "textkorrektur";
+            filterInteraction();
           } else {
-            filter = "marginalien"
-            filterInteraction()
+            filter = "marginalien";
+            filterInteraction();
 
-            marginaliendetail.selectAll("text").style("font-weight", "bold").style("opacity", 1)
+            marginaliendetail.selectAll("text").style("font-weight", "bold").style("opacity", 1);
           }
-        })
+        });
 
 
 
       d3.selectAll(".filter-variante")
         .on("click", function() {
           if (filter != "variante") {
-            marginaliendetail.selectAll("text").style("font-weight", "200").style("opacity", .6)
-            d3.select(this).style("font-weight", "bold").style("opacity", 1)
+            marginaliendetail.selectAll("text").style("font-weight", "200").style("opacity", 0.6);
+            d3.select(this).style("font-weight", "bold").style("opacity", 1);
 
-            filter = "variante"
-            filterInteraction()
+            filter = "variante";
+            filterInteraction();
           } else {
-            filter = "marginalien"
-            filterInteraction()
+            filter = "marginalien";
+            filterInteraction();
 
-            marginaliendetail.selectAll("text").style("font-weight", "bold").style("opacity", 1)
+            marginaliendetail.selectAll("text").style("font-weight", "bold").style("opacity", 1);
           }
-        })
+        });
 
 
 
       d3.selectAll(".filter-uebersetzung")
         .on("click", function() {
           if (filter != "uebersetzung") {
-            marginaliendetail.selectAll("text").style("font-weight", "200").style("opacity", .6)
-            d3.select(this).style("font-weight", "bold").style("opacity", 1)
+            marginaliendetail.selectAll("text").style("font-weight", "200").style("opacity", 0.6);
+            d3.select(this).style("font-weight", "bold").style("opacity", 1);
 
-            filter = "uebersetzung"
-            filterInteraction()
+            filter = "uebersetzung";
+            filterInteraction();
           } else {
-            filter = "marginalien"
-            filterInteraction()
+            filter = "marginalien";
+            filterInteraction();
 
-            marginaliendetail.selectAll("text").style("font-weight", "bold").style("opacity", 1)
+            marginaliendetail.selectAll("text").style("font-weight", "bold").style("opacity", 1);
           }
-        })
+        });
 
       ////////////////Marginalien-Filter Ende
       ///////////////////////////////////////////////
@@ -1727,248 +1729,248 @@ Promise.all([
       d3.selectAll(".zusatzmaterial-title")
         .on("click", function() {
           if (filter != "zusatzMaterial") {
-            filter = "zusatzMaterial"
-            filterInteraction()
+            filter = "zusatzMaterial";
+            filterInteraction();
 
-            zusatzMaterial.select("text").transition().duration(800).style("fill", "white")
-            zusatzMaterial.select("rect").transition().duration(800).style("opacity", 1)
+            zusatzMaterial.select("text").transition().duration(800).style("fill", "white");
+            zusatzMaterial.select("rect").transition().duration(800).style("opacity", 1);
 
-            eigentumsangaben.select("text").transition().duration(800).style("fill", "#707070")
-            anderes.select("text").transition().duration(800).style("fill", "#f284c0")
-            marginalien.select("text").transition().duration(800).style("fill", "#f73f26")
-            markierungen.select("text").transition().duration(800).style("fill", "#58b0f7")
+            eigentumsangaben.select("text").transition().duration(800).style("fill", "#707070");
+            anderes.select("text").transition().duration(800).style("fill", "#f284c0");
+            marginalien.select("text").transition().duration(800).style("fill", "#f73f26");
+            markierungen.select("text").transition().duration(800).style("fill", "#58b0f7");
 
-            eigentumsangaben.select("rect").transition().duration(800).style("opacity", 0)
-            anderes.select("rect").transition().duration(800).style("opacity", 0)
-            marginalien.select("rect").transition().duration(800).style("opacity", 0)
-            markierungen.select("rect").transition().duration(800).style("opacity", 0)
+            eigentumsangaben.select("rect").transition().duration(800).style("opacity", 0);
+            anderes.select("rect").transition().duration(800).style("opacity", 0);
+            marginalien.select("rect").transition().duration(800).style("opacity", 0);
+            markierungen.select("rect").transition().duration(800).style("opacity", 0);
 
-            zusatzMaterial.selectAll("text").style("font-weight", "bold").style("opacity", 1)
-            marginalien.selectAll("text").style("font-weight", "200").style("opacity", .6)
-            markierungen.selectAll("text").style("font-weight", "200").style("opacity", .6)
-            eigentumsangaben.selectAll("text").style("font-weight", "200").style("opacity", .6)
-            anderes.selectAll("text").style("font-weight", "200").style("opacity", .6)
+            zusatzMaterial.selectAll("text").style("font-weight", "bold").style("opacity", 1);
+            marginalien.selectAll("text").style("font-weight", "200").style("opacity", 0.6);
+            markierungen.selectAll("text").style("font-weight", "200").style("opacity", 0.6);
+            eigentumsangaben.selectAll("text").style("font-weight", "200").style("opacity", 0.6);
+            anderes.selectAll("text").style("font-weight", "200").style("opacity", 0.6);
 
 
-            eigentumsangabendetail.transition().duration(800).attr("transform", "scale(0,1)").style("opacity", 0).style("pointer-events", "none")
-            markierungendetail.transition().duration(800).attr("transform", "scale(0,1)").style("opacity", 0).style("pointer-events", "none")
-            marginaliendetail.transition().duration(800).attr("transform", "scale(0,1)").style("opacity", 0).style("pointer-events", "none")
+            eigentumsangabendetail.transition().duration(800).attr("transform", "scale(0,1)").style("opacity", 0).style("pointer-events", "none");
+            markierungendetail.transition().duration(800).attr("transform", "scale(0,1)").style("opacity", 0).style("pointer-events", "none");
+            marginaliendetail.transition().duration(800).attr("transform", "scale(0,1)").style("opacity", 0).style("pointer-events", "none");
           } else {
 
-            eigentumsangaben.select("text").transition().duration(800).style("fill", "#707070")
-            anderes.select("text").transition().duration(800).style("fill", "#f284c0")
-            zusatzMaterial.select("text").transition().duration(800).style("fill", "rgb(210, 164, 0)")
-            marginalien.select("text").transition().duration(800).style("fill", "#f73f26")
-            markierungen.select("text").transition().duration(800).style("fill", "#58b0f7")
+            eigentumsangaben.select("text").transition().duration(800).style("fill", "#707070");
+            anderes.select("text").transition().duration(800).style("fill", "#f284c0");
+            zusatzMaterial.select("text").transition().duration(800).style("fill", "rgb(210, 164, 0)");
+            marginalien.select("text").transition().duration(800).style("fill", "#f73f26");
+            markierungen.select("text").transition().duration(800).style("fill", "#58b0f7");
 
-            eigentumsangaben.select("rect").transition().duration(800).style("opacity", 0)
-            anderes.select("rect").transition().duration(800).style("opacity", 0)
-            zusatzMaterial.select("rect").transition().duration(800).style("opacity", 0)
-            marginalien.select("rect").transition().duration(800).style("opacity", 0)
-            markierungen.select("rect").transition().duration(800).style("opacity", 0)
+            eigentumsangaben.select("rect").transition().duration(800).style("opacity", 0);
+            anderes.select("rect").transition().duration(800).style("opacity", 0);
+            zusatzMaterial.select("rect").transition().duration(800).style("opacity", 0);
+            marginalien.select("rect").transition().duration(800).style("opacity", 0);
+            markierungen.select("rect").transition().duration(800).style("opacity", 0);
 
-            filter = null
-            filterInteraction()
-            anderes.selectAll("text").style("font-weight", "400").style("opacity", 1)
-            zusatzMaterial.selectAll("text").style("font-weight", "400").style("opacity", 1)
-            marginalien.selectAll("text").style("font-weight", "400").style("opacity", 1)
-            markierungen.selectAll("text").style("font-weight", "400").style("opacity", 1)
-            eigentumsangaben.selectAll("text").style("font-weight", "400").style("opacity", 1)
+            filter = null;
+            filterInteraction();
+            anderes.selectAll("text").style("font-weight", "400").style("opacity", 1);
+            zusatzMaterial.selectAll("text").style("font-weight", "400").style("opacity", 1);
+            marginalien.selectAll("text").style("font-weight", "400").style("opacity", 1);
+            markierungen.selectAll("text").style("font-weight", "400").style("opacity", 1);
+            eigentumsangaben.selectAll("text").style("font-weight", "400").style("opacity", 1);
           }
-        })
+        });
 
 
       d3.selectAll(".anderes-title")
         .on("click", function() {
           if (filter != "anderes") {
-            filter = "anderes"
-            filterInteraction()
+            filter = "anderes";
+            filterInteraction();
 
-            anderes.select("text").transition().duration(800).style("fill", "white")
-            anderes.select("rect").transition().duration(800).style("opacity", 1)
+            anderes.select("text").transition().duration(800).style("fill", "white");
+            anderes.select("rect").transition().duration(800).style("opacity", 1);
 
-            eigentumsangaben.select("text").transition().duration(800).style("fill", "#707070")
-            zusatzMaterial.select("text").transition().duration(800).style("fill", "rgb(210, 164, 0)")
-            marginalien.select("text").transition().duration(800).style("fill", "#f73f26")
-            markierungen.select("text").transition().duration(800).style("fill", "#58b0f7")
+            eigentumsangaben.select("text").transition().duration(800).style("fill", "#707070");
+            zusatzMaterial.select("text").transition().duration(800).style("fill", "rgb(210, 164, 0)");
+            marginalien.select("text").transition().duration(800).style("fill", "#f73f26");
+            markierungen.select("text").transition().duration(800).style("fill", "#58b0f7");
 
-            eigentumsangaben.select("rect").transition().duration(800).style("opacity", 0)
-            zusatzMaterial.select("rect").transition().duration(800).style("opacity", 0)
-            marginalien.select("rect").transition().duration(800).style("opacity", 0)
-            markierungen.select("rect").transition().duration(800).style("opacity", 0)
+            eigentumsangaben.select("rect").transition().duration(800).style("opacity", 0);
+            zusatzMaterial.select("rect").transition().duration(800).style("opacity", 0);
+            marginalien.select("rect").transition().duration(800).style("opacity", 0);
+            markierungen.select("rect").transition().duration(800).style("opacity", 0);
 
-            anderes.selectAll("text").style("font-weight", "bold").style("opacity", 1)
-            zusatzMaterial.selectAll("text").style("font-weight", "200").style("opacity", .6)
-            marginalien.selectAll("text").style("font-weight", "200").style("opacity", .6)
-            markierungen.selectAll("text").style("font-weight", "200").style("opacity", .6)
-            eigentumsangaben.selectAll("text").style("font-weight", "200").style("opacity", .6)
+            anderes.selectAll("text").style("font-weight", "bold").style("opacity", 1);
+            zusatzMaterial.selectAll("text").style("font-weight", "200").style("opacity", 0.6);
+            marginalien.selectAll("text").style("font-weight", "200").style("opacity", 0.6);
+            markierungen.selectAll("text").style("font-weight", "200").style("opacity", 0.6);
+            eigentumsangaben.selectAll("text").style("font-weight", "200").style("opacity", 0.6);
 
-            eigentumsangabendetail.transition().duration(800).attr("transform", "scale(0,1)").style("opacity", 0).style("pointer-events", "none")
-            markierungendetail.transition().duration(800).attr("transform", "scale(0,1)").style("opacity", 0).style("pointer-events", "none")
-            marginaliendetail.transition().duration(800).attr("transform", "scale(0,1)").style("opacity", 0).style("pointer-events", "none")
+            eigentumsangabendetail.transition().duration(800).attr("transform", "scale(0,1)").style("opacity", 0).style("pointer-events", "none");
+            markierungendetail.transition().duration(800).attr("transform", "scale(0,1)").style("opacity", 0).style("pointer-events", "none");
+            marginaliendetail.transition().duration(800).attr("transform", "scale(0,1)").style("opacity", 0).style("pointer-events", "none");
           } else {
-            eigentumsangaben.select("text").transition().duration(800).style("fill", "#707070")
-            anderes.select("text").transition().duration(800).style("fill", "#f284c0")
-            zusatzMaterial.select("text").transition().duration(800).style("fill", "rgb(210, 164, 0)")
-            marginalien.select("text").transition().duration(800).style("fill", "#f73f26")
-            markierungen.select("text").transition().duration(800).style("fill", "#58b0f7")
+            eigentumsangaben.select("text").transition().duration(800).style("fill", "#707070");
+            anderes.select("text").transition().duration(800).style("fill", "#f284c0");
+            zusatzMaterial.select("text").transition().duration(800).style("fill", "rgb(210, 164, 0)");
+            marginalien.select("text").transition().duration(800).style("fill", "#f73f26");
+            markierungen.select("text").transition().duration(800).style("fill", "#58b0f7");
 
-            eigentumsangaben.select("rect").transition().duration(800).style("opacity", 0)
-            anderes.select("rect").transition().duration(800).style("opacity", 0)
-            zusatzMaterial.select("rect").transition().duration(800).style("opacity", 0)
-            marginalien.select("rect").transition().duration(800).style("opacity", 0)
-            markierungen.select("rect").transition().duration(800).style("opacity", 0)
+            eigentumsangaben.select("rect").transition().duration(800).style("opacity", 0);
+            anderes.select("rect").transition().duration(800).style("opacity", 0);
+            zusatzMaterial.select("rect").transition().duration(800).style("opacity", 0);
+            marginalien.select("rect").transition().duration(800).style("opacity", 0);
+            markierungen.select("rect").transition().duration(800).style("opacity", 0);
 
-            filter = null
-            filterInteraction()
-            anderes.selectAll("text").style("font-weight", "400").style("opacity", 1)
-            zusatzMaterial.selectAll("text").style("font-weight", "400").style("opacity", 1)
-            marginalien.selectAll("text").style("font-weight", "400").style("opacity", 1)
-            markierungen.selectAll("text").style("font-weight", "400").style("opacity", 1)
-            eigentumsangaben.selectAll("text").style("font-weight", "400").style("opacity", 1)
+            filter = null;
+            filterInteraction();
+            anderes.selectAll("text").style("font-weight", "400").style("opacity", 1);
+            zusatzMaterial.selectAll("text").style("font-weight", "400").style("opacity", 1);
+            marginalien.selectAll("text").style("font-weight", "400").style("opacity", 1);
+            markierungen.selectAll("text").style("font-weight", "400").style("opacity", 1);
+            eigentumsangaben.selectAll("text").style("font-weight", "400").style("opacity", 1);
           }
-        })
+        });
 
 
 
 
       //////////////Rezize Function Start
       $(window).resize(function() {
-        width = window.innerWidth - 100
-        height = window.innerHeight - 120
+        width = window.innerWidth - 100;
+        height = window.innerHeight - 120;
 
         if (window.innerWidth >= 2000) {
-          height = window.innerHeight - 160
+          height = window.innerHeight - 160;
         }
 
 
-        ratio = getRetinaRatio()
-        scaledWidth = width * ratio
-        caledHeight = height * ratio
+        ratio = getRetinaRatio();
+        scaledWidth = width * ratio;
+        caledHeight = height * ratio;
 
-        chartArea = width - marginleft - marginright
-        areaheight = (window.innerHeight - 310)
+        chartArea = width - marginleft - marginright;
+        areaheight = (window.innerHeight - 310);
         ///Buch-Ebene Größen und Abstände
 
 
 
 
 
-        firstScrollIcon = canvasTop + 9
-        thirdScrollIcon = window.innerHeight - 40
-        secondScrollIcon = firstScrollIcon + (thirdScrollIcon - firstScrollIcon) / 2
+        firstScrollIcon = canvasTop + 9;
+        thirdScrollIcon = window.innerHeight - 40;
+        secondScrollIcon = firstScrollIcon + (thirdScrollIcon - firstScrollIcon) / 2;
 
 
         d3.select(".firstScrollCircle")
-          .attr("cy", firstScrollIcon)
+          .attr("cy", firstScrollIcon);
 
-        d3.selectAll(".firstScrollLine,.secondScrollLine").attr("y1", firstScrollIcon)
+        d3.selectAll(".firstScrollLine,.secondScrollLine").attr("y1", firstScrollIcon);
 
 
         if (modus == "similarity") {
-          d3.selectAll(".firstScrollLine,.secondScrollLine").attr("y2", secondScrollIcon)
+          d3.selectAll(".firstScrollLine,.secondScrollLine").attr("y2", secondScrollIcon);
         } else {
-          d3.selectAll(".firstScrollLine,.secondScrollLine").attr("y2", thirdScrollIcon)
+          d3.selectAll(".firstScrollLine,.secondScrollLine").attr("y2", thirdScrollIcon);
         }
 
         d3.select(".autorIcon")
-          .attr("y", firstScrollIcon + 5)
+          .attr("y", firstScrollIcon + 5);
 
 
         d3.select(".buchIcon")
-          .attr("y", secondScrollIcon + 5)
+          .attr("y", secondScrollIcon + 5);
 
         d3.select(".secondScrollCircle")
-          .attr("cy", secondScrollIcon)
+          .attr("cy", secondScrollIcon);
 
         d3.select(".seitenIcon")
-          .attr("y", thirdScrollIcon)
+          .attr("y", thirdScrollIcon);
 
         d3.select(".thirdScrollCircle")
-          .attr("cy", thirdScrollIcon - 5)
+          .attr("cy", thirdScrollIcon - 5);
 
         d3.selectAll(".verfasserbubble").style("top", function() {
-          return -10 + firstScrollIcon - d3.select(".verfasserbubble").style("height").replace(/px/, "") / 2 + "px"
-        })
+          return -10 + firstScrollIcon - d3.select(".verfasserbubble").style("height").replace(/px/, "") / 2 + "px";
+        });
         d3.selectAll(".buchbubble").style("top", function() {
-          return -10 + secondScrollIcon - d3.select(".buchbubble").style("height").replace(/px/, "") / 2 + "px"
-        })
+          return -10 + secondScrollIcon - d3.select(".buchbubble").style("height").replace(/px/, "") / 2 + "px";
+        });
         d3.selectAll(".seitenbubble").style("top", function() {
-          return -15 + thirdScrollIcon - d3.select(".seitenbubble").style("height").replace(/px/, "") / 2 + "px"
-        })
+          return -15 + thirdScrollIcon - d3.select(".seitenbubble").style("height").replace(/px/, "") / 2 + "px";
+        });
 
 
         d3.select(".distributionbutton")
           .attr("y", function(d) {
             if (window.innerWidth < 2000) {
-              return 10
+              return 10;
             } else {
-              return 10
+              return 10;
             }
           })
           .attr("x", function(d) {
             if (window.innerWidth < 2000) {
-              return 18
+              return 18;
             } else {
-              return 18
+              return 18;
             }
           })
           .attr("width", function(d) {
             if (window.innerWidth < 2000) {
-              return 45
+              return 45;
             } else {
-              return 65
+              return 65;
             }
           })
           .attr("height", function(d) {
             if (window.innerWidth < 2000) {
-              return 45
+              return 45;
             } else {
-              return 65
+              return 65;
             }
-          })
+          });
 
 
         d3.select(".similaritybutton")
           .attr("y", function(d) {
             if (window.innerWidth < 2000) {
-              return 70
+              return 70;
             } else {
-              return 90
+              return 90;
             }
           })
           .attr("x", function(d) {
             if (window.innerWidth < 2000) {
-              return 18
+              return 18;
             } else {
-              return 18
+              return 18;
             }
           })
           .attr("width", function(d) {
             if (window.innerWidth < 2000) {
-              return 45
+              return 45;
             } else {
-              return 65
+              return 65;
             }
           })
           .attr("height", function(d) {
             if (window.innerWidth < 2000) {
-              return 45
+              return 45;
             } else {
-              return 65
+              return 65;
             }
-          })
+          });
 
 
         scrollCircleScale = d3.scaleLinear()
           .domain([-3000, 0, 2600])
           .range([firstScrollIcon, secondScrollIcon, thirdScrollIcon - 5])
-          .clamp(true)
+          .clamp(true);
 
         scrollCircleScale2 = d3.scaleLinear()
           .domain([-2500, 0])
           .range([firstScrollIcon, secondScrollIcon])
-          .clamp(true)
+          .clamp(true);
 
 
 
@@ -1979,29 +1981,29 @@ Promise.all([
             .attr("cy", scrollCircleScale(newScrollTop))
             .attr("r", function() {
               if (window.innerWidth < 2000) {
-                return 5
+                return 5;
               } else {
-                return 10
+                return 10;
               }
-            })
+            });
 
         } else if (modus == "similarity") {
 
           var scrollCircleZoomScale = d3.scaleLinear()
             .domain([-3000, -2500, 0, 3000])
             .range([1, 5, 5, 1])
-            .clamp(true)
+            .clamp(true);
 
 
           d3.selectAll(".scrollCircleFollower")
             .attr("cy", scrollCircleScale2(newScrollTop))
             .attr("r", function() {
               if (window.innerWidth < 2000) {
-                return scrollCircleZoomScale(newScrollTop)
+                return scrollCircleZoomScale(newScrollTop);
               } else {
-                return scrollCircleZoomScale(newScrollTop) * 2
+                return scrollCircleZoomScale(newScrollTop) * 2;
               }
-            })
+            });
 
           // d3.selectAll(".scrollCircleFollower")
           //   .attr("cy", scrollCircleScale2(newScrollTop))
@@ -2011,559 +2013,561 @@ Promise.all([
         } else {
 
           d3.selectAll(".scrollCircleFollower")
-            .attr("cy", scrollCircleScale(newScrollTop))
+            .attr("cy", scrollCircleScale(newScrollTop));
         }
 
 
         d3.select(".firstScrollLine")
           .attr("x2", function(d) {
             if (window.innerWidth < 2000) {
-              return 4
+              return 4;
             } else {
-              return 5
+              return 5;
             }
-          })
+          });
 
         d3.select(".secondScrollLine")
           .attr("x1", function(d) {
             if (window.innerWidth < 2000) {
-              return 22
+              return 22;
             } else {
-              return 34
+              return 34;
             }
           })
           .attr("x2", function(d) {
             if (window.innerWidth < 2000) {
-              return 18
+              return 18;
             } else {
-              return 29
+              return 29;
             }
-          })
+          });
 
         d3.select(".autorIcon").attr("y", function(d) {
             if (window.innerWidth < 2000) {
-              return firstScrollIcon + 5
+              return firstScrollIcon + 5;
             } else {
-              return firstScrollIcon + 2
+              return firstScrollIcon + 2;
             }
           })
           .attr("x", function(d) {
             if (window.innerWidth < 2000) {
-              return 10
+              return 10;
             } else {
-              return 7
+              return 7;
             }
           })
           .attr("width", function(d) {
             if (window.innerWidth < 2000) {
-              return 20
+              return 20;
             } else {
-              return 25
+              return 25;
             }
           })
           .attr("height", function(d) {
             if (window.innerWidth < 2000) {
-              return 20
+              return 20;
             } else {
-              return 25
+              return 25;
             }
-          })
+          });
 
 
         d3.select(".buchIcon").attr("y", function(d) {
             if (window.innerWidth < 2000) {
-              return secondScrollIcon + 5
+              return secondScrollIcon + 5;
             } else {
-              return secondScrollIcon + 2
+              return secondScrollIcon + 2;
             }
           })
           .attr("x", function(d) {
             if (window.innerWidth < 2000) {
-              return 10
+              return 10;
             } else {
-              return 7
+              return 7;
             }
           })
           .attr("width", function(d) {
             if (window.innerWidth < 2000) {
-              return 20
+              return 20;
             } else {
-              return 25
+              return 25;
             }
           })
           .attr("height", function(d) {
             if (window.innerWidth < 2000) {
-              return 20
+              return 20;
             } else {
-              return 25
+              return 25;
             }
-          })
+          });
 
         d3.select(".seitenIcon").attr("y", function(d) {
             if (window.innerWidth < 2000) {
-              return thirdScrollIcon + 5
+              return thirdScrollIcon + 5;
             } else {
-              return thirdScrollIcon - 2
+              return thirdScrollIcon - 2;
             }
           })
           .attr("x", function(d) {
             if (window.innerWidth < 2000) {
-              return 10
+              return 10;
             } else {
-              return 7
+              return 7;
             }
           })
           .attr("width", function(d) {
             if (window.innerWidth < 2000) {
-              return 20
+              return 20;
             } else {
-              return 25
+              return 25;
             }
           })
           .attr("height", function(d) {
             if (window.innerWidth < 2000) {
-              return 20
+              return 20;
             } else {
-              return 25
+              return 25;
             }
-          })
+          });
 
         d3.select(".firstScrollCircle")
           .attr("r", function() {
             if (window.innerWidth < 2000) {
-              return 11
+              return 11;
             } else {
-              return 18
+              return 18;
             }
           })
           .attr("cx", function() {
             if (window.innerWidth < 2000) {
-              return 10
+              return 10;
             } else {
-              return 16
+              return 16;
             }
-          })
+          });
 
         d3.select(".secondScrollCircle")
           .attr("r", function() {
             if (window.innerWidth < 2000) {
-              return 9
+              return 9;
             } else {
-              return 15
+              return 15;
             }
           })
           .attr("cx", function() {
             if (window.innerWidth < 2000) {
-              return 10
+              return 10;
             } else {
-              return 16
+              return 16;
             }
-          })
+          });
 
         d3.select(".thirdScrollCircle")
           .attr("r", function() {
             if (window.innerWidth < 2000) {
-              return 7
+              return 7;
             } else {
-              return 12
+              return 12;
             }
           })
           .attr("cx", function() {
             if (window.innerWidth < 2000) {
-              return 10
+              return 10;
             } else {
-              return 16
+              return 16;
             }
-          })
+          });
 
 
         d3.select(".scrollCircleFollower")
           .attr("r", function() {
             if (window.innerWidth < 2000) {
-              return 5
+              return 5;
             } else {
-              return 10
+              return 10;
             }
           })
           .attr("cx", function() {
             if (window.innerWidth < 2000) {
-              return 10
+              return 10;
             } else {
-              return 16
+              return 16;
             }
-          })
+          });
 
 
 
-        pageheight = areaheight / 1674
+        pageheight = areaheight / 1674;
 
 
         if (window.innerWidth >= 2000) {
-          buchBreite = 10
-          buchBgBreite = 2 + buchBreite
-          fontsize = 16
+          buchBreite = 10;
+          buchBgBreite = 2 + buchBreite;
+          fontsize = 16;
 
-          posY = 160
-          canvasTop = 310
-          areaheight = (window.innerHeight - 350)
-          height = window.innerHeight - posY //680;
-          pageheight = areaheight / 1674
+          posY = 160;
+          canvasTop = 310;
+          areaheight = (window.innerHeight - 350);
+          height = window.innerHeight - posY;
+          pageheight = areaheight / 1674;
 
-          d3.select("canvas").style("margin-top", canvasTop + "px")
-          d3.select("#scrollnavi").style("width", 100 + "px")
-          d3.select("#scrollsvg").style("width", 100 + "px")
-          d3.select("#header").select("h1").style("margin-top", 8 + "px")
+          d3.select("canvas").style("margin-top", canvasTop + "px");
+          d3.select("#scrollnavi").style("width", 100 + "px");
+          d3.select("#scrollsvg").style("width", 100 + "px");
+          d3.select("#header").select("h1").style("margin-top", 8 + "px");
 
-          sLBuchAbstandSelected = 38 //55
-          sLBuchBreiteSelected = 35
+          sLBuchAbstandSelected = 38;
+          sLBuchBreiteSelected = 35;
 
-          sLBuchAbstandUnselected = 6
-          sLBuchBreiteUnselected = 5
+          sLBuchAbstandUnselected = 6;
+          sLBuchBreiteUnselected = 5;
 
-          BuchauswahlFeld = 520
-          BuchauswahlFeldSeitenFeld = 650
+          BuchauswahlFeld = 520;
+          BuchauswahlFeldSeitenFeld = 650;
 
-          detailPicHeight = 250
-          detailPicWidth = 190
-          detailtextwrap = detailPicWidth
+          detailPicHeight = 250;
+          detailPicWidth = 190;
+          detailtextwrap = detailPicWidth;
 
-          unselectedBookBuchlevel = 7
-          unselectedBookSeitenlevel = 7
-          onSelectionBuchAbstandBL = 9
-          onSelectionBuchAbstandSL = 8
+          unselectedBookBuchlevel = 7;
+          unselectedBookSeitenlevel = 7;
+          onSelectionBuchAbstandBL = 9;
+          onSelectionBuchAbstandSL = 8;
 
-          selectedBookBuchlevel = 30
-          selectedBookSeitenlevel = 35
+          selectedBookBuchlevel = 30;
+          selectedBookSeitenlevel = 35;
 
-          xAreaMax = 8
+          xAreaMax = 8;
 
-          transcripttextwrap = 270
+          transcripttextwrap = 270;
 
-          detailCircleMax = 12
+          detailCircleMax = 12;
 
 
         } else if (window.innerWidth >= 1800 && window.innerWidth < 2000) {
-          posY = 120
-          canvasTop = 270
-          areaheight = (window.innerHeight - 310)
-          height = window.innerHeight - posY
-          pageheight = areaheight / 1674
+          posY = 120;
+          canvasTop = 270;
+          areaheight = (window.innerHeight - 310);
+          height = window.innerHeight - posY;
+          pageheight = areaheight / 1674;
 
-          d3.select("canvas").style("margin-top", canvasTop + "px")
-          d3.select("#scrollnavi").style("width", 80 + "px")
-          d3.select("#scrollsvg").style("width", 80 + "px")
-          d3.select("#header").select("h1").style("margin-top", 17 + "px")
+          d3.select("canvas").style("margin-top", canvasTop + "px");
+          d3.select("#scrollnavi").style("width", 80 + "px");
+          d3.select("#scrollsvg").style("width", 80 + "px");
+          d3.select("#header").select("h1").style("margin-top", 17 + "px");
 
 
-          fontsize = 12
-          buchBreite = 8
-          buchBgBreite = 2 + buchBreite
+          fontsize = 12;
+          buchBreite = 8;
+          buchBgBreite = 2 + buchBreite;
 
-          sLBuchAbstandSelected = 24 //55
-          sLBuchBreiteSelected = 20
+          sLBuchAbstandSelected = 24;
+          sLBuchBreiteSelected = 20;
 
-          sLBuchAbstandUnselected = 4
-          sLBuchBreiteUnselected = 3
+          sLBuchAbstandUnselected = 4;
+          sLBuchBreiteUnselected = 3;
 
-          BuchauswahlFeld = 420
-          BuchauswahlFeldSeitenFeld = 600
+          BuchauswahlFeld = 420;
+          BuchauswahlFeldSeitenFeld = 600;
 
-          detailPicHeight = 250
-          detailPicWidth = 190
-          detailtextwrap = detailPicWidth
+          detailPicHeight = 250;
+          detailPicWidth = 190;
+          detailtextwrap = detailPicWidth;
 
-          unselectedBookBuchlevel = 5
-          unselectedBookSeitenlevel = 4
-          onSelectionBuchAbstandBL = 6
-          onSelectionBuchAbstandSL = 5
+          unselectedBookBuchlevel = 5;
+          unselectedBookSeitenlevel = 4;
+          onSelectionBuchAbstandBL = 6;
+          onSelectionBuchAbstandSL = 5;
 
-          selectedBookBuchlevel = 20
-          selectedBookSeitenlevel = 30
+          selectedBookBuchlevel = 20;
+          selectedBookSeitenlevel = 30;
 
-          xAreaMax = 6.5
+          xAreaMax = 6.5;
 
-          transcripttextwrap = 270
+          transcripttextwrap = 270;
+
         } else if (window.innerWidth < 1800 && window.innerWidth >= 1600) {
-          posY = 120
-          canvasTop = 270
-          areaheight = (window.innerHeight - 310)
-          height = window.innerHeight - posY
-          pageheight = areaheight / 1674
+          posY = 120;
+          canvasTop = 270;
+          areaheight = (window.innerHeight - 310);
+          height = window.innerHeight - posY;
+          pageheight = areaheight / 1674;
 
-          d3.select("canvas").style("margin-top", canvasTop + "px")
-          d3.select("#scrollnavi").style("width", 80 + "px")
-          d3.select("#scrollsvg").style("width", 80 + "px")
-          d3.select("#header").select("h1").style("margin-top", 17 + "px")
+          d3.select("canvas").style("margin-top", canvasTop + "px");
+          d3.select("#scrollnavi").style("width", 80 + "px");
+          d3.select("#scrollsvg").style("width", 80 + "px");
+          d3.select("#header").select("h1").style("margin-top", 17 + "px");
 
-          fontsize = 12
-          buchBreite = 7
-          buchBgBreite = 2 + buchBreite
+          fontsize = 12;
+          buchBreite = 7;
+          buchBgBreite = 2 + buchBreite;
 
-          sLBuchAbstandSelected = 24 //55
-          sLBuchBreiteSelected = 20
+          sLBuchAbstandSelected = 24;
+          sLBuchBreiteSelected = 20;
 
-          sLBuchAbstandUnselected = 4
-          sLBuchBreiteUnselected = 3
+          sLBuchAbstandUnselected = 4;
+          sLBuchBreiteUnselected = 3;
 
-          BuchauswahlFeld = 420
-          BuchauswahlFeldSeitenFeld = 600
-          detailPicHeight = 250
-          detailPicWidth = 190
-          detailtextwrap = detailPicWidth
+          BuchauswahlFeld = 420;
+          BuchauswahlFeldSeitenFeld = 600;
+          detailPicHeight = 250;
+          detailPicWidth = 190;
+          detailtextwrap = detailPicWidth;
 
 
-          unselectedBookBuchlevel = 5
-          unselectedBookSeitenlevel = 4
-          onSelectionBuchAbstandBL = 6
-          onSelectionBuchAbstandSL = 5
+          unselectedBookBuchlevel = 5;
+          unselectedBookSeitenlevel = 4;
+          onSelectionBuchAbstandBL = 6;
+          onSelectionBuchAbstandSL = 5;
 
-          selectedBookBuchlevel = 20
-          selectedBookSeitenlevel = 30
+          selectedBookBuchlevel = 20;
+          selectedBookSeitenlevel = 30;
 
-          xAreaMax = 5.5
+          xAreaMax = 5.5;
 
-          transcripttextwrap = 270
+          transcripttextwrap = 270;
+
         } else if (window.innerWidth < 1600 && window.innerWidth >= 1400) {
-          posY = 120
-          canvasTop = 270
-          areaheight = (window.innerHeight - 310)
-          height = window.innerHeight - posY
-          pageheight = areaheight / 1674
+          posY = 120;
+          canvasTop = 270;
+          areaheight = (window.innerHeight - 310);
+          height = window.innerHeight - posY;
+          pageheight = areaheight / 1674;
 
-          d3.select("canvas").style("margin-top", canvasTop + "px")
-          d3.select("#scrollnavi").style("width", 80 + "px")
-          d3.select("#scrollsvg").style("width", 80 + "px")
-          d3.select("#header").select("h1").style("margin-top", 17 + "px")
+          d3.select("canvas").style("margin-top", canvasTop + "px");
+          d3.select("#scrollnavi").style("width", 80 + "px");
+          d3.select("#scrollsvg").style("width", 80 + "px");
+          d3.select("#header").select("h1").style("margin-top", 17 + "px");
 
-          fontsize = 12
-          buchBreite = 5
-          buchBgBreite = 2 + buchBreite
+          fontsize = 12;
+          buchBreite = 5;
+          buchBgBreite = 2 + buchBreite;
 
-          sLBuchAbstandSelected = 20 //55
-          sLBuchBreiteSelected = 18
+          sLBuchAbstandSelected = 20;
+          sLBuchBreiteSelected = 18;
 
-          sLBuchAbstandUnselected = 4
-          sLBuchBreiteUnselected = 3
+          sLBuchAbstandUnselected = 4;
+          sLBuchBreiteUnselected = 3;
 
-          BuchauswahlFeld = 340
-          BuchauswahlFeldSeitenFeld = 520
-          detailPicHeight = 250
-          detailPicWidth = 190
-          detailtextwrap = detailPicWidth
+          BuchauswahlFeld = 340;
+          BuchauswahlFeldSeitenFeld = 520;
+          detailPicHeight = 250;
+          detailPicWidth = 190;
+          detailtextwrap = detailPicWidth;
 
-          unselectedBookBuchlevel = 4
-          unselectedBookSeitenlevel = 3
-          onSelectionBuchAbstandBL = 5
-          onSelectionBuchAbstandSL = 4
+          unselectedBookBuchlevel = 4;
+          unselectedBookSeitenlevel = 3;
+          onSelectionBuchAbstandBL = 5;
+          onSelectionBuchAbstandSL = 4;
 
-          selectedBookBuchlevel = 12
-          selectedBookSeitenlevel = 20
+          selectedBookBuchlevel = 12;
+          selectedBookSeitenlevel = 20;
 
-          xAreaMax = 4
-          transcripttextwrap = 270
+          xAreaMax = 4;
+          transcripttextwrap = 270;
+
         } else if (window.innerWidth < 1400 && window.innerWidth >= 1200) {
-          posY = 120
-          canvasTop = 270
-          areaheight = (window.innerHeight - 310)
-          height = window.innerHeight - posY
-          pageheight = areaheight / 1674
+          posY = 120;
+          canvasTop = 270;
+          areaheight = (window.innerHeight - 310);
+          height = window.innerHeight - posY;
+          pageheight = areaheight / 1674;
 
-          d3.select("canvas").style("margin-top", canvasTop + "px")
-          d3.select("#scrollnavi").style("width", 80 + "px")
-          d3.select("#scrollsvg").style("width", 80 + "px")
-          d3.select("#header").select("h1").style("margin-top", 17 + "px")
+          d3.select("canvas").style("margin-top", canvasTop + "px");
+          d3.select("#scrollnavi").style("width", 80 + "px");
+          d3.select("#scrollsvg").style("width", 80 + "px");
+          d3.select("#header").select("h1").style("margin-top", 17 + "px");
 
-          fontsize = 12
-          buchBreite = 4
-          buchBgBreite = 2 + buchBreite
+          fontsize = 12;
+          buchBreite = 4;
+          buchBgBreite = 2 + buchBreite;
 
-          sLBuchAbstandSelected = 16 //55
-          sLBuchBreiteSelected = 14
+          sLBuchAbstandSelected = 16;
+          sLBuchBreiteSelected = 14;
 
-          sLBuchAbstandUnselected = 3
-          sLBuchBreiteUnselected = 2
+          sLBuchAbstandUnselected = 3;
+          sLBuchBreiteUnselected = 2;
 
-          BuchauswahlFeld = 260
-          BuchauswahlFeldSeitenFeld = 440
+          BuchauswahlFeld = 260;
+          BuchauswahlFeldSeitenFeld = 440;
 
-          detailPicHeight = 200
-          detailPicWidth = 152
-          detailtextwrap = detailPicWidth
+          detailPicHeight = 200;
+          detailPicWidth = 152;
+          detailtextwrap = detailPicWidth;
 
-          unselectedBookBuchlevel = 3
-          unselectedBookSeitenlevel = 2
-          onSelectionBuchAbstandBL = 4
-          onSelectionBuchAbstandSL = 3
+          unselectedBookBuchlevel = 3;
+          unselectedBookSeitenlevel = 2;
+          onSelectionBuchAbstandBL = 4;
+          onSelectionBuchAbstandSL = 3;
 
-          selectedBookBuchlevel = 8
-          selectedBookSeitenlevel = 16
+          selectedBookBuchlevel = 8;
+          selectedBookSeitenlevel = 16;
 
-          xAreaMax = 4
+          xAreaMax = 4;
 
-          transcripttextwrap = 260
-          transcriptLinePos = 15
+          transcripttextwrap = 260;
+          transcriptLinePos = 15;
         } else if (window.innerWidth < 1200 && window.innerWidth >= 1100) {
-          posY = 120
-          canvasTop = 270
-          areaheight = (window.innerHeight - 310)
-          height = window.innerHeight - posY
-          pageheight = areaheight / 1674
+          posY = 120;
+          canvasTop = 270;
+          areaheight = (window.innerHeight - 310);
+          height = window.innerHeight - posY;
+          pageheight = areaheight / 1674;
 
-          d3.select("canvas").style("margin-top", canvasTop + "px")
-          d3.select("#scrollnavi").style("width", 80 + "px")
-          d3.select("#scrollsvg").style("width", 80 + "px")
-          d3.select("#header").select("h1").style("margin-top", 17 + "px")
+          d3.select("canvas").style("margin-top", canvasTop + "px");
+          d3.select("#scrollnavi").style("width", 80 + "px");
+          d3.select("#scrollsvg").style("width", 80 + "px");
+          d3.select("#header").select("h1").style("margin-top", 17 + "px");
 
-          fontsize = 11
+          fontsize = 11;
 
-          buchBreite = 4
-          buchBgBreite = 1 + buchBreite
+          buchBreite = 4;
+          buchBgBreite = 1 + buchBreite;
 
-          sLBuchAbstandSelected = 15 //55
-          sLBuchBreiteSelected = 14
+          sLBuchAbstandSelected = 15;
+          sLBuchBreiteSelected = 14;
 
-          sLBuchAbstandUnselected = 3
-          sLBuchBreiteUnselected = 2
+          sLBuchAbstandUnselected = 3;
+          sLBuchBreiteUnselected = 2;
 
-          BuchauswahlFeld = 260
-          BuchauswahlFeldSeitenFeld = 440
-          detailPicHeight = 200
-          detailPicWidth = 152
-          detailtextwrap = detailPicWidth
+          BuchauswahlFeld = 260;
+          BuchauswahlFeldSeitenFeld = 440;
+          detailPicHeight = 200;
+          detailPicWidth = 152;
+          detailtextwrap = detailPicWidth;
 
-          unselectedBookBuchlevel = 3
-          unselectedBookSeitenlevel = 2
-          onSelectionBuchAbstandBL = 4
-          onSelectionBuchAbstandSL = 3
+          unselectedBookBuchlevel = 3;
+          unselectedBookSeitenlevel = 2;
+          onSelectionBuchAbstandBL = 4;
+          onSelectionBuchAbstandSL = 3;
 
-          selectedBookBuchlevel = 8
-          selectedBookSeitenlevel = 16
+          selectedBookBuchlevel = 8;
+          selectedBookSeitenlevel = 16;
 
-          xAreaMax = 3.5
-          transcripttextwrap = 220
-          transcriptLinePos = 15
+          xAreaMax = 3.5;
+          transcripttextwrap = 220;
+          transcriptLinePos = 15;
+
         } else if (window.innerWidth < 1100 && window.innerWidth > 900) {
-          posY = 90 //120  = Standart
-          canvasTop = 240
-          areaheight = (window.innerHeight - 280)
-          height = window.innerHeight - posY
-          pageheight = areaheight / 1674
+          posY = 90;
+          canvasTop = 240;
+          areaheight = (window.innerHeight - 280);
+          height = window.innerHeight - posY;
+          pageheight = areaheight / 1674;
 
-          d3.select("canvas").style("margin-top", canvasTop + "px")
-          d3.select("#scrollnavi").style("width", 80 + "px")
-          d3.select("#scrollsvg").style("width", 80 + "px")
-          d3.select("#header").select("h1").style("margin-top", 17 + "px")
+          d3.select("canvas").style("margin-top", canvasTop + "px");
+          d3.select("#scrollnavi").style("width", 80 + "px");
+          d3.select("#scrollsvg").style("width", 80 + "px");
+          d3.select("#header").select("h1").style("margin-top", 17 + "px");
 
-          fontsize = 10
+          fontsize = 10;
 
-          buchBreite = 4
-          buchBgBreite = 1 + buchBreite
+          buchBreite = 4;
+          buchBgBreite = 1 + buchBreite;
 
-          sLBuchAbstandSelected = 15
-          sLBuchBreiteSelected = 14
+          sLBuchAbstandSelected = 15;
+          sLBuchBreiteSelected = 14;
 
-          sLBuchAbstandUnselected = 2
-          sLBuchBreiteUnselected = 2
+          sLBuchAbstandUnselected = 2;
+          sLBuchBreiteUnselected = 2;
 
-          BuchauswahlFeld = 250
-          BuchauswahlFeldSeitenFeld = 380
-          detailPicHeight = 200
-          detailPicWidth = 152
-          detailtextwrap = detailPicWidth
+          BuchauswahlFeld = 250;
+          BuchauswahlFeldSeitenFeld = 380;
+          detailPicHeight = 200;
+          detailPicWidth = 152;
+          detailtextwrap = detailPicWidth;
 
-          unselectedBookBuchlevel = 3
-          unselectedBookSeitenlevel = 2
-          onSelectionBuchAbstandBL = 3
-          onSelectionBuchAbstandSL = 2
+          unselectedBookBuchlevel = 3;
+          unselectedBookSeitenlevel = 2;
+          onSelectionBuchAbstandBL = 3;
+          onSelectionBuchAbstandSL = 2;
 
-          selectedBookBuchlevel = 6
-          selectedBookSeitenlevel = 13
+          selectedBookBuchlevel = 6;
+          selectedBookSeitenlevel = 13;
 
-          xAreaMax = 2.8
-          transcripttextwrap = 200
-          transcriptLinePos = 8
+          xAreaMax = 2.8;
+          transcripttextwrap = 200;
+          transcriptLinePos = 8;
+
         } else if (window.innerWidth < 900) {
-          posY = 90 //120  = Standart
-          canvasTop = 240
-          areaheight = (window.innerHeight - 280)
-          height = window.innerHeight - posY
-          pageheight = areaheight / 1674
+          posY = 90;
+          canvasTop = 240;
+          areaheight = (window.innerHeight - 280);
+          height = window.innerHeight - posY;
+          pageheight = areaheight / 1674;
 
-          d3.select("canvas").style("margin-top", canvasTop + "px")
-          d3.select("#scrollnavi").style("width", 80 + "px")
-          d3.select("#scrollsvg").style("width", 80 + "px")
-          d3.select("#header").select("h1").style("margin-top", 17 + "px")
+          d3.select("canvas").style("margin-top", canvasTop + "px");
+          d3.select("#scrollnavi").style("width", 80 + "px");
+          d3.select("#scrollsvg").style("width", 80 + "px");
+          d3.select("#header").select("h1").style("margin-top", 17 + "px");
 
-          fontsize = 7
-          buchBreite = 4
-          buchBgBreite = 1 + buchBreite
+          fontsize = 7;
+          buchBreite = 4;
+          buchBgBreite = 1 + buchBreite;
 
-          sLBuchAbstandSelected = 15
-          sLBuchBreiteSelected = 14
+          sLBuchAbstandSelected = 15;
+          sLBuchBreiteSelected = 14;
 
-          sLBuchAbstandUnselected = 2
-          sLBuchBreiteUnselected = 2
+          sLBuchAbstandUnselected = 2;
+          sLBuchBreiteUnselected = 2;
 
-          BuchauswahlFeld = 250
-          BuchauswahlFeldSeitenFeld = 380
-          detailPicHeight = 200
-          detailPicWidth = 152
-          detailtextwrap = detailPicWidth
+          BuchauswahlFeld = 250;
+          BuchauswahlFeldSeitenFeld = 380;
+          detailPicHeight = 200;
+          detailPicWidth = 152;
+          detailtextwrap = detailPicWidth;
 
-          unselectedBookBuchlevel = 3
-          unselectedBookSeitenlevel = 2
-          onSelectionBuchAbstandBL = 3
-          onSelectionBuchAbstandSL = 2
+          unselectedBookBuchlevel = 3;
+          unselectedBookSeitenlevel = 2;
+          onSelectionBuchAbstandBL = 3;
+          onSelectionBuchAbstandSL = 2;
 
-          selectedBookBuchlevel = 6
-          selectedBookSeitenlevel = 13
+          selectedBookBuchlevel = 6;
+          selectedBookSeitenlevel = 13;
 
-          xAreaMax = 1.8
-          transcripttextwrap = 200
-          transcriptLinePos = 8
+          xAreaMax = 1.8;
+          transcripttextwrap = 200;
+          transcriptLinePos = 8;
         }
 
         svg = d3.select("#svg")
           .style('width', width + 'px')
-          .style('height', height + 'px')
-        //.style("margin-top", posY)
+          .style('height', height + 'px');
 
         svgFront = d3.select("#svgFront")
           .style('width', width + 'px')
-          .style('height', height + 'px')
-        //  .style("margin-top", posY)
+          .style('height', height + 'px');
 
         svgFrontTitles = d3.select("#svgFrontTitles")
           .style('width', width + 'px')
-          .style('height', height + 'px')
-        //    .style("margin-top", posY)
+          .style('height', height + 'px');
 
 
-        d3.select("body").style("font-size", fontsize + "px")
 
-        d3.select("#complicationsvg").attr("height", window.innerHeight).attr("width", window.innerWidth - 100)
+        d3.select("body").style("font-size", fontsize + "px");
 
-        totalBuchWidth = buchBgBreite * BuchAnzahl
-        authorAbstand = ((chartArea - totalBuchWidth) + (buchBgBreite * authorAnzahl)) / (authorAnzahl - 1)
+        d3.select("#complicationsvg").attr("height", window.innerHeight).attr("width", window.innerWidth - 100);
+
+        totalBuchWidth = buchBgBreite * BuchAnzahl;
+        authorAbstand = ((chartArea - totalBuchWidth) + (buchBgBreite * authorAnzahl)) / (authorAnzahl - 1);
 
         ///Author-Ebene Größen und Abstände
 
-        sLTotalBuchWidthSelected = (thisVerfasserSelectedBookCount) * sLBuchAbstandSelected
-        sLTotalBuchWidthUnselected = (BuchAnzahl - thisVerfasserSelectedBookCount - (authorAnzahl - 1)) * sLBuchAbstandUnselected
-        sLAuthorAbstand2 = (chartArea - (sLTotalBuchWidthSelected + sLTotalBuchWidthUnselected)) / (authorAnzahl - 1)
+        sLTotalBuchWidthSelected = (thisVerfasserSelectedBookCount) * sLBuchAbstandSelected;
+        sLTotalBuchWidthUnselected = (BuchAnzahl - thisVerfasserSelectedBookCount - (authorAnzahl - 1)) * sLBuchAbstandUnselected;
+        sLAuthorAbstand2 = (chartArea - (sLTotalBuchWidthSelected + sLTotalBuchWidthUnselected)) / (authorAnzahl - 1);
 
 
-        totalAreaChartsWidth = 0
+        totalAreaChartsWidth = 0;
         datenByAuthor.forEach(function(D, I) {
-          totalAreaChartsWidth = totalAreaChartsWidth + xAreaMax * D.maxTraceNumberNorm
-        })
-        authorLevelAbstand = (chartArea - totalAreaChartsWidth) / authorAnzahl
+          totalAreaChartsWidth = totalAreaChartsWidth + xAreaMax * D.maxTraceNumberNorm;
+        });
+        authorLevelAbstand = (chartArea - totalAreaChartsWidth) / authorAnzahl;
 
 
         areachartGroup.selectAll("line")
           .attr("y1", 0)
-          .attr("y2", areaheight)
-
+          .attr("y2", areaheight);
 
         yArea = d3.scaleLinear()
           .range([0, (areaheight / 21)]);
@@ -2576,7 +2580,7 @@ Promise.all([
 
         area = d3.area()
           .y(function(d, i) {
-            return yArea(d.data.part)
+            return yArea(d.data.part);
           })
           .x0(function(d) {
             return xArea(d[0]);
@@ -2584,85 +2588,80 @@ Promise.all([
           .x1(function(d) {
             return xArea(d[1]);
           })
-          .curve(d3.curveBasis)
+          .curve(d3.curveBasis);
 
         areachart.selectAll("path")
-          .attr("d", area)
+          .attr("d", area);
 
 
 
         ////////////////////////////
         //Filter-Abstand Update Start
 
-        d3.selectAll("#legend").selectAll("text").attr("y", legendSchriftspurY)
+        d3.selectAll("#legend").selectAll("text").attr("y", legendSchriftspurY);
 
-        d3.selectAll(".detail").selectAll("text").attr("y", legendSchriftspurY + 1.6 * fontsize)
+        d3.selectAll(".detail").selectAll("text").attr("y", legendSchriftspurY + 1.6 * fontsize);
 
         marginalien.selectAll("rect").attr("width", function() {
-          return d3.select(".marginalien-title").node().getBBox().width + 10
-        })
-        marginalien.attr("transform", `translate(${d3.select(".legendTitle").node().getBBox().width+15},0)`)
+          return d3.select(".marginalien-title").node().getBBox().width + 10;
+        });
+
+        marginalien.attr("transform", `translate(${d3.select(".legendTitle").node().getBBox().width+15},0)`);
 
         d3.select(".filter-kommentar").attr("x", function() {
-          return d3.select(".filter-bewertung").node().getBBox().width + 15
-        })
+          return d3.select(".filter-bewertung").node().getBBox().width + 15;
+        });
         d3.select(".filter-textkorrektur").attr("x", function() {
-          return d3.select(".filter-bewertung").node().getBBox().width + 15 + d3.select(".filter-kommentar").node().getBBox().width + 15
-        })
+          return d3.select(".filter-bewertung").node().getBBox().width + 15 + d3.select(".filter-kommentar").node().getBBox().width + 15;
+        });
         d3.select(".filter-variante").attr("x", function() {
-          return d3.select(".filter-bewertung").node().getBBox().width + 15 + d3.select(".filter-kommentar").node().getBBox().width + 15 + d3.select(".filter-textkorrektur").node().getBBox().width + 15
-        })
+          return d3.select(".filter-bewertung").node().getBBox().width + 15 + d3.select(".filter-kommentar").node().getBBox().width + 15 + d3.select(".filter-textkorrektur").node().getBBox().width + 15;
+        });
         d3.select(".filter-uebersetzung").attr("x", function() {
-          return d3.select(".filter-bewertung").node().getBBox().width + 15 + d3.select(".filter-kommentar").node().getBBox().width + 15 + d3.select(".filter-textkorrektur").node().getBBox().width + 15 + d3.select(".filter-variante").node().getBBox().width + 15
-        })
+          return d3.select(".filter-bewertung").node().getBBox().width + 15 + d3.select(".filter-kommentar").node().getBBox().width + 15 + d3.select(".filter-textkorrektur").node().getBBox().width + 15 + d3.select(".filter-variante").node().getBBox().width + 15;
+        });
 
 
 
-        markierungen.attr("transform", `translate(${d3.select(".legendTitle").node().getBBox().width+15 + d3.select(".marginalien-title").node().getBBox().width+15},0)`)
+        markierungen.attr("transform", `translate(${d3.select(".legendTitle").node().getBBox().width+15 + d3.select(".marginalien-title").node().getBBox().width+15},0)`);
         markierungen.selectAll("rect").attr("width", function() {
-          return d3.select(".markierungen-title").node().getBBox().width + 10
-        })
+          return d3.select(".markierungen-title").node().getBBox().width + 10;
+        });
 
         d3.select(".filter-unterstreichung").attr("x", function() {
-          return d3.select(".filter-anstreichung").node().getBBox().width + 15
-        })
+          return d3.select(".filter-anstreichung").node().getBBox().width + 15;
+        });
         d3.select(".filter-durchstreichung").attr("x", function() {
-          return d3.select(".filter-anstreichung").node().getBBox().width + 15 + d3.select(".filter-unterstreichung").node().getBBox().width + 15
-        })
+          return d3.select(".filter-anstreichung").node().getBBox().width + 15 + d3.select(".filter-unterstreichung").node().getBBox().width + 15;
+        });
         d3.select(".filter-sonstigeMarkierung").attr("x", function() {
-          return d3.select(".filter-anstreichung").node().getBBox().width + 15 + d3.select(".filter-unterstreichung").node().getBBox().width + 15 + d3.select(".filter-durchstreichung").node().getBBox().width + 15
-        })
+          return d3.select(".filter-anstreichung").node().getBBox().width + 15 + d3.select(".filter-unterstreichung").node().getBBox().width + 15 + d3.select(".filter-durchstreichung").node().getBBox().width + 15;
+        });
 
-        eigentumsangaben.attr("transform", `translate(${d3.select(".legendTitle").node().getBBox().width+15 + d3.select(".marginalien-title").node().getBBox().width+15
-        + d3.select(".markierungen-title").node().getBBox().width+15},0)`)
+        eigentumsangaben.attr("transform", `translate(${d3.select(".legendTitle").node().getBBox().width+15 + d3.select(".marginalien-title").node().getBBox().width+15 + d3.select(".markierungen-title").node().getBBox().width+15},0)`);
         eigentumsangaben.selectAll("rect").attr("width", function() {
-          return d3.select(".eigentumsangaben-title").node().getBBox().width + 10
-        })
+          return d3.select(".eigentumsangaben-title").node().getBBox().width + 10;
+        });
 
         d3.select(".filter-provenienzstempel").attr("x", function() {
-          return d3.select(".filter-provenienz").node().getBBox().width + 15
-        })
+          return d3.select(".filter-provenienz").node().getBBox().width + 15;
+        });
 
 
-        zusatzMaterial.attr("transform", `translate(${d3.select(".legendTitle").node().getBBox().width+15 + d3.select(".marginalien-title").node().getBBox().width+15
-        + d3.select(".markierungen-title").node().getBBox().width+15 + d3.select(".eigentumsangaben-title").node().getBBox().width+15},0)`)
+        zusatzMaterial.attr("transform", `translate(${d3.select(".legendTitle").node().getBBox().width+15 + d3.select(".marginalien-title").node().getBBox().width+15 + d3.select(".markierungen-title").node().getBBox().width+15 + d3.select(".eigentumsangaben-title").node().getBBox().width+15},0)`);
 
         zusatzMaterial.selectAll("rect").attr("width", function() {
-          return d3.select(".zusatzmaterial-title").node().getBBox().width + 10
-        })
+          return d3.select(".zusatzmaterial-title").node().getBBox().width + 10;
+        });
 
 
-        anderes.attr("transform", `translate(${d3.select(".legendTitle").node().getBBox().width+15 + d3.select(".marginalien-title").node().getBBox().width+15
-        + d3.select(".markierungen-title").node().getBBox().width+15 + d3.select(".eigentumsangaben-title").node().getBBox().width+15 + d3.select(".zusatzmaterial-title").node().getBBox().width+15},0)`)
+        anderes.attr("transform", `translate(${d3.select(".legendTitle").node().getBBox().width+15 + d3.select(".marginalien-title").node().getBBox().width+15 + d3.select(".markierungen-title").node().getBBox().width+15 + d3.select(".eigentumsangaben-title").node().getBBox().width+15 + d3.select(".zusatzmaterial-title").node().getBBox().width+15},0)`);
 
         anderes.selectAll("rect").attr("width", function() {
-          return d3.select(".anderes-title").node().getBBox().width + 10
-        })
+          return d3.select(".anderes-title").node().getBBox().width + 10;
+        });
         ////////////////////////////
         //Filter-Abstand Update End
-
-
-
 
 
 
@@ -2670,13 +2669,13 @@ Promise.all([
           .attr('width', scaledWidth)
           .attr('height', scaledHeight)
           .style('width', width + 'px')
-          .style('height', height + 'px')
+          .style('height', height + 'px');
 
         canvas.node().getContext('2d');
-        context.scale(ratio, ratio)
+        context.scale(ratio, ratio);
 
-        scrollFunction()
-        draw()
+        scrollFunction();
+        draw();
 
       });
       //////////////Rezize Function End
@@ -2689,50 +2688,50 @@ Promise.all([
       var transcriptFontSize = d3.scaleLinear()
         .domain([500, 2500])
         .range([2, fontsize])
-        .clamp(true)
+        .clamp(true);
 
 
       var detailInfoScale = d3.scaleLinear()
         .domain([450, 800])
         .range([1, 0])
-        .clamp(true)
+        .clamp(true);
 
       var BuchauswahlFeldScale = d3.scaleLinear()
         .domain([0, 3000])
         .range([BuchauswahlFeld, BuchauswahlFeldSeitenFeld])
-        .clamp(true)
+        .clamp(true);
 
 
       var detailInfoTextBoxScale = d3.scaleLinear()
         .domain([50, 800])
         .range([BuchauswahlFeldScale(scrollTop) - detailPicWidth - 2, 100 + BuchauswahlFeldScale(scrollTop) - detailPicWidth])
-        .clamp(true)
+        .clamp(true);
 
       var detailTranscriptScale = d3.scaleLinear()
         .domain([-0.01, 0, 380])
         .range([0, 1, 1])
-        .clamp(true)
+        .clamp(true);
 
       var transcriptYStart = d3.scaleLinear()
         .domain([900, 1250])
         .range([1, -20])
-        .clamp(true)
+        .clamp(true);
 
 
       var detailCircleScale = d3.scaleLinear()
         .domain([2500, 3000])
         .range([0, detailCircleMax])
-        .clamp(true)
+        .clamp(true);
 
       var transcriptPositionScale = d3.scaleLinear()
         .domain([2500, 3000])
         .range([8, 10])
-        .clamp(true)
+        .clamp(true);
 
       var transcriptPathScaleOpacity = d3.scaleLinear()
         .domain([2500, 3000])
         .range([0, 1])
-        .clamp(true)
+        .clamp(true);
 
 
 
@@ -2744,59 +2743,59 @@ Promise.all([
       d3.select("body")
         .on("keydown", function() {
           if (d3.event.key == "Escape") {
-            filter = null
-            clickedBook = 0
-            detailview = false
+            filter = null;
+            clickedBook = 0;
+            detailview = false;
 
-            dataContainer.selectAll(".nodesbg").attr("x", 0).attr("fill", "white").attr("opacity", 1)
-            d3.selectAll(".bookBG").selectAll("rect").style("opacity", 0)
-
-
-
-            eigentumsangaben.select("text").transition().duration(800).style("fill", "#707070")
-            anderes.select("text").transition().duration(800).style("fill", "#f284c0")
-            zusatzMaterial.select("text").transition().duration(800).style("fill", "rgb(210, 164, 0)")
-            marginalien.select("text").transition().duration(800).style("fill", "#f73f26")
-            markierungen.select("text").transition().duration(800).style("fill", "#58b0f7")
-
-            eigentumsangaben.select("rect").transition().duration(800).style("opacity", 0)
-            anderes.select("rect").transition().duration(800).style("opacity", 0)
-            zusatzMaterial.select("rect").transition().duration(800).style("opacity", 0)
-            marginalien.select("rect").transition().duration(800).style("opacity", 0)
-            markierungen.select("rect").transition().duration(800).style("opacity", 0)
+            dataContainer.selectAll(".nodesbg").attr("x", 0).attr("fill", "white").attr("opacity", 1);
+            d3.selectAll(".bookBG").selectAll("rect").style("opacity", 0);
 
 
-            farbeinfaltungMarkierung()
-            farbeinfaltungMarginalien()
-            farbeinfaltungProvenienz()
-            filterInteraction()
 
-            zusatzMaterial.selectAll("text").style("font-weight", "400").style("opacity", 1)
-            marginalien.selectAll("text").style("font-weight", "400").style("opacity", 1)
-            anderes.selectAll("text").style("font-weight", "400").style("opacity", 1)
-            markierungen.selectAll("text").style("font-weight", "400").style("opacity", 1)
-            eigentumsangaben.selectAll("text").style("font-weight", "400").style("opacity", 1)
-            marginaliendetail.transition().duration(800).attr("transform", "scale(0,1)").style("opacity", 0).style("pointer-events", "none")
-            markierungendetail.transition().duration(800).attr("transform", "scale(0,1)").style("opacity", 0).style("pointer-events", "none")
-            eigentumsangabendetail.transition().duration(800).attr("transform", "scale(0,1)").style("opacity", 0).style("pointer-events", "none")
+            eigentumsangaben.select("text").transition().duration(800).style("fill", "#707070");
+            anderes.select("text").transition().duration(800).style("fill", "#f284c0");
+            zusatzMaterial.select("text").transition().duration(800).style("fill", "rgb(210, 164, 0)");
+            marginalien.select("text").transition().duration(800).style("fill", "#f73f26");
+            markierungen.select("text").transition().duration(800).style("fill", "#58b0f7");
 
-            d3.selectAll(".detailDiv").remove()
-            d3.selectAll(".detailInfoParent").remove()
+            eigentumsangaben.select("rect").transition().duration(800).style("opacity", 0);
+            anderes.select("rect").transition().duration(800).style("opacity", 0);
+            zusatzMaterial.select("rect").transition().duration(800).style("opacity", 0);
+            marginalien.select("rect").transition().duration(800).style("opacity", 0);
+            markierungen.select("rect").transition().duration(800).style("opacity", 0);
+
+
+            farbeinfaltungMarkierung();
+            farbeinfaltungMarginalien();
+            farbeinfaltungProvenienz();
+            filterInteraction();
+
+            zusatzMaterial.selectAll("text").style("font-weight", "400").style("opacity", 1);
+            marginalien.selectAll("text").style("font-weight", "400").style("opacity", 1);
+            anderes.selectAll("text").style("font-weight", "400").style("opacity", 1);
+            markierungen.selectAll("text").style("font-weight", "400").style("opacity", 1);
+            eigentumsangaben.selectAll("text").style("font-weight", "400").style("opacity", 1);
+            marginaliendetail.transition().duration(800).attr("transform", "scale(0,1)").style("opacity", 0).style("pointer-events", "none");
+            markierungendetail.transition().duration(800).attr("transform", "scale(0,1)").style("opacity", 0).style("pointer-events", "none");
+            eigentumsangabendetail.transition().duration(800).attr("transform", "scale(0,1)").style("opacity", 0).style("pointer-events", "none");
+
+            d3.selectAll(".detailDiv").remove();
+            d3.selectAll(".detailInfoParent").remove();
 
 
 
             $("html,body").animate({
               scrollTop: 3001
-            }, '0')
+            }, '0');
           }
-        })
+        });
 
 
 
 
       datenByAuthor.forEach(function(D, I) {
 
-        D.Abschnitte = []
+        D.Abschnitte = [];
         D.Abschnitte.push({
           part: 0,
           Provenienz: 0,
@@ -2815,7 +2814,7 @@ Promise.all([
           Leer: 0,
           Verfasser: D.key,
           BuchAnzahlAutor: D.values.length
-        })
+        });
         D.Abschnitte.push({
           part: 1,
           Provenienz: 0,
@@ -2834,7 +2833,7 @@ Promise.all([
           Leer: 0,
           Verfasser: D.key,
           BuchAnzahlAutor: D.values.length
-        })
+        });
         D.Abschnitte.push({
           part: 2,
           Provenienz: 0,
@@ -2853,7 +2852,7 @@ Promise.all([
           Leer: 0,
           Verfasser: D.key,
           BuchAnzahlAutor: D.values.length
-        })
+        });
         D.Abschnitte.push({
           part: 3,
           Provenienz: 0,
@@ -2872,7 +2871,7 @@ Promise.all([
           Leer: 0,
           Verfasser: D.key,
           BuchAnzahlAutor: D.values.length
-        })
+        });
         D.Abschnitte.push({
           part: 4,
           Provenienz: 0,
@@ -2891,7 +2890,7 @@ Promise.all([
           Leer: 0,
           Verfasser: D.key,
           BuchAnzahlAutor: D.values.length
-        })
+        });
         D.Abschnitte.push({
           part: 5,
           Provenienz: 0,
@@ -2910,7 +2909,7 @@ Promise.all([
           Leer: 0,
           Verfasser: D.key,
           BuchAnzahlAutor: D.values.length
-        })
+        });
         D.Abschnitte.push({
           part: 6,
           Provenienz: 0,
@@ -2929,7 +2928,7 @@ Promise.all([
           Leer: 0,
           Verfasser: D.key,
           BuchAnzahlAutor: D.values.length
-        })
+        });
         D.Abschnitte.push({
           part: 7,
           Provenienz: 0,
@@ -2948,7 +2947,7 @@ Promise.all([
           Leer: 0,
           Verfasser: D.key,
           BuchAnzahlAutor: D.values.length
-        })
+        });
         D.Abschnitte.push({
           part: 8,
           Provenienz: 0,
@@ -2967,7 +2966,7 @@ Promise.all([
           Leer: 0,
           Verfasser: D.key,
           BuchAnzahlAutor: D.values.length
-        })
+        });
         D.Abschnitte.push({
           part: 9,
           Provenienz: 0,
@@ -2986,7 +2985,7 @@ Promise.all([
           Leer: 0,
           Verfasser: D.key,
           BuchAnzahlAutor: D.values.length
-        })
+        });
         D.Abschnitte.push({
           part: 10,
           Provenienz: 0,
@@ -3005,7 +3004,7 @@ Promise.all([
           Leer: 0,
           Verfasser: D.key,
           BuchAnzahlAutor: D.values.length
-        })
+        });
         D.Abschnitte.push({
           part: 11,
           Provenienz: 0,
@@ -3024,7 +3023,7 @@ Promise.all([
           Leer: 0,
           Verfasser: D.key,
           BuchAnzahlAutor: D.values.length
-        })
+        });
         D.Abschnitte.push({
           part: 12,
           Provenienz: 0,
@@ -3043,7 +3042,7 @@ Promise.all([
           Leer: 0,
           Verfasser: D.key,
           BuchAnzahlAutor: D.values.length
-        })
+        });
         D.Abschnitte.push({
           part: 13,
           Provenienz: 0,
@@ -3062,7 +3061,7 @@ Promise.all([
           Leer: 0,
           Verfasser: D.key,
           BuchAnzahlAutor: D.values.length
-        })
+        });
         D.Abschnitte.push({
           part: 14,
           Provenienz: 0,
@@ -3081,7 +3080,7 @@ Promise.all([
           Leer: 0,
           Verfasser: D.key,
           BuchAnzahlAutor: D.values.length
-        })
+        });
         D.Abschnitte.push({
           part: 15,
           Provenienz: 0,
@@ -3100,7 +3099,7 @@ Promise.all([
           Leer: 0,
           Verfasser: D.key,
           BuchAnzahlAutor: D.values.length
-        })
+        });
         D.Abschnitte.push({
           part: 16,
           Provenienz: 0,
@@ -3119,7 +3118,7 @@ Promise.all([
           Leer: 0,
           Verfasser: D.key,
           BuchAnzahlAutor: D.values.length
-        })
+        });
         D.Abschnitte.push({
           part: 17,
           Provenienz: 0,
@@ -3138,7 +3137,7 @@ Promise.all([
           Leer: 0,
           Verfasser: D.key,
           BuchAnzahlAutor: D.values.length
-        })
+        });
         D.Abschnitte.push({
           part: 18,
           Provenienz: 0,
@@ -3157,7 +3156,7 @@ Promise.all([
           Leer: 0,
           Verfasser: D.key,
           BuchAnzahlAutor: D.values.length
-        })
+        });
         D.Abschnitte.push({
           part: 19,
           Provenienz: 0,
@@ -3176,7 +3175,7 @@ Promise.all([
           Leer: 0,
           Verfasser: D.key,
           BuchAnzahlAutor: D.values.length
-        })
+        });
         D.Abschnitte.push({
           part: 20,
           Provenienz: 0,
@@ -3195,7 +3194,7 @@ Promise.all([
           Leer: 0,
           Verfasser: D.key,
           BuchAnzahlAutor: D.values.length
-        })
+        });
         D.Abschnitte.push({
           part: 21,
           Provenienz: 0,
@@ -3214,7 +3213,7 @@ Promise.all([
           Leer: 0,
           Verfasser: D.key,
           BuchAnzahlAutor: D.values.length
-        })
+        });
 
 
 
@@ -3224,898 +3223,894 @@ Promise.all([
               return d.ID;
             })
             .entries(E.values.filter(function(d) {
-              return d.Benutzungsspur != ""
-            }))
+              return d.Benutzungsspur != "";
+            }));
 
 
           leseSpuren.forEach(function(x, y) {
             x.Provenienz = x.values.filter(function(d, i) {
-                return d.SchriftspurTyp.includes("P") && d.Schreibmedium !== "Stempel"
+                return d.SchriftspurTyp.includes("P") && d.Schreibmedium !== "Stempel";
               }).length,
               x.Stempel = x.values.filter(function(d, i) {
-                return d.SchriftspurTyp.includes("P") && d.Schreibmedium === "Stempel"
+                return d.SchriftspurTyp.includes("P") && d.Schreibmedium === "Stempel";
               }).length,
               x.Anstreichung = x.values.filter(function(d, i) {
-                return d.Benutzungsspur.includes("1")
+                return d.Benutzungsspur.includes("1");
               }).length,
               x.Unterstreichung = x.values.filter(function(d, i) {
-                return d.Benutzungsspur.includes("2")
+                return d.Benutzungsspur.includes("2");
               }).length,
               x.Durchstreichung = x.values.filter(function(d, i) {
-                return d.Benutzungsspur.includes("3")
+                return d.Benutzungsspur.includes("3");
               }).length,
               x.SonstigeMarkierung = x.values.filter(function(d, i) {
-                return d.Benutzungsspur.includes("4") == true && d.Benutzungsspur.includes("4f") == false
+                return d.Benutzungsspur.includes("4") == true && d.Benutzungsspur.includes("4f") == false;
               }).length,
               x.ZusatzMaterial = x.values.filter(function(d, i) {
-                return d.Benutzungsspur.includes("6")
+                return d.Benutzungsspur.includes("6");
               }).length,
               x.Bewertung = x.values.filter(function(d, i) {
-                return d.SchriftspurTyp.includes("B")
+                return d.SchriftspurTyp.includes("B");
               }).length,
               x.Kommentar = x.values.filter(function(d, i) {
-                return d.SchriftspurTyp.includes("K")
+                return d.SchriftspurTyp.includes("K");
               }).length,
               x.Textkorrektur = x.values.filter(function(d, i) {
-                return d.SchriftspurTyp.includes("T")
+                return d.SchriftspurTyp.includes("T");
               }).length,
               x.Variante = x.values.filter(function(d, i) {
-                return d.SchriftspurTyp.includes("V")
+                return d.SchriftspurTyp.includes("V");
               }).length,
               x.Uebersetzung = x.values.filter(function(d, i) {
-                return d.SchriftspurTyp.includes("U")
+                return d.SchriftspurTyp.includes("U");
               }).length,
               x.Anderes = x.values.filter(function(d, i) {
-                return d.Benutzungsspur.includes("7")
+                return d.Benutzungsspur.includes("7");
               }).length,
               x.Verfasser = x.values[0].Verfasser,
               x.VerfasserOriginal = x.values[0].Verfasser_Original,
-              x.PartPos = x.values[0].Part / x.values[0].maxPart
+              x.PartPos = x.values[0].Part / x.values[0].maxPart;
 
-          })
+          });
 
           leseSpuren.forEach(function(F, C) {
             if (F.PartPos <= 0.05) {
 
               if (F.Provenienz > 0) {
-                D.Abschnitte[1].Provenienz++
+                D.Abschnitte[1].Provenienz++;
               }
               if (F.Stempel > 0) {
-                D.Abschnitte[1].Stempel++
+                D.Abschnitte[1].Stempel++;
               }
               if (F.Anstreichung > 0) {
-                D.Abschnitte[1].Anstreichung++
+                D.Abschnitte[1].Anstreichung++;
               }
               if (F.Unterstreichung > 0) {
-                D.Abschnitte[1].Unterstreichung++
+                D.Abschnitte[1].Unterstreichung++;
               }
               if (F.Durchstreichung > 0) {
-                D.Abschnitte[1].Durchstreichung++
+                D.Abschnitte[1].Durchstreichung++;
               }
               if (F.SonstigeMarkierung > 0) {
-                D.Abschnitte[1].SonstigeMarkierung++
+                D.Abschnitte[1].SonstigeMarkierung++;
               }
               if (F.ZusatzMaterial > 0) {
-                D.Abschnitte[1].ZusatzMaterial++
+                D.Abschnitte[1].ZusatzMaterial++;
               }
               if (F.Anderes > 0) {
-                D.Abschnitte[1].Anderes++
+                D.Abschnitte[1].Anderes++;
               }
               if (F.Bewertung > 0) {
-                D.Abschnitte[1].Bewertung++
+                D.Abschnitte[1].Bewertung++;
               }
               if (F.Kommentar > 0) {
-                D.Abschnitte[1].Kommentar++
+                D.Abschnitte[1].Kommentar++;
               }
               if (F.Textkorrektur > 0) {
-                D.Abschnitte[1].Textkorrektur++
+                D.Abschnitte[1].Textkorrektur++;
               }
               if (F.Uebersetzung > 0) {
-                D.Abschnitte[1].Uebersetzung++
+                D.Abschnitte[1].Uebersetzung++;
               }
               if (F.Variante > 0) {
-                D.Abschnitte[1].Variante++
+                D.Abschnitte[1].Variante++;
               }
             } else if (F.PartPos > 0.05 && F.PartPos <= 0.1) {
               if (F.Provenienz > 0) {
-                D.Abschnitte[2].Provenienz++
+                D.Abschnitte[2].Provenienz++;
               }
               if (F.Stempel > 0) {
-                D.Abschnitte[2].Stempel++
+                D.Abschnitte[2].Stempel++;
               }
               if (F.Anstreichung > 0) {
-                D.Abschnitte[2].Anstreichung++
+                D.Abschnitte[2].Anstreichung++;
               }
               if (F.Unterstreichung > 0) {
-                D.Abschnitte[2].Unterstreichung++
+                D.Abschnitte[2].Unterstreichung++;
               }
               if (F.Durchstreichung > 0) {
-                D.Abschnitte[2].Durchstreichung++
+                D.Abschnitte[2].Durchstreichung++;
               }
               if (F.SonstigeMarkierung > 0) {
-                D.Abschnitte[2].SonstigeMarkierung++
+                D.Abschnitte[2].SonstigeMarkierung++;
               }
               if (F.ZusatzMaterial > 0) {
-                D.Abschnitte[2].ZusatzMaterial++
+                D.Abschnitte[2].ZusatzMaterial++;
               }
               if (F.Anderes > 0) {
-                D.Abschnitte[2].Anderes++
+                D.Abschnitte[2].Anderes++;
               }
               if (F.Bewertung > 0) {
-                D.Abschnitte[2].Bewertung++
+                D.Abschnitte[2].Bewertung++;
               }
               if (F.Kommentar > 0) {
-                D.Abschnitte[2].Kommentar++
+                D.Abschnitte[2].Kommentar++;
               }
               if (F.Textkorrektur > 0) {
-                D.Abschnitte[2].Textkorrektur++
+                D.Abschnitte[2].Textkorrektur++;
               }
               if (F.Uebersetzung > 0) {
-                D.Abschnitte[2].Uebersetzung++
+                D.Abschnitte[2].Uebersetzung++;
               }
               if (F.Variante > 0) {
-                D.Abschnitte[2].Variante++
+                D.Abschnitte[2].Variante++;
               }
             } else if (F.PartPos > 0.1 && F.PartPos <= 0.15) {
               if (F.Provenienz > 0) {
-                D.Abschnitte[3].Provenienz++
+                D.Abschnitte[3].Provenienz++;
               }
               if (F.Stempel > 0) {
-                D.Abschnitte[3].Stempel++
+                D.Abschnitte[3].Stempel++;
               }
               if (F.Anstreichung > 0) {
-                D.Abschnitte[3].Anstreichung++
+                D.Abschnitte[3].Anstreichung++;
               }
               if (F.Unterstreichung > 0) {
-                D.Abschnitte[3].Unterstreichung++
+                D.Abschnitte[3].Unterstreichung++;
               }
               if (F.Durchstreichung > 0) {
-                D.Abschnitte[3].Durchstreichung++
+                D.Abschnitte[3].Durchstreichung++;
               }
               if (F.SonstigeMarkierung > 0) {
-                D.Abschnitte[3].SonstigeMarkierung++
+                D.Abschnitte[3].SonstigeMarkierung++;
               }
               if (F.ZusatzMaterial > 0) {
-                D.Abschnitte[3].ZusatzMaterial++
+                D.Abschnitte[3].ZusatzMaterial++;
               }
               if (F.Anderes > 0) {
-                D.Abschnitte[3].Anderes++
+                D.Abschnitte[3].Anderes++;
               }
               if (F.Bewertung > 0) {
-                D.Abschnitte[3].Bewertung++
+                D.Abschnitte[3].Bewertung++;
               }
               if (F.Kommentar > 0) {
-                D.Abschnitte[3].Kommentar++
+                D.Abschnitte[3].Kommentar++;
               }
               if (F.Textkorrektur > 0) {
-                D.Abschnitte[3].Textkorrektur++
+                D.Abschnitte[3].Textkorrektur++;
               }
               if (F.Uebersetzung > 0) {
-                D.Abschnitte[3].Uebersetzung++
+                D.Abschnitte[3].Uebersetzung++;
               }
               if (F.Variante > 0) {
-                D.Abschnitte[3].Variante++
+                D.Abschnitte[3].Variante++;
               }
             } else if (F.PartPos > 0.15 && F.PartPos <= 0.2) {
               if (F.Provenienz > 0) {
-                D.Abschnitte[4].Provenienz++
+                D.Abschnitte[4].Provenienz++;
               }
               if (F.Stempel > 0) {
-                D.Abschnitte[4].Stempel++
+                D.Abschnitte[4].Stempel++;
               }
               if (F.Anstreichung > 0) {
-                D.Abschnitte[4].Anstreichung++
+                D.Abschnitte[4].Anstreichung++;
               }
               if (F.Unterstreichung > 0) {
-                D.Abschnitte[4].Unterstreichung++
+                D.Abschnitte[4].Unterstreichung++;
               }
               if (F.Durchstreichung > 0) {
-                D.Abschnitte[4].Durchstreichung++
+                D.Abschnitte[4].Durchstreichung++;
               }
               if (F.SonstigeMarkierung > 0) {
-                D.Abschnitte[4].SonstigeMarkierung++
+                D.Abschnitte[4].SonstigeMarkierung++;
               }
               if (F.ZusatzMaterial > 0) {
-                D.Abschnitte[4].ZusatzMaterial++
+                D.Abschnitte[4].ZusatzMaterial++;
               }
               if (F.Anderes > 0) {
-                D.Abschnitte[4].Anderes++
+                D.Abschnitte[4].Anderes++;
               }
               if (F.Bewertung > 0) {
-                D.Abschnitte[4].Bewertung++
+                D.Abschnitte[4].Bewertung++;
               }
               if (F.Kommentar > 0) {
-                D.Abschnitte[4].Kommentar++
+                D.Abschnitte[4].Kommentar++;
               }
               if (F.Textkorrektur > 0) {
-                D.Abschnitte[4].Textkorrektur++
+                D.Abschnitte[4].Textkorrektur++;
               }
               if (F.Uebersetzung > 0) {
-                D.Abschnitte[4].Uebersetzung++
+                D.Abschnitte[4].Uebersetzung++;
               }
               if (F.Variante > 0) {
-                D.Abschnitte[4].Variante++
+                D.Abschnitte[4].Variante++;
               }
             } else if (F.PartPos > 0.2 && F.PartPos <= 0.25) {
               if (F.Provenienz > 0) {
-                D.Abschnitte[5].Provenienz++
+                D.Abschnitte[5].Provenienz++;
               }
               if (F.Stempel > 0) {
-                D.Abschnitte[5].Stempel++
+                D.Abschnitte[5].Stempel++;
               }
               if (F.Anstreichung > 0) {
-                D.Abschnitte[5].Anstreichung++
+                D.Abschnitte[5].Anstreichung++;
               }
               if (F.Unterstreichung > 0) {
-                D.Abschnitte[5].Unterstreichung++
+                D.Abschnitte[5].Unterstreichung++;
               }
               if (F.Durchstreichung > 0) {
-                D.Abschnitte[5].Durchstreichung++
+                D.Abschnitte[5].Durchstreichung++;
               }
               if (F.SonstigeMarkierung > 0) {
-                D.Abschnitte[5].SonstigeMarkierung++
+                D.Abschnitte[5].SonstigeMarkierung++;
               }
               if (F.ZusatzMaterial > 0) {
-                D.Abschnitte[5].ZusatzMaterial++
+                D.Abschnitte[5].ZusatzMaterial++;
               }
               if (F.Anderes > 0) {
-                D.Abschnitte[5].Anderes++
+                D.Abschnitte[5].Anderes++;
               }
               if (F.Bewertung > 0) {
-                D.Abschnitte[5].Bewertung++
+                D.Abschnitte[5].Bewertung++;
               }
               if (F.Kommentar > 0) {
-                D.Abschnitte[5].Kommentar++
+                D.Abschnitte[5].Kommentar++;
               }
               if (F.Textkorrektur > 0) {
-                D.Abschnitte[5].Textkorrektur++
+                D.Abschnitte[5].Textkorrektur++;
               }
               if (F.Uebersetzung > 0) {
-                D.Abschnitte[5].Uebersetzung++
+                D.Abschnitte[5].Uebersetzung++;
               }
               if (F.Variante > 0) {
-                D.Abschnitte[5].Variante++
+                D.Abschnitte[5].Variante++;
               }
             } else if (F.PartPos > 0.25 && F.PartPos <= 0.3) {
               if (F.Provenienz > 0) {
-                D.Abschnitte[6].Provenienz++
+                D.Abschnitte[6].Provenienz++;
               }
               if (F.Stempel > 0) {
-                D.Abschnitte[6].Stempel++
+                D.Abschnitte[6].Stempel++;
               }
               if (F.Anstreichung > 0) {
-                D.Abschnitte[6].Anstreichung++
+                D.Abschnitte[6].Anstreichung++;
               }
               if (F.Unterstreichung > 0) {
-                D.Abschnitte[6].Unterstreichung++
+                D.Abschnitte[6].Unterstreichung++;
               }
               if (F.Durchstreichung > 0) {
-                D.Abschnitte[6].Durchstreichung++
+                D.Abschnitte[6].Durchstreichung++;
               }
               if (F.SonstigeMarkierung > 0) {
-                D.Abschnitte[6].SonstigeMarkierung++
+                D.Abschnitte[6].SonstigeMarkierung++;
               }
               if (F.ZusatzMaterial > 0) {
-                D.Abschnitte[6].ZusatzMaterial++
+                D.Abschnitte[6].ZusatzMaterial++;
               }
               if (F.Anderes > 0) {
-                D.Abschnitte[6].Anderes++
+                D.Abschnitte[6].Anderes++;
               }
               if (F.Bewertung > 0) {
-                D.Abschnitte[6].Bewertung++
+                D.Abschnitte[6].Bewertung++;
               }
               if (F.Kommentar > 0) {
-                D.Abschnitte[6].Kommentar++
+                D.Abschnitte[6].Kommentar++;
               }
               if (F.Textkorrektur > 0) {
-                D.Abschnitte[6].Textkorrektur++
+                D.Abschnitte[6].Textkorrektur++;
               }
               if (F.Uebersetzung > 0) {
-                D.Abschnitte[6].Uebersetzung++
+                D.Abschnitte[6].Uebersetzung++;
               }
               if (F.Variante > 0) {
-                D.Abschnitte[6].Variante++
+                D.Abschnitte[6].Variante++;
               }
             } else if (F.PartPos > 0.3 && F.PartPos <= 0.35) {
               if (F.Provenienz > 0) {
-                D.Abschnitte[7].Provenienz++
+                D.Abschnitte[7].Provenienz++;
               }
               if (F.Stempel > 0) {
-                D.Abschnitte[7].Stempel++
+                D.Abschnitte[7].Stempel++;
               }
               if (F.Anstreichung > 0) {
-                D.Abschnitte[7].Anstreichung++
+                D.Abschnitte[7].Anstreichung++;
               }
               if (F.Unterstreichung > 0) {
-                D.Abschnitte[7].Unterstreichung++
+                D.Abschnitte[7].Unterstreichung++;
               }
               if (F.Durchstreichung > 0) {
-                D.Abschnitte[7].Durchstreichung++
+                D.Abschnitte[7].Durchstreichung++;
               }
               if (F.SonstigeMarkierung > 0) {
-                D.Abschnitte[7].SonstigeMarkierung++
+                D.Abschnitte[7].SonstigeMarkierung++;
               }
               if (F.ZusatzMaterial > 0) {
-                D.Abschnitte[7].ZusatzMaterial++
+                D.Abschnitte[7].ZusatzMaterial++;
               }
               if (F.Anderes > 0) {
-                D.Abschnitte[7].Anderes++
+                D.Abschnitte[7].Anderes++;
               }
               if (F.Bewertung > 0) {
-                D.Abschnitte[7].Bewertung++
+                D.Abschnitte[7].Bewertung++;
               }
               if (F.Kommentar > 0) {
-                D.Abschnitte[7].Kommentar++
+                D.Abschnitte[7].Kommentar++;
               }
               if (F.Textkorrektur > 0) {
-                D.Abschnitte[7].Textkorrektur++
+                D.Abschnitte[7].Textkorrektur++;
               }
               if (F.Uebersetzung > 0) {
-                D.Abschnitte[7].Uebersetzung++
+                D.Abschnitte[7].Uebersetzung++;
               }
               if (F.Variante > 0) {
-                D.Abschnitte[7].Variante++
+                D.Abschnitte[7].Variante++;
               }
             } else if (F.PartPos > 0.35 && F.PartPos <= 0.4) {
               if (F.Provenienz > 0) {
-                D.Abschnitte[8].Provenienz++
+                D.Abschnitte[8].Provenienz++;
               }
               if (F.Stempel > 0) {
-                D.Abschnitte[8].Stempel++
+                D.Abschnitte[8].Stempel++;
               }
               if (F.Anstreichung > 0) {
-                D.Abschnitte[8].Anstreichung++
+                D.Abschnitte[8].Anstreichung++;
               }
               if (F.Unterstreichung > 0) {
-                D.Abschnitte[8].Unterstreichung++
+                D.Abschnitte[8].Unterstreichung++;
               }
               if (F.Durchstreichung > 0) {
-                D.Abschnitte[8].Durchstreichung++
+                D.Abschnitte[8].Durchstreichung++;
               }
               if (F.SonstigeMarkierung > 0) {
-                D.Abschnitte[8].SonstigeMarkierung++
+                D.Abschnitte[8].SonstigeMarkierung++;
               }
               if (F.ZusatzMaterial > 0) {
-                D.Abschnitte[8].ZusatzMaterial++
+                D.Abschnitte[8].ZusatzMaterial++;
               }
               if (F.Anderes > 0) {
-                D.Abschnitte[8].Anderes++
+                D.Abschnitte[8].Anderes++;
               }
               if (F.Bewertung > 0) {
-                D.Abschnitte[8].Bewertung++
+                D.Abschnitte[8].Bewertung++;
               }
               if (F.Kommentar > 0) {
-                D.Abschnitte[8].Kommentar++
+                D.Abschnitte[8].Kommentar++;
               }
               if (F.Textkorrektur > 0) {
-                D.Abschnitte[8].Textkorrektur++
+                D.Abschnitte[8].Textkorrektur++;
               }
               if (F.Uebersetzung > 0) {
-                D.Abschnitte[8].Uebersetzung++
+                D.Abschnitte[8].Uebersetzung++;
               }
               if (F.Variante > 0) {
-                D.Abschnitte[8].Variante++
+                D.Abschnitte[8].Variante++;
               }
             } else if (F.PartPos > 0.4 && F.PartPos <= 0.45) {
               if (F.Provenienz > 0) {
-                D.Abschnitte[9].Provenienz++
+                D.Abschnitte[9].Provenienz++;
               }
               if (F.Stempel > 0) {
-                D.Abschnitte[9].Stempel++
+                D.Abschnitte[9].Stempel++;
               }
               if (F.Anstreichung > 0) {
-                D.Abschnitte[9].Anstreichung++
+                D.Abschnitte[9].Anstreichung++;
               }
               if (F.Unterstreichung > 0) {
-                D.Abschnitte[9].Unterstreichung++
+                D.Abschnitte[9].Unterstreichung++;
               }
               if (F.Durchstreichung > 0) {
-                D.Abschnitte[9].Durchstreichung++
+                D.Abschnitte[9].Durchstreichung++;
               }
               if (F.SonstigeMarkierung > 0) {
-                D.Abschnitte[9].SonstigeMarkierung++
+                D.Abschnitte[9].SonstigeMarkierung++;
               }
               if (F.ZusatzMaterial > 0) {
-                D.Abschnitte[9].ZusatzMaterial++
+                D.Abschnitte[9].ZusatzMaterial++;
               }
               if (F.Anderes > 0) {
-                D.Abschnitte[9].Anderes++
+                D.Abschnitte[9].Anderes++;
               }
               if (F.Bewertung > 0) {
-                D.Abschnitte[9].Bewertung++
+                D.Abschnitte[9].Bewertung++;
               }
               if (F.Kommentar > 0) {
-                D.Abschnitte[9].Kommentar++
+                D.Abschnitte[9].Kommentar++;
               }
               if (F.Textkorrektur > 0) {
-                D.Abschnitte[9].Textkorrektur++
+                D.Abschnitte[9].Textkorrektur++;
               }
               if (F.Uebersetzung > 0) {
-                D.Abschnitte[9].Uebersetzung++
+                D.Abschnitte[9].Uebersetzung++;
               }
               if (F.Variante > 0) {
-                D.Abschnitte[9].Variante++
+                D.Abschnitte[9].Variante++;
               }
             } else if (F.PartPos > 0.45 && F.PartPos <= 0.5) {
               if (F.Provenienz > 0) {
-                D.Abschnitte[10].Provenienz++
+                D.Abschnitte[10].Provenienz++;
               }
               if (F.Stempel > 0) {
-                D.Abschnitte[10].Stempel++
+                D.Abschnitte[10].Stempel++;
               }
               if (F.Anstreichung > 0) {
-                D.Abschnitte[10].Anstreichung++
+                D.Abschnitte[10].Anstreichung++;
               }
               if (F.Unterstreichung > 0) {
-                D.Abschnitte[10].Unterstreichung++
+                D.Abschnitte[10].Unterstreichung++;
               }
               if (F.Durchstreichung > 0) {
-                D.Abschnitte[10].Durchstreichung++
+                D.Abschnitte[10].Durchstreichung++;
               }
               if (F.SonstigeMarkierung > 0) {
-                D.Abschnitte[10].SonstigeMarkierung++
+                D.Abschnitte[10].SonstigeMarkierung++;
               }
               if (F.ZusatzMaterial > 0) {
-                D.Abschnitte[10].ZusatzMaterial++
+                D.Abschnitte[10].ZusatzMaterial++;
               }
               if (F.Anderes > 0) {
-                D.Abschnitte[10].Anderes++
+                D.Abschnitte[10].Anderes++;
               }
               if (F.Bewertung > 0) {
-                D.Abschnitte[10].Bewertung++
+                D.Abschnitte[10].Bewertung++;
               }
               if (F.Kommentar > 0) {
-                D.Abschnitte[10].Kommentar++
+                D.Abschnitte[10].Kommentar++;
               }
               if (F.Textkorrektur > 0) {
-                D.Abschnitte[10].Textkorrektur++
+                D.Abschnitte[10].Textkorrektur++;
               }
               if (F.Uebersetzung > 0) {
-                D.Abschnitte[10].Uebersetzung++
+                D.Abschnitte[10].Uebersetzung++;
               }
               if (F.Variante > 0) {
-                D.Abschnitte[10].Variante++
+                D.Abschnitte[10].Variante++;
               }
             } else if (F.PartPos > 0.5 && F.PartPos <= 0.55) {
               if (F.Provenienz > 0) {
-                D.Abschnitte[11].Provenienz++
+                D.Abschnitte[11].Provenienz++;
               }
               if (F.Stempel > 0) {
-                D.Abschnitte[11].Stempel++
+                D.Abschnitte[11].Stempel++;
               }
               if (F.Anstreichung > 0) {
-                D.Abschnitte[11].Anstreichung++
+                D.Abschnitte[11].Anstreichung++;
               }
               if (F.Unterstreichung > 0) {
-                D.Abschnitte[11].Unterstreichung++
+                D.Abschnitte[11].Unterstreichung++;
               }
               if (F.Durchstreichung > 0) {
-                D.Abschnitte[11].Durchstreichung++
+                D.Abschnitte[11].Durchstreichung++;
               }
               if (F.SonstigeMarkierung > 0) {
-                D.Abschnitte[11].SonstigeMarkierung++
+                D.Abschnitte[11].SonstigeMarkierung++;
               }
               if (F.ZusatzMaterial > 0) {
-                D.Abschnitte[11].ZusatzMaterial++
+                D.Abschnitte[11].ZusatzMaterial++;
               }
               if (F.Anderes > 0) {
-                D.Abschnitte[11].Anderes++
+                D.Abschnitte[11].Anderes++;
               }
               if (F.Bewertung > 0) {
-                D.Abschnitte[11].Bewertung++
+                D.Abschnitte[11].Bewertung++;
               }
               if (F.Kommentar > 0) {
-                D.Abschnitte[11].Kommentar++
+                D.Abschnitte[11].Kommentar++;
               }
               if (F.Textkorrektur > 0) {
-                D.Abschnitte[11].Textkorrektur++
+                D.Abschnitte[11].Textkorrektur++;
               }
               if (F.Uebersetzung > 0) {
-                D.Abschnitte[11].Uebersetzung++
+                D.Abschnitte[11].Uebersetzung++;
               }
               if (F.Variante > 0) {
-                D.Abschnitte[11].Variante++
+                D.Abschnitte[11].Variante++;
               }
             } else if (F.PartPos > 0.55 && F.PartPos <= 0.6) {
               if (F.Provenienz > 0) {
-                D.Abschnitte[12].Provenienz++
+                D.Abschnitte[12].Provenienz++;
               }
               if (F.Stempel > 0) {
-                D.Abschnitte[12].Stempel++
+                D.Abschnitte[12].Stempel++;
               }
               if (F.Anstreichung > 0) {
-                D.Abschnitte[12].Anstreichung++
+                D.Abschnitte[12].Anstreichung++;
               }
               if (F.Unterstreichung > 0) {
-                D.Abschnitte[12].Unterstreichung++
+                D.Abschnitte[12].Unterstreichung++;
               }
               if (F.Durchstreichung > 0) {
-                D.Abschnitte[12].Durchstreichung++
+                D.Abschnitte[12].Durchstreichung++;
               }
               if (F.SonstigeMarkierung > 0) {
-                D.Abschnitte[12].SonstigeMarkierung++
+                D.Abschnitte[12].SonstigeMarkierung++;
               }
               if (F.ZusatzMaterial > 0) {
-                D.Abschnitte[12].ZusatzMaterial++
+                D.Abschnitte[12].ZusatzMaterial++;
               }
               if (F.Anderes > 0) {
-                D.Abschnitte[12].Anderes++
+                D.Abschnitte[12].Anderes++;
               }
               if (F.Bewertung > 0) {
-                D.Abschnitte[12].Bewertung++
+                D.Abschnitte[12].Bewertung++;
               }
               if (F.Kommentar > 0) {
-                D.Abschnitte[12].Kommentar++
+                D.Abschnitte[12].Kommentar++;
               }
               if (F.Textkorrektur > 0) {
-                D.Abschnitte[12].Textkorrektur++
+                D.Abschnitte[12].Textkorrektur++;
               }
               if (F.Uebersetzung > 0) {
-                D.Abschnitte[12].Uebersetzung++
+                D.Abschnitte[12].Uebersetzung++;
               }
               if (F.Variante > 0) {
-                D.Abschnitte[12].Variante++
+                D.Abschnitte[12].Variante++;
               }
             } else if (F.PartPos > 0.5 && F.PartPos <= 0.65) {
               if (F.Provenienz > 0) {
-                D.Abschnitte[13].Provenienz++
+                D.Abschnitte[13].Provenienz++;
               }
               if (F.Stempel > 0) {
-                D.Abschnitte[13].Stempel++
+                D.Abschnitte[13].Stempel++;
               }
               if (F.Anstreichung > 0) {
-                D.Abschnitte[13].Anstreichung++
+                D.Abschnitte[13].Anstreichung++;
               }
               if (F.Unterstreichung > 0) {
-                D.Abschnitte[13].Unterstreichung++
+                D.Abschnitte[13].Unterstreichung++;
               }
               if (F.Durchstreichung > 0) {
-                D.Abschnitte[13].Durchstreichung++
+                D.Abschnitte[13].Durchstreichung++;
               }
               if (F.SonstigeMarkierung > 0) {
-                D.Abschnitte[13].SonstigeMarkierung++
+                D.Abschnitte[13].SonstigeMarkierung++;
               }
               if (F.ZusatzMaterial > 0) {
-                D.Abschnitte[13].ZusatzMaterial++
+                D.Abschnitte[13].ZusatzMaterial++;
               }
               if (F.Anderes > 0) {
-                D.Abschnitte[13].Anderes++
+                D.Abschnitte[13].Anderes++;
               }
               if (F.Bewertung > 0) {
-                D.Abschnitte[13].Bewertung++
+                D.Abschnitte[13].Bewertung++;
               }
               if (F.Kommentar > 0) {
-                D.Abschnitte[13].Kommentar++
+                D.Abschnitte[13].Kommentar++;
               }
               if (F.Textkorrektur > 0) {
-                D.Abschnitte[13].Textkorrektur++
+                D.Abschnitte[13].Textkorrektur++;
               }
               if (F.Uebersetzung > 0) {
-                D.Abschnitte[13].Uebersetzung++
+                D.Abschnitte[13].Uebersetzung++;
               }
               if (F.Variante > 0) {
-                D.Abschnitte[13].Variante++
+                D.Abschnitte[13].Variante++;
               }
             } else if (F.PartPos > 0.65 && F.PartPos <= 0.7) {
               if (F.Provenienz > 0) {
-                D.Abschnitte[14].Provenienz++
+                D.Abschnitte[14].Provenienz++;
               }
               if (F.Stempel > 0) {
-                D.Abschnitte[14].Stempel++
+                D.Abschnitte[14].Stempel++;
               }
               if (F.Anstreichung > 0) {
-                D.Abschnitte[14].Anstreichung++
+                D.Abschnitte[14].Anstreichung++;
               }
               if (F.Unterstreichung > 0) {
-                D.Abschnitte[14].Unterstreichung++
+                D.Abschnitte[14].Unterstreichung++;
               }
               if (F.Durchstreichung > 0) {
-                D.Abschnitte[14].Durchstreichung++
+                D.Abschnitte[14].Durchstreichung++;
               }
               if (F.SonstigeMarkierung > 0) {
-                D.Abschnitte[14].SonstigeMarkierung++
+                D.Abschnitte[14].SonstigeMarkierung++;
               }
               if (F.ZusatzMaterial > 0) {
-                D.Abschnitte[14].ZusatzMaterial++
+                D.Abschnitte[14].ZusatzMaterial++;
               }
               if (F.Anderes > 0) {
-                D.Abschnitte[14].Anderes++
+                D.Abschnitte[14].Anderes++;
               }
               if (F.Bewertung > 0) {
-                D.Abschnitte[14].Bewertung++
+                D.Abschnitte[14].Bewertung++;
               }
               if (F.Kommentar > 0) {
-                D.Abschnitte[14].Kommentar++
+                D.Abschnitte[14].Kommentar++;
               }
               if (F.Textkorrektur > 0) {
-                D.Abschnitte[14].Textkorrektur++
+                D.Abschnitte[14].Textkorrektur++;
               }
               if (F.Uebersetzung > 0) {
-                D.Abschnitte[14].Uebersetzung++
+                D.Abschnitte[14].Uebersetzung++;
               }
               if (F.Variante > 0) {
-                D.Abschnitte[14].Variante++
+                D.Abschnitte[14].Variante++;
               }
             } else if (F.PartPos > 0.7 && F.PartPos <= 0.75) {
               if (F.Provenienz > 0) {
-                D.Abschnitte[15].Provenienz++
+                D.Abschnitte[15].Provenienz++;
               }
               if (F.Stempel > 0) {
-                D.Abschnitte[15].Stempel++
+                D.Abschnitte[15].Stempel++;
               }
               if (F.Anstreichung > 0) {
-                D.Abschnitte[15].Anstreichung++
+                D.Abschnitte[15].Anstreichung++;
               }
               if (F.Unterstreichung > 0) {
-                D.Abschnitte[15].Unterstreichung++
+                D.Abschnitte[15].Unterstreichung++;
               }
               if (F.Durchstreichung > 0) {
-                D.Abschnitte[15].Durchstreichung++
+                D.Abschnitte[15].Durchstreichung++;
               }
               if (F.SonstigeMarkierung > 0) {
-                D.Abschnitte[15].SonstigeMarkierung++
+                D.Abschnitte[15].SonstigeMarkierung++;
               }
               if (F.ZusatzMaterial > 0) {
-                D.Abschnitte[15].ZusatzMaterial++
+                D.Abschnitte[15].ZusatzMaterial++;
               }
               if (F.Anderes > 0) {
-                D.Abschnitte[15].Anderes++
+                D.Abschnitte[15].Anderes++;
               }
               if (F.Bewertung > 0) {
-                D.Abschnitte[15].Bewertung++
+                D.Abschnitte[15].Bewertung++;
               }
               if (F.Kommentar > 0) {
-                D.Abschnitte[15].Kommentar++
+                D.Abschnitte[15].Kommentar++;
               }
               if (F.Textkorrektur > 0) {
-                D.Abschnitte[15].Textkorrektur++
+                D.Abschnitte[15].Textkorrektur++;
               }
               if (F.Uebersetzung > 0) {
-                D.Abschnitte[15].Uebersetzung++
+                D.Abschnitte[15].Uebersetzung++;
               }
               if (F.Variante > 0) {
-                D.Abschnitte[15].Variante++
+                D.Abschnitte[15].Variante++;
               }
             } else if (F.PartPos > 0.75 && F.PartPos <= 0.8) {
               if (F.Provenienz > 0) {
-                D.Abschnitte[16].Provenienz++
+                D.Abschnitte[16].Provenienz++;
               }
               if (F.Stempel > 0) {
-                D.Abschnitte[16].Stempel++
+                D.Abschnitte[16].Stempel++;
               }
               if (F.Anstreichung > 0) {
-                D.Abschnitte[16].Anstreichung++
+                D.Abschnitte[16].Anstreichung++;
               }
               if (F.Unterstreichung > 0) {
-                D.Abschnitte[16].Unterstreichung++
+                D.Abschnitte[16].Unterstreichung++;
               }
               if (F.Durchstreichung > 0) {
-                D.Abschnitte[16].Durchstreichung++
+                D.Abschnitte[16].Durchstreichung++;
               }
               if (F.SonstigeMarkierung > 0) {
-                D.Abschnitte[16].SonstigeMarkierung++
+                D.Abschnitte[16].SonstigeMarkierung++;
               }
               if (F.ZusatzMaterial > 0) {
-                D.Abschnitte[16].ZusatzMaterial++
+                D.Abschnitte[16].ZusatzMaterial++;
               }
               if (F.Anderes > 0) {
-                D.Abschnitte[16].Anderes++
+                D.Abschnitte[16].Anderes++;
               }
               if (F.Bewertung > 0) {
-                D.Abschnitte[16].Bewertung++
+                D.Abschnitte[16].Bewertung++;
               }
               if (F.Kommentar > 0) {
-                D.Abschnitte[16].Kommentar++
+                D.Abschnitte[16].Kommentar++;
               }
               if (F.Textkorrektur > 0) {
-                D.Abschnitte[16].Textkorrektur++
+                D.Abschnitte[16].Textkorrektur++;
               }
               if (F.Uebersetzung > 0) {
-                D.Abschnitte[16].Uebersetzung++
+                D.Abschnitte[16].Uebersetzung++;
               }
               if (F.Variante > 0) {
-                D.Abschnitte[16].Variante++
+                D.Abschnitte[16].Variante++;
               }
             } else if (F.PartPos > 0.8 && F.PartPos <= 0.85) {
               if (F.Provenienz > 0) {
-                D.Abschnitte[17].Provenienz++
+                D.Abschnitte[17].Provenienz++;
               }
               if (F.Stempel > 0) {
-                D.Abschnitte[17].Stempel++
+                D.Abschnitte[17].Stempel++;
               }
               if (F.Anstreichung > 0) {
-                D.Abschnitte[17].Anstreichung++
+                D.Abschnitte[17].Anstreichung++;
               }
               if (F.Unterstreichung > 0) {
-                D.Abschnitte[17].Unterstreichung++
+                D.Abschnitte[17].Unterstreichung++;
               }
               if (F.Durchstreichung > 0) {
-                D.Abschnitte[17].Durchstreichung++
+                D.Abschnitte[17].Durchstreichung++;
               }
               if (F.SonstigeMarkierung > 0) {
-                D.Abschnitte[17].SonstigeMarkierung++
+                D.Abschnitte[17].SonstigeMarkierung++;
               }
               if (F.ZusatzMaterial > 0) {
-                D.Abschnitte[17].ZusatzMaterial++
+                D.Abschnitte[17].ZusatzMaterial++;
               }
               if (F.Anderes > 0) {
-                D.Abschnitte[17].Anderes++
+                D.Abschnitte[17].Anderes++;
               }
               if (F.Bewertung > 0) {
-                D.Abschnitte[17].Bewertung++
+                D.Abschnitte[17].Bewertung++;
               }
               if (F.Kommentar > 0) {
-                D.Abschnitte[17].Kommentar++
+                D.Abschnitte[17].Kommentar++;
               }
               if (F.Textkorrektur > 0) {
-                D.Abschnitte[17].Textkorrektur++
+                D.Abschnitte[17].Textkorrektur++;
               }
               if (F.Uebersetzung > 0) {
-                D.Abschnitte[17].Uebersetzung++
+                D.Abschnitte[17].Uebersetzung++;
               }
               if (F.Variante > 0) {
-                D.Abschnitte[17].Variante++
+                D.Abschnitte[17].Variante++;
               }
             } else if (F.PartPos > 0.85 && F.PartPos <= 0.9) {
               if (F.Provenienz > 0) {
-                D.Abschnitte[18].Provenienz++
+                D.Abschnitte[18].Provenienz++;
               }
               if (F.Stempel > 0) {
-                D.Abschnitte[18].Stempel++
+                D.Abschnitte[18].Stempel++;
               }
               if (F.Anstreichung > 0) {
-                D.Abschnitte[18].Anstreichung++
+                D.Abschnitte[18].Anstreichung++;
               }
               if (F.Unterstreichung > 0) {
-                D.Abschnitte[18].Unterstreichung++
+                D.Abschnitte[18].Unterstreichung++;
               }
               if (F.Durchstreichung > 0) {
-                D.Abschnitte[18].Durchstreichung++
+                D.Abschnitte[18].Durchstreichung++;
               }
               if (F.SonstigeMarkierung > 0) {
-                D.Abschnitte[18].SonstigeMarkierung++
+                D.Abschnitte[18].SonstigeMarkierung++;
               }
               if (F.ZusatzMaterial > 0) {
-                D.Abschnitte[18].ZusatzMaterial++
+                D.Abschnitte[18].ZusatzMaterial++;
               }
               if (F.Anderes > 0) {
-                D.Abschnitte[18].Anderes++
+                D.Abschnitte[18].Anderes++;
               }
               if (F.Bewertung > 0) {
-                D.Abschnitte[18].Bewertung++
+                D.Abschnitte[18].Bewertung++;
               }
               if (F.Kommentar > 0) {
-                D.Abschnitte[18].Kommentar++
+                D.Abschnitte[18].Kommentar++;
               }
               if (F.Textkorrektur > 0) {
-                D.Abschnitte[18].Textkorrektur++
+                D.Abschnitte[18].Textkorrektur++;
               }
               if (F.Uebersetzung > 0) {
-                D.Abschnitte[18].Uebersetzung++
+                D.Abschnitte[18].Uebersetzung++;
               }
               if (F.Variante > 0) {
-                D.Abschnitte[18].Variante++
+                D.Abschnitte[18].Variante++;
               }
             } else if (F.PartPos > 0.9 && F.PartPos <= 0.95) {
               if (F.Provenienz > 0) {
-                D.Abschnitte[19].Provenienz++
+                D.Abschnitte[19].Provenienz++;
               }
               if (F.Stempel > 0) {
-                D.Abschnitte[19].Stempel++
+                D.Abschnitte[19].Stempel++;
               }
               if (F.Anstreichung > 0) {
-                D.Abschnitte[19].Anstreichung++
+                D.Abschnitte[19].Anstreichung++;
               }
               if (F.Unterstreichung > 0) {
-                D.Abschnitte[19].Unterstreichung++
+                D.Abschnitte[19].Unterstreichung++;
               }
               if (F.Durchstreichung > 0) {
-                D.Abschnitte[19].Durchstreichung++
+                D.Abschnitte[19].Durchstreichung++;
               }
               if (F.SonstigeMarkierung > 0) {
-                D.Abschnitte[19].SonstigeMarkierung++
+                D.Abschnitte[19].SonstigeMarkierung++;
               }
               if (F.ZusatzMaterial > 0) {
-                D.Abschnitte[19].ZusatzMaterial++
+                D.Abschnitte[19].ZusatzMaterial++;
               }
               if (F.Anderes > 0) {
-                D.Abschnitte[19].Anderes++
+                D.Abschnitte[19].Anderes++;
               }
               if (F.Bewertung > 0) {
-                D.Abschnitte[19].Bewertung++
+                D.Abschnitte[19].Bewertung++;
               }
               if (F.Kommentar > 0) {
-                D.Abschnitte[19].Kommentar++
+                D.Abschnitte[19].Kommentar++;
               }
               if (F.Textkorrektur > 0) {
-                D.Abschnitte[19].Textkorrektur++
+                D.Abschnitte[19].Textkorrektur++;
               }
               if (F.Uebersetzung > 0) {
-                D.Abschnitte[19].Uebersetzung++
+                D.Abschnitte[19].Uebersetzung++;
               }
               if (F.Variante > 0) {
-                D.Abschnitte[19].Variante++
+                D.Abschnitte[19].Variante++;
               }
             } else if (F.PartPos > 0.95 && F.PartPos <= 1) {
               if (F.Provenienz > 0) {
-                D.Abschnitte[20].Provenienz++
+                D.Abschnitte[20].Provenienz++;
               }
               if (F.Stempel > 0) {
-                D.Abschnitte[20].Stempel++
+                D.Abschnitte[20].Stempel++;
               }
               if (F.Anstreichung > 0) {
-                D.Abschnitte[20].Anstreichung++
+                D.Abschnitte[20].Anstreichung++;
               }
               if (F.Unterstreichung > 0) {
-                D.Abschnitte[20].Unterstreichung++
+                D.Abschnitte[20].Unterstreichung++;
               }
               if (F.Durchstreichung > 0) {
-                D.Abschnitte[20].Durchstreichung++
+                D.Abschnitte[20].Durchstreichung++;
               }
               if (F.SonstigeMarkierung > 0) {
-                D.Abschnitte[20].SonstigeMarkierung++
+                D.Abschnitte[20].SonstigeMarkierung++;
               }
               if (F.ZusatzMaterial > 0) {
-                D.Abschnitte[20].ZusatzMaterial++
+                D.Abschnitte[20].ZusatzMaterial++;
               }
               if (F.Anderes > 0) {
-                D.Abschnitte[20].Anderes++
+                D.Abschnitte[20].Anderes++;
               }
               if (F.Bewertung > 0) {
-                D.Abschnitte[20].Bewertung++
+                D.Abschnitte[20].Bewertung++;
               }
               if (F.Kommentar > 0) {
-                D.Abschnitte[20].Kommentar++
+                D.Abschnitte[20].Kommentar++;
               }
               if (F.Textkorrektur > 0) {
-                D.Abschnitte[20].Textkorrektur++
+                D.Abschnitte[20].Textkorrektur++;
               }
               if (F.Uebersetzung > 0) {
-                D.Abschnitte[20].Uebersetzung++
+                D.Abschnitte[20].Uebersetzung++;
               }
               if (F.Variante > 0) {
-                D.Abschnitte[20].Variante++
+                D.Abschnitte[20].Variante++;
               }
             }
 
 
-          })
+          });
 
 
-
-
-
-        })
+        });
 
 
 
 
 
         D.Abschnitte.forEach(function(E, F) {
-          E.ProvenienzNorm = E.Provenienz / E.BuchAnzahlAutor
-          E.StempelNorm = E.Stempel / E.BuchAnzahlAutor
-          E.AnstreichungNorm = E.Anstreichung / E.BuchAnzahlAutor
-          E.UnterstreichungNorm = E.Unterstreichung / E.BuchAnzahlAutor
-          E.DurchstreichungNorm = E.Durchstreichung / E.BuchAnzahlAutor
-          E.SonstigeMarkierungNorm = E.SonstigeMarkierung / E.BuchAnzahlAutor
-          E.ZusatzMaterialNorm = E.ZusatzMaterial / E.BuchAnzahlAutor
-          E.BewertungNorm = E.Bewertung / E.BuchAnzahlAutor
-          E.KommentarNorm = E.Kommentar / E.BuchAnzahlAutor
-          E.TextkorrekturNorm = E.Textkorrektur / E.BuchAnzahlAutor
-          E.VarianteNorm = E.Variante / E.BuchAnzahlAutor
-          E.UebersetzungNorm = E.Uebersetzung / E.BuchAnzahlAutor
-          E.AnderesNorm = E.Anderes / E.BuchAnzahlAutor
-          E.LeerNorm = E.Leer / E.BuchAnzahlAutor
-          // E.PlatzhalterNorm = 0
+          E.ProvenienzNorm = E.Provenienz / E.BuchAnzahlAutor;
+          E.StempelNorm = E.Stempel / E.BuchAnzahlAutor;
+          E.AnstreichungNorm = E.Anstreichung / E.BuchAnzahlAutor;
+          E.UnterstreichungNorm = E.Unterstreichung / E.BuchAnzahlAutor;
+          E.DurchstreichungNorm = E.Durchstreichung / E.BuchAnzahlAutor;
+          E.SonstigeMarkierungNorm = E.SonstigeMarkierung / E.BuchAnzahlAutor;
+          E.ZusatzMaterialNorm = E.ZusatzMaterial / E.BuchAnzahlAutor;
+          E.BewertungNorm = E.Bewertung / E.BuchAnzahlAutor;
+          E.KommentarNorm = E.Kommentar / E.BuchAnzahlAutor;
+          E.TextkorrekturNorm = E.Textkorrektur / E.BuchAnzahlAutor;
+          E.VarianteNorm = E.Variante / E.BuchAnzahlAutor;
+          E.UebersetzungNorm = E.Uebersetzung / E.BuchAnzahlAutor;
+          E.AnderesNorm = E.Anderes / E.BuchAnzahlAutor;
+          E.LeerNorm = E.Leer / E.BuchAnzahlAutor;
 
           E.TotalTraces = E.Provenienz + E.Stempel + E.Anstreichung + E.Unterstreichung + E.Durchstreichung + E.SonstigeMarkierung + E.ZusatzMaterial +
-            E.Bewertung + E.Kommentar + E.Textkorrektur + E.Variante + E.Uebersetzung + E.Anderes
-          E.TotalTracesNorm = E.TotalTraces / E.BuchAnzahlAutor
-        })
+            E.Bewertung + E.Kommentar + E.Textkorrektur + E.Variante + E.Uebersetzung + E.Anderes;
+          E.TotalTracesNorm = E.TotalTraces / E.BuchAnzahlAutor;
+        });
 
 
 
-      })
+      });
 
 
       datenByAuthor.forEach(function(D, I) {
@@ -4123,31 +4118,31 @@ Promise.all([
         D.maxTraceNumber = d3.max([D.Abschnitte[0].TotalTraces, D.Abschnitte[1].TotalTraces, D.Abschnitte[2].TotalTraces, D.Abschnitte[3].TotalTraces, D.Abschnitte[4].TotalTraces, D.Abschnitte[5].TotalTraces, D.Abschnitte[6].TotalTraces, D
           .Abschnitte[7].TotalTraces, D.Abschnitte[8].TotalTraces, D.Abschnitte[9].TotalTraces, D.Abschnitte[10].TotalTraces, D.Abschnitte[11].TotalTraces, D.Abschnitte[12].TotalTraces, D.Abschnitte[13].TotalTraces, D.Abschnitte[14]
           .TotalTraces, D.Abschnitte[15].TotalTraces, D.Abschnitte[16].TotalTraces, D.Abschnitte[17].TotalTraces, D.Abschnitte[18].TotalTraces, D.Abschnitte[19].TotalTraces, D.Abschnitte[20].TotalTraces
-        ])
+        ]);
 
-        D.maxTraceNumberNorm = D.maxTraceNumber / D.Abschnitte[0].BuchAnzahlAutor
+        D.maxTraceNumberNorm = D.maxTraceNumber / D.Abschnitte[0].BuchAnzahlAutor;
 
-      })
+      });
 
       datenByAuthor.forEach(function(D, I) {
 
         D.maxTraceNumber = d3.max([D.Abschnitte[0].TotalTraces, D.Abschnitte[1].TotalTraces, D.Abschnitte[2].TotalTraces, D.Abschnitte[3].TotalTraces, D.Abschnitte[4].TotalTraces, D.Abschnitte[5].TotalTraces, D.Abschnitte[6].TotalTraces, D
           .Abschnitte[7].TotalTraces, D.Abschnitte[8].TotalTraces, D.Abschnitte[9].TotalTraces, D.Abschnitte[10].TotalTraces, D.Abschnitte[11].TotalTraces, D.Abschnitte[12].TotalTraces, D.Abschnitte[13].TotalTraces, D.Abschnitte[14]
           .TotalTraces, D.Abschnitte[15].TotalTraces, D.Abschnitte[16].TotalTraces, D.Abschnitte[17].TotalTraces, D.Abschnitte[18].TotalTraces, D.Abschnitte[19].TotalTraces, D.Abschnitte[20].TotalTraces
-        ])
+        ]);
 
-        D.maxTraceNumberNorm = D.maxTraceNumber / D.Abschnitte[0].BuchAnzahlAutor
+        D.maxTraceNumberNorm = D.maxTraceNumber / D.Abschnitte[0].BuchAnzahlAutor;
         if (I > 0) {
-          D.maxTraceNumberNormBefore = datenByAuthor[I - 1].maxTraceNumberNorm
+          D.maxTraceNumberNormBefore = datenByAuthor[I - 1].maxTraceNumberNorm;
         }
-      })
+      });
 
 
 
 
 
-      var posx = 0
-      var posx2 = 0
+      var posx = 0;
+      var posx2 = 0;
 
       var bookFingerprint = dataContainer.selectAll(".bookFingerprint")
         .data(datenByTitle)
@@ -4156,16 +4151,16 @@ Promise.all([
         .attr("class", "bookFingerprint")
         .attr("transform", function(d, i) {
           if (i == 0) {
-            posx = 0
-            return "translate(" + (marginleft + (posx)) + "," + (posYCanvas) + ")"
+            posx = 0;
+            return "translate(" + (marginleft + (posx)) + "," + (posYCanvas) + ")";
           } else if (i != 0 && datenByTitle[i - 1].values[0].Verfasser != d.values[0].Verfasser && d.values[0].AuthorCount > 1) {
-            posx = posx + authorAbstand
-            return "translate(" + (marginleft + (posx)) + "," + (posYCanvas) + ")"
+            posx = posx + authorAbstand;
+            return "translate(" + (marginleft + (posx)) + "," + (posYCanvas) + ")";
           } else {
-            posx = posx + buchBgBreite
-            return "translate(" + (marginleft + (posx)) + "," + (posYCanvas) + ")"
+            posx = posx + buchBgBreite;
+            return "translate(" + (marginleft + (posx)) + "," + (posYCanvas) + ")";
           }
-        })
+        });
 
 
       ///clip-path für transcriptions start
@@ -4175,7 +4170,7 @@ Promise.all([
         .attr("id", "transcript-clip")
         .append("rect")
         .attr("height", height)
-        .attr("width", width)
+        .attr("width", width);
 
       ///clip-path für transcriptions ende
 
@@ -4186,17 +4181,17 @@ Promise.all([
         .append("g")
         .attr("transform", function(d, i) {
           if (i == 0) {
-            posx = 0
-            return "translate(" + (marginleft - ((buchBgBreite - buchBreite) / 2) + (posx)) + "," + (posY) + ")"
+            posx = 0;
+            return "translate(" + (marginleft - ((buchBgBreite - buchBreite) / 2) + (posx)) + "," + (posY) + ")";
           } else if (i != 0 && datenByTitle[i - 1].values[0].Verfasser != d.values[0].Verfasser && d.values[0].AuthorCount > 1) {
-            posx = posx + authorAbstand
-            return "translate(" + (marginleft - ((buchBgBreite - buchBreite) / 2) + (posx)) + "," + (posY) + ")"
+            posx = posx + authorAbstand;
+            return "translate(" + (marginleft - ((buchBgBreite - buchBreite) / 2) + (posx)) + "," + (posY) + ")";
           } else {
-            posx = posx + buchBgBreite
-            return "translate(" + (marginleft - ((buchBgBreite - buchBreite) / 2) + (posx)) + "," + (posY) + ")"
+            posx = posx + buchBgBreite;
+            return "translate(" + (marginleft - ((buchBgBreite - buchBreite) / 2) + (posx)) + "," + (posY) + ")";
           }
         })
-        .attr("class", "bookBG bookBGsvg")
+        .attr("class", "bookBG bookBGsvg");
 
       var bookGFront = svgFront.selectAll(".bookBG")
         .data(datenByTitle)
@@ -4204,17 +4199,17 @@ Promise.all([
         .append("g")
         .attr("transform", function(d, i) {
           if (i == 0) {
-            posx = 0
-            return "translate(" + (marginleft - ((buchBgBreite - buchBreite) / 2) + (posx)) + "," + (posY) + ")"
+            posx = 0;
+            return "translate(" + (marginleft - ((buchBgBreite - buchBreite) / 2) + (posx)) + "," + (posY) + ")";
           } else if (i != 0 && datenByTitle[i - 1].values[0].Verfasser != d.values[0].Verfasser && d.values[0].AuthorCount > 1) {
-            posx = posx + authorAbstand
-            return "translate(" + (marginleft - ((buchBgBreite - buchBreite) / 2) + (posx)) + "," + (posY) + ")"
+            posx = posx + authorAbstand;
+            return "translate(" + (marginleft - ((buchBgBreite - buchBreite) / 2) + (posx)) + "," + (posY) + ")";
           } else {
-            posx = posx + buchBgBreite
-            return "translate(" + (marginleft - ((buchBgBreite - buchBreite) / 2) + (posx)) + "," + (posY) + ")"
+            posx = posx + buchBgBreite;
+            return "translate(" + (marginleft - ((buchBgBreite - buchBreite) / 2) + (posx)) + "," + (posY) + ")";
           }
         })
-        .attr("class", "bookBG")
+        .attr("class", "bookBG");
 
       var bookTitleFront = svgFrontTitles.selectAll(".bookTitleFrontG")
         .data(datenByTitle)
@@ -4222,103 +4217,103 @@ Promise.all([
         .append("g")
         .attr("transform", function(d, i) {
           if (i == 0) {
-            posx = 0
-            return "translate(" + (marginleft - 40.5 + (posx)) + "," + (posY) + ")"
+            posx = 0;
+            return "translate(" + (marginleft - 40.5 + (posx)) + "," + (posY) + ")";
           } else if (i != 0 && datenByTitle[i - 1].values[0].Verfasser != d.values[0].Verfasser && d.values[0].AuthorCount > 1) {
-            posx = posx + authorAbstand
-            return "translate(" + (marginleft - 40.5 + (posx)) + "," + (posY) + ")"
+            posx = posx + authorAbstand;
+            return "translate(" + (marginleft - 40.5 + (posx)) + "," + (posY) + ")";
           } else {
-            posx = posx + buchBgBreite
-            return "translate(" + (marginleft - 40.5 + (posx)) + "," + (posY) + ")"
+            posx = posx + buchBgBreite;
+            return "translate(" + (marginleft - 40.5 + (posx)) + "," + (posY) + ")";
           }
         })
         .attr("class", "bookTitleFrontG")
-        .style("display", "none")
+        .style("display", "none");
 
 
       bookTitleFront.append("rect")
         .attr("height", 1500)
         .attr("width", 40)
         .attr("fill", "#474747")
-        .attr("class", "BuchTitelRect")
+        .attr("class", "BuchTitelRect");
 
 
       bookTitleFront.append("text").attr("x", -4).attr("y", 16).style("text-anchor", "end")
         .text(function(d) {
           if (d.values[0].Verfasser_Original.length > 70) {
-            return (d.values[0].Verfasser_Original).substring(0, 70) + " [...]"
+            return (d.values[0].Verfasser_Original).substring(0, 70) + " [...]";
           } else {
-            return d.values[0].Verfasser_Original
+            return d.values[0].Verfasser_Original;
           }
         })
         .attr("fill", "white")
         .attr("class", "BuchTitelLabel")
         .style("font-weight", "bold")
         .style("letter-spacing", "1px")
-        .attr("transform", "rotate(-90)")
+        .attr("transform", "rotate(-90)");
 
 
 
       bookTitleFront.append("text").attr("x", -4).attr("y", 32).style("text-anchor", "end")
         .text(function(d) {
           if (korpus.filter(function(D, I) {
-              return D.KurzSignatur == d.values[0].BookID
+              return D.KurzSignatur == d.values[0].BookID;
             })[0]) {
             if (korpus.filter(function(D, I) {
-                return D.KurzSignatur == d.values[0].BookID
+                return D.KurzSignatur == d.values[0].BookID;
               })[0].Kurztitel.length > 70) {
               return (korpus.filter(function(D, I) {
-                return D.KurzSignatur == d.values[0].BookID
-              })[0].Kurztitel).substring(0, 70) + " [...]"
+                return D.KurzSignatur == d.values[0].BookID;
+              })[0].Kurztitel).substring(0, 70) + " [...]";
             } else {
               return korpus.filter(function(D, I) {
-                return D.KurzSignatur == d.values[0].BookID
-              })[0].Kurztitel
+                return D.KurzSignatur == d.values[0].BookID;
+              })[0].Kurztitel;
             }
           }
         })
         .attr("fill", "white")
         .attr("class", "BuchTitelLabel")
-        .attr("transform", "rotate(-90)")
+        .attr("transform", "rotate(-90)");
 
 
       bookTitleFront.append("text").attr("x", -areaheight).attr("y", 24).style("text-anchor", "start")
         .text(function(d) {
           if (korpus.filter(function(D, I) {
-              return D.KurzSignatur == d.values[0].BookID
+              return D.KurzSignatur == d.values[0].BookID;
             })[0]) {
             if (korpus.filter(function(D, I) {
-                return D.KurzSignatur == d.values[0].BookID
+                return D.KurzSignatur == d.values[0].BookID;
               })[0].Formalschlagwort_Genre != "") {
 
               return korpus.filter(function(D, I) {
-                return D.KurzSignatur == d.values[0].BookID
+                return D.KurzSignatur == d.values[0].BookID;
               })[0].Formalschlagwort_Genre + " (" + korpus.filter(function(D, I) {
-                return D.KurzSignatur == d.values[0].BookID
-              })[0].Jahr + ")"
+                return D.KurzSignatur == d.values[0].BookID;
+              })[0].Jahr + ")";
             } else {
               return "(" + korpus.filter(function(D, I) {
-                return D.KurzSignatur == d.values[0].BookID
-              })[0].Jahr + ")"
+                return D.KurzSignatur == d.values[0].BookID;
+              })[0].Jahr + ")";
             }
           }
         })
         .attr("fill", "white")
         .attr("class", "BuchTitelLabel")
-        .attr("transform", "rotate(-90)")
+        .attr("transform", "rotate(-90)");
 
 
 
       var authorLabel = bookG
         .filter(function(d, i) {
-          return i == 0 || d.values[0].Verfasser != datenByTitle[i - 1].values[0].Verfasser
+          return i == 0 || d.values[0].Verfasser != datenByTitle[i - 1].values[0].Verfasser;
         })
-        .append("g").attr("transform", "translate(4,-3)rotate(-45)")
+        .append("g").attr("transform", "translate(4,-3)rotate(-45)");
       var layerGroups = bookGFront
         .filter(function(d, i) {
-          return i == 0 || d.values[0].Verfasser != datenByTitle[i - 1].values[0].Verfasser
+          return i == 0 || d.values[0].Verfasser != datenByTitle[i - 1].values[0].Verfasser;
         })
-        .append("g").attr("transform", "translate(0,0)rotate(0)")
+        .append("g").attr("transform", "translate(0,0)rotate(0)");
 
 
       var stack = d3.stack()
@@ -4331,11 +4326,12 @@ Promise.all([
 
 
 
-      var totalAreaChartsWidth = 0
+      var totalAreaChartsWidth = 0;
       datenByAuthor.forEach(function(D, I) {
-        totalAreaChartsWidth = totalAreaChartsWidth + xAreaMax * D.maxTraceNumberNorm
-      })
-      authorLevelAbstand = (chartArea - totalAreaChartsWidth) / authorAnzahl
+        totalAreaChartsWidth = totalAreaChartsWidth + xAreaMax * D.maxTraceNumberNorm;
+      });
+
+      authorLevelAbstand = (chartArea - totalAreaChartsWidth) / authorAnzahl;
 
 
 
@@ -4350,7 +4346,7 @@ Promise.all([
 
       var area = d3.area()
         .y(function(d, i) {
-          return yArea(d.data.part)
+          return yArea(d.data.part);
         })
         .x0(function(d) {
           return xArea(d[0]);
@@ -4358,20 +4354,20 @@ Promise.all([
         .x1(function(d) {
           return xArea(d[1]);
         })
-        .curve(d3.curveBasis)
+        .curve(d3.curveBasis);
 
 
-      var areachartGroup = layerGroups.append("g").attr("class", "areachartGroup")
+      var areachartGroup = layerGroups.append("g").attr("class", "areachartGroup");
 
       var areachart = areachartGroup.selectAll(".areachartlayer")
         .data(function(D, I) {
           return (stack(datenByAuthor[I].Abschnitte).filter(function(d) {
-            return d
-          }))
+            return d;
+          }));
         })
         .enter().append("g")
         .attr("class", "areachartlayer")
-        .attr("display", "none")
+        .attr("display", "none");
 
 
       areachartGroup.append("line")
@@ -4383,42 +4379,42 @@ Promise.all([
         .attr("stroke", "black")
         .style("opacity", 1)
         .attr("stroke-dasharray", 2, 0.5)
-        .attr("display", "none")
+        .attr("display", "none");
 
 
       areachart.append("path")
         .attr("d", area)
         .attr("class", function(d, i) {
           if (d.key == "AnstreichungNorm") {
-            return "anstreichung eingefaltet"
+            return "anstreichung eingefaltet";
           } else if (d.key == "UnterstreichungNorm") {
-            return "unterstreichung eingefaltet"
+            return "unterstreichung eingefaltet";
           } else if (d.key == "ProvenienzNorm") {
-            return "provenienz eingefaltet"
+            return "provenienz eingefaltet";
           } else if (d.key == "StempelNorm") {
-            return "provenienzstempel eingefaltet"
+            return "provenienzstempel eingefaltet";
           } else if (d.key == "DurchstreichungNorm") {
-            return "durchstreichung eingefaltet"
+            return "durchstreichung eingefaltet";
           } else if (d.key == "ZusatzMaterialNorm") {
-            return "zusatzMaterial"
+            return "zusatzMaterial";
           } else if (d.key == "SonstigeMarkierungNorm") {
-            return "sonstigeMarkierung eingefaltet"
+            return "sonstigeMarkierung eingefaltet";
           } else if (d.key == "AnderesNorm") {
-            return "anderes eingefaltet"
+            return "anderes eingefaltet";
           } else if (d.key == "BewertungNorm") {
-            return "bewertung eingefaltet"
+            return "bewertung eingefaltet";
           } else if (d.key == "KommentarNorm") {
-            return "kommentar eingefaltet"
+            return "kommentar eingefaltet";
           } else if (d.key == "TextkorrekturNorm") {
-            return "textkorrektur eingefaltet"
+            return "textkorrektur eingefaltet";
           } else if (d.key == "UebersetzungNorm") {
-            return "uebersetzung eingefaltet"
+            return "uebersetzung eingefaltet";
           } else if (d.key == "VarianteNorm") {
-            return "variante eingefaltet"
+            return "variante eingefaltet";
           } else if (d.key == "PlatzhalterNorm") {
-            return "platzhalter"
+            return "platzhalter";
           }
-        })
+        });
 
 
 
@@ -4428,51 +4424,52 @@ Promise.all([
         .attr("fill", "black")
         .text(function(d) {
           if (d.values[0].Verfasser == "[Black, Adam u. Charles]") {
-            return "Sonstige"
+            return "Sonstige";
           } else {
-            return d.values[0].Verfasser
+            return d.values[0].Verfasser;
           }
         })
         .style("font-size", function(d, i) {
           if (d.values[0].Verfasser == "[ohne Angabe]" || d.values[0].Verfasser == "Sonstige") {
-            return 0.8 + "em"
+            return 0.8 + "em";
           } else {
-            return fontSizeScale(d.values[0].AuthorCount) + "em"
+            return fontSizeScale(d.values[0].AuthorCount) + "em";
           }
         })
         .style("cursor", "pointer")
         .on("mouseover", function(d) {
-          d3.select(this).style("font-weight", "bold")
+          d3.select(this).style("font-weight", "bold");
         })
         .on("mouseout", function(d) {
           svg.selectAll(".authorLabel").filter(function(d) {
-            return d.values[0].Verfasser == thisVerfasserSelected
-          }).style("font-weight", "bold")
+            return d.values[0].Verfasser == thisVerfasserSelected;
+          }).style("font-weight", "bold");
+
           svg.selectAll(".authorLabel").filter(function(d) {
-            return d.values[0].Verfasser != thisVerfasserSelected
-          }).style("font-weight", "normal")
+            return d.values[0].Verfasser != thisVerfasserSelected;
+          }).style("font-weight", "normal");
         })
         .on("click", function(d) {
-          d3.select(".detailDiv").remove()
-          thisVerfasserSelected = d3.select(this).text()
+          d3.select(".detailDiv").remove();
+          thisVerfasserSelected = d3.select(this).text();
 
           if (clickedBook != 0) {
             d3.selectAll(".detailInfoParent")
               .transition()
               .style("opacity", 0)
-              .remove()
+              .remove();
 
-            clickedBook = 0
+            clickedBook = 0;
 
             d3.selectAll(".detailDiv")
               .transition()
               .style("opacity", 0)
-              .remove()
+              .remove();
 
 
             d3.selectAll(".bookBG").selectAll("rect")
               .transition()
-              .style("opacity", 0)
+              .style("opacity", 0);
 
 
 
@@ -4480,19 +4477,19 @@ Promise.all([
 
             $("html,body").animate({
               scrollTop: 2999
-            }, '200')
+            }, '200');
             setTimeout(function() {
-              clickedBook = 0
+              clickedBook = 0;
 
               $("html,body").animate({
                 scrollTop: 6000
               }, 300);
-            })
+            });
 
           }else if (scrollTop < 3000){
             $("html,body").animate({
               scrollTop: 6000
-            }, 805)
+            }, 805);
 
           }else{
 
@@ -4502,26 +4499,26 @@ Promise.all([
 
 
             ///Trigger animation in Canvas
-            transitions = true
-            transitionsNeu++
-            transitionbookClick = true
+            transitions = true;
+            transitionsNeu++;
+            transitionbookClick = true;
 
             ///Stop animation in Canvas
             setTimeout(function() {
-              transitions = false
-              transitionsNeu--
-              transitionbookClick = false
+              transitions = false;
+              transitionsNeu--;
+              transitionbookClick = false;
             }, 1200);
 
             var explicateScale = d3.scaleLinear()
               .domain([500, 2500])
               .range([pageheight, 30])
-              .clamp(true)
+              .clamp(true);
 
             var explicateScale2 = d3.scaleLinear()
               .domain([500, 2500])
               .range([pageheight, 31])
-              .clamp(true)
+              .clamp(true);
 
 
 
@@ -4530,62 +4527,62 @@ Promise.all([
               .duration(800)
                 .attr("transform", function(d, i) {
                   if (i == 0) {
-                    posx2 = 0
-                    posx = 0
-                    return "translate(" + (marginleft + (posx2)) + "," + (posY) + ")"
+                    posx2 = 0;
+                    posx = 0;
+                    return "translate(" + (marginleft + (posx2)) + "," + (posY) + ")";
                   } else if (i != 0 && datenByTitle[i - 1].values[0].Verfasser != d.values[0].Verfasser) {
-                    posx2 = posx2 + sLAuthorAbstand2
-                    posx = posx + authorAbstand
+                    posx2 = posx2 + sLAuthorAbstand2;
+                    posx = posx + authorAbstand;
 
                     var implicateScaleX1 = d3.scaleLinear()
                       .domain([-100, -3000])
                       .range([posx, posx2])
-                      .clamp(true)
+                      .clamp(true);
 
-                    return "translate(" + (marginleft + (implicateScaleX1(scrollTop))) + "," + (posY) + ")"
+                    return "translate(" + (marginleft + (implicateScaleX1(scrollTop))) + "," + (posY) + ")";
                   } else {
-                    posx2 = posx2
-                    posx = posx + buchBgBreite
+                    posx2 = posx2;
+                    posx = posx + buchBgBreite;
 
                     var implicateScaleX1 = d3.scaleLinear()
                       .domain([-100, -3000])
                       .range([posx, posx2])
-                      .clamp(true)
+                      .clamp(true);
 
-                    return "translate(" + (marginleft + (implicateScaleX1(scrollTop))) + "," + (posY) + ")"
+                    return "translate(" + (marginleft + (implicateScaleX1(scrollTop))) + "," + (posY) + ")";
                   }
-                })
+                });
 
               bookFingerprint
               .transition()
               .duration(800)
                 .attr("transform", function(d, i) {
                   if (i == 0) {
-                    posx2 = 0
-                    posx = 0
-                    return "translate(" + (marginleft + (posx2)) + "," + (posYCanvas) + ")"
+                    posx2 = 0;
+                    posx = 0;
+                    return "translate(" + (marginleft + (posx2)) + "," + (posYCanvas) + ")";
                   } else if (i != 0 && datenByTitle[i - 1].values[0].Verfasser != d.values[0].Verfasser) {
-                    posx2 = posx2 + sLAuthorAbstand2
-                    posx = posx + authorAbstand
+                    posx2 = posx2 + sLAuthorAbstand2;
+                    posx = posx + authorAbstand;
 
                     var implicateScaleX1 = d3.scaleLinear()
                       .domain([-100, -3000])
                       .range([posx, posx2])
-                      .clamp(true)
+                      .clamp(true);
 
-                    return "translate(" + (marginleft + (implicateScaleX1(scrollTop))) + "," + (posYCanvas) + ")"
+                    return "translate(" + (marginleft + (implicateScaleX1(scrollTop))) + "," + (posYCanvas) + ")";
                   } else {
-                    posx2 = posx2
-                    posx = posx + buchBgBreite
+                    posx2 = posx2;
+                    posx = posx + buchBgBreite;
 
                     var implicateScaleX1 = d3.scaleLinear()
                       .domain([-100, -3000])
                       .range([posx, posx2])
-                      .clamp(true)
+                      .clamp(true);
 
-                    return "translate(" + (marginleft + (implicateScaleX1(scrollTop))) + "," + (posYCanvas) + ")"
+                    return "translate(" + (marginleft + (implicateScaleX1(scrollTop))) + "," + (posYCanvas) + ")";
                   }
-                })
+                });
 
 
 
@@ -4597,19 +4594,19 @@ Promise.all([
                   var implicateScaleOpacity = d3.scaleLinear()
                     .domain([-200, -5000])
                     .range([1, 0])
-                    .clamp(true)
+                    .clamp(true);
 
-                  return implicateScaleOpacity(scrollTop)
-                })
+                  return implicateScaleOpacity(scrollTop);
+                });
 
 
               //////////////////////////Auswahl für SelectedAuthor beim Reinzoomen und Stauchen der anderen Bücher
               thisVerfasserSelectedBookCount = datenByAuthor.filter(function(d, i) {
-                return d.key == thisVerfasserSelected
-              })[0].values.length
-              sLTotalBuchWidthSelected = (thisVerfasserSelectedBookCount) * sLBuchAbstandSelected
-              sLTotalBuchWidthUnselected = (BuchAnzahl - thisVerfasserSelectedBookCount - (authorAnzahl - 1)) * sLBuchAbstandUnselected
-              sLAuthorAbstand2 = (chartArea - (sLTotalBuchWidthSelected + sLTotalBuchWidthUnselected)) / (authorAnzahl - 1)
+                return d.key == thisVerfasserSelected;
+              })[0].values.length;
+              sLTotalBuchWidthSelected = (thisVerfasserSelectedBookCount) * sLBuchAbstandSelected;
+              sLTotalBuchWidthUnselected = (BuchAnzahl - thisVerfasserSelectedBookCount - (authorAnzahl - 1)) * sLBuchAbstandUnselected;
+              sLAuthorAbstand2 = (chartArea - (sLTotalBuchWidthSelected + sLTotalBuchWidthUnselected)) / (authorAnzahl - 1);
 
 
 
@@ -4619,22 +4616,22 @@ Promise.all([
                 .attr("height", explicateScale(scrollTop))
                 .attr("y", function(d, i) {
                   if (scrollTop < 3000) {
-                    posYCanvas = 0
+                    posYCanvas = 0;
                   } else {
-                    posYCanvas = 0 - ((scrollTop - 3000) * 1)
+                    posYCanvas = 0 - ((scrollTop - 3000) * 1);
                   }
 
-                  return posYCanvas + (explicateScale2(scrollTop)) * (d.Part - 1)
+                  return posYCanvas + (explicateScale2(scrollTop)) * (d.Part - 1);
                 })
                 .attr("width", function(d, i) {
                   var implicateScaleWidth = d3.scaleLinear()
                     .domain([500, 2000])
                     .range([buchBreite, sLBuchBreiteUnselected])
-                    .clamp(true)
+                    .clamp(true);
 
-                  return implicateScaleWidth(scrollTop)
+                  return implicateScaleWidth(scrollTop);
                 })
-                .attr("x", 0)
+                .attr("x", 0);
 
 
 
@@ -4642,77 +4639,67 @@ Promise.all([
               ////mehrere Lesespuren auf einer Seite sollen aufgesplittert werden, wenn der Verfasser ausgewählt ist, allerdings erst aber scrollTop > 0 weil sonst die Filterung auf Buch-Ebene zu kleinteilig ist
                 bookFingerprint.selectAll(".nodes")
                   .filter(function(d, i) {
-                    return d.Verfasser == thisVerfasserSelected
+                    return d.Verfasser == thisVerfasserSelected;
                   })
                   .transition()
                   .duration(800)
                   .attr("width", function(d, i) {
                     ///MAX SCHRIFTSPUR AUF SEITE BERECHNEN
                     var thisBookData = (d3.select(this.parentNode).datum()).values.filter(function(D, I) {
-                      return D.Benutzungsspur != "" && D.Benutzungsspur != "4f" && D.Benutzungsspur != "4f?"
-                    })
+                      return D.Benutzungsspur != "" && D.Benutzungsspur != "4f" && D.Benutzungsspur != "4f?";
+                    });
                     var maxSpurenAufSeite = thisBookData.filter(function(D, I) {
-                      return D.ID == d.ID && D.Benutzungsspur != "4f" && D.Benutzungsspur != "4f?"
-                    }).length
+                      return D.ID == d.ID && D.Benutzungsspur != "4f" && D.Benutzungsspur != "4f?";
+                    }).length;
 
                     ///Spurbreite abhängig von maxSpurenAufSeite
                     var implicateScaleWidth = d3.scaleLinear()
                       .domain([500, 2000])
                       .range([buchBreite, sLBuchBreiteSelected])
-                      .clamp(true)
+                      .clamp(true);
 
 
-                    return implicateScaleWidth(scrollTop) / maxSpurenAufSeite
+                    return implicateScaleWidth(scrollTop) / maxSpurenAufSeite;
                   })
                   .attr("x", function(d, i) {
                     ///MAX SCHRIFTSPUR AUF SEITE BERECHNEN
                     var thisBookData = (d3.select(this.parentNode).datum()).values.filter(function(D, I) {
-                      return D.Benutzungsspur != "" && D.Benutzungsspur != "4f" && D.Benutzungsspur != "4f?"
-                    })
+                      return D.Benutzungsspur != "" && D.Benutzungsspur != "4f" && D.Benutzungsspur != "4f?";
+                    });
                     var maxSpurenAufSeite = thisBookData.filter(function(D, I) {
-                      return D.ID == d.ID && D.Benutzungsspur != "4f" && D.Benutzungsspur != "4f?"
-                    }).length
+                      return D.ID == d.ID && D.Benutzungsspur != "4f" && D.Benutzungsspur != "4f?";
+                    }).length;
 
                     ///Spurposition abhängig von maxSpurenAufSeite
                     var implicateScaleWidth = d3.scaleLinear()
                       .domain([500, 2000])
                       .range([buchBreite / maxSpurenAufSeite, sLBuchBreiteSelected / maxSpurenAufSeite])
-                      .clamp(true)
+                      .clamp(true);
 
                     if (i > 9 && thisBookData[i - 10].ID == d.ID) {
-                      return 10 * implicateScaleWidth(scrollTop)
+                      return 10 * implicateScaleWidth(scrollTop);
                     } else if (i > 8 && thisBookData[i - 9].ID == d.ID) {
-
-                      return 9 * implicateScaleWidth(scrollTop)
+                      return 9 * implicateScaleWidth(scrollTop);
                     } else if (i > 7 && thisBookData[i - 8].ID == d.ID) {
-
-                      return 8 * implicateScaleWidth(scrollTop)
+                      return 8 * implicateScaleWidth(scrollTop);
                     } else if (i > 6 && thisBookData[i - 7].ID == d.ID) {
-
-                      return 7 * implicateScaleWidth(scrollTop)
+                      return 7 * implicateScaleWidth(scrollTop);
                     } else if (i > 5 && thisBookData[i - 6].ID == d.ID) {
-
-                      return 6 * implicateScaleWidth(scrollTop)
+                      return 6 * implicateScaleWidth(scrollTop);
                     } else if (i > 4 && thisBookData[i - 5].ID == d.ID) {
-
-
-                      return 5 * implicateScaleWidth(scrollTop)
+                      return 5 * implicateScaleWidth(scrollTop);
                     } else if (i > 3 && thisBookData[i - 4].ID == d.ID) {
-
-                      return 4 * implicateScaleWidth(scrollTop)
+                      return 4 * implicateScaleWidth(scrollTop);
                     } else if (i > 2 && thisBookData[i - 3].ID == d.ID) {
-
-                      return 3 * implicateScaleWidth(scrollTop)
+                      return 3 * implicateScaleWidth(scrollTop);
                     } else if (i > 1 && thisBookData[i - 2].ID == d.ID) {
-
-                      return 2 * implicateScaleWidth(scrollTop)
+                      return 2 * implicateScaleWidth(scrollTop);
                     } else if (i != 0 && thisBookData[i - 1].ID == d.ID) {
-
-                      return implicateScaleWidth(scrollTop)
+                      return implicateScaleWidth(scrollTop);
                     } else {
-                      return 0
+                      return 0;
                     }
-                  })
+                  });
 
 
 
@@ -4721,37 +4708,37 @@ Promise.all([
               .transition()
               .duration(800)
                 .attr("height", function(d) {
-                  return (explicateScale2(scrollTop)) * (d.values[0].maxPart)
+                  return (explicateScale2(scrollTop)) * (d.values[0].maxPart);
                 })
                 .attr("width", function(d, i) {
                   if (d.values[0].Verfasser == thisVerfasserSelected) {
                     var implicateScaleWidth = d3.scaleLinear()
                       .domain([500, 2000])
                       .range([buchBreite, sLBuchBreiteSelected])
-                      .clamp(true)
+                      .clamp(true);
 
-                    return implicateScaleWidth(scrollTop)
+                    return implicateScaleWidth(scrollTop);
 
 
                   } else {
                     var implicateScaleWidth = d3.scaleLinear()
                       .domain([500, 2000])
                       .range([buchBreite, sLBuchBreiteUnselected])
-                      .clamp(true)
+                      .clamp(true);
 
-                    return implicateScaleWidth(scrollTop)
+                    return implicateScaleWidth(scrollTop);
                   }
                 })
                   .attr("y", function(d, i) {
                     if (scrollTop < 3000) {
 
-                      posYCanvas = 0
+                      posYCanvas = 0;
                     } else {
-                      posYCanvas = 0 - ((scrollTop - 3000) * 1)
+                      posYCanvas = 0 - ((scrollTop - 3000) * 1);
 
                     }
-                    return posYCanvas
-                  })
+                    return posYCanvas;
+                  });
 
               d3.select("#svg").selectAll(".singleBookBG")
               .transition()
@@ -4761,25 +4748,25 @@ Promise.all([
                     var implicateScaleWidth = d3.scaleLinear()
                       .domain([500, 2000])
                       .range([buchBgBreite, sLBuchBreiteSelected])
-                      .clamp(true)
+                      .clamp(true);
 
                     var thisCount = datenByAuthor.filter(function(D, I) {
-                      return D.key === thisVerfasserSelected
-                    })[0].values.length
+                      return D.key === thisVerfasserSelected;
+                    })[0].values.length;
 
 
-                    return implicateScaleWidth(scrollTop)
+                    return implicateScaleWidth(scrollTop);
 
 
                   } else {
                     var implicateScaleWidth = d3.scaleLinear()
                       .domain([500, 2000])
                       .range([buchBreite, sLBuchBreiteUnselected])
-                      .clamp(true)
+                      .clamp(true);
 
-                    return implicateScaleWidth(scrollTop)
+                    return implicateScaleWidth(scrollTop);
                   }
-                })
+                });
 
 
 
@@ -4792,59 +4779,59 @@ Promise.all([
                 //  posYCanvas = 0
 
                   if (i == 0) {
-                    posx3 = 0
-                    posx = 0
-                    return "translate(" + (marginleft + (posx3)) + "," + (posYCanvas) + ")"
+                    posx3 = 0;
+                    posx = 0;
+                    return "translate(" + (marginleft + (posx3)) + "," + (posYCanvas) + ")";
 
                     //falls vorheriges Element Selected und anderer Verfasser
                   } else if (i != 0 && datenByTitle[i - 1].values[0].Verfasser != d.values[0].Verfasser && datenByTitle[i - 1].values[0].Verfasser == thisVerfasserSelected) {
-                    posx3 = posx3 + sLBuchAbstandSelected + sLAuthorAbstand2
-                    posx = posx + authorAbstand
+                    posx3 = posx3 + sLBuchAbstandSelected + sLAuthorAbstand2;
+                    posx = posx + authorAbstand;
 
                     var implicateScaleX1 = d3.scaleLinear()
                       .domain([500, 2000])
                       .range([posx, posx3])
-                      .clamp(true)
+                      .clamp(true);
 
-                    return "translate(" + (marginleft + (implicateScaleX1(scrollTop))) + "," + (posYCanvas) + ")"
+                    return "translate(" + (marginleft + (implicateScaleX1(scrollTop))) + "," + (posYCanvas) + ")";
 
                     //falls vorheriges Element Selected und gleicher Verfasser
                   } else if (i != 0 && datenByTitle[i - 1].values[0].Verfasser == thisVerfasserSelected && datenByTitle[i - 1].values[0].Verfasser == d.values[0].Verfasser) {
-                    posx3 = posx3 + sLBuchAbstandSelected
-                    posx = posx + buchBgBreite
+                    posx3 = posx3 + sLBuchAbstandSelected;
+                    posx = posx + buchBgBreite;
 
                     var implicateScaleX1 = d3.scaleLinear()
                       .domain([500, 2000])
                       .range([posx, posx3])
-                      .clamp(true)
+                      .clamp(true);
 
-                    return "translate(" + (marginleft + (implicateScaleX1(scrollTop))) + "," + (posYCanvas) + ")"
+                    return "translate(" + (marginleft + (implicateScaleX1(scrollTop))) + "," + (posYCanvas) + ")";
 
                     //falls vorheriges Element NICHT Selected und anderer Verfasser
                   } else if (i != 0 && datenByTitle[i - 1].values[0].Verfasser != d.values[0].Verfasser && datenByTitle[i - 1].values[0].Verfasser != thisVerfasserSelected && datenByTitle[i - 1].values[0].AuthorCount != 1) {
-                    posx3 = posx3 + sLAuthorAbstand2
-                    posx = posx + authorAbstand
+                    posx3 = posx3 + sLAuthorAbstand2;
+                    posx = posx + authorAbstand;
 
                     var implicateScaleX1 = d3.scaleLinear()
                       .domain([500, 2000])
                       .range([posx, posx3])
-                      .clamp(true)
+                      .clamp(true);
 
-                    return "translate(" + (marginleft + (implicateScaleX1(scrollTop))) + "," + (posYCanvas) + ")"
+                    return "translate(" + (marginleft + (implicateScaleX1(scrollTop))) + "," + (posYCanvas) + ")";
 
                     //falls vorheriges Element NICHT Selected und gleicher Verfasser
                   } else {
-                    posx3 = posx3 + sLBuchAbstandUnselected
-                    posx = posx + buchBgBreite
+                    posx3 = posx3 + sLBuchAbstandUnselected;
+                    posx = posx + buchBgBreite;
 
                     var implicateScaleX1 = d3.scaleLinear()
                       .domain([500, 2000])
                       .range([posx, posx3])
-                      .clamp(true)
+                      .clamp(true);
 
-                    return "translate(" + (marginleft + (implicateScaleX1(scrollTop))) + "," + (posYCanvas) + ")"
+                    return "translate(" + (marginleft + (implicateScaleX1(scrollTop))) + "," + (posYCanvas) + ")";
                   }
-                })
+                });
 
 
 
@@ -4858,59 +4845,59 @@ Promise.all([
                 .attr("transform", function(d, i) {
                   //falls erstes Element
                   if (i == 0) {
-                    posx3 = 0
-                    posx = 0
-                    return "translate(" + (marginleft + (posx3)) + "," + (posY) + ")"
+                    posx3 = 0;
+                    posx = 0;
+                    return "translate(" + (marginleft + (posx3)) + "," + (posY) + ")";
 
                     //falls vorheriges Element Selected und anderer Verfasser
                   } else if (i != 0 && datenByTitle[i - 1].values[0].Verfasser != d.values[0].Verfasser && datenByTitle[i - 1].values[0].Verfasser == thisVerfasserSelected) {
-                    posx3 = posx3 + sLBuchAbstandSelected + sLAuthorAbstand2
-                    posx = posx + authorAbstand
+                    posx3 = posx3 + sLBuchAbstandSelected + sLAuthorAbstand2;
+                    posx = posx + authorAbstand;
 
                     var implicateScaleX1 = d3.scaleLinear()
                       .domain([500, 2000])
                       .range([posx, posx3])
-                      .clamp(true)
+                      .clamp(true);
 
-                    return "translate(" + (marginleft + (implicateScaleX1(scrollTop))) + "," + (posY) + ")"
+                    return "translate(" + (marginleft + (implicateScaleX1(scrollTop))) + "," + (posY) + ")";
 
                     //falls vorheriges Element Selected und gleicher Verfasser
                   } else if (i != 0 && datenByTitle[i - 1].values[0].Verfasser == thisVerfasserSelected) {
-                    posx3 = posx3 + sLBuchAbstandSelected
-                    posx = posx + buchBgBreite
+                    posx3 = posx3 + sLBuchAbstandSelected;
+                    posx = posx + buchBgBreite;
 
                     var implicateScaleX1 = d3.scaleLinear()
                       .domain([500, 2000])
                       .range([posx, posx3])
-                      .clamp(true)
+                      .clamp(true);
 
-                    return "translate(" + (marginleft + (implicateScaleX1(scrollTop))) + "," + (posY) + ")"
+                    return "translate(" + (marginleft + (implicateScaleX1(scrollTop))) + "," + (posY) + ")";
 
                     //falls vorheriges Element NICHT Selected und anderer Verfasser
                   } else if (i != 0 && datenByTitle[i - 1].values[0].Verfasser != d.values[0].Verfasser && datenByTitle[i - 1].values[0].Verfasser != thisVerfasserSelected) {
-                    posx3 = posx3 + sLAuthorAbstand2
-                    posx = posx + authorAbstand
+                    posx3 = posx3 + sLAuthorAbstand2;
+                    posx = posx + authorAbstand;
 
                     var implicateScaleX1 = d3.scaleLinear()
                       .domain([500, 2000])
                       .range([posx, posx3])
-                      .clamp(true)
+                      .clamp(true);
 
-                    return "translate(" + (marginleft + (implicateScaleX1(scrollTop))) + "," + (posY) + ")"
+                    return "translate(" + (marginleft + (implicateScaleX1(scrollTop))) + "," + (posY) + ")";
 
                     //falls vorheriges Element NICHT Selected und gleicher Verfasser
                   } else {
-                    posx3 = posx3 + sLBuchAbstandUnselected
-                    posx = posx + buchBgBreite
+                    posx3 = posx3 + sLBuchAbstandUnselected;
+                    posx = posx + buchBgBreite;
 
                     var implicateScaleX1 = d3.scaleLinear()
                       .domain([500, 2000])
                       .range([posx, posx3])
-                      .clamp(true)
+                      .clamp(true);
 
-                    return "translate(" + (marginleft + (implicateScaleX1(scrollTop))) + "," + (posY) + ")"
+                    return "translate(" + (marginleft + (implicateScaleX1(scrollTop))) + "," + (posY) + ")";
                   }
-                })
+                });
 
 
               //bu
@@ -4920,59 +4907,59 @@ Promise.all([
                 .attr("transform", function(d, i) {
                   //falls erstes Element
                   if (i == 0) {
-                    posx3 = 0
-                    posx = 0
-                    return "translate(" + (marginleft + (posx3) - 40.5) + "," + (posY) + ")"
+                    posx3 = 0;
+                    posx = 0;
+                    return "translate(" + (marginleft + (posx3) - 40.5) + "," + (posY) + ")";
 
                     //falls vorheriges Element Selected und anderer Verfasser
                   } else if (i != 0 && datenByTitle[i - 1].values[0].Verfasser != d.values[0].Verfasser && datenByTitle[i - 1].values[0].Verfasser == thisVerfasserSelected) {
-                    posx3 = posx3 + sLBuchAbstandSelected + sLAuthorAbstand2
-                    posx = posx + authorAbstand
+                    posx3 = posx3 + sLBuchAbstandSelected + sLAuthorAbstand2;
+                    posx = posx + authorAbstand;
 
                     var implicateScaleX1 = d3.scaleLinear()
                       .domain([500, 2000])
                       .range([posx, posx3])
-                      .clamp(true)
+                      .clamp(true);
 
-                    return "translate(" + (marginleft + (implicateScaleX1(scrollTop)) - 40.5) + "," + (posY) + ")"
+                    return "translate(" + (marginleft + (implicateScaleX1(scrollTop)) - 40.5) + "," + (posY) + ")";
 
                     //falls vorheriges Element Selected und gleicher Verfasser
                   } else if (i != 0 && datenByTitle[i - 1].values[0].Verfasser == thisVerfasserSelected) {
-                    posx3 = posx3 + sLBuchAbstandSelected
-                    posx = posx + buchBgBreite
+                    posx3 = posx3 + sLBuchAbstandSelected;
+                    posx = posx + buchBgBreite;
 
                     var implicateScaleX1 = d3.scaleLinear()
                       .domain([500, 2000])
                       .range([posx, posx3])
-                      .clamp(true)
+                      .clamp(true);
 
-                    return "translate(" + (marginleft + (implicateScaleX1(scrollTop)) - 40.5) + "," + (posY) + ")"
+                    return "translate(" + (marginleft + (implicateScaleX1(scrollTop)) - 40.5) + "," + (posY) + ")";
 
                     //falls vorheriges Element NICHT Selected und anderer Verfasser
                   } else if (i != 0 && datenByTitle[i - 1].values[0].Verfasser != d.values[0].Verfasser && datenByTitle[i - 1].values[0].Verfasser != thisVerfasserSelected) {
-                    posx3 = posx3 + sLAuthorAbstand2
-                    posx = posx + authorAbstand
+                    posx3 = posx3 + sLAuthorAbstand2;
+                    posx = posx + authorAbstand;
 
                     var implicateScaleX1 = d3.scaleLinear()
                       .domain([500, 2000])
                       .range([posx, posx3])
-                      .clamp(true)
+                      .clamp(true);
 
-                    return "translate(" + (marginleft + (implicateScaleX1(scrollTop)) - 40.5) + "," + (posY) + ")"
+                    return "translate(" + (marginleft + (implicateScaleX1(scrollTop)) - 40.5) + "," + (posY) + ")";
 
                     //falls vorheriges Element NICHT Selected und gleicher Verfasser
                   } else {
-                    posx3 = posx3 + sLBuchAbstandUnselected
-                    posx = posx + buchBgBreite
+                    posx3 = posx3 + sLBuchAbstandUnselected;
+                    posx = posx + buchBgBreite;
 
                     var implicateScaleX1 = d3.scaleLinear()
                       .domain([500, 2000])
                       .range([posx, posx3])
-                      .clamp(true)
+                      .clamp(true);
 
-                    return "translate(" + (marginleft + (implicateScaleX1(scrollTop)) - 40.5) + "," + (posY) + ")"
+                    return "translate(" + (marginleft + (implicateScaleX1(scrollTop)) - 40.5) + "," + (posY) + ")";
                   }
-                })
+                });
 
 
 
@@ -4981,51 +4968,51 @@ Promise.all([
               .duration(800)
                 .attr("transform", function(d, i) {
                   if (i == 0) {
-                    posx3 = 0
-                    posx = 0
-                    return "translate(" + (marginleft + (posx3)) + "," + (posY) + ")"
+                    posx3 = 0;
+                    posx = 0;
+                    return "translate(" + (marginleft + (posx3)) + "," + (posY) + ")";
                   } else if (i != 0 && datenByTitle[i - 1].values[0].Verfasser != d.values[0].Verfasser && datenByTitle[i - 1].values[0].Verfasser == thisVerfasserSelected) {
-                    posx3 = posx3 + sLBuchAbstandSelected
-                    posx = posx + authorAbstand
+                    posx3 = posx3 + sLBuchAbstandSelected;
+                    posx = posx + authorAbstand;
 
                     var implicateScaleX1 = d3.scaleLinear()
                       .domain([500, 2000])
                       .range([posx, posx3])
-                      .clamp(true)
+                      .clamp(true);
 
-                    return "translate(" + (marginleft + (implicateScaleX1(scrollTop))) + "," + (posY) + ")"
+                    return "translate(" + (marginleft + (implicateScaleX1(scrollTop))) + "," + (posY) + ")";
                   } else if (i != 0 && datenByTitle[i - 1].values[0].Verfasser == thisVerfasserSelected) {
-                    posx3 = posx3 + sLBuchAbstandSelected
-                    posx = posx + buchBgBreite
+                    posx3 = posx3 + sLBuchAbstandSelected;
+                    posx = posx + buchBgBreite;
 
                     var implicateScaleX1 = d3.scaleLinear()
                       .domain([500, 2000])
                       .range([posx, posx3])
-                      .clamp(true)
+                      .clamp(true);
 
-                    return "translate(" + (marginleft + (implicateScaleX1(scrollTop))) + "," + (posY) + ")"
+                    return "translate(" + (marginleft + (implicateScaleX1(scrollTop))) + "," + (posY) + ")";
                   } else if (i != 0 && datenByTitle[i - 1].values[0].Verfasser != d.values[0].Verfasser && datenByTitle[i - 1].values[0].Verfasser != thisVerfasserSelected) {
-                    posx3 = posx3 + sLAuthorAbstand2
-                    posx = posx + authorAbstand
+                    posx3 = posx3 + sLAuthorAbstand2;
+                    posx = posx + authorAbstand;
 
                     var implicateScaleX1 = d3.scaleLinear()
                       .domain([500, 2000])
                       .range([posx, posx3])
-                      .clamp(true)
+                      .clamp(true);
 
-                    return "translate(" + (marginleft + (implicateScaleX1(scrollTop))) + "," + (posY) + ")"
+                    return "translate(" + (marginleft + (implicateScaleX1(scrollTop))) + "," + (posY) + ")";
                   } else {
-                    posx3 = posx3 + sLBuchAbstandUnselected
-                    posx = posx + buchBgBreite
+                    posx3 = posx3 + sLBuchAbstandUnselected;
+                    posx = posx + buchBgBreite;
 
                     var implicateScaleX1 = d3.scaleLinear()
                       .domain([500, 2000])
                       .range([posx, posx3])
-                      .clamp(true)
+                      .clamp(true);
 
-                    return "translate(" + (marginleft + (implicateScaleX1(scrollTop))) + "," + (posY) + ")"
+                    return "translate(" + (marginleft + (implicateScaleX1(scrollTop))) + "," + (posY) + ")";
                   }
-                })
+                });
 
                 ////////////////////////authorlabelClick transition without scrolling end
                 ////////////////////////////////////////////////
@@ -5033,7 +5020,7 @@ Promise.all([
 
 
           }
-        })
+        });
 
 
 
@@ -5043,9 +5030,9 @@ Promise.all([
         .append("rect")
         .attr("cursor", function() {
           if (scrollTop > -1000) {
-            return "pointer"
+            return "pointer";
           } else {
-            return "not-allowed"
+            return "not-allowed";
           }
         })
         .attr("opacity", 0)
@@ -5056,31 +5043,31 @@ Promise.all([
         .attr("fill", "#d9c2b2")
         .on("mouseover", function(d) {
           if (scrollTop > -800 && scrollTop < 1200) {
-            thisVerfasserSelected = d3.select(this).datum().values[0].Verfasser
+            thisVerfasserSelected = d3.select(this).datum().values[0].Verfasser;
 
 
           }
 
 
           svg.selectAll(".authorLabel").filter(function(d) {
-              return d.values[0].Verfasser == thisVerfasserSelected
+              return d.values[0].Verfasser == thisVerfasserSelected;
             })
-            .style("font-weight", "bold")
+            .style("font-weight", "bold");
 
           svg.selectAll(".authorLabel").filter(function(d) {
-              return d.values[0].Verfasser != thisVerfasserSelected
+              return d.values[0].Verfasser != thisVerfasserSelected;
             })
-            .style("font-weight", "normal")
+            .style("font-weight", "normal");
 
 
-          var thisBookID = d3.select(this).datum().values[0].BookID
+          var thisBookID = d3.select(this).datum().values[0].BookID;
 
           if (thisBookID != clickedBook) {
             svgFrontTitles.selectAll(".bookTitleFrontG")
               .filter(function(d) {
-                return d.values[0].BookID == thisBookID
+                return d.values[0].BookID == thisBookID;
               })
-              .style("display", "inline")
+              .style("display", "inline");
           }
 
 
@@ -5089,122 +5076,122 @@ Promise.all([
         .on("mousemove", function(d) {
           if (scrollTop > -800) {
             if (scrollTop > -800 && scrollTop < 1200) {
-              thisVerfasserSelected = d3.select(this).datum().values[0].Verfasser
+              thisVerfasserSelected = d3.select(this).datum().values[0].Verfasser;
 
 
             }
-            var currentScrollTop = Math.max(window.pageYOffset, document.documentElement.scrollTop, document.body.scrollTop)
+            var currentScrollTop = Math.max(window.pageYOffset, document.documentElement.scrollTop, document.body.scrollTop);
 
             var mouseY = ((d3.event.pageY) - currentScrollTop - canvasTop);
 
 
-            var thisPage = Math.round(round45(mouseY) / pageheight) + 1
+            var thisPage = Math.round(round45(mouseY) / pageheight) + 1;
 
             function round45(x) {
-              return Math.ceil(x / pageheight) * pageheight
+              return Math.ceil(x / pageheight) * pageheight;
             }
-            thisVerfasser = d3.select(this).datum().values[0].Verfasser
-            var thisBookID = d3.select(this).datum().values[0].BookID
+            thisVerfasser = d3.select(this).datum().values[0].Verfasser;
+            var thisBookID = d3.select(this).datum().values[0].BookID;
 
 
             if (d.values[0].maxPart < thisPage || mouseY < 1000) {
               d3.select('.tooltip')
                 .style("display", "none")
-                .style('top', d3.event.pageY)
+                .style('top', d3.event.pageY);
             } else if (d.values[0].maxPart >= thisPage && mouseY > 0) {
 
               var thisPageID = (d.values.filter(function(d, i) {
-                return d.Part == thisPage
-              }))[0].ID
+                return d.Part == thisPage;
+              }))[0].ID;
 
               d3.select(".tooltip")
                 .style("display", "block")
                 .style('top', d3.event.pageY - 100 + 'px')
                 .style('left', function() {
                   if (d3.event.pageX < width / 2) {
-                    return d3.event.pageX + 25 + 'px'
+                    return d3.event.pageX + 25 + 'px';
                   } else {
-                    return d3.event.pageX - 250 + 'px'
+                    return d3.event.pageX - 250 + 'px';
                   }
-                })
+                });
 
               tooltip.select("img").attr("src", function() {
-                return "./img/m/" + thisPageID + ".jpg"
-              })
+                return "./img/m/" + thisPageID + ".jpg";
+              });
             }
 
 
 
             svg.selectAll(".authorLabel").filter(function(d) {
-              return d.values[0].Verfasser == thisVerfasserSelected
-            }).style("font-weight", "bold")
+              return d.values[0].Verfasser == thisVerfasserSelected;
+            }).style("font-weight", "bold");
             svg.selectAll(".authorLabel").filter(function(d) {
-              return d.values[0].Verfasser != thisVerfasserSelected
-            }).style("font-weight", "normal")
+              return d.values[0].Verfasser != thisVerfasserSelected;
+            }).style("font-weight", "normal");
 
 
-            var thisBookID = d3.select(this).datum().values[0].BookID
+            var thisBookID = d3.select(this).datum().values[0].BookID;
 
 
             svgFrontTitles.selectAll(".bookTitleFrontG")
               .filter(function(d) {
-                return d.values[0].BookID == thisBookID
+                return d.values[0].BookID == thisBookID;
               })
-              .style("display", "inline")
+              .style("display", "inline");
           }
         })
         .on("touchend", function(d) {
-          var thisBookID = d3.select(this).datum().values[0].BookID
+          var thisBookID = d3.select(this).datum().values[0].BookID;
 
           svgFrontTitles.selectAll(".bookTitleFrontG")
             .filter(function(d) {
-              return d.values[0].BookID == thisBookID
+              return d.values[0].BookID == thisBookID;
             })
-            .style("display", "none")
+            .style("display", "none");
 
 
           svg.selectAll(".authorLabel").filter(function(d) {
             if (scrollTop >= 0) {
-              return d.values[0].Verfasser != thisVerfasserSelected
+              return d.values[0].Verfasser != thisVerfasserSelected;
             } else {
-              return d
+              return d;
             }
           }).style("font-weight", function() {
             if (scrollTop < 0) {
-              return "normal"
+              return "normal";
             }
-          })
+          });
 
           d3.select('.tooltip')
-            .style("display", "none")
+            .style("display", "none");
         })
         .on("mouseout", function() {
 
-          var thisBookID = d3.select(this).datum().values[0].BookID
+          var thisBookID = d3.select(this).datum().values[0].BookID;
 
           svgFrontTitles.selectAll(".bookTitleFrontG")
             .filter(function(d) {
-              return d.values[0].BookID == thisBookID
+              return d.values[0].BookID == thisBookID;
             })
-            .style("display", "none")
+            .style("display", "none");
 
 
           svg.selectAll(".authorLabel").filter(function(d) {
             if (scrollTop >= 0) {
-              return d.values[0].Verfasser != thisVerfasserSelected
+              return d.values[0].Verfasser != thisVerfasserSelected;
             } else {
-              return d
+              return d;
             }
           }).style("font-weight", function() {
             if (scrollTop < 0) {
-              return "normal"
+              return "normal";
             }
-          })
+          });
 
           d3.select('.tooltip')
-            .style("display", "none")
+            .style("display", "none");
 
-        })
+        });
 
       d3.selectAll(".singleBookBG")
         .on("click", function(d, i) {
@@ -5213,77 +5200,77 @@ Promise.all([
 
               $("html,body").animate({
                 scrollTop: 3000
-              }, '0')
+              }, '0');
 
 
-              clickedBook = d3.select(this).datum().values[0].BookID
+              clickedBook = d3.select(this).datum().values[0].BookID;
               thisData = (d3.select(this).datum().values).filter(function(d) {
-                return d.Benutzungsspur != "" && d.Benutzungsspur != "4f" && d.Benutzungsspur != "4f?"
-              })
+                return d.Benutzungsspur != "" && d.Benutzungsspur != "4f" && d.Benutzungsspur != "4f?";
+              });
 
               setTimeout(function() {
-                bookClickHash(thisData)
+                bookClickHash(thisData);
 
 
               }, 550);
 
             } else {
-              clickedBook = d3.select(this).datum().values[0].BookID
+              clickedBook = d3.select(this).datum().values[0].BookID;
               thisData = (d3.select(this).datum().values).filter(function(d) {
-                return d.Benutzungsspur != "" && d.Benutzungsspur != "4f" && d.Benutzungsspur != "4f?"
-              })
+                return d.Benutzungsspur != "" && d.Benutzungsspur != "4f" && d.Benutzungsspur != "4f?";
+              });
 
-              bookClickHash(thisData)
+              bookClickHash(thisData);
             }
           } else if (d3.select(this).datum().values[0].BookID === clickedBook) {
-            d3.event.stopPropagation()
+            d3.event.stopPropagation();
 
             if (scrollTop >= 0 && d3.select(this).datum().values[0].BookID == clickedBook) {
 
-              var currentScrollTop = Math.max(window.pageYOffset, document.documentElement.scrollTop, document.body.scrollTop)
+              var currentScrollTop = Math.max(window.pageYOffset, document.documentElement.scrollTop, document.body.scrollTop);
 
               var mouseY = ((d3.event.pageY) - currentScrollTop - canvasTop - posYCanvas);
 
 
-              var thisPage = Math.round(round45(mouseY) / explicateScale2(scrollTop))
+              var thisPage = Math.round(round45(mouseY) / explicateScale2(scrollTop));
 
               var thisPageID = (d.values.filter(function(d, i) {
-                return d.Part == thisPage
-              }))[0].ID
+                return d.Part == thisPage;
+              }))[0].ID;
 
               function round45(x) {
-                return Math.ceil(x / explicateScale2(scrollTop)) * explicateScale2(scrollTop)
+                return Math.ceil(x / explicateScale2(scrollTop)) * explicateScale2(scrollTop);
               }
-              thisVerfasser = d3.select(this).datum().values[0].Verfasser
+              thisVerfasser = d3.select(this).datum().values[0].Verfasser;
 
-              var thisBookID = d3.select(this).datum().values[0].BookID
-              var thisPart = thisPage
+              var thisBookID = d3.select(this).datum().values[0].BookID;
+              var thisPart = thisPage;
 
-              detailviewOpen(thisBookID, thisPart)
+              detailviewOpen(thisBookID, thisPart);
 
             }
 
 
           }
-        })
+        });
 
       bookFingerprint.append("rect")
         .attr("class", "nodesbg")
         .attr("width", buchBreite)
         .attr("height", function(d) {
-          return (d.values[0].maxPart) * pageheight
+          return (d.values[0].maxPart) * pageheight;
         })
         .attr("fill", "white")
         .attr("x", 0)
         .attr("y", posYCanvas)
-        .attr("opacity", 1)
+        .attr("opacity", 1);
 
 
       bookFingerprint.selectAll(".nodes")
         .data(function(d) {
           return d.values.filter(function(d) {
-            return d.Benutzungsspur != "" && d.Benutzungsspur != "4f" && d.Benutzungsspur != "4f?"
-          })
+            return d.Benutzungsspur != "" && d.Benutzungsspur != "4f" && d.Benutzungsspur != "4f?";
+          });
         })
         .enter()
         .append("rect")
@@ -5291,242 +5278,242 @@ Promise.all([
         .attr("height", pageheight)
         .attr("x", 0)
         .attr("y", function(d, i) {
-          return posYCanvas + pageheight * d.Part
+          return posYCanvas + pageheight * d.Part;
         })
         .attr("opacity", 1)
         .attr("fill", function(d) {
           if (d.Benutzungsspur == "") {
-            return "white"
+            return "white";
           } else if (d.Benutzungsspur.includes("1") == true) {
-            return "#58b0f7"
+            return "#58b0f7";
           } else if (d.Benutzungsspur.includes("2") == true) {
-            return "#58b0f7"
+            return "#58b0f7";
           } else if (d.Benutzungsspur.includes("3") == true) {
-            return "#58b0f7"
+            return "#58b0f7";
           } else if (d.Benutzungsspur.includes("4") == true) {
-            return "#58b0f7"
+            return "#58b0f7";
           } else if (d.Benutzungsspur.includes("7") == true) {
-            return "#f284c0"
+            return "#f284c0";
           } else if (d.Benutzungsspur.includes("6") == true) {
-            return "rgb(210, 164, 0)"
+            return "rgb(210, 164, 0)";
           } else if (d.SchriftspurTyp.includes("P") == true && d.Schreibmedium != "Stempel") {
-            return "#707070"
+            return "#707070";
           } else if (d.SchriftspurTyp.includes("P") == true && d.Schreibmedium == "Stempel") {
-            return "#707070"
+            return "#707070";
           } else if (d.SchriftspurTyp.includes("B") == true) {
-            return "#f73f26"
+            return "#f73f26";
           } else if (d.SchriftspurTyp.includes("K") == true) {
-            return "#f73f26"
+            return "#f73f26";
           } else if (d.SchriftspurTyp.includes("T") == true) {
-            return "#f73f26"
+            return "#f73f26";
           } else if (d.SchriftspurTyp.includes("U") == true) {
-            return "#f73f26"
+            return "#f73f26";
           } else if (d.SchriftspurTyp.includes("V") == true) {
-            return "#f73f26"
+            return "#f73f26";
           } else if (d.Benutzungsspur.includes("5") == true) {
-            return "#f73f26"
+            return "#f73f26";
           }
         })
         .attr("class", function(d) {
           if (d.Benutzungsspur == "") {
-            return "leer"
+            return "leer";
           } else if (d.Benutzungsspur.includes("1") == true) {
-            return "anstreichung"
+            return "anstreichung";
           } else if (d.Benutzungsspur.includes("2") == true) {
-            return "unterstreichung"
+            return "unterstreichung";
           } else if (d.Benutzungsspur.includes("3") == true) {
-            return "durchstreichung"
+            return "durchstreichung";
           } else if (d.Benutzungsspur.includes("4") == true) {
-            return "sonstigeMarkierung"
+            return "sonstigeMarkierung";
           } else if (d.Benutzungsspur.includes("7") == true) {
-            return "anderes"
+            return "anderes";
           } else if (d.Benutzungsspur.includes("6") == true) {
-            return "zusatzMaterial"
+            return "zusatzMaterial";
           } else if (d.SchriftspurTyp.includes && d.Schreibmedium != "Stempel") {
-            return "provenienz"
+            return "provenienz";
           } else if (d.SchriftspurTyp.includes && d.Schreibmedium == "Stempel") {
-            return "provenienzstempel"
+            return "provenienzstempel";
           } else if (d.SchriftspurTyp.includes("B") == true) {
-            return "bewertung"
+            return "bewertung";
           } else if (d.SchriftspurTyp.includes("K") == true) {
-            return "kommentar"
+            return "kommentar";
           } else if (d.SchriftspurTyp.includes("T") == true) {
-            return "textkorrektur"
+            return "textkorrektur";
           } else if (d.SchriftspurTyp.includes("U") == true) {
-            return "uebersetzung"
+            return "uebersetzung";
           } else if (d.SchriftspurTyp.includes("V") == true) {
-            return "variante"
+            return "variante";
           } else if (d.Benutzungsspur.includes("5") == true) {
-            return "marginalie"
+            return "marginalie";
           }
         })
-        .classed("nodes", true)
+        .classed("nodes", true);
 
       function farbausfaltungProvenienz() {
-        transitions = true
-        transitionsNeu++
+        transitions = true;
+        transitionsNeu++;
 
         setTimeout(function() {
-          transitions = false
-          transitionsNeu--
+          transitions = false;
+          transitionsNeu--;
 
         }, 1000);
 
-        areachart.selectAll(".provenienz,.provenienzstempel,.sonstigeMarkierung,.anstreichung,.unterstreichung,.durchstreichung,.bewertung,.kommentar,.textkorrektur,.uebersetzung,.variante").classed("eingefaltet", false)
-        d3.selectAll(".pieG").selectAll(".provenienz,.provenienzstempel,.sonstigeMarkierung,.anstreichung,.unterstreichung,.durchstreichung,.bewertung,.kommentar,.textkorrektur,.uebersetzung,.variante").classed("eingefaltet", false)
+        areachart.selectAll(".provenienz,.provenienzstempel,.sonstigeMarkierung,.anstreichung,.unterstreichung,.durchstreichung,.bewertung,.kommentar,.textkorrektur,.uebersetzung,.variante").classed("eingefaltet", false);
+        d3.selectAll(".pieG").selectAll(".provenienz,.provenienzstempel,.sonstigeMarkierung,.anstreichung,.unterstreichung,.durchstreichung,.bewertung,.kommentar,.textkorrektur,.uebersetzung,.variante").classed("eingefaltet", false);
 
         dataContainer.selectAll(".nodes").filter(".provenienz,.provenienzstempel").transition("farbausfaltungProvenienz").duration(800)
           .attr("fill", function(d) {
             if (d.SchriftspurTyp.includes("P") == true && d.Schreibmedium != "Stempel") {
-              return "#7e7e8e"
+              return "#7e7e8e";
             } else if (d.SchriftspurTyp.includes("P") == true && d.Schreibmedium == "Stempel") {
-              return "#a3a3a3"
+              return "#a3a3a3";
             }
-          })
+          });
       }
 
       function farbeinfaltungProvenienz() {
-        transitions = true
-        transitionsNeu++
+        transitions = true;
+        transitionsNeu++;
 
         setTimeout(function() {
-          transitions = false
-          transitionsNeu--
+          transitions = false;
+          transitionsNeu--;
 
         }, 1000);
 
-        areachart.selectAll(".provenienz,.provenienzstempel").classed("eingefaltet", true)
-        d3.selectAll(".pieG").selectAll(".provenienz,.provenienzstempel").classed("eingefaltet", true)
+        areachart.selectAll(".provenienz,.provenienzstempel").classed("eingefaltet", true);
+        d3.selectAll(".pieG").selectAll(".provenienz,.provenienzstempel").classed("eingefaltet", true);
 
         dataContainer.selectAll(".nodes").filter(".provenienz,.provenienzstempel").transition("farbeinfaltungProvenienz").duration(800)
           .attr("fill", function(d) {
             if (d.SchriftspurTyp.includes("P") == true && d.Schreibmedium != "Stempel") {
-              return "#707070"
+              return "#707070";
             } else if (d.SchriftspurTyp.includes("P") == true && d.Schreibmedium == "Stempel") {
-              return "#707070"
+              return "#707070";
             }
-          })
+          });
       }
 
 
 
       function farbausfaltungMarkierung() {
-        transitions = true
-        transitionsNeu++
+        transitions = true;
+        transitionsNeu++;
 
         setTimeout(function() {
-          transitions = false
-          transitionsNeu--
+          transitions = false;
+          transitionsNeu--;
 
         }, 1000);
 
-        areachart.selectAll(".provenienz,.provenienzstempel,.sonstigeMarkierung,.anstreichung,.unterstreichung,.durchstreichung,.bewertung,.kommentar,.textkorrektur,.uebersetzung,.variante").classed("eingefaltet", false)
-        d3.selectAll(".pieG").selectAll(".provenienz,.provenienzstempel,.sonstigeMarkierung,.anstreichung,.unterstreichung,.durchstreichung,.bewertung,.kommentar,.textkorrektur,.uebersetzung,.variante").classed("eingefaltet", false)
+        areachart.selectAll(".provenienz,.provenienzstempel,.sonstigeMarkierung,.anstreichung,.unterstreichung,.durchstreichung,.bewertung,.kommentar,.textkorrektur,.uebersetzung,.variante").classed("eingefaltet", false);
+        d3.selectAll(".pieG").selectAll(".provenienz,.provenienzstempel,.sonstigeMarkierung,.anstreichung,.unterstreichung,.durchstreichung,.bewertung,.kommentar,.textkorrektur,.uebersetzung,.variante").classed("eingefaltet", false);
 
         dataContainer.selectAll(".nodes").filter(".unterstreichung,.anstreichung,.durchstreichung,.sonstigeMarkierung,.anderes").transition("farbausfaltungMarkierung").duration(800)
           .attr("fill", function(d) {
             if (d.Benutzungsspur.includes("1") == true) {
-              return "#018DC9"
+              return "#018DC9";
             } else if (d.Benutzungsspur.includes("2") == true) {
-              return "#415aff"
+              return "#415aff";
             } else if (d.Benutzungsspur.includes("3") == true) {
-              return "#944cfd"
+              return "#944cfd";
             } else if (d.Benutzungsspur.includes("4") == true) {
-              return "#29D1E2"
+              return "#29D1E2";
             }
-          })
+          });
       }
 
       function farbeinfaltungMarkierung() {
-        transitions = true
-        transitionsNeu++
+        transitions = true;
+        transitionsNeu++;
 
         setTimeout(function() {
-          transitions = false
-          transitionsNeu--
+          transitions = false;
+          transitionsNeu--;
         }, 1000);
 
-        areachart.selectAll(".unterstreichung,.anstreichung,.durchstreichung,.sonstigeMarkierung").classed("eingefaltet", true)
-        d3.selectAll(".pieG").selectAll(".unterstreichung,.anstreichung,.durchstreichung,.sonstigeMarkierung").classed("eingefaltet", true)
+        areachart.selectAll(".unterstreichung,.anstreichung,.durchstreichung,.sonstigeMarkierung").classed("eingefaltet", true);
+        d3.selectAll(".pieG").selectAll(".unterstreichung,.anstreichung,.durchstreichung,.sonstigeMarkierung").classed("eingefaltet", true);
 
         dataContainer.selectAll(".nodes").filter(".unterstreichung,.anstreichung,.durchstreichung,.sonstigeMarkierung").transition("farbeinfaltungMarkierung").duration(800)
           .attr("fill", function(d) {
             if (d.Benutzungsspur.includes("1") == true) {
-              return "#58b0f7"
+              return "#58b0f7";
             } else if (d.Benutzungsspur.includes("2") == true) {
-              return "#58b0f7"
+              return "#58b0f7";
             } else if (d.Benutzungsspur.includes("3") == true) {
-              return "#58b0f7"
+              return "#58b0f7";
             } else if (d.Benutzungsspur.includes("4") == true) {
-              return "#58b0f7"
+              return "#58b0f7";
             }
-          })
+          });
       }
 
 
 
       function farbausfaltungMarginalien() {
-        transitions = true
-        transitionsNeu++
+        transitions = true;
+        transitionsNeu++;
 
         setTimeout(function() {
-          transitions = false
-          transitionsNeu--
+          transitions = false;
+          transitionsNeu--;
 
         }, 1000);
 
-        areachart.selectAll(".provenienz,.provenienzstempel,.sonstigeMarkierung,.anstreichung,.unterstreichung,.durchstreichung,.bewertung,.kommentar,.textkorrektur,.uebersetzung,.variante").classed("eingefaltet", false)
-        d3.selectAll(".pieG").selectAll(".provenienz,.provenienzstempel,.sonstigeMarkierung,.anstreichung,.unterstreichung,.durchstreichung,.bewertung,.kommentar,.textkorrektur,.uebersetzung,.variante").classed("eingefaltet", false)
+        areachart.selectAll(".provenienz,.provenienzstempel,.sonstigeMarkierung,.anstreichung,.unterstreichung,.durchstreichung,.bewertung,.kommentar,.textkorrektur,.uebersetzung,.variante").classed("eingefaltet", false);
+        d3.selectAll(".pieG").selectAll(".provenienz,.provenienzstempel,.sonstigeMarkierung,.anstreichung,.unterstreichung,.durchstreichung,.bewertung,.kommentar,.textkorrektur,.uebersetzung,.variante").classed("eingefaltet", false);
 
         dataContainer.selectAll(".nodes").filter(".bewertung,.kommentar,.textkorrektur,.uebersetzung,.variante").transition("farbausfaltungMarginalien").duration(800)
           .attr("fill", function(d) {
             if (d.SchriftspurTyp.includes("B") == true) {
-              return "#dd0000"
+              return "#dd0000";
             } else if (d.SchriftspurTyp.includes("K") == true) {
-              return "#FF8A5D"
+              return "#FF8A5D";
             } else if (d.SchriftspurTyp.includes("T") == true) {
-              return "#a4105f"
+              return "#a4105f";
             } else if (d.SchriftspurTyp.includes("U") == true) {
-              return "#d93168"
+              return "#d93168";
             } else if (d.SchriftspurTyp.includes("V") == true) {
-              return "#fb8385"
+              return "#fb8385";
             }
-          })
+          });
       }
 
       function farbeinfaltungMarginalien() {
-        transitions = true
-        transitionsNeu++
+        transitions = true;
+        transitionsNeu++;
 
         setTimeout(function() {
-          transitions = false
-          transitionsNeu--
+          transitions = false;
+          transitionsNeu--;
 
         }, 1000);
 
-        areachart.selectAll(".bewertung,.kommentar,.textkorrektur,.uebersetzung,.variante").classed("eingefaltet", true)
-        d3.selectAll(".pieG").selectAll(".bewertung,.kommentar,.textkorrektur,.uebersetzung,.variante").classed("eingefaltet", true)
+        areachart.selectAll(".bewertung,.kommentar,.textkorrektur,.uebersetzung,.variante").classed("eingefaltet", true);
+        d3.selectAll(".pieG").selectAll(".bewertung,.kommentar,.textkorrektur,.uebersetzung,.variante").classed("eingefaltet", true);
 
         dataContainer.selectAll(".nodes").filter(".bewertung,.kommentar,.textkorrektur,.uebersetzung,.variante").transition("farbeinfaltungMarginalien").duration(800)
           .attr("fill", function(d) {
             if (d.SchriftspurTyp.includes("B") == true) {
-              return "#f73f26"
+              return "#f73f26";
             } else if (d.SchriftspurTyp.includes("K") == true) {
-              return "#f73f26"
+              return "#f73f26";
             } else if (d.SchriftspurTyp.includes("T") == true) {
-              return "#f73f26"
+              return "#f73f26";
             } else if (d.SchriftspurTyp.includes("U") == true) {
-              return "#f73f26"
+              return "#f73f26";
             } else if (d.SchriftspurTyp.includes("V") == true) {
-              return "#f73f26"
+              return "#f73f26";
             } else if (d.Benutzungsspur.includes("5") == true && d.SchriftspurTyp.includes("P") == false) {
-              return "#f73f26"
+              return "#f73f26";
             }
-          })
+          });
       }
 
-      var detailview = false
-      var thisData = 0
+      var detailview = false;
+      var thisData = 0;
 
 
 
@@ -5538,36 +5525,36 @@ Promise.all([
 
       function bookClickHash(data) {
 
-        d3.select(".tippbubble").transition().duration(800).style("opacity", 0).transition().delay(1000).style("display", "none")
+        d3.select(".tippbubble").transition().duration(800).style("opacity", 0).transition().delay(1000).style("display", "none");
 
-        hashFunction()
+        hashFunction();
 
 
         svgFrontTitles.selectAll(".bookTitleFrontG")
-          .style("display", "none")
+          .style("display", "none");
 
         d3.select('.tooltip')
-          .style("display", "none")
+          .style("display", "none");
 
         ///Trigger animation in Canvas
-        transitions = true
-        transitionsNeu++
-        transitionbookClick = true
+        transitions = true;
+        transitionsNeu++;
+        transitionbookClick = true;
 
         ///Stop animation in Canvas
         setTimeout(function() {
-          transitions = false
-          transitionsNeu--
-          transitionbookClick = false
+          transitions = false;
+          transitionsNeu--;
+          transitionbookClick = false;
         }, 1200);
 
         ///create array thisData that only includes pages with Benutzungsspuren
-        thisData = data
+        thisData = data;
         ///create Variable that counts number of "Schriftspuren" on one page
-        var maxX = 0
+        var maxX = 0;
 
         ///create variable that helps to position the books
-        var posX = 0
+        var posX = 0;
 
 
 
@@ -5575,87 +5562,87 @@ Promise.all([
         var selectedBookScale = d3.scaleLinear()
           .domain([0, 3000])
           .range([selectedBookBuchlevel, selectedBookSeitenlevel])
-          .clamp(true)
+          .clamp(true);
 
         var unselectedBookSameAuthorScale = d3.scaleLinear()
           .domain([0, 3000])
           .range([unselectedBookSameAuthorBuchlevel, unselectedBookSameAuthorSeitenlevel])
-          .clamp(true)
+          .clamp(true);
 
         var unselectedBookScale = d3.scaleLinear()
           .domain([0, 3000])
           .range([unselectedBookBuchlevel, unselectedBookSeitenlevel])
-          .clamp(true)
+          .clamp(true);
 
         var BuchauswahlFeldScale = d3.scaleLinear()
           .domain([0, 3000])
           .range([BuchauswahlFeld, BuchauswahlFeldSeitenFeld])
-          .clamp(true)
+          .clamp(true);
 
-        var onSelectionAuthorAbstand = ((chartArea) - BuchauswahlFeldScale(scrollTop) - ((BuchAnzahl - authorAnzahl - 2) * onSelectionBuchAbstandScale(scrollTop))) / (authorAnzahl - 1)
+        var onSelectionAuthorAbstand = ((chartArea) - BuchauswahlFeldScale(scrollTop) - ((BuchAnzahl - authorAnzahl - 2) * onSelectionBuchAbstandScale(scrollTop))) / (authorAnzahl - 1);
 
         bookFingerprint.selectAll(".nodes")
           .filter(function(d, i) {
-            return d.BookID != clickedBook
+            return d.BookID != clickedBook;
           })
           .transition()
           .duration(800)
           .attr("width", function(d) {
-            return unselectedBookScale(scrollTop)
+            return unselectedBookScale(scrollTop);
           })
-          .attr("x", 0)
+          .attr("x", 0);
 
 
 
 
         bookFingerprint.selectAll(".nodes")
           .filter(function(d, i) {
-            return d.BookID == clickedBook
+            return d.BookID == clickedBook;
           })
           .transition()
           .duration(800)
           .attr("width", function(d) {
-            return selectedBookScale(scrollTop)
+            return selectedBookScale(scrollTop);
           })
           .attr("x", function(d, i) {
             if (i > 6 && thisData[i - 7].ID == d.ID) {
-              return 7 * selectedBookScale(scrollTop) - selectedBookScale(scrollTop) * 7
+              return 7 * selectedBookScale(scrollTop) - selectedBookScale(scrollTop) * 7;
             } else if (i > 5 && thisData[i - 6].ID == d.ID) {
-              return 7 * selectedBookScale(scrollTop) - selectedBookScale(scrollTop) * 6
+              return 7 * selectedBookScale(scrollTop) - selectedBookScale(scrollTop) * 6;
             } else if (i > 4 && thisData[i - 5].ID == d.ID) {
-              return 7 * selectedBookScale(scrollTop) - selectedBookScale(scrollTop) * 5
+              return 7 * selectedBookScale(scrollTop) - selectedBookScale(scrollTop) * 5;
             } else if (i > 3 && thisData[i - 4].ID == d.ID) {
-              return 7 * selectedBookScale(scrollTop) - selectedBookScale(scrollTop) * 4
+              return 7 * selectedBookScale(scrollTop) - selectedBookScale(scrollTop) * 4;
             } else if (i > 2 && thisData[i - 3].ID == d.ID) {
-              return 7 * selectedBookScale(scrollTop) - selectedBookScale(scrollTop) * 3
+              return 7 * selectedBookScale(scrollTop) - selectedBookScale(scrollTop) * 3;
             } else if (i > 1 && thisData[i - 2].ID == d.ID) {
-              return 7 * selectedBookScale(scrollTop) - selectedBookScale(scrollTop) * 2
+              return 7 * selectedBookScale(scrollTop) - selectedBookScale(scrollTop) * 2;
             } else if (i != 0 && thisData[i - 1].ID == d.ID) {
-              return 7 * selectedBookScale(scrollTop) - selectedBookScale(scrollTop)
+              return 7 * selectedBookScale(scrollTop) - selectedBookScale(scrollTop);
             } else {
-              return 7 * selectedBookScale(scrollTop)
+              return 7 * selectedBookScale(scrollTop);
             }
-          })
+          });
 
         bookFingerprint.selectAll(".nodesbg")
           .transition()
           .duration(800)
           .attr("width", function(d) {
             if (d.values[0].BookID == clickedBook) {
-              return selectedBookScale(scrollTop)
+              return selectedBookScale(scrollTop);
             } else {
-              return unselectedBookScale(scrollTop)
+              return unselectedBookScale(scrollTop);
             }
           })
           .attr("x", function(d) {
             if (d.values[0].BookID == clickedBook) {
-              return 7 * selectedBookScale(scrollTop)
+              return 7 * selectedBookScale(scrollTop);
             } else {
-              return 0
+              return 0;
             }
-          })
+          });
 
-        var thisBookPosition = 0
+        var thisBookPosition = 0;
 
         bookFingerprint
           .transition()
@@ -5663,26 +5650,26 @@ Promise.all([
           .attr("transform", function(d, i) {
             //erstes Buches
             if (i == 0) {
-              posx = 0
-              return "translate(" + (marginleft + (posx)) + "," + (posYCanvas) + ")"
+              posx = 0;
+              return "translate(" + (marginleft + (posx)) + "," + (posYCanvas) + ")";
             } else if (i == datenByTitle.length - 1 && datenByTitle[i].values[0].BookID == clickedBook) {
-              thisBookPosition = posx + 83
-              posx = posx + onSelectionBuchAbstandScale(scrollTop)
-              return "translate(" + (marginleft + (posx)) + "," + (posYCanvas) + ")"
+              thisBookPosition = posx + 83;
+              posx = posx + onSelectionBuchAbstandScale(scrollTop);
+              return "translate(" + (marginleft + (posx)) + "," + (posYCanvas) + ")";
             } else if (i != 0 && datenByTitle[i - 1].values[0].BookID == clickedBook) {
-              thisBookPosition = posx + 83
-              posx = posx + BuchauswahlFeldScale(scrollTop)
-              return "translate(" + (marginleft + (posx)) + "," + (posYCanvas) + ")"
+              thisBookPosition = posx + 83;
+              posx = posx + BuchauswahlFeldScale(scrollTop);
+              return "translate(" + (marginleft + (posx)) + "," + (posYCanvas) + ")";
               //ungleich null und Buch davor hat anderen Verfasser
             } else if (i != 0 && datenByTitle[i - 1].values[0].Verfasser != d.values[0].Verfasser) {
-              posx = posx + onSelectionAuthorAbstand
-              return "translate(" + (marginleft + (posx)) + "," + (posYCanvas) + ")"
+              posx = posx + onSelectionAuthorAbstand;
+              return "translate(" + (marginleft + (posx)) + "," + (posYCanvas) + ")";
               //ungleich null und Buch davor ist nicht ausgewähltes Buch
             } else {
-              posx = posx + onSelectionBuchAbstandScale(scrollTop)
-              return "translate(" + (marginleft + (posx)) + "," + (posYCanvas) + ")"
+              posx = posx + onSelectionBuchAbstandScale(scrollTop);
+              return "translate(" + (marginleft + (posx)) + "," + (posYCanvas) + ")";
             }
-          })
+          });
 
 
         bookG
@@ -5690,19 +5677,19 @@ Promise.all([
           .duration(800)
           .attr("transform", function(d, i) {
             if (i == 0) {
-              posx = 0
-              return "translate(" + (marginleft - 2 + (posx)) + "," + (posY) + ")"
+              posx = 0;
+              return "translate(" + (marginleft - 2 + (posx)) + "," + (posY) + ")";
             } else if (i != 0 && datenByTitle[i - 1].values[0].BookID == clickedBook) {
-              posx = posx + BuchauswahlFeldScale(scrollTop)
-              return "translate(" + (marginleft - 2 + (posx)) + "," + (posY) + ")"
+              posx = posx + BuchauswahlFeldScale(scrollTop);
+              return "translate(" + (marginleft - 2 + (posx)) + "," + (posY) + ")";
             } else if (i != 0 && datenByTitle[i - 1].values[0].Verfasser != d.values[0].Verfasser) {
-              posx = posx + onSelectionAuthorAbstand
-              return "translate(" + (marginleft - 2 + (posx)) + "," + (posY) + ")"
+              posx = posx + onSelectionAuthorAbstand;
+              return "translate(" + (marginleft - 2 + (posx)) + "," + (posY) + ")";
             } else {
-              posx = posx + onSelectionBuchAbstandScale(scrollTop)
-              return "translate(" + (marginleft - 2 + (posx)) + "," + (posY) + ")"
+              posx = posx + onSelectionBuchAbstandScale(scrollTop);
+              return "translate(" + (marginleft - 2 + (posx)) + "," + (posY) + ")";
             }
-          })
+          });
 
 
         d3.selectAll(".bookTitleFrontG")
@@ -5710,19 +5697,19 @@ Promise.all([
           .duration(800)
           .attr("transform", function(d, i) {
             if (i == 0) {
-              posx = 0
-              return "translate(" + (marginleft + (posx) - 40.5) + "," + (posY) + ")"
+              posx = 0;
+              return "translate(" + (marginleft + (posx) - 40.5) + "," + (posY) + ")";
             } else if (i != 0 && datenByTitle[i - 1].values[0].BookID == clickedBook) {
-              posx = posx + BuchauswahlFeldScale(scrollTop)
-              return "translate(" + (marginleft + (posx) - 40.5) + "," + (posY) + ")"
+              posx = posx + BuchauswahlFeldScale(scrollTop);
+              return "translate(" + (marginleft + (posx) - 40.5) + "," + (posY) + ")";
             } else if (i != 0 && datenByTitle[i - 1].values[0].Verfasser != d.values[0].Verfasser) {
-              posx = posx + onSelectionAuthorAbstand
-              return "translate(" + (marginleft + (posx) - 40.5) + "," + (posY) + ")"
+              posx = posx + onSelectionAuthorAbstand;
+              return "translate(" + (marginleft + (posx) - 40.5) + "," + (posY) + ")";
             } else {
-              posx = posx + onSelectionBuchAbstandScale(scrollTop)
-              return "translate(" + (marginleft + (posx) - 40.5) + "," + (posY) + ")"
+              posx = posx + onSelectionBuchAbstandScale(scrollTop);
+              return "translate(" + (marginleft + (posx) - 40.5) + "," + (posY) + ")";
             }
-          })
+          });
 
 
 
@@ -5732,35 +5719,35 @@ Promise.all([
           .style("opacity", 0)
           .attr("width", function(d) {
             if (d.values[0].BookID == clickedBook) {
-              return BuchauswahlFeldScale(scrollTop)
+              return BuchauswahlFeldScale(scrollTop);
             } else {
-              return buchBreite
+              return buchBreite;
             }
           })
           .filter(function(d) {
-            return d.values[0].BookID == clickedBook
+            return d.values[0].BookID == clickedBook;
           })
           .style("fill", "#d9c2b2")
-          .style("opacity", 0.3)
+          .style("opacity", 0.3);
 
 
-        d3.selectAll(".BuchTitel").remove()
+        d3.selectAll(".BuchTitel").remove();
 
 
         d3.selectAll(".detailInfoParent")
-          .remove()
+          .remove();
 
-        detailview = true
+        detailview = true;
         ///Detailinfo bei Klick einblenden
         var detailInfoParent = (d3.select("#svg").selectAll(".bookBGsvg").filter(function(d) {
-          return d.key == clickedBook
-        })).append("g").attr("class", "detailInfoParent")
+          return d.key == clickedBook;
+        })).append("g").attr("class", "detailInfoParent");
 
 
-        var detailInfo = detailInfoParent.append("g")
+        var detailInfo = detailInfoParent.append("g");
 
 
-        d3.select(".detailDiv").remove()
+        d3.select(".detailDiv").remove();
 
         var detailDiv = d3.select("body").append("div").attr("class", "detailDiv").style("position", "fixed").style("display", "block")
           .style("top", canvasTop + "px")
@@ -5769,33 +5756,33 @@ Promise.all([
           .style("transform", "scale(0, 1)")
           .style("transform-origin", "0 0")
           .style("left", function() {
-            return thisBookPosition + marginleft + 8 * selectedBookScale(scrollTop) + "px"
+            return thisBookPosition + marginleft + 8 * selectedBookScale(scrollTop) + "px";
           })
           .style("opacity", function(d) {
-            return detailInfoScale(scrollTop)
+            return detailInfoScale(scrollTop);
           })
           .style("display", function() {
             if (modus === "similarity") {
-              return "none"
+              return "none";
             }
-          })
+          });
 
 
         detailDiv
           .transition()
           .duration(800)
           .style("transform", "scale(1, 1)")
-          .style("left", thisBookPosition + marginleft + 38 + 9 * selectedBookScale(scrollTop) + "px")
+          .style("left", thisBookPosition + marginleft + 38 + 9 * selectedBookScale(scrollTop) + "px");
 
-        var detailInfoData = data[0]
-        var bookcover = data[0].ID
+        var detailInfoData = data[0];
+        var bookcover = data[0].ID;
 
 
         detailDiv.append("img")
           .attr("src", function(d) {
             return "./img/m/" + korpus.filter(function(D, I) {
-              return D.Cover && D.KurzSignatur == data[0].BookID
-            })[0].Cover
+              return D.Cover && D.KurzSignatur == data[0].BookID;
+            })[0].Cover;
           })
           .style("display", "block")
           .style("width", detailPicWidth + "px")
@@ -5803,232 +5790,232 @@ Promise.all([
           .style("margin-bottom", "10px")
           .style("cursor", "pointer")
           .on("click", function(d, i) {
-            var thisPart = 1
-            var thisBookID = data[0].BookID
+            var thisPart = 1;
+            var thisBookID = data[0].BookID;
 
-            detailviewOpen(thisBookID, thisPart)
-          })
+            detailviewOpen(thisBookID, thisPart);
+          });
 
         var detailVerfasser = detailDiv.append("p")
-          .text("Verfasser: ")
+          .text("Verfasser: ");
 
         detailVerfasser.append("span")
           .text(function(d) {
             return korpus.filter(function(D, I) {
-              return D.KurzSignatur == detailInfoData.BookID
-            })[0].Verfasser
+              return D.KurzSignatur == detailInfoData.BookID;
+            })[0].Verfasser;
           })
-          .attr("class", "detailDivData")
+          .attr("class", "detailDivData");
 
         detailVerfasser.filter(function(d) {
             return korpus.filter(function(D, I) {
-              return D.KurzSignatur == detailInfoData.BookID
-            })[0].Verfasser == ""
+              return D.KurzSignatur == detailInfoData.BookID;
+            })[0].Verfasser == "";
           })
-          .remove()
+          .remove();
 
-        var detailHerausgeber = detailDiv.append("p").text("Herausgeber: ")
+        var detailHerausgeber = detailDiv.append("p").text("Herausgeber: ");
 
         detailHerausgeber.append("span")
           .text(function(d) {
             return korpus.filter(function(D, I) {
-              return D.KurzSignatur == detailInfoData.BookID
-            })[0].Herausgeber
+              return D.KurzSignatur == detailInfoData.BookID;
+            })[0].Herausgeber;
           })
-          .attr("class", "detailDivData")
+          .attr("class", "detailDivData");
 
         detailHerausgeber.filter(function(d) {
             return korpus.filter(function(D, I) {
-              return D.KurzSignatur == detailInfoData.BookID
-            })[0].Herausgeber == ""
+              return D.KurzSignatur == detailInfoData.BookID;
+            })[0].Herausgeber == "";
           })
-          .remove()
+          .remove();
 
 
 
 
-        var detailVerlag = detailDiv.append("p").text("Verlag: ")
+        var detailVerlag = detailDiv.append("p").text("Verlag: ");
 
         detailVerlag.append("span")
           .text(function(d) {
             return korpus.filter(function(D, I) {
-              return D.KurzSignatur == detailInfoData.BookID
-            })[0].Verlag
+              return D.KurzSignatur == detailInfoData.BookID;
+            })[0].Verlag;
           })
-          .attr("class", "detailDivData")
+          .attr("class", "detailDivData");
 
         detailVerlag.filter(function(d) {
             return korpus.filter(function(D, I) {
-              return D.KurzSignatur == detailInfoData.BookID
-            })[0].Verlag == ""
+              return D.KurzSignatur == detailInfoData.BookID;
+            })[0].Verlag == "";
           })
-          .remove()
+          .remove();
 
 
-        var detailGenre = detailDiv.append("p").text("Genre: ")
+        var detailGenre = detailDiv.append("p").text("Genre: ");
 
         detailGenre.append("span")
           .text(function(d) {
             return korpus.filter(function(D, I) {
-              return D.KurzSignatur == detailInfoData.BookID
-            })[0].Formalschlagwort_Genre
+              return D.KurzSignatur == detailInfoData.BookID;
+            })[0].Formalschlagwort_Genre;
           })
-          .attr("class", "detailDivData")
+          .attr("class", "detailDivData");
 
         detailGenre.filter(function(d) {
             return korpus.filter(function(D, I) {
-              return D.KurzSignatur == detailInfoData.BookID
-            })[0].Formalschlagwort_Genre == ""
+              return D.KurzSignatur == detailInfoData.BookID;
+            })[0].Formalschlagwort_Genre == "";
           })
-          .remove()
+          .remove();
 
 
-        var detailDatierung = detailDiv.append("p").text("Datierung: ")
+        var detailDatierung = detailDiv.append("p").text("Datierung: ");
 
         detailDatierung.append("span")
           .text(function(d) {
             return korpus.filter(function(D, I) {
-              return D.KurzSignatur == detailInfoData.BookID
-            })[0].Jahr
+              return D.KurzSignatur == detailInfoData.BookID;
+            })[0].Jahr;
           })
-          .attr("class", "detailDivData")
+          .attr("class", "detailDivData");
 
         detailDatierung.filter(function(d) {
             return korpus.filter(function(D, I) {
-              return D.KurzSignatur == detailInfoData.BookID
-            })[0].Jahr == ""
+              return D.KurzSignatur == detailInfoData.BookID;
+            })[0].Jahr == "";
           })
-          .remove()
+          .remove();
 
 
 
-        var detailOrt = detailDiv.append("p").text("Ort: ").style("margin-bottom", "10px")
+        var detailOrt = detailDiv.append("p").text("Ort: ").style("margin-bottom", "10px");
         detailOrt.append("span")
           .text(function(d) {
             return korpus.filter(function(D, I) {
-              return D.KurzSignatur == detailInfoData.BookID
-            })[0].Ort
+              return D.KurzSignatur == detailInfoData.BookID;
+            })[0].Ort;
           })
-          .attr("class", "detailDivData")
+          .attr("class", "detailDivData");
 
         detailOrt.filter(function(d) {
             return korpus.filter(function(D, I) {
-              return D.KurzSignatur == detailInfoData.BookID
-            })[0].Ort == ""
+              return D.KurzSignatur == detailInfoData.BookID;
+            })[0].Ort == "";
           })
-          .remove()
+          .remove();
 
 
 
-        var detailSeitenzahl = detailDiv.append("p").text("Seitenzahl: ").style("font-weight", "normal")
+        var detailSeitenzahl = detailDiv.append("p").text("Seitenzahl: ").style("font-weight", "normal");
 
         detailSeitenzahl.append("span")
           .text(function(d) {
-            return detailInfoData.maxPart
+            return detailInfoData.maxPart;
           })
           .style("font-weight", "bold")
-          .attr("class", "detailDivData")
+          .attr("class", "detailDivData");
 
 
 
         var detailEigentumsangaben = detailDiv.append("p").attr("class", "eigentumsangaben")
           .text("Provenienzangaben: ")
-          .style("font-weight", "normal")
+          .style("font-weight", "normal");
 
         detailEigentumsangaben.append("span")
           .text(function(d) {
             return thisData.filter(function(d) {
-              return d.SchriftspurTyp.includes("P")
-            }).length
+              return d.SchriftspurTyp.includes("P");
+            }).length;
           })
           .style("font-weight", "bold")
-          .attr("class", "detailDivData")
+          .attr("class", "detailDivData");
 
         detailEigentumsangaben.filter(function(d) {
           return +thisData.filter(function(d) {
-            return d.SchriftspurTyp.includes("P")
-          }).length == 0
-        }).remove()
+            return d.SchriftspurTyp.includes("P");
+          }).length == 0;
+        }).remove();
 
 
-        var detailMarginalien = detailDiv.append("p").attr("class", "marginalien").text("Marginalien: ").style("font-weight", "normal")
+        var detailMarginalien = detailDiv.append("p").attr("class", "marginalien").text("Marginalien: ").style("font-weight", "normal");
 
         detailMarginalien.append("span")
           .text(function(d) {
             return thisData.filter(function(d) {
-              return (d.Benutzungsspur.includes("5") == true && d.SchriftspurTyp != "P")
-            }).length
+              return (d.Benutzungsspur.includes("5") == true && d.SchriftspurTyp != "P");
+            }).length;
           })
-          .style("font-weight", "bold")
+          .style("font-weight", "bold");
 
         detailMarginalien
           .filter(function(d) {
             return +thisData.filter(function(d) {
-              return (d.Benutzungsspur.includes("5") == true && d.SchriftspurTyp != "P")
-            }).length == 0
-          }).remove()
+              return (d.Benutzungsspur.includes("5") == true && d.SchriftspurTyp != "P");
+            }).length == 0;
+          }).remove();
 
 
 
 
         var detailMarkierungen = detailDiv.append("p").attr("class", "markierungen").text("Markierungen: ")
-          .style("font-weight", "normal")
+          .style("font-weight", "normal");
 
         detailMarkierungen.append("span")
           .text(function(d) {
             return thisData.filter(function(d) {
               return d.Benutzungsspur.includes("1") == true || d.Benutzungsspur.includes("2") == true || d.Benutzungsspur.includes("3") == true || d.Benutzungsspur.includes("4") == true &&
-                d.Benutzungsspur.includes("4f") == false
-            }).length
-          }).style("font-weight", "bold")
+                d.Benutzungsspur.includes("4f") == false;
+            }).length;
+          }).style("font-weight", "bold");
 
 
         detailMarkierungen.filter(function(d) {
           return +thisData.filter(function(d) {
             return d.Benutzungsspur.includes("1") == true || d.Benutzungsspur.includes("2") == true || d.Benutzungsspur.includes("3") == true || d.Benutzungsspur.includes("4") == true &&
-              d.Benutzungsspur.includes("4f") == false
-          }).length == 0
-        }).remove()
+              d.Benutzungsspur.includes("4f") == false;
+          }).length == 0;
+        }).remove();
 
 
 
 
         var detailZusatzMaterial = detailDiv.append("p").attr("class", "zusatzMaterial").text("Zusätzliches Material: ")
-          .style("font-weight", "normal").style("pointer-events", "none")
+          .style("font-weight", "normal").style("pointer-events", "none");
 
         detailZusatzMaterial.append("span").text(function(d) {
           return thisData.filter(function(d) {
-            return d.Benutzungsspur.includes("6") == true
-          }).length
-        }).style("font-weight", "bold")
+            return d.Benutzungsspur.includes("6") == true;
+          }).length;
+        }).style("font-weight", "bold");
 
         detailZusatzMaterial.filter(function(d) {
           return +thisData.filter(function(d) {
-            return d.Benutzungsspur.includes("6") == true
-          }).length == 0
-        }).remove()
+            return d.Benutzungsspur.includes("6") == true;
+          }).length == 0;
+        }).remove();
 
 
-        var detrailAnderes = detailDiv.append("p").attr("class", "anderes").text("Anderes: ").style("font-weight", "normal").style("pointer-events", "none")
+        var detrailAnderes = detailDiv.append("p").attr("class", "anderes").text("Anderes: ").style("font-weight", "normal").style("pointer-events", "none");
 
         detrailAnderes.append("span").text(function(d) {
           return thisData.filter(function(d) {
-            return d.Benutzungsspur.includes("7") == true
-          }).length
-        }).style("font-weight", "bold")
+            return d.Benutzungsspur.includes("7") == true;
+          }).length;
+        }).style("font-weight", "bold");
 
         detrailAnderes.filter(function(d) {
           return +thisData.filter(function(d) {
-            return d.Benutzungsspur.includes("7") == true
-          }).length == 0
-        }).remove()
+            return d.Benutzungsspur.includes("7") == true;
+          }).length == 0;
+        }).remove();
 
 
         detailInfo.attr("class", "detailinfo")
           .attr("transform", "scale(0,1)")
           .transition()
           .duration(800)
-          .attr("transform", "scale(1,1)")
+          .attr("transform", "scale(1,1)");
 
 
 
@@ -6040,18 +6027,18 @@ Promise.all([
           .attr("class", "detail_titel")
           .text(function(d) {
             if (korpus.filter(function(D, I) {
-                return D.KurzSignatur == d.values[0].BookID
+                return D.KurzSignatur == d.values[0].BookID;
               })[0]) {
               if (korpus.filter(function(D, I) {
-                  return D.KurzSignatur == d.values[0].BookID
+                  return D.KurzSignatur == d.values[0].BookID;
                 })[0].Kurztitel.length > 70) {
                 return (korpus.filter(function(D, I) {
-                  return D.KurzSignatur == d.values[0].BookID
-                })[0].Kurztitel).substring(0, 70) + " [...]" + "  \u2715"
+                  return D.KurzSignatur == d.values[0].BookID;
+                })[0].Kurztitel).substring(0, 70) + " [...]" + "  \u2715";
               } else {
                 return korpus.filter(function(D, I) {
-                  return D.KurzSignatur == d.values[0].BookID
-                })[0].Kurztitel + "  \u2715"
+                  return D.KurzSignatur == d.values[0].BookID;
+                })[0].Kurztitel + "  \u2715";
               }
             }
           })
@@ -6062,34 +6049,34 @@ Promise.all([
           .style("font-size", "1em")
           .attr("text-anchor", "middle")
           .on("click", function() {
-            clickedBook = 0
-            detailview = false
-            scrollTop = scrollTop + 1
+            clickedBook = 0;
+            detailview = false;
+            scrollTop = scrollTop + 1;
 
-            scrollFunction()
+            scrollFunction();
             d3.selectAll(".detailInfoParent")
               .transition()
               .style("opacity", 0)
-              .remove()
+              .remove();
 
             d3.selectAll(".detailDiv").transition()
               .style("opacity", 0)
-              .remove()
+              .remove();
 
             d3.selectAll(".bookBG").selectAll("rect")
               .transition()
-              .style("opacity", 0)
+              .style("opacity", 0);
 
-            bookFingerprint.selectAll(".nodesbg").attr("x", "0")
+            bookFingerprint.selectAll(".nodesbg").attr("x", "0");
             setTimeout(function() {
-              window.scrollTo(0, 3000)
-            }, 10)
+              window.scrollTo(0, 3000);
+            }, 10);
           })
           .attr("x", BuchauswahlFeldScale(scrollTop) / 2)
           .call(wrapUp, BuchauswahlFeld - 30)
           .selectAll("tspan")
           .attr("x", BuchauswahlFeldScale(scrollTop) / 2)
-          .attr("text-anchor", "middle")
+          .attr("text-anchor", "middle");
 
 
 
@@ -6097,41 +6084,41 @@ Promise.all([
         var detailTranscriptScale = d3.scaleLinear()
           .domain([-0.01, 0, 380])
           .range([0, 1, 1])
-          .clamp(true)
+          .clamp(true);
 
         var transcriptions = detailInfoParent.append("g").attr("clip-path", "url(#transcript-clip)").append("g").classed("transcriptions", true).attr("opacity", function(d) {
-          return detailTranscriptScale(scrollTop)
-        })
+          return detailTranscriptScale(scrollTop);
+        });
 
         d3.selectAll(".transcriptions")
           .attr("transform", function(d, i) {
             if (scrollTop < 3000) {
-              posYCanvas = 0
+              posYCanvas = 0;
             } else {
-              posYCanvas = 0 - ((scrollTop - 3000) * 1)
+              posYCanvas = 0 - ((scrollTop - 3000) * 1);
             }
-            return "translate(" + 0 + "," + (posYCanvas) + ") scale(0,1)"
+            return "translate(" + 0 + "," + (posYCanvas) + ") scale(0,1)";
           })
           .transition()
           .duration(800)
           .attr("transform", function(d, i) {
             if (scrollTop < 3000) {
-              posYCanvas = 0
+              posYCanvas = 0;
             } else {
-              posYCanvas = 0 - ((scrollTop - 3000) * 1)
+              posYCanvas = 0 - ((scrollTop - 3000) * 1);
             }
-            return "translate(" + 0 + "," + (posYCanvas) + ") scale(1,1)"
-          })
+            return "translate(" + 0 + "," + (posYCanvas) + ") scale(1,1)";
+          });
 
 
         var transcriptData = thisData.filter(function(d) {
-          return d.SchriftspurTranskription != ""
-        })
+          return d.SchriftspurTranskription != "";
+        });
 
         var explicateScale2 = d3.scaleLinear()
           .domain([500, 2500])
           .range([pageheight, 31])
-          .clamp(true)
+          .clamp(true);
 
 
         transcriptions.selectAll("text")
@@ -6139,109 +6126,109 @@ Promise.all([
           .enter()
           .append("text")
           .text(function(d) {
-            return d.SchriftspurTranskription
+            return d.SchriftspurTranskription;
           })
           .style("font-size", fontsize + "px")
           .attr("x", transcriptPositionScale(scrollTop) * selectedBookScale(scrollTop) + 10)
           .attr("y", function(d, i) {
             if (i == 0) {
-              return transcriptYStart(scrollTop) + (explicateScale2(scrollTop)) * d.Part
+              return transcriptYStart(scrollTop) + (explicateScale2(scrollTop)) * d.Part;
             } else {
-              return transcriptYStart(scrollTop) + (explicateScale2(scrollTop)) * d.Part
+              return transcriptYStart(scrollTop) + (explicateScale2(scrollTop)) * d.Part;
             }
           })
           .attr("dy", 0)
           .attr("dx", 0)
           .attr("class", function(d, i) {
             if (d.Schreibmedium == "Stempel") {
-              return "stempel"
+              return "stempel";
             } else {
-              return "handschrift"
+              return "handschrift";
             }
           })
           .classed("transcriptText", true)
           .text(function(d, i) {
-            return d.SchriftspurTranskription
+            return d.SchriftspurTranskription;
           })
           .call(wraptext, transcripttextwrap)
           .selectAll("tspan")
           .attr("x", transcriptPositionScale(scrollTop) * selectedBookScale(scrollTop) + 10)
           .attr("y", function(d, i) {
-            return transcriptYStart(scrollTop) + (explicateScale2(scrollTop)) * d.Part
-          })
+            return transcriptYStart(scrollTop) + (explicateScale2(scrollTop)) * d.Part;
+          });
 
         transcriptions.selectAll("text").classed("transcriptionText", true).style("font-size", function() {
-            return transcriptFontSize(scrollTop) + "px"
+            return transcriptFontSize(scrollTop) + "px";
           })
           .on("mouseover", function(d, i) {
             if (scrollTop > 800) {
-              d3.event.stopPropagation()
+              d3.event.stopPropagation();
 
               d3.select('.tooltip')
                 .style("display", "block")
                 .style('top', d3.event.pageY - 100 + 'px')
                 .style('left', function() {
                   if (d3.event.pageX < width / 2) {
-                    return d3.event.pageX + 25 + 'px'
+                    return d3.event.pageX + 25 + 'px';
                   } else {
-                    return d3.event.pageX - 250 + 'px'
+                    return d3.event.pageX - 250 + 'px';
                   }
-                })
+                });
 
               tooltip.select("img").attr("src", function() {
-                return "./img/m/" + d.ID + ".jpg"
-              })
+                return "./img/m/" + d.ID + ".jpg";
+              });
             }
           })
           .on("click", function(d, i) {
-            var thisPageID = d.ID
-            var thisBookID = d.BookID
-            var thisPart = d.Part
+            var thisPageID = d.ID;
+            var thisBookID = d.BookID;
+            var thisPart = d.Part;
 
-            detailviewOpen(thisBookID, thisPart)
+            detailviewOpen(thisBookID, thisPart);
 
-          })
+          });
 
 
         d3.selectAll(".transcriptionText")
           .each(function(d, i) {
             if (i > 0) {
-              var thisTranscriptY = d3.select(this).node().getBBox().y
+              var thisTranscriptY = d3.select(this).node().getBBox().y;
               var lastTranscriptMaxY = d3.selectAll(".transcriptionText").filter(function(D, I) {
-                return I == i - 1
+                return I == i - 1;
               }).node().getBBox().y + d3.selectAll(".transcriptionText").filter(function(D, I) {
-                return I == i - 1
-              }).node().getBBox().height
+                return I == i - 1;
+              }).node().getBBox().height;
 
               if (thisTranscriptY <= lastTranscriptMaxY) {
                 d3.select(this)
                   .attr("y", function() {
-                    return lastTranscriptMaxY + transcriptFontSize(scrollTop)
+                    return lastTranscriptMaxY + transcriptFontSize(scrollTop);
                   })
                   .selectAll("tspan").attr("y", function() {
-                    return lastTranscriptMaxY + transcriptFontSize(scrollTop)
-                  })
+                    return lastTranscriptMaxY + transcriptFontSize(scrollTop);
+                  });
 
                 transcriptions.append("image")
                   .attr("xlink:href", function() {
                     if (d.SchriftspurSchreibhand == "Theodor Fontane") {
-                      return "icons/icon_fontaneA.svg"
+                      return "icons/icon_fontaneA.svg";
                     } else if (d.SchriftspurSchreibhand == "?Theodor Fontane?") {
-                      return "icons/icon_fontaneB.svg"
+                      return "icons/icon_fontaneB.svg";
                     } else if (d.SchriftspurSchreibhand == "Unbekannt" || d.SchriftspurSchreibhand == "unbekannt" || d.SchriftspurSchreibhand == "") {
-                      return "icons/icon_unbekannt.svg"
+                      return "icons/icon_unbekannt.svg";
                     } else {
-                      return "icons/icon_andereA.svg"
+                      return "icons/icon_andereA.svg";
                     }
                   })
                   .attr("width", detailCircleScale(scrollTop))
                   .attr("height", detailCircleScale(scrollTop))
                   .attr("title", function() {
-                    return d.SchriftspurSchreibhand
+                    return d.SchriftspurSchreibhand;
                   })
                   .attr("class", "schreibhandIcon")
                   .attr("x", transcriptPositionScale(scrollTop) * selectedBookScale(scrollTop) - 3)
-                  .attr("y", lastTranscriptMaxY + transcriptFontSize(scrollTop) - 3 - (detailCircleScale(scrollTop) / 2))
+                  .attr("y", lastTranscriptMaxY + transcriptFontSize(scrollTop) - 3 - (detailCircleScale(scrollTop) / 2));
 
 
                 ////line between transcript and rect
@@ -6249,10 +6236,10 @@ Promise.all([
                   .style("pointer-events", "none")
                   .style("stroke", "white")
                   .style("stroke-width", 1)
-                  .style("opacity", .7)
+                  .style("opacity", 0.7)
                   .style("fill", "none")
                   .attr("d", function(d, i) {
-                    var line = d3.line().curve(d3.curveBasis)
+                    var line = d3.line().curve(d3.curveBasis);
                     var data = [
                       [transcriptPositionScale(scrollTop) * selectedBookScale(scrollTop) - 3, lastTranscriptMaxY + transcriptFontSize(scrollTop) - 3],
                       [transcriptPositionScale(scrollTop) * selectedBookScale(scrollTop) - transcriptLinePos, lastTranscriptMaxY + transcriptFontSize(scrollTop) - 3],
@@ -6260,41 +6247,41 @@ Promise.all([
                       [8 * selectedBookScale(scrollTop), thisTranscriptY + 15]
                     ];
 
-                    return line(data)
-                  })
+                    return line(data);
+                  });
 
 
               } else {
                 transcriptions.append("image")
                   .attr("xlink:href", function() {
                     if (d.SchriftspurSchreibhand == "Theodor Fontane") {
-                      return "icons/icon_fontaneA.svg"
+                      return "icons/icon_fontaneA.svg";
                     } else if (d.SchriftspurSchreibhand == "?Theodor Fontane?") {
-                      return "icons/icon_fontaneB.svg"
+                      return "icons/icon_fontaneB.svg";
                     } else if (d.SchriftspurSchreibhand == "Unbekannt" || d.SchriftspurSchreibhand == "unbekannt" || d.SchriftspurSchreibhand == "") {
-                      return "icons/icon_unbekannt.svg"
+                      return "icons/icon_unbekannt.svg";
                     } else {
-                      return "icons/icon_andereA.svg"
+                      return "icons/icon_andereA.svg";
                     }
                   })
                   .attr("title", function() {
-                    return d.SchriftspurSchreibhand
+                    return d.SchriftspurSchreibhand;
                   })
                   .attr("width", detailCircleScale(scrollTop))
                   .attr("height", detailCircleScale(scrollTop))
                   .attr("class", "schreibhandIcon")
                   .attr("x", transcriptPositionScale(scrollTop) * selectedBookScale(scrollTop) - 3)
-                  .attr("y", thisTranscriptY + transcriptFontSize(scrollTop) - 6 - (detailCircleScale(scrollTop) / 2))
+                  .attr("y", thisTranscriptY + transcriptFontSize(scrollTop) - 6 - (detailCircleScale(scrollTop) / 2));
 
                 ////line between transcript and rect
                 transcriptions.append("path")
                   .style("pointer-events", "none")
                   .style("stroke", "white")
                   .style("stroke-width", 1)
-                  .style("opacity", .7)
+                  .style("opacity", 0.7)
                   .style("fill", "none")
                   .attr("d", function(d, i) {
-                    var line = d3.line().curve(d3.curveBasis)
+                    var line = d3.line().curve(d3.curveBasis);
                     var data = [
                       [transcriptPositionScale(scrollTop) * selectedBookScale(scrollTop) - 3, thisTranscriptY + transcriptFontSize(scrollTop) - 6],
                       [transcriptPositionScale(scrollTop) * selectedBookScale(scrollTop) - transcriptLinePos, thisTranscriptY + transcriptFontSize(scrollTop) - 6],
@@ -6302,33 +6289,33 @@ Promise.all([
                       [8 * selectedBookScale(scrollTop), thisTranscriptY + 15]
                     ];
 
-                    return line(data)
-                  })
+                    return line(data);
+                  });
               }
 
             } else {
-              var thisTranscriptY = d3.select(this).node().getBBox().y
+              var thisTranscriptY = d3.select(this).node().getBBox().y;
 
               transcriptions.append("image")
                 .attr("xlink:href", function() {
                   if (d.SchriftspurSchreibhand == "Theodor Fontane") {
-                    return "icons/icon_fontaneA.svg"
+                    return "icons/icon_fontaneA.svg";
                   } else if (d.SchriftspurSchreibhand == "?Theodor Fontane?") {
-                    return "icons/icon_fontaneB.svg"
+                    return "icons/icon_fontaneB.svg";
                   } else if (d.SchriftspurSchreibhand == "Unbekannt" || d.SchriftspurSchreibhand == "unbekannt" || d.SchriftspurSchreibhand == "") {
-                    return "icons/icon_unbekannt.svg"
+                    return "icons/icon_unbekannt.svg";
                   } else {
-                    return "icons/icon_andereA.svg"
+                    return "icons/icon_andereA.svg";
                   }
                 })
                 .attr("title", function() {
-                  return d.SchriftspurSchreibhand
+                  return d.SchriftspurSchreibhand;
                 })
                 .attr("width", detailCircleScale(scrollTop))
                 .attr("height", detailCircleScale(scrollTop))
                 .attr("class", "schreibhandIcon")
                 .attr("x", transcriptPositionScale(scrollTop) * selectedBookScale(scrollTop) - 3)
-                .attr("y", thisTranscriptY + transcriptFontSize(scrollTop) - 6 - (detailCircleScale(scrollTop) / 2))
+                .attr("y", thisTranscriptY + transcriptFontSize(scrollTop) - 6 - (detailCircleScale(scrollTop) / 2));
 
 
               ////line between transcript and rect
@@ -6336,27 +6323,27 @@ Promise.all([
                 .style("pointer-events", "none")
                 .style("stroke", "white")
                 .style("stroke-width", 1)
-                .style("opacity", .7)
+                .style("opacity", 0.7)
                 .style("fill", "none")
                 .attr("d", function(d, i) {
-                  var line = d3.line().curve(d3.curveBasis)
+                  var line = d3.line().curve(d3.curveBasis);
                   var data = [
                     [transcriptPositionScale(scrollTop) * selectedBookScale(scrollTop) - 3, thisTranscriptY + transcriptFontSize(scrollTop) - 6],
                     [transcriptPositionScale(scrollTop) * selectedBookScale(scrollTop) - transcriptLinePos, thisTranscriptY + transcriptFontSize(scrollTop) - 6],
                     [8 * selectedBookScale(scrollTop) + transcriptLinePos, thisTranscriptY + transcriptFontSize(scrollTop) - 6],
                     [8 * selectedBookScale(scrollTop), thisTranscriptY + 15]
                   ];
-                  return line(data)
-                })
+                  return line(data);
+                });
 
             }
-          })
+          });
         //each ende
 
 
 
         d3.selectAll(".transcriptions").selectAll("path")
-          .style("opacity", transcriptPathScaleOpacity(scrollTop))
+          .style("opacity", transcriptPathScaleOpacity(scrollTop));
 
       }
 
@@ -6379,26 +6366,26 @@ Promise.all([
       function wrap(text, width) {
 
         text.each(function() {
-          var lineNumber = 0
+          var lineNumber = 0;
           var text = d3.select(this),
             words = text.text().split(/\s+/).reverse(),
             word,
-            line = []
+            line = [];
 
           var lineHeight = 1.1, // ems
             y = text.attr("y"),
             dy = parseFloat(text.attr("dy")),
-            tspan = text.text(null).append("tspan").attr("y", y).attr("dy", dy + "em")
+            tspan = text.text(null).append("tspan").attr("y", y).attr("dy", dy + "em");
 
 
-          while (word = words.pop()) {
+          while (word = words.pop()){
             line.push(word);
             tspan.text(line.join(" "));
             if (tspan.node().getComputedTextLength() > width) {
               line.pop();
               tspan.text(line.join(" "));
               line = [word];
-              lineNumber = lineNumber + 1
+              lineNumber = lineNumber + 1;
               tspan = text.append("tspan").attr("y", y).attr("dy", lineNumber * lineHeight + dy + "em").text(word);
             }
           }
@@ -6417,14 +6404,14 @@ Promise.all([
             y = text.attr("y"),
             dy = parseFloat(text.attr("dy")),
             tspan = text.text(null).append("tspan").attr("y", y).attr("dy", dy + "em");
-          while (word = words.pop()) {
+          while (word = words.pop()){
             line.push(word);
             tspan.text(line.join(" "));
             if (tspan.node().getComputedTextLength() > width) {
               line.pop();
               tspan.text(line.join(" "));
               line = [word];
-              lineNumber = lineNumber + 1
+              lineNumber = lineNumber + 1;
 
               tspan = text.append("tspan")
                 .attr("y", y)
@@ -6451,7 +6438,7 @@ Promise.all([
             y = text.attr("y"),
             dy = parseFloat(text.attr("dy")),
             tspan = text.text(null).append("tspan").attr("y", y).attr("dy", dy + "em");
-          while (word = words.pop()) {
+          while (word = words.pop()){
             line.push(word);
             tspan.text(line.join(" "));
             if (tspan.node().getComputedTextLength() > width) {
@@ -6478,478 +6465,477 @@ Promise.all([
 
 
       d3.select("h1").on("click", function() {
-        transitions = true
-        transitionsNeu++
+        transitions = true;
+        transitionsNeu++;
         setTimeout(function() {
-          transitions = false
-          transitionsNeu--
+          transitions = false;
+          transitionsNeu--;
 
         }, 1000);
         dataContainer.selectAll(".nodes")
           .transition()
-          .attr("opacity", 1)
-      })
+          .attr("opacity", 1);
+      });
 
       function filterInteraction() {
-        d3.select(".tippbubble").transition().duration(800).style("opacity", 0).transition().delay(1000).style("display", "none")
+        d3.select(".tippbubble").transition().duration(800).style("opacity", 0).transition().delay(1000).style("display", "none");
 
-        hashFunction()
+        hashFunction();
 
-        transitions = true
-        transitionsNeu++
+        transitions = true;
+        transitionsNeu++;
         setTimeout(function() {
-          transitions = false
-          transitionsNeu--
+          transitions = false;
+          transitionsNeu--;
 
         }, 1000);
-        dataContainer.selectAll(".nodesbg").attr("fill", "white")
-        $("#search").val('').trigger('change')
+        dataContainer.selectAll(".nodesbg").attr("fill", "white");
+        $("#search").val('').trigger('change');
 
         if (filter == null) {
 
 
-          areachart.selectAll("path").classed("filtered", false).classed("eingefaltet", true)
-          d3.selectAll(".pieG").selectAll("path").classed("filtered", false).classed("eingefaltet", true)
+          areachart.selectAll("path").classed("filtered", false).classed("eingefaltet", true);
+          d3.selectAll(".pieG").selectAll("path").classed("filtered", false).classed("eingefaltet", true);
 
           dataContainer.selectAll(".nodes")
-
             .transition()
-            .attr("opacity", 1)
-
-          dataContainer.selectAll(".nodes")
-            .filter(function(d) {
-              return d.SchriftspurTyp.includes("P") == true && d.Schreibmedium != "Stempel"
-            })
-            .transition()
-            .attr("opacity", 1)
-            .attr("fill", "#707070")
+            .attr("opacity", 1);
 
           dataContainer.selectAll(".nodes")
             .filter(function(d) {
-              return d.SchriftspurTyp.includes("P") == true && d.Schreibmedium == "Stempel"
+              return d.SchriftspurTyp.includes("P") == true && d.Schreibmedium != "Stempel";
             })
             .transition()
             .attr("opacity", 1)
-            .attr("fill", "#707070")
+            .attr("fill", "#707070");
+
+          dataContainer.selectAll(".nodes")
+            .filter(function(d) {
+              return d.SchriftspurTyp.includes("P") == true && d.Schreibmedium == "Stempel";
+            })
+            .transition()
+            .attr("opacity", 1)
+            .attr("fill", "#707070");
 
 
           dataContainer.selectAll(".nodes")
             .filter(function(d) {
-              return d.Benutzungsspur.includes("1") == true
+              return d.Benutzungsspur.includes("1") == true;
             })
             .transition()
             .attr("opacity", 1)
-            .attr("fill", "#58b0f7")
+            .attr("fill", "#58b0f7");
 
           dataContainer.selectAll(".nodes")
             .filter(function(d) {
-              return d.Benutzungsspur.includes("2") == true
+              return d.Benutzungsspur.includes("2") == true;
             })
             .transition()
             .attr("opacity", 1)
-            .attr("fill", "#58b0f7")
+            .attr("fill", "#58b0f7");
 
           dataContainer.selectAll(".nodes")
             .filter(function(d) {
-              return d.Benutzungsspur.includes("3") == true
+              return d.Benutzungsspur.includes("3") == true;
             })
             .transition()
             .attr("opacity", 1)
-            .attr("fill", "#58b0f7")
+            .attr("fill", "#58b0f7");
 
           dataContainer.selectAll(".nodes")
             .filter(function(d) {
-              return d.Benutzungsspur.includes("4") == true
+              return d.Benutzungsspur.includes("4") == true;
             })
             .transition()
             .attr("opacity", 1)
-            .attr("fill", "#58b0f7")
+            .attr("fill", "#58b0f7");
 
           dataContainer.selectAll(".nodes")
             .filter(function(d) {
-              return d.Benutzungsspur.includes("6") == true
+              return d.Benutzungsspur.includes("6") == true;
             })
             .transition()
             .attr("opacity", 1)
-            .attr("fill", "rgb(210, 164, 0)")
+            .attr("fill", "rgb(210, 164, 0)");
 
           dataContainer.selectAll(".nodes")
             .filter(function(d) {
-              return (d.Benutzungsspur.includes("5") == true && d.SchriftspurTyp.includes("P") == false)
+              return (d.Benutzungsspur.includes("5") == true && d.SchriftspurTyp.includes("P") == false);
             })
             .transition()
             .attr("opacity", 1)
-            .attr("fill", "#f73f26")
+            .attr("fill", "#f73f26");
 
           dataContainer.selectAll(".nodes")
             .filter(function(d) {
-              return d.SchriftspurTyp.includes("B") == true
+              return d.SchriftspurTyp.includes("B") == true;
             })
             .transition()
             .attr("opacity", 1)
-            .attr("fill", "#f73f26")
+            .attr("fill", "#f73f26");
 
           dataContainer.selectAll(".nodes")
             .filter(function(d) {
-              return d.SchriftspurTyp.includes("K") == true
+              return d.SchriftspurTyp.includes("K") == true;
             })
             .transition()
             .attr("opacity", 1)
-            .attr("fill", "#f73f26")
+            .attr("fill", "#f73f26");
 
           dataContainer.selectAll(".nodes")
             .filter(function(d) {
-              return d.SchriftspurTyp.includes("T") == true
+              return d.SchriftspurTyp.includes("T") == true;
             })
             .transition()
             .attr("opacity", 1)
-            .attr("fill", "#f73f26")
+            .attr("fill", "#f73f26");
 
           dataContainer.selectAll(".nodes")
             .filter(function(d) {
-              return d.SchriftspurTyp.includes("V") == true
+              return d.SchriftspurTyp.includes("V") == true;
             })
             .transition()
             .attr("opacity", 1)
-            .attr("fill", "#f73f26")
+            .attr("fill", "#f73f26");
 
           dataContainer.selectAll(".nodes")
             .filter(function(d) {
-              return d.SchriftspurTyp.includes("U") == true
+              return d.SchriftspurTyp.includes("U") == true;
             })
             .transition()
             .attr("opacity", 1)
-            .attr("fill", "#f73f26")
+            .attr("fill", "#f73f26");
 
           dataContainer.selectAll(".nodes")
             .filter(function(d) {
-              return d.Benutzungsspur.includes("7") == true
+              return d.Benutzungsspur.includes("7") == true;
             })
             .transition()
             .attr("opacity", 1)
-            .attr("fill", "#f284c0")
+            .attr("fill", "#f284c0");
 
         } else if (filter == "eigentumsangaben") {
 
-          areachart.selectAll("path").classed("filtered", true).filter(".provenienz,.provenienzstempel").classed("filtered", false)
-          d3.selectAll(".pieG").selectAll("path").classed("filtered", true).filter(".provenienz,.provenienzstempel").classed("filtered", false)
+          areachart.selectAll("path").classed("filtered", true).filter(".provenienz,.provenienzstempel").classed("filtered", false);
+          d3.selectAll(".pieG").selectAll("path").classed("filtered", true).filter(".provenienz,.provenienzstempel").classed("filtered", false);
 
           dataContainer.selectAll(".nodes")
             .transition()
             .attr("opacity", 0)
-            .attr("fill", "white")
+            .attr("fill", "white");
 
           dataContainer.selectAll(".nodes")
             .filter(function(d) {
-              return d.SchriftspurTyp.includes("P") == true && d.Schreibmedium != "Stempel"
+              return d.SchriftspurTyp.includes("P") == true && d.Schreibmedium != "Stempel";
             })
             .transition()
             .attr("opacity", 1)
-            .attr("fill", "#7e7e8e")
+            .attr("fill", "#7e7e8e");
 
           dataContainer.selectAll(".nodes")
             .filter(function(d) {
-              return d.SchriftspurTyp.includes("P") == true && d.Schreibmedium == "Stempel"
+              return d.SchriftspurTyp.includes("P") == true && d.Schreibmedium == "Stempel";
             })
             .transition()
             .attr("opacity", 1)
-            .attr("fill", "#a3a3a3")
+            .attr("fill", "#a3a3a3");
         } else if (filter == "provenienz") {
 
-          areachart.selectAll("path").classed("filtered", true).filter(".provenienz").classed("filtered", false)
-          d3.selectAll(".pieG").selectAll("path").classed("filtered", true).filter(".provenienz").classed("filtered", false)
+          areachart.selectAll("path").classed("filtered", true).filter(".provenienz").classed("filtered", false);
+          d3.selectAll(".pieG").selectAll("path").classed("filtered", true).filter(".provenienz").classed("filtered", false);
 
 
           dataContainer.selectAll(".nodes")
             .transition()
             .attr("opacity", 0)
-            .attr("fill", "white")
+            .attr("fill", "white");
 
           dataContainer.selectAll(".nodes")
             .filter(function(d) {
-              return d.SchriftspurTyp.includes("P") == true && d.Schreibmedium != "Stempel"
+              return d.SchriftspurTyp.includes("P") == true && d.Schreibmedium != "Stempel";
             })
             .transition()
             .attr("opacity", 1)
-            .attr("fill", "#7e7e8e")
+            .attr("fill", "#7e7e8e");
 
 
         } else if (filter == "provenienzstempel") {
 
-          areachart.selectAll("path").classed("filtered", true).filter(".provenienzstempel").classed("filtered", false)
-          d3.selectAll(".pieG").selectAll("path").classed("filtered", true).filter(".provenienzstempel").classed("filtered", false)
+          areachart.selectAll("path").classed("filtered", true).filter(".provenienzstempel").classed("filtered", false);
+          d3.selectAll(".pieG").selectAll("path").classed("filtered", true).filter(".provenienzstempel").classed("filtered", false);
 
           dataContainer.selectAll(".nodes")
             .transition()
             .attr("opacity", 0)
-            .attr("fill", "white")
+            .attr("fill", "white");
 
           dataContainer.selectAll(".nodes")
             .filter(function(d) {
-              return d.SchriftspurTyp.includes("P") == true && d.Schreibmedium == "Stempel"
+              return d.SchriftspurTyp.includes("P") == true && d.Schreibmedium == "Stempel";
             })
             .transition()
             .attr("opacity", 1)
-            .attr("fill", "#a3a3a3")
+            .attr("fill", "#a3a3a3");
 
         } else if (filter == "markierungen") {
 
-          areachart.selectAll("path").classed("filtered", true).filter(".unterstreichung,.anstreichung,.durchstreichung,.sonstigeMarkierung").classed("filtered", false)
-          d3.selectAll(".pieG").selectAll("path").classed("filtered", true).filter(".unterstreichung,.anstreichung,.durchstreichung,.sonstigeMarkierung").classed("filtered", false)
+          areachart.selectAll("path").classed("filtered", true).filter(".unterstreichung,.anstreichung,.durchstreichung,.sonstigeMarkierung").classed("filtered", false);
+          d3.selectAll(".pieG").selectAll("path").classed("filtered", true).filter(".unterstreichung,.anstreichung,.durchstreichung,.sonstigeMarkierung").classed("filtered", false);
 
           dataContainer.selectAll(".nodes")
             .transition()
             .attr("opacity", 0)
-            .attr("fill", "white")
+            .attr("fill", "white");
 
 
           dataContainer.selectAll(".nodes")
             .filter(function(d) {
-              return d.Benutzungsspur.includes("1") == true
+              return d.Benutzungsspur.includes("1") == true;
             })
             .transition()
             .attr("opacity", 1)
-            .attr("fill", "#018DC9")
+            .attr("fill", "#018DC9");
 
           dataContainer.selectAll(".nodes")
             .filter(function(d) {
-              return d.Benutzungsspur.includes("2") == true
+              return d.Benutzungsspur.includes("2") == true;
             })
             .transition()
             .attr("opacity", 1)
-            .attr("fill", "#415aff")
+            .attr("fill", "#415aff");
 
           dataContainer.selectAll(".nodes")
             .filter(function(d) {
-              return d.Benutzungsspur.includes("3") == true
+              return d.Benutzungsspur.includes("3") == true;
             })
             .transition()
             .attr("opacity", 1)
-            .attr("fill", "#944cfd")
+            .attr("fill", "#944cfd");
 
           dataContainer.selectAll(".nodes")
             .filter(function(d) {
-              return d.Benutzungsspur.includes("4") == true
+              return d.Benutzungsspur.includes("4") == true;
             })
             .transition()
             .attr("opacity", 1)
-            .attr("fill", "#29D1E2")
+            .attr("fill", "#29D1E2");
 
 
 
         } else if (filter == "anstreichung") {
 
-          areachart.selectAll("path").classed("filtered", true).filter(".anstreichung").classed("filtered", false)
-          d3.selectAll(".pieG").selectAll("path").classed("filtered", true).filter(".anstreichung").classed("filtered", false)
+          areachart.selectAll("path").classed("filtered", true).filter(".anstreichung").classed("filtered", false);
+          d3.selectAll(".pieG").selectAll("path").classed("filtered", true).filter(".anstreichung").classed("filtered", false);
 
           dataContainer.selectAll(".nodes")
             .transition()
             .attr("opacity", 0)
-            .attr("fill", "white")
+            .attr("fill", "white");
 
           dataContainer.selectAll(".nodes")
             .filter(function(d) {
-              return d.Benutzungsspur.includes("1") == true
+              return d.Benutzungsspur.includes("1") == true;
             })
             .transition()
             .attr("opacity", 1)
-            .attr("fill", "#018DC9")
+            .attr("fill", "#018DC9");
 
 
         } else if (filter == "unterstreichung") {
 
-          areachart.selectAll("path").classed("filtered", true).filter(".unterstreichung").classed("filtered", false)
-          d3.selectAll(".pieG").selectAll("path").classed("filtered", true).filter(".unterstreichung").classed("filtered", false)
+          areachart.selectAll("path").classed("filtered", true).filter(".unterstreichung").classed("filtered", false);
+          d3.selectAll(".pieG").selectAll("path").classed("filtered", true).filter(".unterstreichung").classed("filtered", false);
 
           dataContainer.selectAll(".nodes")
             .transition()
             .attr("opacity", 0)
-            .attr("fill", "white")
+            .attr("fill", "white");
 
           dataContainer.selectAll(".nodes")
             .filter(function(d) {
-              return d.Benutzungsspur.includes("2") == true
+              return d.Benutzungsspur.includes("2") == true;
             })
             .transition()
             .attr("opacity", 1)
-            .attr("fill", "#415aff")
+            .attr("fill", "#415aff");
         } else if (filter == "durchstreichung") {
 
-          areachart.selectAll("path").classed("filtered", true).filter(".durchstreichung").classed("filtered", false)
-          d3.selectAll(".pieG").selectAll("path").classed("filtered", true).filter(".durchstreichung").classed("filtered", false)
+          areachart.selectAll("path").classed("filtered", true).filter(".durchstreichung").classed("filtered", false);
+          d3.selectAll(".pieG").selectAll("path").classed("filtered", true).filter(".durchstreichung").classed("filtered", false);
 
           dataContainer.selectAll(".nodes")
             .transition()
             .attr("opacity", 0)
-            .attr("fill", "white")
+            .attr("fill", "white");
 
           dataContainer.selectAll(".nodes")
             .filter(function(d) {
-              return d.Benutzungsspur.includes("3") == true
+              return d.Benutzungsspur.includes("3") == true;
             })
             .transition()
             .attr("opacity", 1)
-            .attr("fill", "#944cfd")
+            .attr("fill", "#944cfd");
         } else if (filter == "sonstigeMarkierung") {
 
-          areachart.selectAll("path").classed("filtered", true).filter(".sonstigeMarkierung").classed("filtered", false)
-          d3.selectAll(".pieG").selectAll("path").classed("filtered", true).filter(".sonstigeMarkierung").classed("filtered", false)
+          areachart.selectAll("path").classed("filtered", true).filter(".sonstigeMarkierung").classed("filtered", false);
+          d3.selectAll(".pieG").selectAll("path").classed("filtered", true).filter(".sonstigeMarkierung").classed("filtered", false);
 
           dataContainer.selectAll(".nodes")
             .transition()
             .attr("opacity", 0)
-            .attr("fill", "white")
+            .attr("fill", "white");
 
           dataContainer.selectAll(".nodes")
             .filter(function(d) {
-              return d.Benutzungsspur.includes("4") == true
+              return d.Benutzungsspur.includes("4") == true;
             })
             .transition()
             .attr("opacity", 1)
-            .attr("fill", "#29D1E2")
+            .attr("fill", "#29D1E2");
         } else if (filter == "zusatzMaterial") {
-          areachart.selectAll("path").classed("filtered", true).filter(".zusatzMaterial").classed("filtered", false)
-          d3.selectAll(".pieG").selectAll("path").classed("filtered", true).filter(".zusatzMaterial").classed("filtered", false)
+          areachart.selectAll("path").classed("filtered", true).filter(".zusatzMaterial").classed("filtered", false);
+          d3.selectAll(".pieG").selectAll("path").classed("filtered", true).filter(".zusatzMaterial").classed("filtered", false);
 
           dataContainer.selectAll(".nodes")
             .transition()
             .attr("opacity", 0)
-            .attr("fill", "white")
+            .attr("fill", "white");
 
           dataContainer.selectAll(".nodes")
             .filter(function(d) {
-              return d.Benutzungsspur.includes("6") == true
+              return d.Benutzungsspur.includes("6") == true;
             })
             .transition()
             .attr("opacity", 1)
-            .attr("fill", "rgb(210, 164, 0)")
+            .attr("fill", "rgb(210, 164, 0)");
 
         } else if (filter == "marginalien") {
-          areachart.selectAll("path").classed("filtered", true).filter(".bewertung,.kommentar,.textkorrektur,.uebersetzung,.variante").classed("filtered", false)
-          d3.selectAll(".pieG").selectAll("path").classed("filtered", true).filter(".bewertung,.kommentar,.textkorrektur,.uebersetzung,.variante").classed("filtered", false)
+          areachart.selectAll("path").classed("filtered", true).filter(".bewertung,.kommentar,.textkorrektur,.uebersetzung,.variante").classed("filtered", false);
+          d3.selectAll(".pieG").selectAll("path").classed("filtered", true).filter(".bewertung,.kommentar,.textkorrektur,.uebersetzung,.variante").classed("filtered", false);
 
           dataContainer.selectAll(".nodes")
             .transition()
             .attr("opacity", 0)
-            .attr("fill", "white")
+            .attr("fill", "white");
 
           dataContainer.selectAll(".nodes")
             .filter(function(d) {
-              return d.SchriftspurTyp.includes("5") == true
+              return d.SchriftspurTyp.includes("5") == true;
             })
             .transition()
             .attr("opacity", 1)
-            .attr("fill", "#f73f26")
+            .attr("fill", "#f73f26");
 
           dataContainer.selectAll(".nodes")
             .filter(function(d) {
-              return d.SchriftspurTyp.includes("B") == true
+              return d.SchriftspurTyp.includes("B") == true;
             })
             .transition()
             .attr("opacity", 1)
-            .attr("fill", "#dd0000")
+            .attr("fill", "#dd0000");
 
           dataContainer.selectAll(".nodes")
             .filter(function(d) {
-              return d.SchriftspurTyp.includes("K") == true
+              return d.SchriftspurTyp.includes("K") == true;
             })
             .transition()
             .attr("opacity", 1)
-            .attr("fill", "#FF8A5D")
+            .attr("fill", "#FF8A5D");
 
           dataContainer.selectAll(".nodes")
             .filter(function(d) {
-              return d.SchriftspurTyp.includes("T") == true
+              return d.SchriftspurTyp.includes("T") == true;
             })
             .transition()
             .attr("opacity", 1)
-            .attr("fill", "#a4105f")
+            .attr("fill", "#a4105f");
 
           dataContainer.selectAll(".nodes")
             .filter(function(d) {
-              return d.SchriftspurTyp.includes("V") == true
+              return d.SchriftspurTyp.includes("V") == true;
             })
             .transition()
             .attr("opacity", 1)
-            .attr("fill", "#fb8385")
+            .attr("fill", "#fb8385");
 
           dataContainer.selectAll(".nodes")
             .filter(function(d) {
-              return d.SchriftspurTyp.includes("U") == true
+              return d.SchriftspurTyp.includes("U") == true;
             })
             .transition()
             .attr("opacity", 1)
-            .attr("fill", "#d93168")
+            .attr("fill", "#d93168");
 
 
         } else if (filter == "bewertung") {
-          areachart.selectAll("path").classed("filtered", true).filter(".bewertung").classed("filtered", false)
-          d3.selectAll(".pieG").selectAll("path").classed("filtered", true).filter(".bewertung").classed("filtered", false)
+          areachart.selectAll("path").classed("filtered", true).filter(".bewertung").classed("filtered", false);
+          d3.selectAll(".pieG").selectAll("path").classed("filtered", true).filter(".bewertung").classed("filtered", false);
 
 
           dataContainer.selectAll(".nodes")
             .transition()
             .attr("opacity", 0)
-            .attr("fill", "white")
+            .attr("fill", "white");
 
           dataContainer.selectAll(".nodes")
             .filter(function(d) {
-              return d.SchriftspurTyp.includes("B") == true
+              return d.SchriftspurTyp.includes("B") == true;
             })
             .transition()
             .attr("opacity", 1)
-            .attr("fill", "#dd0000")
+            .attr("fill", "#dd0000");
         } else if (filter == "kommentar") {
-          areachart.selectAll("path").classed("filtered", true).filter(".kommentar").classed("filtered", false)
-          d3.selectAll(".pieG").selectAll("path").classed("filtered", true).filter(".kommentar").classed("filtered", false)
+          areachart.selectAll("path").classed("filtered", true).filter(".kommentar").classed("filtered", false);
+          d3.selectAll(".pieG").selectAll("path").classed("filtered", true).filter(".kommentar").classed("filtered", false);
 
           dataContainer.selectAll(".nodes")
             .transition()
             .attr("opacity", 0)
-            .attr("fill", "white")
+            .attr("fill", "white");
 
           dataContainer.selectAll(".nodes")
             .filter(function(d) {
-              return d.SchriftspurTyp.includes("K") == true
+              return d.SchriftspurTyp.includes("K") == true;
             })
             .transition()
             .attr("opacity", 1)
-            .attr("fill", "#FF8A5D")
+            .attr("fill", "#FF8A5D");
         } else if (filter == "textkorrektur") {
-          areachart.selectAll("path").classed("filtered", true).filter(".textkorrektur").classed("filtered", false)
-          d3.selectAll(".pieG").selectAll("path").classed("filtered", true).filter(".textkorrektur").classed("filtered", false)
+          areachart.selectAll("path").classed("filtered", true).filter(".textkorrektur").classed("filtered", false);
+          d3.selectAll(".pieG").selectAll("path").classed("filtered", true).filter(".textkorrektur").classed("filtered", false);
 
           dataContainer.selectAll(".nodes")
             .transition()
             .attr("opacity", 0)
-            .attr("fill", "white")
+            .attr("fill", "white");
 
           dataContainer.selectAll(".nodes")
             .filter(function(d) {
-              return d.SchriftspurTyp.includes("T") == true
+              return d.SchriftspurTyp.includes("T") == true;
             })
             .transition()
             .attr("opacity", 1)
-            .attr("fill", "#a4105f")
+            .attr("fill", "#a4105f");
         } else if (filter == "variante") {
-          areachart.selectAll("path").classed("filtered", true).filter(".variante").classed("filtered", false)
-          d3.selectAll(".pieG").selectAll("path").classed("filtered", true).filter(".variante").classed("filtered", false)
+          areachart.selectAll("path").classed("filtered", true).filter(".variante").classed("filtered", false);
+          d3.selectAll(".pieG").selectAll("path").classed("filtered", true).filter(".variante").classed("filtered", false);
 
           dataContainer.selectAll(".nodes")
             .transition()
             .attr("opacity", 0)
-            .attr("fill", "white")
+            .attr("fill", "white");
 
           dataContainer.selectAll(".nodes")
             .filter(function(d) {
-              return d.SchriftspurTyp.includes("V") == true
+              return d.SchriftspurTyp.includes("V") == true;
             })
             .transition()
             .attr("opacity", 1)
-            .attr("fill", "#fb8385")
+            .attr("fill", "#fb8385");
         } else if (filter == "uebersetzung") {
-          areachart.selectAll("path").classed("filtered", true).filter(".uebersetzung").classed("filtered", false)
-          d3.selectAll(".pieG").selectAll("path").classed("filtered", true).filter(".uebersetzung").classed("filtered", false)
+          areachart.selectAll("path").classed("filtered", true).filter(".uebersetzung").classed("filtered", false);
+          d3.selectAll(".pieG").selectAll("path").classed("filtered", true).filter(".uebersetzung").classed("filtered", false);
 
           dataContainer.selectAll(".nodes")
             .transition()
@@ -6958,40 +6944,40 @@ Promise.all([
 
           dataContainer.selectAll(".nodes")
             .filter(function(d) {
-              return d.SchriftspurTyp.includes("U") == true
+              return d.SchriftspurTyp.includes("U") == true;
             })
             .transition()
             .attr("opacity", 1)
-            .attr("fill", "#d93168")
+            .attr("fill", "#d93168");
         } else if (filter == "anderes") {
-          areachart.selectAll("path").classed("filtered", true).filter(".anderes").classed("filtered", false)
-          d3.selectAll(".pieG").selectAll("path").classed("filtered", true).filter(".anderes").classed("filtered", false)
+          areachart.selectAll("path").classed("filtered", true).filter(".anderes").classed("filtered", false);
+          d3.selectAll(".pieG").selectAll("path").classed("filtered", true).filter(".anderes").classed("filtered", false);
 
           dataContainer.selectAll(".nodes")
             .transition()
             .attr("opacity", 0)
-            .attr("fill", "white")
+            .attr("fill", "white");
 
           dataContainer.selectAll(".nodes")
             .filter(function(d) {
-              return d.Benutzungsspur.includes("7") == true
+              return d.Benutzungsspur.includes("7") == true;
             })
             .transition()
             .attr("opacity", 1)
-            .attr("fill", "#f284c0")
+            .attr("fill", "#f284c0");
         } else if (filter == "leer") {
           dataContainer.selectAll(".nodes")
             .transition()
             .attr("opacity", 0)
-            .attr("fill", "white")
+            .attr("fill", "white");
 
           dataContainer.selectAll(".nodes")
             .filter(function(d) {
-              return d.Benutzungsspur === ""
+              return d.Benutzungsspur === "";
             })
             .transition()
             .attr("opacity", 1)
-            .attr("fill", "white")
+            .attr("fill", "white");
         }
 
 
@@ -7009,16 +6995,16 @@ Promise.all([
 
         if (scrollTop !== newScrollTop) {
           d3.select('.tooltip')
-            .style("display", "none")
+            .style("display", "none");
         }
 
 
         if (transitionsNeu > 0 || scrollTop !== newScrollTop) {
-          scrollTop = newScrollTop
+          scrollTop = newScrollTop;
           if (transitionbookClick == false) {
-            scrollFunction()
+            scrollFunction();
           }
-          draw()
+          draw();
 
         }
         if (modus != "similarity") {
@@ -7037,212 +7023,212 @@ Promise.all([
 
       function hashFunction() {
 
-        window.location.hash = "#modus=" + modus + "?level=" + scrollTop + "?filter=" + filter + "?auswahl=" + clickedBook
-        d3.select("#shareInput").attr("value", window.location.href)
+        window.location.hash = "#modus=" + modus + "?level=" + scrollTop + "?filter=" + filter + "?auswahl=" + clickedBook;
+        d3.select("#shareInput").attr("value", window.location.href);
 
       }
 
-      var fullHash = 0
-      var level = "start"
+      var fullHash = 0;
+      var level = "start";
 
       function hashLoad() {
 
         if (window.location.hash == "") {
           setTimeout(function() {
-            window.scrollTo(0, 3000)
-            transitionbookClick = false
+            window.scrollTo(0, 3000);
+            transitionbookClick = false;
           }, 10);
         } else if (window.location.hash != "") {
 
           fullHash = window.location.hash.split("?");
-          modus = fullHash[0].substring(7)
-          level = fullHash[1].substring(6)
-          filter = fullHash[2].substring(7)
-          clickedBook = fullHash[3].substring(8)
-          transitionbookClick = false
+          modus = fullHash[0].substring(7);
+          level = fullHash[1].substring(6);
+          filter = fullHash[2].substring(7);
+          clickedBook = fullHash[3].substring(8);
+          transitionbookClick = false;
 
           if (clickedBook != 0) {
-            transitionbookClick = true
+            transitionbookClick = true;
             thisData = datenByTitle.filter(function(d) {
-                return d.key == clickedBook
+                return d.key == clickedBook;
               })[0]
               .values.filter(function(d) {
-                return d.Benutzungsspur != "" && d.Benutzungsspur != "4f" && d.Benutzungsspur != "4f?"
-              })
+                return d.Benutzungsspur != "" && d.Benutzungsspur != "4f" && d.Benutzungsspur != "4f?";
+              });
 
-            bookClickHash(thisData)
+            bookClickHash(thisData);
           }
 
           if (filter == "eigentumsangaben" || filter == "provenienz" || filter == "provenienzstempel") {
-            farbausfaltungProvenienz()
-            eigentumsangaben.select("text").transition().duration(800).style("fill", "white")
-            eigentumsangaben.select("rect").transition().duration(800).style("opacity", 1)
+            farbausfaltungProvenienz();
+            eigentumsangaben.select("text").transition().duration(800).style("fill", "white");
+            eigentumsangaben.select("rect").transition().duration(800).style("opacity", 1);
 
-            anderes.select("text").transition().duration(800).style("fill", "#f284c0")
-            zusatzMaterial.select("text").transition().duration(800).style("fill", "rgb(210, 164, 0)")
-            marginalien.select("text").transition().duration(800).style("fill", "#f73f26")
-            markierungen.select("text").transition().duration(800).style("fill", "#58b0f7")
+            anderes.select("text").transition().duration(800).style("fill", "#f284c0");
+            zusatzMaterial.select("text").transition().duration(800).style("fill", "rgb(210, 164, 0)");
+            marginalien.select("text").transition().duration(800).style("fill", "#f73f26");
+            markierungen.select("text").transition().duration(800).style("fill", "#58b0f7");
 
-            anderes.select("rect").transition().duration(800).style("opacity", 0)
-            zusatzMaterial.select("rect").transition().duration(800).style("opacity", 0)
-            marginalien.select("rect").transition().duration(800).style("opacity", 0)
-            markierungen.select("rect").transition().duration(800).style("opacity", 0)
+            anderes.select("rect").transition().duration(800).style("opacity", 0);
+            zusatzMaterial.select("rect").transition().duration(800).style("opacity", 0);
+            marginalien.select("rect").transition().duration(800).style("opacity", 0);
+            markierungen.select("rect").transition().duration(800).style("opacity", 0);
 
 
-            eigentumsangaben.selectAll("text").style("font-weight", "bold").style("opacity", 1)
-            zusatzMaterial.selectAll("text").style("font-weight", "200").style("opacity", .6)
-            anderes.selectAll("text").style("font-weight", "200").style("opacity", .6)
-            marginalien.selectAll("text").style("font-weight", "200").style("opacity", .6)
-            markierungen.selectAll("text").style("font-weight", "200").style("opacity", .6)
+            eigentumsangaben.selectAll("text").style("font-weight", "bold").style("opacity", 1);
+            zusatzMaterial.selectAll("text").style("font-weight", "200").style("opacity", 0.6);
+            anderes.selectAll("text").style("font-weight", "200").style("opacity", 0.6);
+            marginalien.selectAll("text").style("font-weight", "200").style("opacity", 0.6);
+            markierungen.selectAll("text").style("font-weight", "200").style("opacity", 0.6);
 
-            eigentumsangabendetail.transition().duration(800).attr("transform", "scale(1,1)").style("opacity", 1).style("pointer-events", "auto")
-            markierungendetail.transition().duration(800).attr("transform", "scale(0,1)").style("opacity", 0).style("pointer-events", "none")
-            marginaliendetail.transition().duration(800).attr("transform", "scale(0,1)").style("opacity", 0).style("pointer-events", "none")
+            eigentumsangabendetail.transition().duration(800).attr("transform", "scale(1,1)").style("opacity", 1).style("pointer-events", "auto");
+            markierungendetail.transition().duration(800).attr("transform", "scale(0,1)").style("opacity", 0).style("pointer-events", "none");
+            marginaliendetail.transition().duration(800).attr("transform", "scale(0,1)").style("opacity", 0).style("pointer-events", "none");
 
             if (filter == "provenienz") {
-              eigentumsangabendetail.selectAll("text").style("font-weight", "200").style("opacity", .6)
-              eigentumsangabendetail.select(".provenienz").style("font-weight", "bold").style("opacity", 1)
+              eigentumsangabendetail.selectAll("text").style("font-weight", "200").style("opacity", 0.6);
+              eigentumsangabendetail.select(".provenienz").style("font-weight", "bold").style("opacity", 1);
             } else if (filter == "provenienzstempel") {
-              eigentumsangabendetail.selectAll("text").style("font-weight", "200").style("opacity", .6)
-              eigentumsangabendetail.select(".provenienzstempel").style("font-weight", "bold").style("opacity", 1)
+              eigentumsangabendetail.selectAll("text").style("font-weight", "200").style("opacity", 0.6);
+              eigentumsangabendetail.select(".provenienzstempel").style("font-weight", "bold").style("opacity", 1);
             }
 
-            eigentumsangabendetail.transition().duration(800).attr("transform", "scale(1,1)").style("opacity", 1).style("pointer-events", "auto")
-            markierungendetail.transition().duration(800).attr("transform", "scale(0,1)").style("opacity", 0).style("pointer-events", "none")
-            marginaliendetail.transition().duration(800).attr("transform", "scale(0,1)").style("opacity", 0).style("pointer-events", "none")
+            eigentumsangabendetail.transition().duration(800).attr("transform", "scale(1,1)").style("opacity", 1).style("pointer-events", "auto");
+            markierungendetail.transition().duration(800).attr("transform", "scale(0,1)").style("opacity", 0).style("pointer-events", "none");
+            marginaliendetail.transition().duration(800).attr("transform", "scale(0,1)").style("opacity", 0).style("pointer-events", "none");
 
           } else if (filter == "markierungen" || filter == "anstreichung" || filter == "unterstreichung" || filter == "durchstreichung" || filter == "sonstigeMarkierung") {
-            farbausfaltungMarkierung()
+            farbausfaltungMarkierung();
 
-            markierungen.select("text").transition().duration(800).style("fill", "white")
-            markierungen.select("rect").transition().duration(800).style("opacity", 1)
+            markierungen.select("text").transition().duration(800).style("fill", "white");
+            markierungen.select("rect").transition().duration(800).style("opacity", 1);
 
-            eigentumsangaben.select("text").transition().duration(800).style("fill", "#707070")
-            anderes.select("text").transition().duration(800).style("fill", "#f284c0")
-            zusatzMaterial.select("text").transition().duration(800).style("fill", "rgb(210, 164, 0)")
-            marginalien.select("text").transition().duration(800).style("fill", "#f73f26")
+            eigentumsangaben.select("text").transition().duration(800).style("fill", "#707070");
+            anderes.select("text").transition().duration(800).style("fill", "#f284c0");
+            zusatzMaterial.select("text").transition().duration(800).style("fill", "rgb(210, 164, 0)");
+            marginalien.select("text").transition().duration(800).style("fill", "#f73f26");
 
-            eigentumsangaben.select("rect").transition().duration(800).style("opacity", 0)
-            anderes.select("rect").transition().duration(800).style("opacity", 0)
-            zusatzMaterial.select("rect").transition().duration(800).style("opacity", 0)
-            marginalien.select("rect").transition().duration(800).style("opacity", 0)
+            eigentumsangaben.select("rect").transition().duration(800).style("opacity", 0);
+            anderes.select("rect").transition().duration(800).style("opacity", 0);
+            zusatzMaterial.select("rect").transition().duration(800).style("opacity", 0);
+            marginalien.select("rect").transition().duration(800).style("opacity", 0);
 
-            markierungen.selectAll("text").style("font-weight", "bold").style("opacity", 1)
-            zusatzMaterial.selectAll("text").style("font-weight", "200").style("opacity", .6)
-            anderes.selectAll("text").style("font-weight", "200").style("opacity", .6)
-            marginalien.selectAll("text").style("font-weight", "200").style("opacity", .6)
-            eigentumsangaben.selectAll("text").style("font-weight", "200").style("opacity", .6)
-
-
+            markierungen.selectAll("text").style("font-weight", "bold").style("opacity", 1);
+            zusatzMaterial.selectAll("text").style("font-weight", "200").style("opacity", 0.6);
+            anderes.selectAll("text").style("font-weight", "200").style("opacity", 0.6);
+            marginalien.selectAll("text").style("font-weight", "200").style("opacity", 0.6);
+            eigentumsangaben.selectAll("text").style("font-weight", "200").style("opacity", 0.6);
 
 
-            eigentumsangabendetail.transition().duration(800).attr("transform", "scale(0,1)").style("opacity", 0).style("pointer-events", "none")
-            markierungendetail.transition().duration(800).attr("transform", "scale(1,1)").style("opacity", 1).style("pointer-events", "auto")
-            marginaliendetail.transition().duration(800).attr("transform", "scale(0,1)").style("opacity", 0).style("pointer-events", "none")
+
+
+            eigentumsangabendetail.transition().duration(800).attr("transform", "scale(0,1)").style("opacity", 0).style("pointer-events", "none");
+            markierungendetail.transition().duration(800).attr("transform", "scale(1,1)").style("opacity", 1).style("pointer-events", "auto");
+            marginaliendetail.transition().duration(800).attr("transform", "scale(0,1)").style("opacity", 0).style("pointer-events", "none");
 
             if (filter == "anstreichung") {
-              markierungendetail.selectAll("text").style("font-weight", "200").style("opacity", .6)
-              markierungendetail.select(".anstreichung").style("font-weight", "bold").style("opacity", 1)
+              markierungendetail.selectAll("text").style("font-weight", "200").style("opacity", 0.6);
+              markierungendetail.select(".anstreichung").style("font-weight", "bold").style("opacity", 1);
             } else if (filter == "unterstreichung") {
-              markierungendetail.selectAll("text").style("font-weight", "200").style("opacity", .6)
-              markierungendetail.select(".unterstreichung").style("font-weight", "bold").style("opacity", 1)
+              markierungendetail.selectAll("text").style("font-weight", "200").style("opacity", 0.6);
+              markierungendetail.select(".unterstreichung").style("font-weight", "bold").style("opacity", 1);
             } else if (filter == "durchstreichung") {
-              markierungendetail.selectAll("text").style("font-weight", "200").style("opacity", .6)
-              markierungendetail.select(".durchstreichung").style("font-weight", "bold").style("opacity", 1)
+              markierungendetail.selectAll("text").style("font-weight", "200").style("opacity", 0.6);
+              markierungendetail.select(".durchstreichung").style("font-weight", "bold").style("opacity", 1);
             } else if (filter == "sonstigeMarkierung") {
-              markierungendetail.selectAll("text").style("font-weight", "200").style("opacity", .6)
-              markierungendetail.select(".sonstigeMarkierung").style("font-weight", "bold").style("opacity", 1)
+              markierungendetail.selectAll("text").style("font-weight", "200").style("opacity", 0.6);
+              markierungendetail.select(".sonstigeMarkierung").style("font-weight", "bold").style("opacity", 1);
             }
 
 
-            eigentumsangabendetail.transition().duration(800).attr("transform", "scale(0,1)").style("opacity", 0).style("pointer-events", "none")
-            markierungendetail.transition().duration(800).attr("transform", "scale(1,1)").style("opacity", 1).style("pointer-events", "auto")
-            marginaliendetail.transition().duration(800).attr("transform", "scale(0,1)").style("opacity", 0).style("pointer-events", "none")
+            eigentumsangabendetail.transition().duration(800).attr("transform", "scale(0,1)").style("opacity", 0).style("pointer-events", "none");
+            markierungendetail.transition().duration(800).attr("transform", "scale(1,1)").style("opacity", 1).style("pointer-events", "auto");
+            marginaliendetail.transition().duration(800).attr("transform", "scale(0,1)").style("opacity", 0).style("pointer-events", "none");
 
           } else if (filter == "marginalien" || filter == "bewertung" || filter == "kommentar" || filter == "textkorrektur" || filter == "variante" || filter == "uebersetzung") {
 
-            farbausfaltungMarginalien()
-            marginalien.select("text").transition().duration(800).style("fill", "white")
-            marginalien.select("rect").transition().duration(800).style("opacity", 1)
+            farbausfaltungMarginalien();
+            marginalien.select("text").transition().duration(800).style("fill", "white");
+            marginalien.select("rect").transition().duration(800).style("opacity", 1);
 
-            eigentumsangaben.select("text").transition().duration(800).style("fill", "#707070")
-            anderes.select("text").transition().duration(800).style("fill", "#f284c0")
-            zusatzMaterial.select("text").transition().duration(800).style("fill", "rgb(210, 164, 0)")
-            markierungen.select("text").transition().duration(800).style("fill", "#58b0f7")
+            eigentumsangaben.select("text").transition().duration(800).style("fill", "#707070");
+            anderes.select("text").transition().duration(800).style("fill", "#f284c0");
+            zusatzMaterial.select("text").transition().duration(800).style("fill", "rgb(210, 164, 0)");
+            markierungen.select("text").transition().duration(800).style("fill", "#58b0f7");
 
-            eigentumsangaben.select("rect").transition().duration(800).style("opacity", 0)
-            anderes.select("rect").transition().duration(800).style("opacity", 0)
-            zusatzMaterial.select("rect").transition().duration(800).style("opacity", 0)
-            markierungen.select("rect").transition().duration(800).style("opacity", 0)
+            eigentumsangaben.select("rect").transition().duration(800).style("opacity", 0);
+            anderes.select("rect").transition().duration(800).style("opacity", 0);
+            zusatzMaterial.select("rect").transition().duration(800).style("opacity", 0);
+            markierungen.select("rect").transition().duration(800).style("opacity", 0);
 
-            marginalien.selectAll("text").style("font-weight", "bold")
-            marginaliendetail.transition().duration(800).attr("transform", "scale(1,1)").style("opacity", 1).style("pointer-events", "auto")
+            marginalien.selectAll("text").style("font-weight", "bold");
+            marginaliendetail.transition().duration(800).attr("transform", "scale(1,1)").style("opacity", 1).style("pointer-events", "auto");
 
-            marginalien.selectAll("text").style("font-weight", "bold").style("opacity", 1)
-            zusatzMaterial.selectAll("text").style("font-weight", "200").style("opacity", .6)
-            anderes.selectAll("text").style("font-weight", "200").style("opacity", .6)
-            markierungen.selectAll("text").style("font-weight", "200").style("opacity", .6)
-            eigentumsangaben.selectAll("text").style("font-weight", "200").style("opacity", .6)
+            marginalien.selectAll("text").style("font-weight", "bold").style("opacity", 1);
+            zusatzMaterial.selectAll("text").style("font-weight", "200").style("opacity", 0.6);
+            anderes.selectAll("text").style("font-weight", "200").style("opacity", 0.6);
+            markierungen.selectAll("text").style("font-weight", "200").style("opacity", 0.6);
+            eigentumsangaben.selectAll("text").style("font-weight", "200").style("opacity", 0.6);
 
-            eigentumsangabendetail.transition().duration(800).attr("transform", "scale(0,1)").style("opacity", 0).style("pointer-events", "none")
-            markierungendetail.transition().duration(800).attr("transform", "scale(0,1)").style("opacity", 0).style("pointer-events", "none")
-            marginaliendetail.transition().duration(800).attr("transform", "scale(1,1)").style("opacity", 1).style("pointer-events", "auto")
+            eigentumsangabendetail.transition().duration(800).attr("transform", "scale(0,1)").style("opacity", 0).style("pointer-events", "none");
+            markierungendetail.transition().duration(800).attr("transform", "scale(0,1)").style("opacity", 0).style("pointer-events", "none");
+            marginaliendetail.transition().duration(800).attr("transform", "scale(1,1)").style("opacity", 1).style("pointer-events", "auto");
 
             if (filter == "bewertung") {
-              marginaliendetail.selectAll("text").style("font-weight", "200").style("opacity", .6)
-              marginaliendetail.select(".bewertung").style("font-weight", "bold").style("opacity", 1)
+              marginaliendetail.selectAll("text").style("font-weight", "200").style("opacity", 0.6);
+              marginaliendetail.select(".bewertung").style("font-weight", "bold").style("opacity", 1);
             } else if (filter == "kommentar") {
-              marginaliendetail.selectAll("text").style("font-weight", "200").style("opacity", .6)
-              marginaliendetail.select(".kommentar").style("font-weight", "bold").style("opacity", 1)
+              marginaliendetail.selectAll("text").style("font-weight", "200").style("opacity", 0.6);
+              marginaliendetail.select(".kommentar").style("font-weight", "bold").style("opacity", 1);
             } else if (filter == "textkorrektur") {
-              marginaliendetail.selectAll("text").style("font-weight", "200").style("opacity", .6)
-              marginaliendetail.select(".textkorrektur").style("font-weight", "bold").style("opacity", 1)
+              marginaliendetail.selectAll("text").style("font-weight", "200").style("opacity", 0.6);
+              marginaliendetail.select(".textkorrektur").style("font-weight", "bold").style("opacity", 1);
             } else if (filter == "variante") {
-              marginaliendetail.selectAll("text").style("font-weight", "200").style("opacity", .6)
-              marginaliendetail.select(".variante").style("font-weight", "bold").style("opacity", 1)
+              marginaliendetail.selectAll("text").style("font-weight", "200").style("opacity", 0.6);
+              marginaliendetail.select(".variante").style("font-weight", "bold").style("opacity", 1);
             } else if (filter == "uebersetzung") {
-              marginaliendetail.selectAll("text").style("font-weight", "200").style("opacity", .6)
-              marginaliendetail.select(".uebersetzung").style("font-weight", "bold").style("opacity", 1)
+              marginaliendetail.selectAll("text").style("font-weight", "200").style("opacity", 0.6);
+              marginaliendetail.select(".uebersetzung").style("font-weight", "bold").style("opacity", 1);
             }
 
 
-            eigentumsangabendetail.transition().duration(800).attr("transform", "scale(0,1)").style("opacity", 0).style("pointer-events", "none")
-            markierungendetail.transition().duration(800).attr("transform", "scale(0,1)").style("opacity", 0).style("pointer-events", "none")
-            marginaliendetail.transition().duration(800).attr("transform", "scale(1,1)").style("opacity", 1).style("pointer-events", "auto")
+            eigentumsangabendetail.transition().duration(800).attr("transform", "scale(0,1)").style("opacity", 0).style("pointer-events", "none");
+            markierungendetail.transition().duration(800).attr("transform", "scale(0,1)").style("opacity", 0).style("pointer-events", "none");
+            marginaliendetail.transition().duration(800).attr("transform", "scale(1,1)").style("opacity", 1).style("pointer-events", "auto");
 
 
 
           } else if (filter == "zusatzMaterial") {
-            zusatzMaterial.selectAll("text").style("font-weight", "bold").style("opacity", 1)
-            marginalien.selectAll("text").style("font-weight", "200").style("opacity", .6)
-            markierungen.selectAll("text").style("font-weight", "200").style("opacity", .6)
-            eigentumsangaben.selectAll("text").style("font-weight", "200").style("opacity", .6)
-            anderes.selectAll("text").style("font-weight", "200").style("opacity", .6)
+            zusatzMaterial.selectAll("text").style("font-weight", "bold").style("opacity", 1);
+            marginalien.selectAll("text").style("font-weight", "200").style("opacity", 0.6);
+            markierungen.selectAll("text").style("font-weight", "200").style("opacity", 0.6);
+            eigentumsangaben.selectAll("text").style("font-weight", "200").style("opacity", 0.6);
+            anderes.selectAll("text").style("font-weight", "200").style("opacity", 0.6);
 
 
-            eigentumsangabendetail.transition().duration(800).attr("transform", "scale(0,1)").style("opacity", 0).style("pointer-events", "none")
-            markierungendetail.transition().duration(800).attr("transform", "scale(0,1)").style("opacity", 0).style("pointer-events", "none")
-            marginaliendetail.transition().duration(800).attr("transform", "scale(0,1)").style("opacity", 0).style("pointer-events", "none")
+            eigentumsangabendetail.transition().duration(800).attr("transform", "scale(0,1)").style("opacity", 0).style("pointer-events", "none");
+            markierungendetail.transition().duration(800).attr("transform", "scale(0,1)").style("opacity", 0).style("pointer-events", "none");
+            marginaliendetail.transition().duration(800).attr("transform", "scale(0,1)").style("opacity", 0).style("pointer-events", "none");
           } else if (filter == "anderes") {
-            anderes.selectAll("text").style("font-weight", "bold").style("opacity", 1)
-            zusatzMaterial.selectAll("text").style("font-weight", "200").style("opacity", .6)
-            marginalien.selectAll("text").style("font-weight", "200").style("opacity", .6)
-            markierungen.selectAll("text").style("font-weight", "200").style("opacity", .6)
-            eigentumsangaben.selectAll("text").style("font-weight", "200").style("opacity", .6)
+            anderes.selectAll("text").style("font-weight", "bold").style("opacity", 1);
+            zusatzMaterial.selectAll("text").style("font-weight", "200").style("opacity", 0.6);
+            marginalien.selectAll("text").style("font-weight", "200").style("opacity", 0.6);
+            markierungen.selectAll("text").style("font-weight", "200").style("opacity", 0.6);
+            eigentumsangaben.selectAll("text").style("font-weight", "200").style("opacity", 0.6);
 
-            eigentumsangabendetail.transition().duration(800).attr("transform", "scale(0,1)").style("opacity", 0).style("pointer-events", "none")
-            markierungendetail.transition().duration(800).attr("transform", "scale(0,1)").style("opacity", 0).style("pointer-events", "none")
-            marginaliendetail.transition().duration(800).attr("transform", "scale(0,1)").style("opacity", 0).style("pointer-events", "none")
+            eigentumsangabendetail.transition().duration(800).attr("transform", "scale(0,1)").style("opacity", 0).style("pointer-events", "none");
+            markierungendetail.transition().duration(800).attr("transform", "scale(0,1)").style("opacity", 0).style("pointer-events", "none");
+            marginaliendetail.transition().duration(800).attr("transform", "scale(0,1)").style("opacity", 0).style("pointer-events", "none");
           }
 
 
 
 
           setTimeout(function() {
-            filterInteraction()
+            filterInteraction();
             $("html,body").animate({
               scrollTop: +level + 3000
-            }, 805)
+            }, 805);
 
           }, 500);
         }
@@ -7257,29 +7243,29 @@ Promise.all([
 
 
       function scrollFunction() {
-        d3.select(".tippbubble").transition().duration(800).style("opacity", 0).transition().delay(1000).style("display", "none")
-        hashFunction()
+        d3.select(".tippbubble").transition().duration(800).style("opacity", 0).transition().delay(1000).style("display", "none");
+        hashFunction();
         if (scrollTop < 0) {
 
 
-          detailview = false
+          detailview = false;
 
           bookG
             .selectAll("rect")
             .attr("cursor", function() {
               if (scrollTop >= 0) {
-                return "pointer"
+                return "pointer";
               } else if (scrollTop < -1000 && scrollTop > -4000) {
-                return "not-allowed"
+                return "not-allowed";
               } else {
-                return "auto"
+                return "auto";
               }
-            })
+            });
 
-          d3.select("#svgFrontTitles").style("display", "none")
+          d3.select("#svgFrontTitles").style("display", "none");
 
         } else if (scrollTop >= -0) {
-          d3.select("#svgFrontTitles").style("display", "inline")
+          d3.select("#svgFrontTitles").style("display", "inline");
 
         }
 
@@ -7288,22 +7274,22 @@ Promise.all([
           .selectAll("rect")
           .attr("cursor", function() {
             if (scrollTop >= 0) {
-              return "pointer"
+              return "pointer";
             } else if (scrollTop < -1000 && scrollTop > -2000) {
-              return "not-allowed"
+              return "not-allowed";
             } else {
-              return "auto"
+              return "auto";
             }
           })
           .attr("pointer-events", function() {
             if (scrollTop >= 0) {
-              return "auto"
+              return "auto";
             } else if (scrollTop < 0 && scrollTop > -2000) {
-              return "auto"
+              return "auto";
             } else {
-              return "none"
+              return "none";
             }
-          })
+          });
 
 
 
@@ -7312,14 +7298,14 @@ Promise.all([
 
           d3.selectAll(".detailInfoParent")
             .transition()
-            .style("opacity", 0)
+            .style("opacity", 0);
 
           d3.selectAll(".detailDiv").transition()
-            .style("opacity", 0)
+            .style("opacity", 0);
 
           d3.selectAll(".bookBG").selectAll("rect")
             .transition()
-            .style("opacity", 0)
+            .style("opacity", 0);
 
 
           bookFingerprint.selectAll(".nodes")
@@ -7328,14 +7314,14 @@ Promise.all([
                 var implicateScaleB = d3.scaleLinear()
                   .domain([-100, -1000]) ////*****hier scroll
                   .range([(areaheight / d.maxPart), 0])
-                  .clamp(true)
-                return implicateScaleB(scrollTop)
+                  .clamp(true);
+                return implicateScaleB(scrollTop);
               } else {
                 var implicateScale = d3.scaleLinear()
                   .domain([-100, -1000]) ////*****hier scroll
                   .range([pageheight, (areaheight / d.maxPart)])
-                  .clamp(true)
-                return implicateScale(scrollTop)
+                  .clamp(true);
+                return implicateScale(scrollTop);
               }
             })
             .attr("width", function(d, i) {
@@ -7343,40 +7329,40 @@ Promise.all([
                 var implicateScaleWidth = d3.scaleLinear()
                   .domain([500, 2000])
                   .range([buchBreite, sLBuchBreiteSelected])
-                  .clamp(true)
+                  .clamp(true);
 
-                return implicateScaleWidth(scrollTop)
+                return implicateScaleWidth(scrollTop);
 
 
               } else {
                 var implicateScaleWidth = d3.scaleLinear()
                   .domain([500, 2000])
                   .range([buchBreite, sLBuchBreiteUnselected])
-                  .clamp(true)
+                  .clamp(true);
 
-                return implicateScaleWidth(scrollTop)
+                return implicateScaleWidth(scrollTop);
               }
             })
             .attr("x", function(d, i) {
-              return 0
+              return 0;
             })
             .attr("y", function(d, i) {
               if (d.maxPart >= 1674) {
                 var implicateScaleB = d3.scaleLinear()
                   .domain([-100, -1000]) ////*****hier scroll
                   .range([(areaheight / d.maxPart), pageheight])
-                  .clamp(true)
+                  .clamp(true);
 
-                return posYCanvas + implicateScaleB(scrollTop) * (d.Part - 1)
+                return posYCanvas + implicateScaleB(scrollTop) * (d.Part - 1);
               } else {
                 var implicateScale = d3.scaleLinear()
                   .domain([-100, -1000]) ////*****hier scroll
                   .range([pageheight, (areaheight / d.maxPart)])
-                  .clamp(true)
+                  .clamp(true);
 
-                return posYCanvas + implicateScale(scrollTop) * (d.Part - 1)
+                return posYCanvas + implicateScale(scrollTop) * (d.Part - 1);
               }
-            })
+            });
 
 
           bookFingerprint.selectAll(".nodesbg")
@@ -7386,37 +7372,37 @@ Promise.all([
                 var implicateScaleB = d3.scaleLinear()
                   .domain([-100, -1000]) ////*****hier scroll
                   .range([areaheight, (d.values[0].maxPart) * pageheight])
-                  .clamp(true)
-                return implicateScaleB(scrollTop)
+                  .clamp(true);
+                return implicateScaleB(scrollTop);
               } else {
                 var implicateScale = d3.scaleLinear()
                   .domain([-100, -1000]) ////*****hier scroll
                   .range([(d.values[0].maxPart) * pageheight, areaheight])
-                  .clamp(true)
-                return implicateScale(scrollTop)
+                  .clamp(true);
+                return implicateScale(scrollTop);
               }
             }).attr("width", function(d, i) {
               if (d.values[0].Verfasser == thisVerfasserSelected) {
                 var implicateScaleWidth = d3.scaleLinear()
                   .domain([500, 2000])
                   .range([buchBreite, sLBuchBreiteSelected])
-                  .clamp(true)
+                  .clamp(true);
 
-                return implicateScaleWidth(scrollTop)
+                return implicateScaleWidth(scrollTop);
 
 
               } else {
                 var implicateScaleWidth = d3.scaleLinear()
                   .domain([500, 2000])
                   .range([buchBreite, sLBuchBreiteUnselected])
-                  .clamp(true)
+                  .clamp(true);
 
-                return implicateScaleWidth(scrollTop)
+                return implicateScaleWidth(scrollTop);
               }
             })
             .attr("x", function(d, i) {
-              return 0
-            })
+              return 0;
+            });
 
 
           bookFingerprint.selectAll(".nodes")
@@ -7425,57 +7411,57 @@ Promise.all([
               var implicateScaleC = d3.scaleLinear()
                 .domain([-1000, -2900]) ////*****hier scroll
                 .range([buchBreite, 0])
-                .clamp(true)
-              return implicateScaleC(scrollTop)
-            })
+                .clamp(true);
+              return implicateScaleC(scrollTop);
+            });
 
 
           bookG
             .attr("transform", function(d, i) {
               var areaSize = xAreaMax * (datenByAuthor.filter(function(D, I) {
                 if (d.values[0].AuthorCount == 1) {
-                  return D.values[0].values[0].AuthorCount == 1
+                  return D.values[0].values[0].AuthorCount == 1;
                 } else {
-                  return D.values[0].values[0].Verfasser == d.values[0].Verfasser
+                  return D.values[0].values[0].Verfasser == d.values[0].Verfasser;
                 }
-              })[0].maxTraceNumberNormBefore)
+              })[0].maxTraceNumberNormBefore);
 
               if (i == 0) {
-                posx2 = 0
-                posx = 0
-                return "translate(" + (marginleft + (posx2)) + "," + (posY) + ")"
+                posx2 = 0;
+                posx = 0;
+                return "translate(" + (marginleft + (posx2)) + "," + (posY) + ")";
               } else if (i != 0 && d.values[0].AuthorCount == 1) {
-                posx2 = posx2
-                posx = posx + buchBgBreite
+                posx2 = posx2;
+                posx = posx + buchBgBreite;
 
                 var implicateScaleX1 = d3.scaleLinear()
                   .domain([-100, -3000]) ////*****hier scroll
                   .range([posx, posx2])
-                  .clamp(true)
+                  .clamp(true);
 
-                return "translate(" + (marginleft + (implicateScaleX1(scrollTop))) + "," + (posY) + ")"
+                return "translate(" + (marginleft + (implicateScaleX1(scrollTop))) + "," + (posY) + ")";
               } else if (i != 0 && datenByTitle[i - 1].values[0].Verfasser != d.values[0].Verfasser) {
-                posx2 = posx2 + areaSize + authorLevelAbstand
-                posx = posx + authorAbstand
+                posx2 = posx2 + areaSize + authorLevelAbstand;
+                posx = posx + authorAbstand;
 
                 var implicateScaleX1 = d3.scaleLinear()
                   .domain([-100, -3000]) ////*****hier scroll
                   .range([posx, posx2])
-                  .clamp(true)
+                  .clamp(true);
 
-                return "translate(" + (marginleft + (implicateScaleX1(scrollTop))) + "," + (posY) + ")"
+                return "translate(" + (marginleft + (implicateScaleX1(scrollTop))) + "," + (posY) + ")";
               } else {
-                posx2 = posx2
-                posx = posx + buchBgBreite
+                posx2 = posx2;
+                posx = posx + buchBgBreite;
 
                 var implicateScaleX1 = d3.scaleLinear()
                   .domain([-100, -3000]) ////*****hier scroll
                   .range([posx, posx2])
-                  .clamp(true)
+                  .clamp(true);
 
-                return "translate(" + (marginleft + (implicateScaleX1(scrollTop))) + "," + (posY) + ")"
+                return "translate(" + (marginleft + (implicateScaleX1(scrollTop))) + "," + (posY) + ")";
               }
-            })
+            });
 
 
 
@@ -7483,50 +7469,50 @@ Promise.all([
             .attr("transform", function(d, i) {
               var areaSize = xAreaMax * (datenByAuthor.filter(function(D, I) {
                 if (d.values[0].AuthorCount == 1) {
-                  return D.values[0].values[0].AuthorCount == 1
+                  return D.values[0].values[0].AuthorCount == 1;
                 } else {
-                  return D.values[0].values[0].Verfasser == d.values[0].Verfasser
+                  return D.values[0].values[0].Verfasser == d.values[0].Verfasser;
                 }
-              })[0].maxTraceNumberNormBefore)
+              })[0].maxTraceNumberNormBefore);
 
 
               if (i == 0) {
-                posx2 = 0
-                posx = 0
-                return "translate(" + (marginleft + (posx2)) + "," + (posY) + ")"
+                posx2 = 0;
+                posx = 0;
+                return "translate(" + (marginleft + (posx2)) + "," + (posY) + ")";
               } else if (i != 0 && d.values[0].AuthorCount == 1) {
-                posx2 = posx2
-                posx = posx + buchBgBreite
+                posx2 = posx2;
+                posx = posx + buchBgBreite;
 
                 var implicateScaleX1 = d3.scaleLinear()
                   .domain([-100, -3000]) ////*****hier scroll
                   .range([posx, posx2])
-                  .clamp(true)
+                  .clamp(true);
 
-                return "translate(" + (marginleft + (implicateScaleX1(scrollTop))) + "," + (posY) + ")"
+                return "translate(" + (marginleft + (implicateScaleX1(scrollTop))) + "," + (posY) + ")";
 
               } else if (i != 0 && datenByTitle[i - 1].values[0].Verfasser != d.values[0].Verfasser) {
-                posx2 = posx2 + areaSize + authorLevelAbstand
-                posx = posx + authorAbstand
+                posx2 = posx2 + areaSize + authorLevelAbstand;
+                posx = posx + authorAbstand;
 
                 var implicateScaleX1 = d3.scaleLinear()
                   .domain([-100, -3000]) ////*****hier scroll
                   .range([posx, posx2])
-                  .clamp(true)
+                  .clamp(true);
 
-                return "translate(" + (marginleft + (implicateScaleX1(scrollTop))) + "," + (posY) + ")"
+                return "translate(" + (marginleft + (implicateScaleX1(scrollTop))) + "," + (posY) + ")";
               } else {
-                posx2 = posx2
-                posx = posx + buchBgBreite
+                posx2 = posx2;
+                posx = posx + buchBgBreite;
 
                 var implicateScaleX1 = d3.scaleLinear()
                   .domain([-100, -3000]) ////*****hier scroll
                   .range([posx, posx2])
-                  .clamp(true)
+                  .clamp(true);
 
-                return "translate(" + (marginleft + (implicateScaleX1(scrollTop))) + "," + (posY) + ")"
+                return "translate(" + (marginleft + (implicateScaleX1(scrollTop))) + "," + (posY) + ")";
               }
-            })
+            });
 
 
 
@@ -7535,50 +7521,50 @@ Promise.all([
             .attr("transform", function(d, i) {
               var areaSize = xAreaMax * (datenByAuthor.filter(function(D, I) {
                 if (d.values[0].AuthorCount == 1) {
-                  return D.values[0].values[0].AuthorCount == 1
+                  return D.values[0].values[0].AuthorCount == 1;
                 } else {
-                  return D.values[0].values[0].Verfasser == d.values[0].Verfasser
+                  return D.values[0].values[0].Verfasser == d.values[0].Verfasser;
                 }
-              })[0].maxTraceNumberNormBefore)
+              })[0].maxTraceNumberNormBefore);
 
               if (i == 0) {
-                posx2 = 0
-                posx = 0
-                return "translate(" + (marginleft + (posx2)) + "," + (posYCanvas) + ")"
+                posx2 = 0;
+                posx = 0;
+                return "translate(" + (marginleft + (posx2)) + "," + (posYCanvas) + ")";
               } else if (i != 0 && d.values[0].AuthorCount == 1) {
-                posx2 = posx2
-                posx = posx + buchBgBreite
+                posx2 = posx2;
+                posx = posx + buchBgBreite;
 
                 var implicateScaleX1 = d3.scaleLinear()
                   .domain([-100, -3000]) ////*****hier scroll
                   .range([posx, posx2])
-                  .clamp(true)
+                  .clamp(true);
 
-                return "translate(" + (marginleft + (implicateScaleX1(scrollTop))) + "," + (posYCanvas) + ")"
+                return "translate(" + (marginleft + (implicateScaleX1(scrollTop))) + "," + (posYCanvas) + ")";
               } else if (i != 0 && datenByTitle[i - 1].values[0].Verfasser != d.values[0].Verfasser) {
 
 
-                posx2 = posx2 + areaSize + authorLevelAbstand
-                posx = posx + authorAbstand
+                posx2 = posx2 + areaSize + authorLevelAbstand;
+                posx = posx + authorAbstand;
 
                 var implicateScaleX1 = d3.scaleLinear()
                   .domain([-100, -3000]) ////*****hier scroll
                   .range([posx, posx2])
-                  .clamp(true)
+                  .clamp(true);
 
-                return "translate(" + (marginleft + (implicateScaleX1(scrollTop))) + "," + (posYCanvas) + ")"
+                return "translate(" + (marginleft + (implicateScaleX1(scrollTop))) + "," + (posYCanvas) + ")";
               } else {
-                posx2 = posx2
-                posx = posx + buchBgBreite
+                posx2 = posx2;
+                posx = posx + buchBgBreite;
 
                 var implicateScaleX1 = d3.scaleLinear()
                   .domain([-100, -3000]) ////*****hier scroll
                   .range([posx, posx2])
-                  .clamp(true)
+                  .clamp(true);
 
-                return "translate(" + (marginleft + (implicateScaleX1(scrollTop))) + "," + (posYCanvas) + ")"
+                return "translate(" + (marginleft + (implicateScaleX1(scrollTop))) + "," + (posYCanvas) + ")";
               }
-            })
+            });
 
 
 
@@ -7588,26 +7574,24 @@ Promise.all([
               var implicateScaleOpacity = d3.scaleLinear()
                 .domain([-1000, -2500]) ////*****hier scroll
                 .range([1, 0])
-                .clamp(true)
+                .clamp(true);
 
-              return implicateScaleOpacity(scrollTop)
-            })
+              return implicateScaleOpacity(scrollTop);
+            });
 
           var implicateScaleAreaChart = d3.scaleLinear()
             .domain([-1000, -3000]) ////*****hier scroll
             .range([0, 1])
-            .clamp(true)
+            .clamp(true);
 
 
-          layerGroups.attr("transform", "translate(0,0)scale(" + implicateScaleAreaChart(scrollTop) + ",1)")
-          areachartGroup.selectAll("line").attr("display", "auto")
+          layerGroups.attr("transform", "translate(0,0)scale(" + implicateScaleAreaChart(scrollTop) + ",1)");
+          areachartGroup.selectAll("line").attr("display", "auto");
           areachart.attr("display", function() {
             if (scrollTop >= 0) {
-              return "auto"
+              return "auto";
             }
-          })
-
-
+          });
 
 
         }
@@ -7621,26 +7605,26 @@ Promise.all([
           if (scrollTop >= 0 && clickedBook != 0) {
             d3.selectAll(".detailDiv")
               .transition()
-              .style("opacity", 1)
+              .style("opacity", 1);
 
             d3.selectAll(".detailInfoParent")
               .transition()
-              .style("opacity", 1)
+              .style("opacity", 1);
           }
 
 
-          areachartGroup.selectAll("line").attr("display", "none")
-          areachart.attr("display", "none")
+          areachartGroup.selectAll("line").attr("display", "none");
+          areachart.attr("display", "none");
 
           var explicateScale = d3.scaleLinear()
             .domain([500, 2500])
             .range([pageheight, 30])
-            .clamp(true)
+            .clamp(true);
 
           var explicateScale2 = d3.scaleLinear()
             .domain([500, 2500])
             .range([pageheight, 31])
-            .clamp(true)
+            .clamp(true);
 
           ////////////////////////////
           ///////No book selectected
@@ -7651,60 +7635,60 @@ Promise.all([
             bookG
               .attr("transform", function(d, i) {
                 if (i == 0) {
-                  posx2 = 0
-                  posx = 0
-                  return "translate(" + (marginleft + (posx2)) + "," + (posY) + ")"
+                  posx2 = 0;
+                  posx = 0;
+                  return "translate(" + (marginleft + (posx2)) + "," + (posY) + ")";
                 } else if (i != 0 && datenByTitle[i - 1].values[0].Verfasser != d.values[0].Verfasser) {
-                  posx2 = posx2 + sLAuthorAbstand2
-                  posx = posx + authorAbstand
+                  posx2 = posx2 + sLAuthorAbstand2;
+                  posx = posx + authorAbstand;
 
                   var implicateScaleX1 = d3.scaleLinear()
                     .domain([-100, -3000])
                     .range([posx, posx2])
-                    .clamp(true)
+                    .clamp(true);
 
-                  return "translate(" + (marginleft + (implicateScaleX1(scrollTop))) + "," + (posY) + ")"
+                  return "translate(" + (marginleft + (implicateScaleX1(scrollTop))) + "," + (posY) + ")";
                 } else {
-                  posx2 = posx2
-                  posx = posx + buchBgBreite
+                  posx2 = posx2;
+                  posx = posx + buchBgBreite;
 
                   var implicateScaleX1 = d3.scaleLinear()
                     .domain([-100, -3000])
                     .range([posx, posx2])
-                    .clamp(true)
+                    .clamp(true);
 
-                  return "translate(" + (marginleft + (implicateScaleX1(scrollTop))) + "," + (posY) + ")"
+                  return "translate(" + (marginleft + (implicateScaleX1(scrollTop))) + "," + (posY) + ")";
                 }
-              })
+              });
 
             bookFingerprint
               .attr("transform", function(d, i) {
                 if (i == 0) {
-                  posx2 = 0
-                  posx = 0
-                  return "translate(" + (marginleft + (posx2)) + "," + (posYCanvas) + ")"
+                  posx2 = 0;
+                  posx = 0;
+                  return "translate(" + (marginleft + (posx2)) + "," + (posYCanvas) + ")";
                 } else if (i != 0 && datenByTitle[i - 1].values[0].Verfasser != d.values[0].Verfasser) {
-                  posx2 = posx2 + sLAuthorAbstand2
-                  posx = posx + authorAbstand
+                  posx2 = posx2 + sLAuthorAbstand2;
+                  posx = posx + authorAbstand;
 
                   var implicateScaleX1 = d3.scaleLinear()
                     .domain([-100, -3000])
                     .range([posx, posx2])
-                    .clamp(true)
+                    .clamp(true);
 
-                  return "translate(" + (marginleft + (implicateScaleX1(scrollTop))) + "," + (posYCanvas) + ")"
+                  return "translate(" + (marginleft + (implicateScaleX1(scrollTop))) + "," + (posYCanvas) + ")";
                 } else {
-                  posx2 = posx2
-                  posx = posx + buchBgBreite
+                  posx2 = posx2;
+                  posx = posx + buchBgBreite;
 
                   var implicateScaleX1 = d3.scaleLinear()
                     .domain([-100, -3000])
                     .range([posx, posx2])
-                    .clamp(true)
+                    .clamp(true);
 
-                  return "translate(" + (marginleft + (implicateScaleX1(scrollTop))) + "," + (posYCanvas) + ")"
+                  return "translate(" + (marginleft + (implicateScaleX1(scrollTop))) + "," + (posYCanvas) + ")";
                 }
-              })
+              });
 
 
 
@@ -7714,19 +7698,19 @@ Promise.all([
                 var implicateScaleOpacity = d3.scaleLinear()
                   .domain([-200, -5000])
                   .range([1, 0])
-                  .clamp(true)
+                  .clamp(true);
 
-                return implicateScaleOpacity(scrollTop)
-              })
+                return implicateScaleOpacity(scrollTop);
+              });
 
 
             //////////////////////////Auswahl für SelectedAuthor beim Reinzoomen und Stauchen der anderen Bücher
             thisVerfasserSelectedBookCount = datenByAuthor.filter(function(d, i) {
-              return d.key == thisVerfasserSelected
-            })[0].values.length
-            sLTotalBuchWidthSelected = (thisVerfasserSelectedBookCount) * sLBuchAbstandSelected
-            sLTotalBuchWidthUnselected = (BuchAnzahl - thisVerfasserSelectedBookCount - (authorAnzahl - 1)) * sLBuchAbstandUnselected
-            sLAuthorAbstand2 = (chartArea - (sLTotalBuchWidthSelected + sLTotalBuchWidthUnselected)) / (authorAnzahl - 1)
+              return d.key == thisVerfasserSelected;
+            })[0].values.length;
+            sLTotalBuchWidthSelected = (thisVerfasserSelectedBookCount) * sLBuchAbstandSelected;
+            sLTotalBuchWidthUnselected = (BuchAnzahl - thisVerfasserSelectedBookCount - (authorAnzahl - 1)) * sLBuchAbstandUnselected;
+            sLAuthorAbstand2 = (chartArea - (sLTotalBuchWidthSelected + sLTotalBuchWidthUnselected)) / (authorAnzahl - 1);
 
 
 
@@ -7734,22 +7718,22 @@ Promise.all([
               .attr("height", explicateScale(scrollTop))
               .attr("y", function(d, i) {
                 if (scrollTop < 3000) {
-                  posYCanvas = 0
+                  posYCanvas = 0;
                 } else {
-                  posYCanvas = 0 - ((scrollTop - 3000) * 1)
+                  posYCanvas = 0 - ((scrollTop - 3000) * 1);
                 }
 
-                return posYCanvas + (explicateScale2(scrollTop)) * (d.Part - 1)
+                return posYCanvas + (explicateScale2(scrollTop)) * (d.Part - 1);
               })
               .attr("width", function(d, i) {
                 var implicateScaleWidth = d3.scaleLinear()
                   .domain([500, 2000])
                   .range([buchBreite, sLBuchBreiteUnselected])
-                  .clamp(true)
+                  .clamp(true);
 
-                return implicateScaleWidth(scrollTop)
+                return implicateScaleWidth(scrollTop);
               })
-              .attr("x", 0)
+              .attr("x", 0);
 
 
 
@@ -7758,102 +7742,102 @@ Promise.all([
             if (scrollTop > 0) {
               bookFingerprint.selectAll(".nodes")
                 .filter(function(d, i) {
-                  return d.Verfasser == thisVerfasserSelected
+                  return d.Verfasser == thisVerfasserSelected;
                 })
                 .attr("width", function(d, i) {
                   ///MAX SCHRIFTSPUR AUF SEITE BERECHNEN
                   var thisBookData = (d3.select(this.parentNode).datum()).values.filter(function(D, I) {
-                    return D.Benutzungsspur != "" && D.Benutzungsspur != "4f" && D.Benutzungsspur != "4f?"
-                  })
+                    return D.Benutzungsspur != "" && D.Benutzungsspur != "4f" && D.Benutzungsspur != "4f?";
+                  });
                   var maxSpurenAufSeite = thisBookData.filter(function(D, I) {
-                    return D.ID == d.ID && D.Benutzungsspur != "4f" && D.Benutzungsspur != "4f?"
-                  }).length
+                    return D.ID == d.ID && D.Benutzungsspur != "4f" && D.Benutzungsspur != "4f?";
+                  }).length;
 
                   ///Spurbreite abhängig von maxSpurenAufSeite
                   var implicateScaleWidth = d3.scaleLinear()
                     .domain([500, 2000])
                     .range([buchBreite, sLBuchBreiteSelected])
-                    .clamp(true)
+                    .clamp(true);
 
 
-                  return implicateScaleWidth(scrollTop) / maxSpurenAufSeite
+                  return implicateScaleWidth(scrollTop) / maxSpurenAufSeite;
                 })
                 .attr("x", function(d, i) {
                   ///MAX SCHRIFTSPUR AUF SEITE BERECHNEN
                   var thisBookData = (d3.select(this.parentNode).datum()).values.filter(function(D, I) {
-                    return D.Benutzungsspur != "" && D.Benutzungsspur != "4f" && D.Benutzungsspur != "4f?"
-                  })
+                    return D.Benutzungsspur != "" && D.Benutzungsspur != "4f" && D.Benutzungsspur != "4f?";
+                  });
                   var maxSpurenAufSeite = thisBookData.filter(function(D, I) {
-                    return D.ID == d.ID && D.Benutzungsspur != "4f" && D.Benutzungsspur != "4f?"
-                  }).length
+                    return D.ID == d.ID && D.Benutzungsspur != "4f" && D.Benutzungsspur != "4f?";
+                  }).length;
 
                   ///Spurposition abhängig von maxSpurenAufSeite
                   var implicateScaleWidth = d3.scaleLinear()
                     .domain([500, 2000])
                     .range([buchBreite / maxSpurenAufSeite, sLBuchBreiteSelected / maxSpurenAufSeite])
-                    .clamp(true)
+                    .clamp(true);
 
                   if (i > 9 && thisBookData[i - 10].ID == d.ID) {
-                    return 10 * implicateScaleWidth(scrollTop)
+                    return 10 * implicateScaleWidth(scrollTop);
                   } else if (i > 8 && thisBookData[i - 9].ID == d.ID) {
 
-                    return 9 * implicateScaleWidth(scrollTop)
+                    return 9 * implicateScaleWidth(scrollTop);
                   } else if (i > 7 && thisBookData[i - 8].ID == d.ID) {
 
-                    return 8 * implicateScaleWidth(scrollTop)
+                    return 8 * implicateScaleWidth(scrollTop);
                   } else if (i > 6 && thisBookData[i - 7].ID == d.ID) {
 
-                    return 7 * implicateScaleWidth(scrollTop)
+                    return 7 * implicateScaleWidth(scrollTop);
                   } else if (i > 5 && thisBookData[i - 6].ID == d.ID) {
 
-                    return 6 * implicateScaleWidth(scrollTop)
+                    return 6 * implicateScaleWidth(scrollTop);
                   } else if (i > 4 && thisBookData[i - 5].ID == d.ID) {
 
 
-                    return 5 * implicateScaleWidth(scrollTop)
+                    return 5 * implicateScaleWidth(scrollTop);
                   } else if (i > 3 && thisBookData[i - 4].ID == d.ID) {
 
-                    return 4 * implicateScaleWidth(scrollTop)
+                    return 4 * implicateScaleWidth(scrollTop);
                   } else if (i > 2 && thisBookData[i - 3].ID == d.ID) {
 
-                    return 3 * implicateScaleWidth(scrollTop)
+                    return 3 * implicateScaleWidth(scrollTop);
                   } else if (i > 1 && thisBookData[i - 2].ID == d.ID) {
 
-                    return 2 * implicateScaleWidth(scrollTop)
+                    return 2 * implicateScaleWidth(scrollTop);
                   } else if (i != 0 && thisBookData[i - 1].ID == d.ID) {
 
-                    return implicateScaleWidth(scrollTop)
+                    return implicateScaleWidth(scrollTop);
                   } else {
-                    return 0
+                    return 0;
                   }
-                })
+                });
 
             }
 
 
             bookFingerprint.selectAll(".nodesbg")
               .attr("height", function(d) {
-                return (explicateScale2(scrollTop)) * (d.values[0].maxPart)
+                return (explicateScale2(scrollTop)) * (d.values[0].maxPart);
               })
               .attr("width", function(d, i) {
                 if (d.values[0].Verfasser == thisVerfasserSelected) {
                   var implicateScaleWidth = d3.scaleLinear()
                     .domain([500, 2000])
                     .range([buchBreite, sLBuchBreiteSelected])
-                    .clamp(true)
+                    .clamp(true);
 
-                  return implicateScaleWidth(scrollTop)
+                  return implicateScaleWidth(scrollTop);
 
 
                 } else {
                   var implicateScaleWidth = d3.scaleLinear()
                     .domain([500, 2000])
                     .range([buchBreite, sLBuchBreiteUnselected])
-                    .clamp(true)
+                    .clamp(true);
 
-                  return implicateScaleWidth(scrollTop)
+                  return implicateScaleWidth(scrollTop);
                 }
-              })
+              });
 
             d3.select("#svg").selectAll(".singleBookBG")
               .attr("width", function(d, i) {
@@ -7861,25 +7845,25 @@ Promise.all([
                   var implicateScaleWidth = d3.scaleLinear()
                     .domain([500, 2000])
                     .range([buchBgBreite, sLBuchBreiteSelected])
-                    .clamp(true)
+                    .clamp(true);
 
                   var thisCount = datenByAuthor.filter(function(D, I) {
-                    return D.key === thisVerfasserSelected
-                  })[0].values.length
+                    return D.key === thisVerfasserSelected;
+                  })[0].values.length;
 
 
-                  return implicateScaleWidth(scrollTop)
+                  return implicateScaleWidth(scrollTop);
 
 
                 } else {
                   var implicateScaleWidth = d3.scaleLinear()
                     .domain([500, 2000])
                     .range([buchBreite, sLBuchBreiteUnselected])
-                    .clamp(true)
+                    .clamp(true);
 
-                  return implicateScaleWidth(scrollTop)
+                  return implicateScaleWidth(scrollTop);
                 }
-              })
+              });
 
 
 
@@ -7887,74 +7871,74 @@ Promise.all([
             bookFingerprint
               .attr("transform", function(d, i) {
 
-                posYCanvas = 0
+                posYCanvas = 0;
 
                 if (i == 0) {
-                  posx3 = 0
-                  posx = 0
-                  return "translate(" + (marginleft + (posx3)) + "," + (posYCanvas) + ")"
+                  posx3 = 0;
+                  posx = 0;
+                  return "translate(" + (marginleft + (posx3)) + "," + (posYCanvas) + ")";
 
                   //falls vorheriges Element Selected und anderer Verfasser
                 } else if (i != 0 && datenByTitle[i - 1].values[0].Verfasser != d.values[0].Verfasser && datenByTitle[i - 1].values[0].Verfasser == thisVerfasserSelected) {
-                  posx3 = posx3 + sLBuchAbstandSelected + sLAuthorAbstand2
-                  posx = posx + authorAbstand
+                  posx3 = posx3 + sLBuchAbstandSelected + sLAuthorAbstand2;
+                  posx = posx + authorAbstand;
 
                   var implicateScaleX1 = d3.scaleLinear()
                     .domain([500, 2000])
                     .range([posx, posx3])
-                    .clamp(true)
+                    .clamp(true);
 
-                  return "translate(" + (marginleft + (implicateScaleX1(scrollTop))) + "," + (posYCanvas) + ")"
+                  return "translate(" + (marginleft + (implicateScaleX1(scrollTop))) + "," + (posYCanvas) + ")";
 
                   //falls vorheriges Element Selected und gleicher Verfasser
                 } else if (i != 0 && datenByTitle[i - 1].values[0].Verfasser == thisVerfasserSelected && datenByTitle[i - 1].values[0].Verfasser == d.values[0].Verfasser) {
-                  posx3 = posx3 + sLBuchAbstandSelected
-                  posx = posx + buchBgBreite
+                  posx3 = posx3 + sLBuchAbstandSelected;
+                  posx = posx + buchBgBreite;
 
                   var implicateScaleX1 = d3.scaleLinear()
                     .domain([500, 2000])
                     .range([posx, posx3])
-                    .clamp(true)
+                    .clamp(true);
 
-                  return "translate(" + (marginleft + (implicateScaleX1(scrollTop))) + "," + (posYCanvas) + ")"
+                  return "translate(" + (marginleft + (implicateScaleX1(scrollTop))) + "," + (posYCanvas) + ")";
 
                   //falls vorheriges Element NICHT Selected und anderer Verfasser
                 } else if (i != 0 && datenByTitle[i - 1].values[0].Verfasser != d.values[0].Verfasser && datenByTitle[i - 1].values[0].Verfasser != thisVerfasserSelected && datenByTitle[i - 1].values[0].AuthorCount != 1) {
-                  posx3 = posx3 + sLAuthorAbstand2
-                  posx = posx + authorAbstand
+                  posx3 = posx3 + sLAuthorAbstand2;
+                  posx = posx + authorAbstand;
 
                   var implicateScaleX1 = d3.scaleLinear()
                     .domain([500, 2000])
                     .range([posx, posx3])
-                    .clamp(true)
+                    .clamp(true);
 
-                  return "translate(" + (marginleft + (implicateScaleX1(scrollTop))) + "," + (posYCanvas) + ")"
+                  return "translate(" + (marginleft + (implicateScaleX1(scrollTop))) + "," + (posYCanvas) + ")";
 
                   //falls vorheriges Element NICHT Selected und gleicher Verfasser
                 } else {
-                  posx3 = posx3 + sLBuchAbstandUnselected
-                  posx = posx + buchBgBreite
+                  posx3 = posx3 + sLBuchAbstandUnselected;
+                  posx = posx + buchBgBreite;
 
                   var implicateScaleX1 = d3.scaleLinear()
                     .domain([500, 2000])
                     .range([posx, posx3])
-                    .clamp(true)
+                    .clamp(true);
 
-                  return "translate(" + (marginleft + (implicateScaleX1(scrollTop))) + "," + (posYCanvas) + ")"
+                  return "translate(" + (marginleft + (implicateScaleX1(scrollTop))) + "," + (posYCanvas) + ")";
                 }
-              })
+              });
 
             bookFingerprint.selectAll(".nodesbg")
               .attr("y", function(d, i) {
                 if (scrollTop < 3000) {
 
-                  posYCanvas = 0
+                  posYCanvas = 0;
                 } else {
-                  posYCanvas = 0 - ((scrollTop - 3000) * 1)
+                  posYCanvas = 0 - ((scrollTop - 3000) * 1);
 
                 }
-                return posYCanvas
-              })
+                return posYCanvas;
+              });
 
 
 
@@ -7964,57 +7948,57 @@ Promise.all([
               .attr("transform", function(d, i) {
                 //falls erstes Element
                 if (i == 0) {
-                  posx3 = 0
-                  posx = 0
-                  return "translate(" + (marginleft + (posx3)) + "," + (posY) + ")"
+                  posx3 = 0;
+                  posx = 0;
+                  return "translate(" + (marginleft + (posx3)) + "," + (posY) + ")";
 
                   //falls vorheriges Element Selected und anderer Verfasser
                 } else if (i != 0 && datenByTitle[i - 1].values[0].Verfasser != d.values[0].Verfasser && datenByTitle[i - 1].values[0].Verfasser == thisVerfasserSelected) {
-                  posx3 = posx3 + sLBuchAbstandSelected + sLAuthorAbstand2
-                  posx = posx + authorAbstand
+                  posx3 = posx3 + sLBuchAbstandSelected + sLAuthorAbstand2;
+                  posx = posx + authorAbstand;
 
                   var implicateScaleX1 = d3.scaleLinear()
                     .domain([500, 2000])
                     .range([posx, posx3])
-                    .clamp(true)
+                    .clamp(true);
 
-                  return "translate(" + (marginleft + (implicateScaleX1(scrollTop))) + "," + (posY) + ")"
+                  return "translate(" + (marginleft + (implicateScaleX1(scrollTop))) + "," + (posY) + ")";
 
                   //falls vorheriges Element Selected und gleicher Verfasser
                 } else if (i != 0 && datenByTitle[i - 1].values[0].Verfasser == thisVerfasserSelected) {
-                  posx3 = posx3 + sLBuchAbstandSelected
-                  posx = posx + buchBgBreite
+                  posx3 = posx3 + sLBuchAbstandSelected;
+                  posx = posx + buchBgBreite;
 
                   var implicateScaleX1 = d3.scaleLinear()
                     .domain([500, 2000])
                     .range([posx, posx3])
-                    .clamp(true)
+                    .clamp(true);
 
-                  return "translate(" + (marginleft + (implicateScaleX1(scrollTop))) + "," + (posY) + ")"
+                  return "translate(" + (marginleft + (implicateScaleX1(scrollTop))) + "," + (posY) + ")";
 
                   //falls vorheriges Element NICHT Selected und anderer Verfasser
                 } else if (i != 0 && datenByTitle[i - 1].values[0].Verfasser != d.values[0].Verfasser && datenByTitle[i - 1].values[0].Verfasser != thisVerfasserSelected) {
-                  posx3 = posx3 + sLAuthorAbstand2
-                  posx = posx + authorAbstand
+                  posx3 = posx3 + sLAuthorAbstand2;
+                  posx = posx + authorAbstand;
 
                   var implicateScaleX1 = d3.scaleLinear()
                     .domain([500, 2000])
                     .range([posx, posx3])
-                    .clamp(true)
+                    .clamp(true);
 
-                  return "translate(" + (marginleft + (implicateScaleX1(scrollTop))) + "," + (posY) + ")"
+                  return "translate(" + (marginleft + (implicateScaleX1(scrollTop))) + "," + (posY) + ")";
 
                   //falls vorheriges Element NICHT Selected und gleicher Verfasser
                 } else {
-                  posx3 = posx3 + sLBuchAbstandUnselected
-                  posx = posx + buchBgBreite
+                  posx3 = posx3 + sLBuchAbstandUnselected;
+                  posx = posx + buchBgBreite;
 
                   var implicateScaleX1 = d3.scaleLinear()
                     .domain([500, 2000])
                     .range([posx, posx3])
-                    .clamp(true)
+                    .clamp(true);
 
-                  return "translate(" + (marginleft + (implicateScaleX1(scrollTop))) + "," + (posY) + ")"
+                  return "translate(" + (marginleft + (implicateScaleX1(scrollTop))) + "," + (posY) + ")";
                 }
               })
 
@@ -11117,7 +11101,7 @@ Promise.all([
       d3.selectAll(".pieG").filter(function(d, i) {
           return d.level == "verfasser"
         }).style("opacity", function(d, i) {
-          return 1.5 - compOpacityScale(scrollTop)
+          return 1//.5 - compOpacityScale(scrollTop)
         })
         .attr("transform", function(d, i) {
           var posXalsBuch = d.x
@@ -11164,7 +11148,7 @@ Promise.all([
           return d.level == "buch"
         })
         .style("opacity", function(d, i) {
-          return compOpacityScale(scrollTop)
+          return 1//compOpacityScale(scrollTop)
         })
         .attr("transform", function(d, i) {
           var posXalsBuch = d.x
@@ -12075,7 +12059,7 @@ Promise.all([
         d3.selectAll(".pieG").filter(function(d, i) {
             return d.level == "verfasser"
           }).style("opacity", function(d, i) {
-            return 1.5 - compOpacityScale(scrollTop)
+            return 1//.5 - compOpacityScale(scrollTop)
           })
           .attr("transform", function(d, i) {
             var posXalsBuch = d.x
@@ -12122,7 +12106,7 @@ Promise.all([
             return d.level == "buch"
           })
           .style("opacity", function(d, i) {
-            return compOpacityScale(scrollTop)
+            return 1//compOpacityScale(scrollTop)
           })
           .attr("transform", function(d, i) {
             var posXalsBuch = d.x

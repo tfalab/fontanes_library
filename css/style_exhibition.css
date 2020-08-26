@@ -1043,7 +1043,7 @@
       margin-left: 0px;
       margin-right: 0px;
       margin-top: 15px;
-      margin-bottom: 30px;
+      margin-bottom: 15px;
       text-align: center;
     }
 
@@ -1123,6 +1123,38 @@
       margin-left: 5px;
     }
 
+    #englishdemo{
+      display: inline-block;
+      background-color: #f284c0;
+      border-radius: 30px;
+      margin-top: 5px;
+      padding-top: 5px;
+      padding-bottom: 5px;
+      padding-left: 10px;
+      padding-right: 10px;
+      cursor: pointer;
+      margin-left: 5px;
+    }
+
+    p#englishIntro{
+      display: block;
+      color: #a6cee3;
+      font-style: italic!important;
+      font-size: 14px;
+      text-align: center!important;
+      cursor: pointer;
+    }
+
+    p#germanIntro{
+      display: block;
+      color: #a6cee3;
+      font-style: italic!important;
+      font-size: 14px;
+      text-align: center!important;
+      cursor: pointer;
+    }
+
+
     #einfuerunginvis a{
 color: white;
     }
@@ -1141,6 +1173,7 @@ text-decoration: none;
 color: white;
 text-decoration: none;
     }
+
 
     .tutorial{
       display: none;
