@@ -9,15 +9,3 @@ https://docs.google.com/spreadsheets/d/1TgBK8FmTSP2MBaPW6TuUfjR_iE94WF7l-YPBTcbj
 
 corpus data: 
 https://docs.google.com/spreadsheets/d/1L6D00rEn-GRaXCbhvqYif8WLjNbFV3iWML-KAh5JaEU/edit?usp=sharing
-
-mds data:
-
-
-## Prototype Documenation
-### Modus I: Distribution of Reading Traces
-
-### Modus II: Similarity Comparison
-
-## Libararies
-
-## License
