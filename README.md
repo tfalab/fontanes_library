@@ -1,5 +1,5 @@
 # Reading Traces – Visualizing Theodor Fontane's Reference Library
-![Prototype](/img/tutorialGif1.gif)
+![Prototype](/img/moduswechsel.gif)
 
 ## Description
 ### wip
