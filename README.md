@@ -1,16 +1,14 @@
 # Reading Traces – Visualizing Theodor Fontane's Reference Library
 ![Prototype](/img/tutorialGif1.gif)
 
-Text about this documentation. Prototype
+## Description
+### wip
 
 ## The Data
-reading traces data for each page: 
-https://docs.google.com/spreadsheets/d/1TgBK8FmTSP2MBaPW6TuUfjR_iE94WF7l-YPBTcbj7XM/edit?usp=sharing
-
-corpus data: 
-https://docs.google.com/spreadsheets/d/1L6D00rEn-GRaXCbhvqYif8WLjNbFV3iWML-KAh5JaEU/edit?usp=sharing
+### wip
 
 ## About
+### wip
 This project is a collaboration between the Theodor Fontane Archive Potsdam (University of Potsdam) and the UCLAB (University of Applied Sciences Potsdam).
 
 ### Team UCLAB
@@ -26,3 +24,7 @@ Luisa Billepp: data aquisition
 Tabea Klaus: data aquisition
 Anke Reintsch: data aquisition
 Peer Trilcke: project lead
+
+
+
+## License
