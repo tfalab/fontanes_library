@@ -19,12 +19,7 @@ Marian Dörk: project lead
 ### Team Theodor Fontane Archive  
 Anna Busch: project coordination & data aquisition  
 Sabine Seifert: research data management  
-Kristina Genzel: data aquisition  
-Luisa Billepp: data aquisition  
-Tabea Klaus: data aquisition  
-Anke Reintsch: data aquisition  
+Luisa Billepp, Kristina Genzel, Tabea Klaus, Anke Reintsch: data aquisition  
 Peer Trilcke: project lead  
-
-
 
 ## License
