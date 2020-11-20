@@ -173,7 +173,7 @@
       width: 80px;
       left: 0;
       top: 0px;
-      box-shadow: 2px 0px 5px grey;
+      box-shadow: 2px 0px 5px rgba(0, 0, 0, 0.41);
       padding-top: 0px;
     }
 
@@ -212,7 +212,7 @@
         color: #FFFFFF;
         font-family: Arial;
         font-size: 1em;
-        box-shadow: 2px 0px 5px grey;
+        box-shadow: 2px 0px 5px rgba(0, 0, 0, 0.41);
         text-align: center;
         right:72px;
         top: 60px;
@@ -245,7 +245,7 @@
             background: rgba(71, 71, 71, 0.82);
             color: #FFFFFF;
             font-size: 1em;
-            box-shadow: 2px 0px 5px grey;
+            box-shadow: 2px 0px 5px rgba(0, 0, 0, 0.41);
             text-align: center;
             width: 300px;
             right:108px;
@@ -253,7 +253,6 @@
             padding: 8px;
             text-align: left;
         }
-
 
         @media screen and (min-width: 2000px) {
           .tippbubble {
@@ -270,7 +269,7 @@
             z-index: 1;
             border-style: solid;
             border-width: 0 0 15px 13px;
-            border-color: transparent transparent  rgba(71, 71, 71, 0.82) transparent;
+            border-color: transparent transparent  rgba(0, 0, 0, 0.41) transparent;
             top: -15px;
             right: 15px;
         }
@@ -335,7 +334,129 @@
 }
 
 
+.bubble p{
+  font-size: 1em;
+  margin: 0px;
+  font-weight: bold;
+}
 
+
+.bubble:after {
+    content: '';
+  	position: absolute;
+  	left: 0;
+  	top: 50%;
+  	width: 0;
+  	height: 0;
+    border: 10px solid transparent;
+  	border-right-color: rgba(71, 71, 71, 0.82);
+    border-left: 0;
+  	margin-top: -10px;
+  	margin-left: -10px;
+}
+
+.complicationbubble {
+    position: fixed;
+    background: rgba(71, 71, 71, 0.82);
+    color: #FFFFFF;
+    font-size: 1em;
+    box-shadow: 2px 0px 5px rgba(0, 0, 0, 0.41);
+    text-align: center;
+    width: 250px;
+    left:100px;
+    top: 50px;
+    padding: 8px;
+    text-align: left;
+}
+
+
+.explicationbubble {
+    position: fixed;
+    background: rgba(71, 71, 71, 0.82);
+    color: #FFFFFF;
+    font-size: 1em;
+    box-shadow: 2px 0px 5px rgba(0, 0, 0, 0.41);
+    text-align: center;
+    width: 250px;
+    left:100px;
+    top: 2px;
+    padding: 8px;
+    text-align: left;
+}
+
+.verfasserbubble {
+    position: fixed;
+    background: rgba(71, 71, 71, 0.82);
+    color: #FFFFFF;
+    font-size: 1em;
+    box-shadow: 2px 0px 5px rgba(0, 0, 0, 0.41);
+    text-align: center;
+    width: 250px;
+    left:100px;
+    padding: 8px;
+    text-align: left;
+}
+
+.buchbubble {
+    position: fixed;
+    background: rgba(71, 71, 71, 0.82);
+    color: #FFFFFF;
+    font-size: 1em;
+    box-shadow: 2px 0px 5px rgba(0, 0, 0, 0.41);
+    text-align: center;
+    width: 250px;
+    left:100px;
+    top: 450px;
+    padding: 8px;
+    text-align: left;
+}
+
+.seitenbubble {
+    position: fixed;
+    background: rgba(71, 71, 71, 0.82);
+    color: #FFFFFF;
+    font-size: 1em;
+    box-shadow: 2px 0px 5px rgba(0, 0, 0, 0.41);
+    text-align: center;
+    width: 250px;
+    left:100px;
+    top: 600px;
+    padding: 8px;
+    text-align: left;
+}
+
+
+
+
+@media screen and (min-width: 2000px) {
+  .explicationbubble {
+      left:120px;
+      top: 10px;
+      width: 350px;
+  }
+  .complicationbubble {
+      left:120px;
+      top: 70px;
+      width: 350px;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .explicationbubble {
+      left:100px;
+      top: 12px;
+      width: 250px;
+  }
+  .complicationbubble {
+      left:100px;
+      top: 62px;
+      width: 250px;
+  }
+}
+
+.distributionbutton, .similaritybutton{
+  cursor: pointer;
+}
 
     .search-container {
       float: right;
@@ -357,7 +478,7 @@
       margin-top: 20px;
       background: white;
       font-size: 1em;
-      color: grey;
+      color: #474747;
       border-width: 1px;
       border-color: lightgrey;
       border-style: solid;
@@ -404,7 +525,7 @@
       margin-top: 3px;
       padding-left: 5px;
       padding-right: 5px;
-      color: #888888;
+      color: #474747;
 
     }
 
@@ -426,7 +547,7 @@
 
       .select2-default, .select2-choice{
         height:22px!important;
-
+        color: #474747;
       }
 }
 
@@ -607,6 +728,8 @@
     }
 
 
+
+
     .provenienz {
       color: #7e7e8e;
       fill: #7e7e8e;
@@ -748,6 +871,23 @@
     }
 
 
+    .eigentumsangaben .tooltiptypes, .eigentumsangaben .tt-provenienz{
+      color: #9e9c9c;
+    }
+
+    .provenienz .tooltiptypesb, .provenienz .tt-provenienz{
+      color:#9b9bb0;
+    }
+
+    .provenienzstempel .tooltiptypesb, .provenienzstempel .tt-provenienzstempel{
+      color:#e8dcdc;
+    }
+
+    .textkorrektur .tooltiptypesb, .textkorrektur .tt-textkorrektur{
+      color:#d2177b;
+    }
+
+
     .filtered {
       fill: white !important;
       -webkit-transition: fill 0.5s linear;
@@ -884,7 +1024,7 @@
       overflow-y: auto;
       padding-left: 30px;
       padding-right: 20px;
-      box-shadow: 2px 0px 5px grey;
+      box-shadow: 2px 0px 5px rgba(0, 0, 0, 0.41);
       padding-bottom: 10px;
       display:block;
       margin: auto;
@@ -893,17 +1033,7 @@
       text-align: center;
     }
 
-    @media screen and (max-width: 1000px) {
-    #start{
-      width: calc(100% - 60px);
-      height: 100%;
-      top:0;
-      left:0;
-      padding-left: 30px;
-      padding-right: 30px;
-      box-shadow: none;
-    }
-}
+
 
 
     #start h3{
@@ -913,7 +1043,7 @@
       margin-left: 0px;
       margin-right: 0px;
       margin-top: 15px;
-      margin-bottom: 30px;
+      margin-bottom: 15px;
       text-align: center;
     }
 
@@ -995,7 +1125,7 @@
 
     #englishdemo{
       display: inline-block;
-      background-color: #58b0f7;
+      background-color: #f284c0;
       border-radius: 30px;
       margin-top: 5px;
       padding-top: 5px;
@@ -1003,8 +1133,25 @@
       padding-left: 10px;
       padding-right: 10px;
       cursor: pointer;
-            margin-bottom: 10px;
-            margin-left: 5px;
+      margin-left: 5px;
+    }
+
+    p#englishIntro{
+      display: block;
+      color: #a6cee3;
+      font-style: italic!important;
+      font-size: 14px;
+      text-align: center!important;
+      cursor: pointer;
+    }
+
+    p#germanIntro{
+      display: block;
+      color: #a6cee3;
+      font-style: italic!important;
+      font-size: 14px;
+      text-align: center!important;
+      cursor: pointer;
     }
 
 
@@ -1028,8 +1175,7 @@ text-decoration: none;
     }
 
 
-
-    #tutorial{
+    .tutorial{
       display: none;
       position: fixed;
       opacity: 0;
@@ -1041,7 +1187,7 @@ text-decoration: none;
       overflow-y: auto;
       padding-left: 30px;
       padding-right: 20px;
-      box-shadow: 2px 0px 5px grey;
+      box-shadow: 2px 0px 5px rgba(0, 0, 0, 0.41);
       padding-bottom: 10px;
       display:block;
       margin: auto;
@@ -1051,7 +1197,9 @@ text-decoration: none;
     }
 
 
-    #tutorial .about-close{
+
+
+    .tutorial .about-close{
       position: fixed;
       cursor: pointer;
       z-index:999;
@@ -1060,8 +1208,17 @@ text-decoration: none;
       top: calc(50% - 390px);
     }
 
+
+    .modus1{
+      display: block;
+    }
+
+    .modus2{
+      display: none;
+    }
+
     @media screen and (max-height: 850px) {
-      #tutorial{
+      .tutorial{
         display: none;
         position: fixed;
         opacity: 0;
@@ -1073,7 +1230,7 @@ text-decoration: none;
         overflow-y: auto;
         padding-left: 30px;
         padding-right: 20px;
-        box-shadow: 2px 0px 5px grey;
+        box-shadow: 2px 0px 5px rgba(0, 0, 0, 0.41);
         padding-bottom: 10px;
         display:block;
         margin: auto;
@@ -1083,7 +1240,7 @@ text-decoration: none;
       }
 
 
-      #tutorial .about-close{
+      .tutorial .about-close{
         position: fixed;
         cursor: pointer;
         z-index: 999;
@@ -1094,7 +1251,7 @@ text-decoration: none;
     }
 
 
-    #tutorial h1{
+    .tutorial h1{
       color: white;
       font-size: 28px;
       font-weight: 400;
@@ -1105,14 +1262,14 @@ text-decoration: none;
       text-align: center;
     }
 
-    #tutorial h2{
+    .tutorial h2{
       color: white;
       font-size: 20px;
       margin-top: 40px;
       text-align: center;
     }
 
-    #tutorial p{
+    .tutorial p{
       color: white;
       font-size: 16px;
       font-weight: 300;
@@ -1122,46 +1279,45 @@ text-decoration: none;
     }
 
 
-    #tutorial a{
+    .tutorial a{
 color: #a6cee3;
     }
 
-    #tutorial a:hover{
+    .tutorial a:hover{
 color: white;
 text-decoration: none;
     }
 
-    #tutorial a:active{
+    .tutorial a:active{
 color: white;
 text-decoration: none;
     }
 
-    #tutorial a:visited{
+    .tutorial a:visited{
 color: white;
 text-decoration: none;
     }
-
 
 
 
 
     #about{
       position: fixed;
-      width: 800px;
-      height: 620px;
+      width: 900px;
+      height: 700px;
       background-color: rgba(71, 71, 71, 0.9);
       color: white;
       z-index: 1000;
       overflow-y: auto;
       padding-left: 30px;
       padding-right: 20px;
-      box-shadow: 2px 0px 5px grey;
+      box-shadow: 2px 0px 5px rgba(0, 0, 0, 0.41);
       padding-bottom: 10px;
       display:none;
       opacity: 0;
       margin: auto;
-      left: calc(50% - 400px);
-      top: calc(50% - 310px);
+      left: calc(50% - 450px);
+      top: calc(50% - 350px);
       text-align: center;
     }
 
@@ -1227,6 +1383,32 @@ text-align: left;
         }
 
 
+        @media screen and (max-width: 1000px) {
+        #start{
+          width: calc(100% - 60px);
+          height: 100%;
+          top:0;
+          left:0;
+          padding-left: 30px;
+          padding-right: 30px;
+          box-shadow: none;
+        }
+
+        #about{
+          position: fixed;
+          width: calc(100% - 60px);
+          height: 100%;
+          top:0;
+          left:0;
+          padding-left: 30px;
+          padding-right: 30px;
+          box-shadow: none;
+        }
+
+
+    }
+
+
     #overlay{
       cursor: pointer;
       position: fixed;
@@ -1249,17 +1431,15 @@ text-align: left;
       top:0px;
     }
 
-
-
     #detailview{
       position: fixed;
       width: 70vw;
-      height: 90vh;
-      background-color: rgba(54, 52, 52, 0.95);
+      height: auto;
+      background-color: rgba(71, 71, 71, 0.9);
       color: white;
       z-index: 1000;
       padding: 0px;
-      box-shadow: 2px 0px 5px grey;
+      box-shadow: 2px 0px 5px rgba(0, 0, 0, 0.41);
       display: none;
       opacity: 0;
       margin: auto;
@@ -1273,7 +1453,7 @@ text-align: left;
 
     #detailview table{
         padding: 10px;
-        font-size: 1em;
+        font-size: 1.2em;
         display: inline-block;
         vertical-align: top;
         height: 100%;
@@ -1281,15 +1461,16 @@ text-align: left;
         top:0;
         float: left;
         bottom:0;
-        padding-left: 20px;
     }
 
     @media screen and (min-width: 2000px) {
       #detailview table{
         font-size: 1.5em;
-        padding-left: 30px;
+        padding-left: 20px;
       }
 }
+
+
 
     #detailview tr{
         vertical-align: top;
@@ -1304,7 +1485,11 @@ text-align: left;
     }
 
     .td-title{
-      width:  30%;
+      width:  100px;
+    }
+
+    .td-data{
+      font-weight: bold;
     }
 
     .tableImage{
@@ -1321,6 +1506,47 @@ text-align: left;
       max-height: 100%;
     }
 
+
+    .detailviewTableTranscript{
+      margin: 0px;
+      margin-bottom: 1em;
+    }
+
+    .detailviewTableTranscriptSpan{
+      margin: 0px;
+      font-weight: normal;
+      color: #d7d7d7;
+      opacity: 1;
+    }
+
+
+
+.detailviewNext{
+  position: fixed;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 25px 0 25px 43.3px;
+  border-color: transparent transparent transparent rgba(71, 71, 71, 0.9);
+  right: calc(15% - 50px);
+  top: 50%;
+  z-index:999;
+  cursor: pointer;
+}
+
+
+.detailviewPrevious{
+    position: fixed;
+  width: 0;
+height: 0;
+border-style: solid;
+border-width: 25px 43.3px 25px 0;
+border-color: transparent rgba(71, 71, 71, 0.9)transparent transparent;
+left: calc(15% - 50px);
+top: 50%;
+z-index:999;
+cursor: pointer;
+}
 
 /*
 COMPLICATION
@@ -1358,6 +1584,7 @@ COMPLICATION
       height: 100%;
       display: none;
       padding-top: 20px;
+      overflow-y: scroll;
     }
 
     .tooltipTitle{
@@ -1372,12 +1599,14 @@ COMPLICATION
       font-weight: 400;
       font-size: 13px;
     }
+
     .tooltiptypesb{
       margin: 0;
       padding-left: 20px;
       font-weight: 400;
       font-size: 13px;
     }
+
 
     .tooltipImage{
       float: left;
@@ -1387,12 +1616,13 @@ COMPLICATION
       vertical-align: top;
       text-align: right;
       width: 245px;
+      height:auto;
       padding-right: 5px;
     }
 
 
     .coverimagesSolo{
-      width: 240px;
+      /* width: 240px; */
       vertical-align: top;
       text-align: left;
       margin: 0px;
@@ -1400,11 +1630,12 @@ COMPLICATION
 
 
     .coverimagesMulti{
-      width: 80px;
+      /* width: 80px; */
       vertical-align: top;
       text-align: left;
       margin: 0px;
     }
+
 
 
 
@@ -1429,3 +1660,11 @@ COMPLICATION
     .tr-verfasser,.tr-herausgeber,.tr-verlag,.tr-genre,.tr-datierung,.tr-ort,.tr-schreibhand,.tr-transkriptionen{
       display:none;
     }
+
+    .tt-seitenzahl,.tt-seitenzahl1{
+      padding-top: 2em;
+    }
+
+.tt-transkriptionentitel,.tt-bio{
+  margin-top: 3em;
+}
