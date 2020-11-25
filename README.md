@@ -1,15 +1,8 @@
 # Reading Traces – Visualizing Theodor Fontane's Reference Library
 ![Prototype](/img/moduswechsel.gif)
 
-## Description
-### wip
-
-## The Data
-### wip
-
 ## About
-### wip
-This project is a collaboration between the Theodor Fontane Archive Potsdam (University of Potsdam) and the UCLAB (University of Applied Sciences Potsdam).
+This project is a collaboration between the [Theodor Fontane Archive Potsdam](https://www.fontanearchiv.de) (University of Potsdam) and the [UCLAB](https://uclab.fh-potsdam.de/) (University of Applied Sciences Potsdam).
 
 ### Team UCLAB  
 Mark-Jan Bludau: concept development, design, data analysis & prototype development  
@@ -23,3 +16,4 @@ Luisa Billepp, Kristina Genzel, Tabea Klaus, Anke Reintsch: data aquisition
 Peer Trilcke: project lead  
 
 ## License
+The source code is licensed under the [ISC license](https://github.com/tfalab/fontanes_library/edit/master/LICENSE.md). The data is licensed under [CC BY-4.0](https://creativecommons.org/licenses/by/4.0). 
