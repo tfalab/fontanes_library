@@ -8,3 +8,6 @@ misc/
 data/*.xlsx
 data/xlsx
 js/alt_190806
+js/d3.v5.min.js
+js/jquery.min.js
+js/select2.min.js
