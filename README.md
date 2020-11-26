@@ -20,11 +20,12 @@ The visualization is based on three data sources and the images of the digitized
 
 For access to data files for individual books or access to the images, please contact the the [Theodor Fontane Archive Potsdam](https://www.fontanearchiv.de).
 
-### Used libraries
+### External resources
 /js/d3.v5.min.js → [D3.js](https://d3js.org/)  
 /js/jquery.min.js → [jQuery](https://jquery.com/)  
 /js/select2.min.js → [Select2](https://select2.org/)  
 /css/select2.css → [Select2](https://select2.org/) 
+/fonts/... → [Roboto](https://fonts.google.com/specimen/Roboto)
 
 ### Team UCLAB  
 Mark-Jan Bludau: concept development, design, data analysis & prototype development  
@@ -36,6 +37,15 @@ Anna Busch: project coordination & data aquisition
 Sabine Seifert: research data management  
 Luisa Billepp, Kristina Genzel, Tabea Klaus, Anke Reintsch: data aquisition  
 Peer Trilcke: project lead  
+
+## Related Publications
+[Bludau, M.-J., Brüggemann, V., Busch, A., & Dörk, M. (2020). Reading Traces: Scalable Exploration in Elastic Visualizations of Cultural Heritage Data. In Computer Graphics Forum (Vol. 39, No. 3, pp. 77-87).](https://doi.org/10.1111/cgf.13964)
+
+[Busch, A., Bludau, M.-J. Brüggemann, V., Dörk, M., Genzel, K., Seifert,S. & Trilcke P.Scalable Exploration (2019). Prototype study for the visualization of an author's library on the example of 'Theodor Fontane's Library'. In Book of Abstracts of the Digital Humanities conference (DH) 2019: Complexities. Utrecht (The Netherlands)](https://dev.clariah.nl/files/dh2019/boa/0490.html)
+
+[Busch, A. (2019). Fontane als Leser. Zur Visualisierung von Lektürespuren in Fontanes Handbibliothek. In Fontane Blätter (107, S. 104-131).](https://www.fontanearchiv.de/fileadmin/user_upload/Fontane-Blaetter/Fbl_107_final_2019-08-07_Busch.pdf)
+
+[Busch, A., Bludau, M.-J. Brüggemann, V., Dörk, M., Genzel, K., Möller,H.-P., Seifert,S. & Trilcke P. (2019). Skalierbare Exploration. Prototypenstudie zur Visualisierung einer Autorenbibliothek am Beispiel der ›Handbibliothek Theodor Fontanes. In Konferenzband zur DHd 2019 Frankfurt & Mainz - Digital Humanities: multimedial & multimodal](https://zenodo.org/record/2596095/preview/2019_DHd_BookOfAbstracts_web.pdf#page=205)
 
 ## License
 The source code is licensed under the [ISC license](https://github.com/tfalab/fontanes_library/edit/master/LICENSE.md). The data is licensed under [CC BY-4.0](https://creativecommons.org/licenses/by/4.0). 
