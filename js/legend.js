@@ -1,4 +1,4 @@
-// Copyright (c) 2018-2020, Mark-Jan Bludau, UCLAB (FH Potsdam) & Theodor Fontane Archiv.
+// Copyright (c) 2018-2020, Mark-Jan Bludau, UCLAB (FH Potsdam) & Theodor-Fontane-Archiv Potsdam.
 // Reading Traces: uclab.fh-potsdam.de/ff
 //
 // ISC License
