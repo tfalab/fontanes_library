@@ -26,7 +26,7 @@ For access to data files for individual books or access to the images, please co
 /fonts/... → [Roboto](https://fonts.google.com/specimen/Roboto)
 
 ## Project Team
-This project is a collaboration between the [Theodor Fontane Archive Potsdam](https://www.fontanearchiv.de) (University of Potsdam) and the [UCLAB](https://uclab.fh-potsdam.de/) (University of Applied Sciences Potsdam). 
+This project is a collaboration between the [Theodor Fontane Archiv Potsdam](https://www.fontanearchiv.de) (University of Potsdam) and the [UCLAB](https://uclab.fh-potsdam.de/) (University of Applied Sciences Potsdam). 
 
 ### Team UCLAB  
 Mark-Jan Bludau: concept development, design, data analysis & prototype development  
