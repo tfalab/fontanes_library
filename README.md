@@ -21,10 +21,10 @@ The visualization is based on three data sources and the images of the digitized
 For access to data files for individual books or access to the images, please contact the the [Theodor Fontane Archive Potsdam](https://www.fontanearchiv.de).
 
 ### Used libraries
-/js/d3.v5.min.js --> [D3.js](https://d3js.org/)
-/js/jquery.min.js --> jQuery [jQuery](https://jquery.com/)
-/js/select2.min.js --> [Select2](https://select2.org/)
-/css/select2.css --> [Select2](https://select2.org/)
+/js/d3.v5.min.js --> [D3.js](https://d3js.org/) 
+/js/jquery.min.js --> jQuery [jQuery](https://jquery.com/) 
+/js/select2.min.js --> [Select2](https://select2.org/) 
+/css/select2.css --> [Select2](https://select2.org/) 
 
 ### Team UCLAB  
 Mark-Jan Bludau: concept development, design, data analysis & prototype development  
