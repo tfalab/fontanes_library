@@ -9,8 +9,6 @@ The source code is not really prepared for re-use and in parts quite redundant a
 
 See also the [project demo](https://uclab.fh-potsdam.de/ff/) and a [video](https://vimeo.com/355280580) describing the functionalities of the prototype. For more infos on the functionalities of the prototype, please inquire the help button inside the [prototype](https://uclab.fh-potsdam.de/ff/). 
 
-This project is a collaboration between the [Theodor Fontane Archive Potsdam](https://www.fontanearchiv.de) (University of Potsdam) and the [UCLAB](https://uclab.fh-potsdam.de/) (University of Applied Sciences Potsdam). 
-
 ### The data
 The visualization is based on three data sources and the images of the digitized pages of the books and is accessed via a Google Spreadsheet enabling live-editing and the Google Spreadsheet API:
 
@@ -26,6 +24,9 @@ For access to data files for individual books or access to the images, please co
 /js/select2.min.js → [Select2](https://select2.org/)  
 /css/select2.css → [Select2](https://select2.org/) 
 /fonts/... → [Roboto](https://fonts.google.com/specimen/Roboto)
+
+## Project Team
+This project is a collaboration between the [Theodor Fontane Archive Potsdam](https://www.fontanearchiv.de) (University of Potsdam) and the [UCLAB](https://uclab.fh-potsdam.de/) (University of Applied Sciences Potsdam). 
 
 ### Team UCLAB  
 Mark-Jan Bludau: concept development, design, data analysis & prototype development  
