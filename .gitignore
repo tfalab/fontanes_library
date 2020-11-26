@@ -4,6 +4,7 @@ img/m/
 data/.~lock*
 fonts/
 alt/
+data/
 misc/
 *.ai
 data/*.xlsx
