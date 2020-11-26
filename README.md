@@ -10,7 +10,7 @@ The source code is not really prepared for re-use and in parts quite redundant a
 See also the [project demo](https://uclab.fh-potsdam.de/ff/) and a [video](https://vimeo.com/355280580) describing the functionalities of the prototype. For more infos on the functionalities of the prototype, please inquire the help button inside the [prototype](https://uclab.fh-potsdam.de/ff/). 
 
 ### The data
-The visualization is based on three data sources and the images of the digitized pages of the books and is accessed via a Google Spreadsheet enabling live-editing and the Google Spreadsheet API:
+The visualization is based on three data sources and the images of the digitized pages of the books and is accessed via [this Google Spreadsheet](https://docs.google.com/spreadsheets/d/1TgBK8FmTSP2MBaPW6TuUfjR_iE94WF7l-YPBTcbj7XM/edit?usp=sharing) (enabling live-editing) and the Google Spreadsheet API:
 
 1) Corpus data: Overview of all books in the collection including all relevant meta data such id, author, genre, publication date, etc.
 2) Data for reading traces in pages: A dataset including a data row for each of the over 60,000 pages/reading traces inside of the collection, including page id, reading trace occurences, reading trace transcriptions and more. This data is already processed and is a combination and restructering of individual spreadsheets for each book.
