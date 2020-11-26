@@ -2,6 +2,7 @@
 img/m/
 *.~lock*
 data/.~lock*
+fonts/
 alt/
 misc/
 *.ai
