@@ -51,4 +51,4 @@ Peer Trilcke: project lead
 ## License
 The source code is licensed under the [ISC license](https://github.com/tfalab/fontanes_library/edit/master/LICENSE.md). The data is licensed under [CC BY-4.0](https://creativecommons.org/licenses/by/4.0). 
 
-Copyright (c) 2018-2020, UCLAB (FH Potsdam) & Theodor Fontane Archiv Potsdam.
+Copyright (c) 2018-2020, Mark-Jan Bludau, UCLAB (FH Potsdam) & Theodor Fontane Archiv Potsdam.
