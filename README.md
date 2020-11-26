@@ -12,7 +12,7 @@ See also the [project demo](https://uclab.fh-potsdam.de/ff/) and a [video](https
 This project is a collaboration between the [Theodor Fontane Archive Potsdam](https://www.fontanearchiv.de) (University of Potsdam) and the [UCLAB](https://uclab.fh-potsdam.de/) (University of Applied Sciences Potsdam). 
 
 ### The data
-The visualization is based on three data sources and the images of the digitized pages of the books:
+The visualization is based on three data sources and the images of the digitized pages of the books and is accessed via a Google Spreadsheet enabling live-editing and the Google Spreadsheet API:
 
 1) Corpus data: Overview of all books in the collection including all relevant meta data such id, author, genre, publication date, etc.
 2) Data for reading traces in pages: A dataset including a data row for each of the over 60,000 pages/reading traces inside of the collection, including page id, reading trace occurences, reading trace transcriptions and more. This data is already processed and is a combination and restructering of individual spreadsheets for each book.
