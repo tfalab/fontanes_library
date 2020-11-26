@@ -39,7 +39,7 @@ Sabine Seifert: research data management
 Luisa Billepp, Kristina Genzel, Tabea Klaus, Anke Reintsch: data aquisition  
 Peer Trilcke: project lead  
 
-## Related Publications
+## Related publications
 [Bludau, M.-J., Brüggemann, V., Busch, A., & Dörk, M. (2020). Reading Traces: Scalable Exploration in Elastic Visualizations of Cultural Heritage Data. In Computer Graphics Forum (Vol. 39, No. 3, pp. 77-87).](https://doi.org/10.1111/cgf.13964)
 
 [Busch, A., Bludau, M.-J., Brüggemann, V., Dörk, M., Genzel, K., Seifert,S. & Trilcke P. Scalable Exploration (2019). Prototype study for the visualization of an author's library on the example of 'Theodor Fontane's Library'. In Book of Abstracts of the Digital Humanities conference (DH) 2019: Complexities. Utrecht (The Netherlands)](https://dev.clariah.nl/files/dh2019/boa/0490.html)
