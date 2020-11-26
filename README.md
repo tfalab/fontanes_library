@@ -7,7 +7,7 @@ His personal library comprises one hundred fifty-five volumes with more than six
 
 The source code is not really prepared for re-use and in parts quite redundant and in need of a restructering, commenting and clean-up. Nevertheless, we still hope it might be usefull to some of you.
 
-See also the [project demo](https://uclab.fh-potsdam.de/ff/) and a [video](https://vimeo.com/355280580) describing the functionalities of the prototype.
+See also the [project demo](https://uclab.fh-potsdam.de/ff/) and a [video](https://vimeo.com/355280580) describing the functionalities of the prototype. For more infos on the functionalities of the prototype, please inquire the help button inside the [prototype](https://uclab.fh-potsdam.de/ff/). 
 
 This project is a collaboration between the [Theodor Fontane Archive Potsdam](https://www.fontanearchiv.de) (University of Potsdam) and the [UCLAB](https://uclab.fh-potsdam.de/) (University of Applied Sciences Potsdam). 
 
