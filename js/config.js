@@ -1,7 +1,18 @@
+// Copyright (c) 2018-2020, Mark-Jan Bludau, UCLAB (FH Potsdam) & Theodor Fontane Archiv.
+// Reading Traces: uclab.fh-potsdam.de/ff
+//
+// ISC License
+// Permission to use, copy, modify, and/or distribute this software for any purpose with or without fee is hereby granted,
+// provided that the above copyright notice and this permission notice appear in all copies.
+// THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED
+// WARRANTIES OF MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT, INDIRECT, OR
+// CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT,
+// NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
+
 // === Set up canvas === //
 
-var width = window.innerWidth - 100 //1300,
-var height = window.innerHeight - 120 //680;
+var width = window.innerWidth - 100
+var height = window.innerHeight - 120
 
 if (window.innerWidth >= 2000) {
   height = window.innerHeight - 160
@@ -9,7 +20,7 @@ if (window.innerWidth >= 2000) {
 
 
 var scrollTop = 0
-var newScrollTop = 0 //scroller.node().scrollTop - 5050 - 301
+var newScrollTop = 0
 
 
 //Retina function

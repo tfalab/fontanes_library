@@ -1,3 +1,14 @@
+// Copyright (c) 2018-2020, Mark-Jan Bludau, UCLAB (FH Potsdam) & Theodor Fontane Archiv.
+// Reading Traces: uclab.fh-potsdam.de/ff
+//
+// ISC License
+// Permission to use, copy, modify, and/or distribute this software for any purpose with or without fee is hereby granted,
+// provided that the above copyright notice and this permission notice appear in all copies.
+// THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED
+// WARRANTIES OF MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT, INDIRECT, OR
+// CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT,
+// NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
+
 if (window.location.hash != "") {
   d3.select("#overlay").style("display", "none");
   d3.select("#start").style("display", "none");
@@ -5074,6 +5085,9 @@ Promise.all([
 
         })
         .on("mousemove", function(d) {
+          function round45(x) {
+            return Math.ceil(x / pageheight) * pageheight;
+          }
           if (scrollTop > -800) {
             if (scrollTop > -800 && scrollTop < 1200) {
               thisVerfasserSelected = d3.select(this).datum().values[0].Verfasser;
@@ -5087,9 +5101,7 @@ Promise.all([
 
             var thisPage = Math.round(round45(mouseY) / pageheight) + 1;
 
-            function round45(x) {
-              return Math.ceil(x / pageheight) * pageheight;
-            }
+
             thisVerfasser = d3.select(this).datum().values[0].Verfasser;
             var thisBookID = d3.select(this).datum().values[0].BookID;
 
@@ -5195,6 +5207,9 @@ Promise.all([
 
       d3.selectAll(".singleBookBG")
         .on("click", function(d, i) {
+          function round45(x) {
+            return Math.ceil(x / explicateScale2(scrollTop)) * explicateScale2(scrollTop);
+          }
           if (d3.select(this).datum().values[0].BookID !== clickedBook) {
             if (scrollTop < 0) {
 
@@ -5238,9 +5253,7 @@ Promise.all([
                 return d.Part == thisPage;
               }))[0].ID;
 
-              function round45(x) {
-                return Math.ceil(x / explicateScale2(scrollTop)) * explicateScale2(scrollTop);
-              }
+
               thisVerfasser = d3.select(this).datum().values[0].Verfasser;
 
               var thisBookID = d3.select(this).datum().values[0].BookID;
@@ -6378,7 +6391,7 @@ Promise.all([
             tspan = text.text(null).append("tspan").attr("y", y).attr("dy", dy + "em");
 
 
-          while (word = words.pop()){
+          while ((word = words.pop())){
             line.push(word);
             tspan.text(line.join(" "));
             if (tspan.node().getComputedTextLength() > width) {
@@ -6404,7 +6417,7 @@ Promise.all([
             y = text.attr("y"),
             dy = parseFloat(text.attr("dy")),
             tspan = text.text(null).append("tspan").attr("y", y).attr("dy", dy + "em");
-          while (word = words.pop()){
+          while ((word = words.pop())){
             line.push(word);
             tspan.text(line.join(" "));
             if (tspan.node().getComputedTextLength() > width) {
@@ -6438,7 +6451,7 @@ Promise.all([
             y = text.attr("y"),
             dy = parseFloat(text.attr("dy")),
             tspan = text.text(null).append("tspan").attr("y", y).attr("dy", dy + "em");
-          while (word = words.pop()){
+          while ((word = words.pop())){
             line.push(word);
             tspan.text(line.join(" "));
             if (tspan.node().getComputedTextLength() > width) {
@@ -8593,6 +8606,9 @@ Promise.all([
           ////BuchhoverFunction Start
           ///////////////////////////
           function buchHoverFunction(d, i) {
+            function round45(x) {
+              return Math.ceil(x / explicateScale2(scrollTop)) * explicateScale2(scrollTop)
+            }
 
             if (scrollTop >= 0) {
               var currentScrollTop = Math.max(window.pageYOffset, document.documentElement.scrollTop, document.body.scrollTop)
@@ -8603,9 +8619,7 @@ Promise.all([
               var thisPage = Math.round(round45(mouseY) / explicateScale2(scrollTop))
 
 
-              function round45(x) {
-                return Math.ceil(x / explicateScale2(scrollTop)) * explicateScale2(scrollTop)
-              }
+
 
               thisVerfasser = d3.select(this).datum().values[0].Verfasser
               var thisBookID = d3.select(this).datum().values[0].BookID
@@ -8734,6 +8748,10 @@ Promise.all([
 
           d3.selectAll(".singleBookBG")
             .on("click", function(d, i) {
+              function round45(x) {
+                return Math.ceil(x / explicateScale2(scrollTop)) * explicateScale2(scrollTop)
+              }
+
               if (d3.select(this).datum().values[0].BookID !== clickedBook) {
                 if (scrollTop < 0) {
 
@@ -8778,9 +8796,7 @@ Promise.all([
                     return d.Part == thisPage
                   }))[0].ID
 
-                  function round45(x) {
-                    return Math.ceil(x / explicateScale2(scrollTop)) * explicateScale2(scrollTop)
-                  }
+
                   thisVerfasser = d3.select(this).datum().values[0].Verfasser
 
                   var thisBookID = d3.select(this).datum().values[0].BookID
@@ -8891,7 +8907,7 @@ Promise.all([
             return detailviewOpen(thisBookID, nextPage)
           })
 
-        d3.select("#overlay").style("display", "block").transition().duration(600).style("opacity", .5)
+        d3.select("#overlay").style("display", "block").transition().duration(600).style("opacity", 0.5)
         d3.select("#detailview").style("display", "block").transition().duration(600).style("opacity", 1)
 
         d3.select("#detailview").append("div").attr("class", "tableImage")
@@ -12215,7 +12231,7 @@ Promise.all([
           })
 
 
-        d3.select("#overlay").style("display", "block").transition().duration(600).style("opacity", .5)
+        d3.select("#overlay").style("display", "block").transition().duration(600).style("opacity", 0.5)
         d3.select("#detailview").style("display", "block").transition().duration(600).style("opacity", 1)
 
         d3.select("#detailview").append("div").attr("class", "tableImage")
@@ -12364,6 +12380,5 @@ Promise.all([
 
 
     }
-
 
   });
