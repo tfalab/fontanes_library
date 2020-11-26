@@ -47,7 +47,7 @@ Peer Trilcke: project lead
 [Busch, A. (2019). Fontane als Leser. Zur Visualisierung von Lektürespuren in Fontanes Handbibliothek. In Fontane Blätter (107, S. 104-131).](https://www.fontanearchiv.de/fileadmin/user_upload/Fontane-Blaetter/Fbl_107_final_2019-08-07_Busch.pdf)
 
 [Busch, A., Bludau, M.-J., Brüggemann, V., Dörk, M., Genzel, K., Möller,H.-P., Seifert,S. & Trilcke P. (2019). Skalierbare Exploration. Prototypenstudie zur Visualisierung einer Autorenbibliothek am Beispiel der ›Handbibliothek Theodor Fontanes. In Konferenzband zur DHd 2019 Frankfurt & Mainz - Digital Humanities: multimedial & multimodal](https://zenodo.org/record/2596095/preview/2019_DHd_BookOfAbstracts_web.pdf#page=205)
-
+ 
 ## License
 The source code is licensed under the [ISC license](https://github.com/tfalab/fontanes_library/edit/master/LICENSE.md). The data is licensed under [CC BY-4.0](https://creativecommons.org/licenses/by/4.0). 
 
