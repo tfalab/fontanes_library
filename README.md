@@ -22,7 +22,7 @@ For access to data files for individual books or access to the images, please co
 /js/d3.v5.min.js → [D3.js](https://d3js.org/)  
 /js/jquery.min.js → [jQuery](https://jquery.com/)  
 /js/select2.min.js → [Select2](https://select2.org/)  
-/css/select2.css → [Select2](https://select2.org/) 
+/css/select2.css → [Select2](https://select2.org/)  
 /fonts/... → [Roboto](https://fonts.google.com/specimen/Roboto)
 
 ## Project Team
