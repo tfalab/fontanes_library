@@ -811,9 +811,9 @@ var transitionbookClick = true;
 ///Load data
 
 Promise.all([
-    d3.csv("data/data190826.csv"), //daten
-    d3.csv("data/korpus.csv"), //korpus
-    d3.csv("data/complication190806.csv"), //complication
+    d3.csv("https://docs.google.com/spreadsheets/d/e/2PACX-1vStg2qx0x9UnOQ_7e9Z7lHpZaM9waLYmwidse5_Gjq6MmYUgfAZIpdBv1CWoqKRQjHgAx4BSgdCZ3Z6/pub?gid=264790174&single=true&output=csv"), //daten
+    d3.csv("https://docs.google.com/spreadsheets/d/e/2PACX-1vStg2qx0x9UnOQ_7e9Z7lHpZaM9waLYmwidse5_Gjq6MmYUgfAZIpdBv1CWoqKRQjHgAx4BSgdCZ3Z6/pub?gid=2145015850&single=true&output=csv"), //korpus
+    d3.csv("https://docs.google.com/spreadsheets/d/e/2PACX-1vStg2qx0x9UnOQ_7e9Z7lHpZaM9waLYmwidse5_Gjq6MmYUgfAZIpdBv1CWoqKRQjHgAx4BSgdCZ3Z6/pub?gid=476140658&single=true&output=csv"), //complication
   ])
   .then(([dataset, korpus, complicationData]) => {
 
