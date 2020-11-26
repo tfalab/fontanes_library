@@ -16,7 +16,7 @@ The visualization is based on three data sources and the images of the digitized
 2) Data for reading traces in pages: A dataset including a data row for each of the over 60,000 pages/reading traces inside of the collection, including page id, reading trace occurences, reading trace transcriptions and more. This data is already processed and is a combination and restructering of individual spreadsheets for each book.
 3) Data for the similarity (dark) mode: The python modules pandas and sklearn.manifold.MDS were used for the calculation of the MDS layout.  
 
-For access to data files for individual books or access to the images, please contact the the [Theodor Fontane Archiv Potsdam](https://www.fontanearchiv.de).
+For access to data files for individual books or access to the images, please contact the [Theodor Fontane Archiv Potsdam](https://www.fontanearchiv.de).
 
 ### External resources
 /js/d3.v5.min.js → [D3.js](https://d3js.org/)  
