@@ -5,7 +5,7 @@
 Reading Traces is visualization of personal reading traces such as marginalia or markings inside the reference library of the German realist author Theodor Fontane. 
 His personal library comprises one hundred fifty-five volumes with more than sixty-four thousand pages, a collection of books from his possession which is now preserved in the »Theodor Fontane Archiv« in Potsdam. The preserved volumes show a variety of reading traces, such as comments, ratings, text corrections, various types of markings, institutional stamps, fingerprints or glued-in newspaper articles. In total, the data and the digitized pages can be explored via two modes, each one consisting of multiple granularity levels to help explore the data from different perspectives. While the first mode arranges and visualizes the distribution of reading traces along the linear reading order of the books, the second mode arranges books and authors based on similarity measures.
 
-The source code is not really prepared for re-use and in parts quite redundant and in need of a restructering, commenting and clean-up. Nevertheless, we still hope it might be usefull to some of you.
+The source code is not really prepared for re-use and in parts quite redundant and in need of a restructering, commenting and clean-up, sorry! Nevertheless, we still hope it might be usefull to some of you.
 
 See also the [project demo](https://uclab.fh-potsdam.de/ff/) and a [video](https://vimeo.com/355280580) describing the functionalities of the prototype. For more infos on the functionalities of the prototype, please inquire the help button inside the [prototype](https://uclab.fh-potsdam.de/ff/). 
 
